@@ -12,11 +12,17 @@ package projectogetplay;
  */
 public class PnColuna extends javax.swing.JPanel {
 
-    /**
-     * Creates new form PnColuna
-     */
+    protected Principal pagPrincipal;
     public PnColuna() {
         initComponents();
+    }
+    
+    public PnColuna(Principal pagPrincipal){
+    
+        initComponents();
+        this.pagPrincipal=pagPrincipal;
+        
+        //pagPrincipal.getApp().getUsersList().get(1).ge<
     }
 
     /**
