@@ -29,13 +29,13 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        pnFundo = new javax.swing.JPanel();
-        pnColuna = new javax.swing.JPanel();
-        pnLogin = new javax.swing.JPanel();
+        pnBaseFundo = new javax.swing.JPanel();
+        pnBaseColuna = new javax.swing.JPanel();
+        pnBaseLogin = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
-        pnInfo = new javax.swing.JPanel();
-        pnTabela = new javax.swing.JPanel();
-        jMenuBar1 = new javax.swing.JMenuBar();
+        pnBaseInfo = new javax.swing.JPanel();
+        pnBaseTabela = new javax.swing.JPanel();
+        menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
@@ -45,62 +45,61 @@ public class Principal extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1080, 701));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        pnFundo.setBackground(new java.awt.Color(255, 255, 102));
-        pnFundo.setMinimumSize(new java.awt.Dimension(1080, 100));
-        pnFundo.setPreferredSize(new java.awt.Dimension(1080, 100));
-        pnFundo.setLayout(new java.awt.GridBagLayout());
+        pnBaseFundo.setBackground(new java.awt.Color(255, 255, 102));
+        pnBaseFundo.setMinimumSize(new java.awt.Dimension(1080, 100));
+        pnBaseFundo.setPreferredSize(new java.awt.Dimension(1080, 100));
+        pnBaseFundo.setLayout(new java.awt.GridBagLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.gridwidth = 2;
-        getContentPane().add(pnFundo, gridBagConstraints);
+        getContentPane().add(pnBaseFundo, gridBagConstraints);
 
-        pnColuna.setBackground(new java.awt.Color(102, 255, 102));
-        pnColuna.setMinimumSize(new java.awt.Dimension(250, 580));
-        pnColuna.setPreferredSize(new java.awt.Dimension(250, 580));
+        pnBaseColuna.setBackground(new java.awt.Color(102, 255, 102));
+        pnBaseColuna.setMinimumSize(new java.awt.Dimension(250, 420));
+        pnBaseColuna.setPreferredSize(new java.awt.Dimension(250, 420));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 3;
-        getContentPane().add(pnColuna, gridBagConstraints);
+        gridBagConstraints.gridy = 2;
+        getContentPane().add(pnBaseColuna, gridBagConstraints);
 
-        pnLogin.setBackground(new java.awt.Color(255, 102, 51));
-        pnLogin.setMinimumSize(new java.awt.Dimension(830, 60));
-        pnLogin.setPreferredSize(new java.awt.Dimension(830, 60));
+        pnBaseLogin.setBackground(new java.awt.Color(255, 102, 51));
+        pnBaseLogin.setMinimumSize(new java.awt.Dimension(830, 60));
+        pnBaseLogin.setPreferredSize(new java.awt.Dimension(830, 60));
 
         jTextField1.setText("jTextField1");
-        pnLogin.add(jTextField1);
+        pnBaseLogin.add(jTextField1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        getContentPane().add(pnLogin, gridBagConstraints);
+        getContentPane().add(pnBaseLogin, gridBagConstraints);
 
-        pnInfo.setBackground(new java.awt.Color(102, 102, 255));
-        pnInfo.setMinimumSize(new java.awt.Dimension(830, 100));
-        pnInfo.setPreferredSize(new java.awt.Dimension(830, 100));
+        pnBaseInfo.setBackground(new java.awt.Color(102, 102, 255));
+        pnBaseInfo.setMinimumSize(new java.awt.Dimension(830, 100));
+        pnBaseInfo.setPreferredSize(new java.awt.Dimension(830, 100));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        getContentPane().add(pnInfo, gridBagConstraints);
+        getContentPane().add(pnBaseInfo, gridBagConstraints);
 
-        pnTabela.setBackground(new java.awt.Color(255, 153, 204));
-        pnTabela.setMinimumSize(new java.awt.Dimension(830, 420));
-        pnTabela.setPreferredSize(new java.awt.Dimension(830, 420));
+        pnBaseTabela.setBackground(new java.awt.Color(255, 153, 204));
+        pnBaseTabela.setMinimumSize(new java.awt.Dimension(830, 420));
+        pnBaseTabela.setPreferredSize(new java.awt.Dimension(830, 420));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        getContentPane().add(pnTabela, gridBagConstraints);
+        getContentPane().add(pnBaseTabela, gridBagConstraints);
 
-        jMenuBar1.setMaximumSize(new java.awt.Dimension(56, 100));
+        menu.setMaximumSize(new java.awt.Dimension(56, 100));
 
         jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
+        menu.add(jMenu1);
 
         jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        menu.add(jMenu2);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu);
 
         pack();
         setLocationRelativeTo(null);
@@ -144,12 +143,12 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JPanel pnColuna;
-    private javax.swing.JPanel pnFundo;
-    private javax.swing.JPanel pnInfo;
-    private javax.swing.JPanel pnLogin;
-    private javax.swing.JPanel pnTabela;
+    private javax.swing.JMenuBar menu;
+    private javax.swing.JPanel pnBaseColuna;
+    private javax.swing.JPanel pnBaseFundo;
+    private javax.swing.JPanel pnBaseInfo;
+    private javax.swing.JPanel pnBaseLogin;
+    private javax.swing.JPanel pnBaseTabela;
     // End of variables declaration//GEN-END:variables
 }
