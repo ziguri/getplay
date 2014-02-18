@@ -16,7 +16,6 @@ public class User {
 	}
 
 	public User() {
-		throw new UnsupportedOperationException();
 	}
 
 	public String getNome() {
