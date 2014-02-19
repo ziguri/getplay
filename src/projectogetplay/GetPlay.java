@@ -8,7 +8,47 @@ public class GetPlay {
 	public GetPlay() {
 		
 	}
+    /**
+     *
+     * @param aName
+     * @param aEmail
+     * @param aPassword
+     */
+    public void createUser(String aName, String aEmail, String aPassword) {
+        this.usersList.add(new User(aName, aEmail, aPassword));
+    }
+    public void removeUser(User u){
+        
+    }
 
+    /**
+     * Constructs a Music object with all attributes
+     *
+     * @param aName
+     * @param aAuthor
+     * @param aAlbum
+     * @param aYear
+     * @param aMusicPath
+     * @param aCreatorEmail
+     */
+    public void createMusic(String aName, String aAuthor, String aAlbum,
+            int aYear, String aMusicPath, String aCreatorEmail) {
+        this.musicsList.add(new Music(aName, aAuthor, aAlbum, aYear, aMusicPath,
+                aCreatorEmail));
+    }
+     
+    public boolean existUser(String emailUser) {
+        for (User u : usersList) {
+            if (u.getEmail().equals(emailUser)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    
+        
+        
     /**
      * Return users list.
      * @return arrayList<>
