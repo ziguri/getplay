@@ -43,6 +43,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         pnBaseInfo = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         pnBaseTabela = new javax.swing.JPanel();
         pnLogo = new javax.swing.JPanel();
         menu = new javax.swing.JMenuBar();
@@ -53,6 +54,7 @@ public class Principal extends javax.swing.JFrame {
         setTitle("Getplay");
         setMinimumSize(new java.awt.Dimension(1080, 701));
         setPreferredSize(new java.awt.Dimension(1080, 701));
+        setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         pnBaseFundo.setBackground(new java.awt.Color(255, 255, 102));
@@ -103,11 +105,14 @@ public class Principal extends javax.swing.JFrame {
         pnBaseLoginLayout.setHorizontalGroup(
             pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseLoginLayout.createSequentialGroup()
-                .addContainerGap(446, Short.MAX_VALUE)
+                .addContainerGap(434, Short.MAX_VALUE)
                 .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseLoginLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(99, 99, 99))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseLoginLayout.createSequentialGroup()
+                        .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnBaseLoginLayout.createSequentialGroup()
                         .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -127,10 +132,10 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botaoLogin)
-                    .addComponent(botaoRegistar))
+                    .addComponent(botaoRegistar)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -142,6 +147,31 @@ public class Principal extends javax.swing.JFrame {
         pnBaseInfo.setBackground(new java.awt.Color(102, 102, 255));
         pnBaseInfo.setMinimumSize(new java.awt.Dimension(830, 100));
         pnBaseInfo.setPreferredSize(new java.awt.Dimension(830, 100));
+
+        jButton1.setText("Teste Inserir musica");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnBaseInfoLayout = new javax.swing.GroupLayout(pnBaseInfo);
+        pnBaseInfo.setLayout(pnBaseInfoLayout);
+        pnBaseInfoLayout.setHorizontalGroup(
+            pnBaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseInfoLayout.createSequentialGroup()
+                .addContainerGap(526, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(175, 175, 175))
+        );
+        pnBaseInfoLayout.setVerticalGroup(
+            pnBaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseInfoLayout.createSequentialGroup()
+                .addContainerGap(57, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(20, 20, 20))
+        );
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -150,6 +180,18 @@ public class Principal extends javax.swing.JFrame {
         pnBaseTabela.setBackground(new java.awt.Color(255, 153, 204));
         pnBaseTabela.setMinimumSize(new java.awt.Dimension(830, 420));
         pnBaseTabela.setPreferredSize(new java.awt.Dimension(830, 420));
+
+        javax.swing.GroupLayout pnBaseTabelaLayout = new javax.swing.GroupLayout(pnBaseTabela);
+        pnBaseTabela.setLayout(pnBaseTabelaLayout);
+        pnBaseTabelaLayout.setHorizontalGroup(
+            pnBaseTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 830, Short.MAX_VALUE)
+        );
+        pnBaseTabelaLayout.setVerticalGroup(
+            pnBaseTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 420, Short.MAX_VALUE)
+        );
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -158,6 +200,18 @@ public class Principal extends javax.swing.JFrame {
         pnLogo.setBackground(new java.awt.Color(255, 255, 153));
         pnLogo.setMinimumSize(new java.awt.Dimension(250, 160));
         pnLogo.setPreferredSize(new java.awt.Dimension(250, 160));
+
+        javax.swing.GroupLayout pnLogoLayout = new javax.swing.GroupLayout(pnLogo);
+        pnLogo.setLayout(pnLogoLayout);
+        pnLogoLayout.setHorizontalGroup(
+            pnLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 250, Short.MAX_VALUE)
+        );
+        pnLogoLayout.setVerticalGroup(
+            pnLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -186,11 +240,23 @@ public class Principal extends javax.swing.JFrame {
         }
         else if(!(app.existUser(emailField.getText()))){
         
-             JOptionPane.showMessageDialog(this, "O email não está registado", "!!!", JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(this, "O utilizador não existe", "!!!", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+        
+            logged=app.getUserWithEmail(emailField.getText());
+            
+            
+            
+            
         }
         revalidate();
         repaint();
     }//GEN-LAST:event_botaoLoginActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new JdCreateMusic(this, true).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,6 +309,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botaoLogin;
     private javax.swing.JButton botaoRegistar;
     private javax.swing.JTextField emailField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

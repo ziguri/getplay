@@ -10,14 +10,14 @@ package projectogetplay;
  *
  * @author Aires
  */
-public class PnPlayList extends javax.swing.JPanel {
+public class PnMyPlayList extends javax.swing.JPanel {
 
     protected Principal pagPrincipal;
     /**
      * Creates new form PnMusica
      */
     
-    public PnPlayList(Principal p) {
+    public PnMyPlayList(Principal p) {
         initComponents();
         this.pagPrincipal=p;
     }
@@ -40,7 +40,7 @@ public class PnPlayList extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(830, 100));
 
         jLabPListDir.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabPListDir.setText("Playlist Directory");
+        jLabPListDir.setText("My Playlist");
         jLabPListDir.setToolTipText("");
 
         jLabPListDir1.setText("number of playlist");

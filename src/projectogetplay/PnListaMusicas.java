@@ -10,14 +10,14 @@ package projectogetplay;
  *
  * @author Aires
  */
-public class PnMusica extends javax.swing.JPanel {
+public class PnListaMusicas extends javax.swing.JPanel {
 
     protected Principal pagPrincipal;
     /**
      * Creates new form PnMusica
      */
     
-    public PnMusica(Principal p) {
+    public PnListaMusicas(Principal p) {
         initComponents();
         this.pagPrincipal=p;
     }
@@ -40,14 +40,14 @@ public class PnMusica extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(830, 100));
 
         jLabPListName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabPListName.setText("Playlist Directory");
+        jLabPListName.setText("List name");
         jLabPListName.setToolTipText("");
 
-        jLabPListName1.setText("number of playlist");
+        jLabPListName1.setText("number of musics | total time | size | user");
         jLabPListName1.setToolTipText("");
 
         jBAddMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N
-        jBAddMusic.setText("new playlist");
+        jBAddMusic.setText("add music");
         jBAddMusic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jBAddMusic.setContentAreaFilled(false);
         jBAddMusic.setMargin(new java.awt.Insets(2, 10, 2, 10));
@@ -85,7 +85,7 @@ public class PnMusica extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListName1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 518, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 406, Short.MAX_VALUE)
                         .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
