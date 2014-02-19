@@ -246,7 +246,7 @@ public class Principal extends javax.swing.JFrame {
         
             logged=app.getUserWithEmail(emailField.getText());
             
-            new pn
+            
             
             
         }
