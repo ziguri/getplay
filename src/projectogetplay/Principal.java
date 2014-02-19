@@ -6,6 +6,8 @@
 
 package projectogetplay;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aires
@@ -13,10 +15,12 @@ package projectogetplay;
 public class Principal extends javax.swing.JFrame {
 
     protected GetPlay app;
+    protected User logged;
     
     public Principal() {
         initComponents();
         this.app=new GetPlay();
+        this.logged=null;
     }
 
     /**
@@ -175,7 +179,15 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
+
+        if(emailField.getText().isEmpty() || passwordField.getPassword()==null){
         
+            JOptionPane.showMessageDialog(this, "Todos os campos são de preenchimento obrigatório", "!!!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(!(app.existUser(emailField.getText()))){
+        
+             JOptionPane.showMessageDialog(this, "O email não está registado", "!!!", JOptionPane.ERROR_MESSAGE);
+        }
         revalidate();
         repaint();
     }//GEN-LAST:event_botaoLoginActionPerformed
@@ -217,6 +229,14 @@ public class Principal extends javax.swing.JFrame {
 
     public GetPlay getApp() {
         return app;
+    }
+
+    public User getLogged() {
+        return logged;
+    }
+
+    public void setLogged(User logged) {
+        this.logged = logged;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
