@@ -19,6 +19,7 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
     private int cliqNome = 0;
     private int cliqCriado = 0;
     private int cliqNmusica = 0;
+    protected Principal pagPrincipal;
 
     
     private TableModelPlaylist modelo;
@@ -28,8 +29,9 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
     /**
      * Creates new form PnTabelaMusica
      */
-    public PnTabelaPlayList() {
+    public PnTabelaPlayList(Principal p) {
         initComponents();
+        this.pagPrincipal=p;
     }
 
     /**

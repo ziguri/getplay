@@ -21,6 +21,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     private int cliqAuthor = 0;
     private int cliqClassification = 0;
     private int cliqYear = 0;
+    protected Principal pagPrincipal;
     
     
     private TableModelMusica modelo;
@@ -31,10 +32,12 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     /**
      * Creates new form PnTabelaMusica
      */
-    public PnTabelaMusica() {
+
+    public PnTabelaMusica(Principal p) {
         dados = new ArrayList<Music>();
         modelo=new TableModelMusica(dados);
         initComponents();
+        this.pagPrincipal=p;
     }
 
     /**

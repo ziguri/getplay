@@ -13,10 +13,7 @@ package projectogetplay;
 public class PnColuna extends javax.swing.JPanel {
 
     protected Principal pagPrincipal;
-    public PnColuna() {
-        initComponents();
-    }
-    
+
     public PnColuna(Principal pagPrincipal){
     
         initComponents();

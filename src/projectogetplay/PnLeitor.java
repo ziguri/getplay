@@ -12,11 +12,14 @@ package projectogetplay;
  */
 public class PnLeitor extends javax.swing.JPanel {
 
+     protected Principal pagPrincipal;
     /**
      * Creates new form PnLeitor
      */
-    public PnLeitor() {
+    
+     public PnLeitor(Principal p) {
         initComponents();
+        this.pagPrincipal=p;
     }
 
     /**

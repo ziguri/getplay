@@ -12,11 +12,14 @@ package projectogetplay;
  */
 public class PnPLOutros extends javax.swing.JPanel {
 
+    protected Principal pagPrincipal;
     /**
      * Creates new form PnMusica
      */
-    public PnPLOutros() {
+    
+    public PnPLOutros(Principal p) {
         initComponents();
+        this.pagPrincipal=p;
     }
 
     /**

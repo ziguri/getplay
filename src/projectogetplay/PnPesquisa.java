@@ -12,11 +12,14 @@ package projectogetplay;
  */
 public class PnPesquisa extends javax.swing.JPanel {
 
+    protected Principal pagPrincipal;
     /**
      * Creates new form PnPesquisa
      */
-    public PnPesquisa() {
+    
+    public PnPesquisa(Principal p) {
         initComponents();
+        pagPrincipal=p;
     }
 
     /**
