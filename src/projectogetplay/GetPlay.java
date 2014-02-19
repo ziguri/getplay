@@ -4,48 +4,99 @@ import java.util.*;
 public class GetPlay {
 	protected ArrayList<User> usersList;
 	protected ArrayList<Music> musicsList;
-	public User unnamed_User_;
-	public Music unnamed_Music_;
-	public Playlist unnamed_Playlist_;
-	public Music unnamed_Music_2;
 
 	public GetPlay() {
-		throw new UnsupportedOperationException();
+		
 	}
 
-	public ArrayList<User> getUtilizadores() {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * Return users list.
+     * @return arrayList<>
+     */
+    public ArrayList<User> getUsersList() {
+        return usersList;
+    }
 
-	public void setUtilizadores(ArrayList<User> aUtilizadores) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * Receive a ArrayList<User> in order to ser users list
+     * @param usersList 
+     */
+    public void setUsersList(ArrayList<User> usersList) {
+        this.usersList = usersList;
+    }
 
-	public ArrayList<Music> getMusicas() {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * Return musics list.
+     * @return 
+     */
+    public ArrayList<Music> getMusicsList() {
+        return musicsList;
+    }
 
-	public void setMusicas(ArrayList<Music> aMusicas) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * Receives a ArrayList<Music> in order to set musics list.
+     * @param musicsList 
+     */
+    public void setMusicsList(ArrayList<Music> musicsList) {
+        this.musicsList = musicsList;
+    }
+    
+    /**
+     * Receives one User and add him to the usersList.
+     * @param u 
+     */
+    public void addUser(User u){
+    
+        usersList.add(u);
+    }
+    
+    /**
+     * Receives one User in order to remove him from the users list.
+     * @param u 
+     */
+    public void removeUser(User u){
+    
+        usersList.remove(u);
+    }
+    
+    /**
+     * Receives one Music in order to add her to the musics list.
+     * @param m 
+     */
+    public void addMusic(Music m){
+    
+        musicsList.add(m);
+    }
+    
+    /**
+     * Receives one Music in order to remover her from the musics list.
+     * @param m 
+     */
+    public void removeMusic(Music m){
+    
+        musicsList.remove(m);
+    }
+    
+    /**
+     * Receives one e-mail and use it to find a User. If the user is in the list
+     * returns User, else returns null.
+     * @param email
+     * @return 
+     */
+    public User getUserWithEmail(String email){
+    
+        User u=null;
+        boolean encontrado=false;
+        
+        for(int i=0; i<usersList.size() && !encontrado; i++){
+        
+            if(usersList.get(i).getEmail().equals(email)){
+            
+                u=usersList.get(i);
+            }
+        }
+        
+        return u;
+    }
 
-	public void addUtilizador(User aU) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void removetilizador(User aU) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void addMusica(Music aM) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void removeMusica(Music aM) {
-		throw new UnsupportedOperationException();
-	}
-
-	public void operation() {
-		throw new UnsupportedOperationException();
-	}
 }

@@ -1,6 +1,4 @@
-
 package projectogetplay;
-
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -15,11 +13,7 @@ import javax.swing.table.AbstractTableModel;
  * @author Susana Cortez
  * @author Vitor Aires
  */
-
-
 // Duvida: o qu e+por aqui?!
-
-
 public class TableModelPlaylist extends AbstractTableModel {
 
     private ArrayList<Playlist> dados;
@@ -33,7 +27,7 @@ public class TableModelPlaylist extends AbstractTableModel {
     }
 
     /**
-     * Object Construtor  TableModelMusica
+     * Object Construtor TableModelMusica
      *
      * @param Arraylist of Music
      */
@@ -66,28 +60,24 @@ public class TableModelPlaylist extends AbstractTableModel {
      *
      * @param rowIndex numero de linhas
      * @param columnIndex numero de colunas
-     * @return Name, Author, Album, Classification and year, atributtes of Object Music. 
+     * @return Name, Author, Album, Classification and year, atributtes of
+     * Object Music.
      */
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         Playlist playlist = dados.get(rowIndex);
 
-        
-        
         switch (columnIndex) {
             case 0:
                 return playlist.getName();
             case 1:
-//        //        return playlist.getdateCreationString();              
-//            case 2:
-//         //       return playlist.getAlbum();
-//            case 3:
-//          //      if (playlist.getClassification()==1){
-//                return "*";
-//                } else return "";
-//            case 4:
-//                return playlist.getYear();
-//            
+                return playlist.getdateCreationString();
+            case 2:
+                return playlist.getSize();
+            case 3:
+               if (playlist.getShared()){
+                return Boolean.TRUE;
+                } else return Boolean.FALSE;
             default:
                 return "Error";
         }
@@ -108,8 +98,5 @@ public class TableModelPlaylist extends AbstractTableModel {
 //        //avisa que a tabela foi alterada
 //        fireTableDataChanged();
 //    }
-
-    
-   
 
 }

@@ -7,54 +7,80 @@ public class User {
 	protected String email;
 	protected String password;
 	protected ArrayList<Playlist> playlists;
-	public Playlist unnamed_Playlist_;
-	public GetPlay unnamed_GetPlay_;
-	public Playlist unnamed_Playlist_2;
+	
 
-	public User(String aNome, String aEmail, String aPassword) {
-		throw new UnsupportedOperationException();
+	public User(String aName, String aEmail, String aPassword) {
+		this.name=aName;
+                this.email=aEmail;
+                this.password=aPassword;
+                this.playlists=new ArrayList();
 	}
 
 	public User() {
 	}
 
-	public String getNome() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void setNome(String aNome) {
-		throw new UnsupportedOperationException();
-	}
-
+        /**
+         * Return user e-mail.
+         * @return 
+         */
 	public String getEmail() {
 		return this.email;
 	}
 
+        /**
+         * Receive a String with e-mail, and set user e-mail.
+         * @param aEmail 
+         */
 	public void setEmail(String aEmail) {
 		this.email = aEmail;
 	}
 
+        /**
+         * Return encrypted user password. 
+         * @return 
+         */
 	public String getPassword() {
 		return this.password;
 	}
 
+        /**
+         * Receive a String encrypted password and set the user password;
+         * @param aPassword 
+         */
 	public void setPassword(String aPassword) {
 		this.password = aPassword;
 	}
 
-	public ArrayList<Playlist> getPlaylists() {
-		throw new UnsupportedOperationException();
-	}
+        /**
+         * Return user name.
+         * @return 
+         */
+        public String getName() {
+            return name;
+        }
 
-	public void setPlaylists(ArrayList<Playlist> aPlaylists) {
-		throw new UnsupportedOperationException();
-	}
+        /**
+         * Receive a String with name, and set de user name.
+         * @param name 
+         */
+        public void setName(String name) {
+            this.name = name;
+        }
 
-	public void addPlaylist(Playlist aP) {
-		throw new UnsupportedOperationException();
-	}
+        /**
+         * Return playlist list.
+         * @return ArrayList<>
+         */
+        public ArrayList<Playlist> getPlaylists() {
+            return playlists;
+        }
 
-	public void removePlaylist(Playlist aP) {
-		throw new UnsupportedOperationException();
-	}
+        /**
+         * Receive playlists list to set user playlists list.
+         * @param playlists 
+         */
+        public void setPlaylists(ArrayList<Playlist> playlists) {
+            this.playlists = playlists;
+        }
+
 }

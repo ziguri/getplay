@@ -12,11 +12,11 @@ package projectogetplay;
  */
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
+    protected GetPlay app;
+    
     public Principal() {
         initComponents();
+        this.app=new GetPlay();
     }
 
     /**
@@ -33,6 +33,9 @@ public class Principal extends javax.swing.JFrame {
         pnBaseColuna = new javax.swing.JPanel();
         pnBaseLogin = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         pnBaseInfo = new javax.swing.JPanel();
         pnBaseTabela = new javax.swing.JPanel();
         pnLogo = new javax.swing.JPanel();
@@ -57,6 +60,7 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().add(pnBaseFundo, gridBagConstraints);
 
         pnBaseColuna.setBackground(new java.awt.Color(102, 255, 102));
+        pnBaseColuna.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         pnBaseColuna.setMinimumSize(new java.awt.Dimension(250, 420));
         pnBaseColuna.setPreferredSize(new java.awt.Dimension(250, 420));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -69,7 +73,43 @@ public class Principal extends javax.swing.JFrame {
         pnBaseLogin.setPreferredSize(new java.awt.Dimension(830, 60));
 
         jTextField1.setText("jTextField1");
-        pnBaseLogin.add(jTextField1);
+
+        jPasswordField1.setText("jPasswordField1");
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("jButton2");
+
+        javax.swing.GroupLayout pnBaseLoginLayout = new javax.swing.GroupLayout(pnBaseLogin);
+        pnBaseLogin.setLayout(pnBaseLoginLayout);
+        pnBaseLoginLayout.setHorizontalGroup(
+            pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnBaseLoginLayout.createSequentialGroup()
+                .addGap(391, 391, 391)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+        pnBaseLoginLayout.setVerticalGroup(
+            pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnBaseLoginLayout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)))
+        );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -101,6 +141,15 @@ public class Principal extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 2;
         getContentPane().add(pnLogo, gridBagConstraints);
 
+        pnLogo.setBackground(new java.awt.Color(255, 255, 153));
+        pnLogo.setMinimumSize(new java.awt.Dimension(250, 160));
+        pnLogo.setPreferredSize(new java.awt.Dimension(250, 160));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridheight = 2;
+        getContentPane().add(pnLogo, gridBagConstraints);
+
         menu.setMaximumSize(new java.awt.Dimension(56, 100));
 
         jMenu1.setText("File");
@@ -114,6 +163,12 @@ public class Principal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        pnBaseColuna.add(new PnColuna(this));
+        revalidate();
+        repaint();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -150,9 +205,16 @@ public class Principal extends javax.swing.JFrame {
         });
     }
 
+    public GetPlay getApp() {
+        return app;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JMenuBar menu;
     private javax.swing.JPanel pnBaseColuna;
