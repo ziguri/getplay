@@ -173,5 +173,55 @@ public class GetPlay {
         
         return u;
     }
+    /**
+     * Gets the validation of a text field. If true is because is something write, 
+     * if false text field is empty. 
+     * @param str
+     * @return 
+     */
+    public boolean validateName(String str) {
+            return !str.isEmpty();
+    }
+
+    /**
+     *
+     * @param str string to validate a positive number.
+     * @return Returns true if a string is a number. False otherwise.
+     */
+    public boolean validateInt(String str) {
+        int i = -1;
+        boolean validate;
+        try {
+            i = Integer.parseInt(str);
+            validate = true;
+        } catch (NumberFormatException nfe) {
+            validate = false;
+        }
+        if (i < 0) {
+            validate = false;
+        }
+        return validate;
+    }
+
+    /**
+     *
+     * @param str string to validate a date year.
+     * @return Returns true if a string is a valid year. False otherwise.
+     */
+    public boolean validateDate(String str) {
+        boolean validate = false;
+        Calendar year = Calendar.getInstance();
+        year.setLenient(false);
+        if (validateInt(str) && Integer.parseInt(str) > 1900 && Integer.parseInt(str) <= year.get(Calendar.YEAR)) {
+            try {
+                year.set(Calendar.YEAR, Integer.parseInt(str));
+                year.getTime();
+                validate = true;
+            } catch (NumberFormatException nfe) {
+                validate = false;
+            }
+        }
+        return validate;
+    }
 
 }
