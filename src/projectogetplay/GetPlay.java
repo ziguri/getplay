@@ -19,7 +19,8 @@ public class GetPlay {
 	protected ArrayList<Music> musicsList;
 
 	public GetPlay() {
-		
+		this.usersList = new ArrayList();
+                this.musicsList = new ArrayList();
 	}
     /**
      * Constructs a User Object with attributes name, email, password
