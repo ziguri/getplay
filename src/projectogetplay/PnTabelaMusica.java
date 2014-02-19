@@ -6,16 +6,34 @@
 
 package projectogetplay;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import javax.swing.table.TableColumn;
+
 /**
  *
  * @author Aires
  */
 public class PnTabelaMusica extends javax.swing.JPanel {
-
+    private int cliqNome = 0;
+    private int cliqAlbum = 0;
+    private int cliqAuthor = 0;
+    private int cliqClassification = 0;
+    private int cliqYear = 0;
+    
+    
+    private TableModelMusica modelo;
+    private ArrayList<Music> dados;
+    
+    
+    //
     /**
      * Creates new form PnTabelaMusica
      */
     public PnTabelaMusica() {
+        dados = new ArrayList<Music>();
+        modelo=new TableModelMusica(dados);
         initComponents();
     }
 
@@ -28,21 +46,55 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setMinimumSize(new java.awt.Dimension(830, 420));
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblMusica = new javax.swing.JTable();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-        );
+        setMinimumSize(new java.awt.Dimension(830, 420));
+        setPreferredSize(new java.awt.Dimension(830, 420));
+        setLayout(new java.awt.GridBagLayout());
+
+        jScrollPane1.setMinimumSize(new java.awt.Dimension(820, 420));
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(820, 420));
+
+        tblMusica.setModel(modelo);
+        //dimensões das colunas
+        TableColumn column = null;
+        for (int i = 0; i < 5; i++) {
+            column = tblMusica.getColumnModel().getColumn(i);
+            column.setPreferredWidth(100);
+
+        }
+        tblMusica.setRowHeight(50);
+        // listener
+        tblMusica.getTableHeader().addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // cliques++;
+                int col = tblMusica.columnAtPoint(e.getPoint());
+                if (col==0){ modelo.ordenarPorNome();modelo.fireTableDataChanged(); }
+                // if (col==2){ modelo.ordenarPorLocalizacao();modelo.fireTableDataChanged(); }
+                //if (col==3){ modelo.ordenarPorPontuacao();modelo.fireTableDataChanged(); }
+                //if (col==4){ modelo.ordenarPorVisualizacao(cliques);modelo.fireTableDataChanged(); }
+            }
+        });
+        tblMusica.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblMusicaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblMusica);
+
+        add(jScrollPane1, new java.awt.GridBagConstraints());
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblMusicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMusicaMouseClicked
+      String nome = (String) tblMusica.getValueAt(tblMusica.getSelectedRow(), 0);
+    }//GEN-LAST:event_tblMusicaMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tblMusica;
     // End of variables declaration//GEN-END:variables
 }
+//table.getColumnModel().getColumn(5).setHeaderValue("newHeader");
