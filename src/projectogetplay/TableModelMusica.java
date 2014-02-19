@@ -103,7 +103,7 @@ public class TableModelMusica extends AbstractTableModel {
             default:
                 return "Error";
         }
-asdasdasdasd
+
     }
     /**
      * Ordena a tabela por nome (asc)
