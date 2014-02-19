@@ -10,14 +10,14 @@ package projectogetplay;
  *
  * @author Aires
  */
-public class PnPLOutros extends javax.swing.JPanel {
+public class PnListaPLOutros extends javax.swing.JPanel {
 
     protected Principal pagPrincipal;
     /**
      * Creates new form PnMusica
      */
     
-    public PnPLOutros(Principal p) {
+    public PnListaPLOutros(Principal p) {
         initComponents();
         this.pagPrincipal=p;
     }
@@ -38,10 +38,10 @@ public class PnPLOutros extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(830, 100));
 
         jLabPListName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabPListName.setText("Playlist Directory");
+        jLabPListName.setText("Others Playlists");
         jLabPListName.setToolTipText("");
 
-        jLabPListName1.setText("number of playlist");
+        jLabPListName1.setText("number of playlists");
         jLabPListName1.setToolTipText("");
 
         jBRemoveMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Arrows-Up-2-icon.png"))); // NOI18N
@@ -63,7 +63,7 @@ public class PnPLOutros extends javax.swing.JPanel {
                     .addComponent(jLabPListName)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListName1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 645, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 640, Short.MAX_VALUE)
                         .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
         );

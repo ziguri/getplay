@@ -21,21 +21,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabPListDir" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabPListName" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="jLabPListDir1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="518" max="32767" attributes="0"/>
-                      <Component id="jBNewPlay" min="-2" pref="85" max="-2" attributes="0"/>
+                      <Component id="jLabPListName1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="406" max="32767" attributes="0"/>
+                      <Component id="jBAddMusic" min="-2" pref="85" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="jBEditPlay" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBEditMusic" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="jBRemovePlay" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBRemoveMusic" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
@@ -46,13 +46,13 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="60" max="32767" attributes="0"/>
-              <Component id="jLabPListDir" min="-2" max="-2" attributes="0"/>
+              <Component id="jLabPListName" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabPListDir1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBNewPlay" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBEditPlay" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBRemovePlay" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabPListName1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBAddMusic" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBEditMusic" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBRemoveMusic" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
@@ -60,27 +60,27 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabPListDir">
+    <Component class="javax.swing.JLabel" name="jLabPListName">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="16" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Playlist Directory"/>
+        <Property name="text" type="java.lang.String" value="List name"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabPListDir1">
+    <Component class="javax.swing.JLabel" name="jLabPListName1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="number of playlist"/>
+        <Property name="text" type="java.lang.String" value="number of musics | total time | size | user"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jBNewPlay">
+    <Component class="javax.swing.JButton" name="jBAddMusic">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/Basic-Plus-icon.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="new playlist"/>
+        <Property name="text" type="java.lang.String" value="add music"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder/>
@@ -101,7 +101,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jBEditPlay">
+    <Component class="javax.swing.JButton" name="jBEditMusic">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/Edit-icon.png"/>
@@ -127,7 +127,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jBRemovePlay">
+    <Component class="javax.swing.JButton" name="jBRemoveMusic">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/Basic-Minus-icon.png"/>
