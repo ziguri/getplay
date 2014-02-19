@@ -18,6 +18,8 @@ public class CreateMusic extends javax.swing.JDialog {
     public CreateMusic(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);//fecha janela mas não a aplicação
+        this.setLocationRelativeTo(null);//abre jDialog no centro do ecran
     }
 
     /**
@@ -28,6 +30,7 @@ public class CreateMusic extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -45,61 +48,137 @@ public class CreateMusic extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Music");
-        setMinimumSize(new java.awt.Dimension(410, 280));
-        setPreferredSize(new java.awt.Dimension(410, 280));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setMinimumSize(new java.awt.Dimension(410, 250));
+        setPreferredSize(new java.awt.Dimension(410, 250));
+        setType(java.awt.Window.Type.UTILITY);
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        layout.columnWidths = new int[] {0, 5, 0, 5, 0};
+        layout.rowHeights = new int[] {0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0, 4, 0};
+        getContentPane().setLayout(layout);
 
         jLabel1.setText("Title");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
+        getContentPane().add(jLabel1, gridBagConstraints);
 
         jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextField1.setMinimumSize(new java.awt.Dimension(340, 20));
-        jTextField1.setPreferredSize(new java.awt.Dimension(340, 20));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 24, 360, -1));
+        jTextField1.setMinimumSize(new java.awt.Dimension(200, 20));
+        jTextField1.setPreferredSize(new java.awt.Dimension(200, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        getContentPane().add(jTextField1, gridBagConstraints);
 
         jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextField2.setMinimumSize(new java.awt.Dimension(340, 20));
-        jTextField2.setPreferredSize(new java.awt.Dimension(340, 20));
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 68, 360, -1));
+        jTextField2.setMinimumSize(new java.awt.Dimension(200, 20));
+        jTextField2.setPreferredSize(new java.awt.Dimension(200, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        getContentPane().add(jTextField2, gridBagConstraints);
 
         jLabel2.setText("Artist");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 54, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        getContentPane().add(jLabel2, gridBagConstraints);
 
         jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextField3.setMinimumSize(new java.awt.Dimension(270, 20));
-        jTextField3.setPreferredSize(new java.awt.Dimension(270, 20));
-        getContentPane().add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 112, -1, -1));
+        jTextField3.setMinimumSize(new java.awt.Dimension(150, 20));
+        jTextField3.setPreferredSize(new java.awt.Dimension(150, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        getContentPane().add(jTextField3, gridBagConstraints);
 
         jLabel3.setText("Album");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 98, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        getContentPane().add(jLabel3, gridBagConstraints);
 
         jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextField4.setMinimumSize(new java.awt.Dimension(340, 20));
-        jTextField4.setPreferredSize(new java.awt.Dimension(340, 20));
-        getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 112, 60, -1));
+        jTextField4.setMinimumSize(new java.awt.Dimension(40, 20));
+        jTextField4.setPreferredSize(new java.awt.Dimension(40, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        getContentPane().add(jTextField4, gridBagConstraints);
 
         jLabel4.setText("Year");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 98, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(jLabel4, gridBagConstraints);
 
         jLabel5.setText("At path");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 142, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        getContentPane().add(jLabel5, gridBagConstraints);
 
         jTextField5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextField5.setMinimumSize(new java.awt.Dimension(340, 20));
-        jTextField5.setPreferredSize(new java.awt.Dimension(340, 20));
-        getContentPane().add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 156, -1, -1));
+        jTextField5.setMinimumSize(new java.awt.Dimension(200, 20));
+        jTextField5.setPreferredSize(new java.awt.Dimension(200, 20));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        getContentPane().add(jTextField5, gridBagConstraints);
 
         jButton1.setText("Cancel");
         jButton1.setMaximumSize(new java.awt.Dimension(65, 24));
         jButton1.setMinimumSize(new java.awt.Dimension(65, 24));
         jButton1.setPreferredSize(new java.awt.Dimension(65, 24));
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 206, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(jButton1, gridBagConstraints);
 
         jButton2.setText("Save");
-        jButton2.setMaximumSize(new java.awt.Dimension(65, 24));
-        jButton2.setMinimumSize(new java.awt.Dimension(65, 24));
+        jButton2.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        jButton2.setMaximumSize(new java.awt.Dimension(71, 20));
+        jButton2.setMinimumSize(new java.awt.Dimension(71, 20));
         jButton2.setPreferredSize(new java.awt.Dimension(65, 24));
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(235, 206, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 18;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 6, 0, 6);
+        getContentPane().add(jButton2, gridBagConstraints);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -109,7 +188,12 @@ public class CreateMusic extends javax.swing.JDialog {
         jLabel6.setMinimumSize(new java.awt.Dimension(20, 20));
         jLabel6.setOpaque(true);
         jLabel6.setPreferredSize(new java.awt.Dimension(20, 20));
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 156, -1, -1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        getContentPane().add(jLabel6, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
