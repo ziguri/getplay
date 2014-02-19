@@ -17,10 +17,7 @@ public class GetPlay {
     public void createUser(String aName, String aEmail, String aPassword) {
         this.usersList.add(new User(aName, aEmail, aPassword));
     }
-    public void removeUser(User u){
-        
-    }
-
+   
     /**
      * Constructs a Music object with all attributes
      *
