@@ -13,8 +13,10 @@ import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
 
 /**
- *
- * @author Bruno Maricato
+ * 
+ * @author Orlando Neves
+ * @author Susana Cortez
+ * @author Vitor Aires
  */
 public class JdCreateMusic extends javax.swing.JDialog {
     protected Principal pagPrincipal;
