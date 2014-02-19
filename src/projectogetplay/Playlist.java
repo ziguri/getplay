@@ -1,84 +1,66 @@
 package projectogetplay;
+
 import java.util.*;
 
-
 public class Playlist {
-	protected String name;
-	protected ArrayList<Music> musics;
-	protected GregorianCalendar dateCreation;
-	protected boolean shared;
-	
 
-	public Playlist(String aName, GregorianCalendar aDateCreation) {
-            
-            this.name=aName;
-            this.dateCreation=aDateCreation;
-            this.musics=new ArrayList();
-            this.shared=false;
-		
-	}
+    protected String name;
+    protected ArrayList<Music> musics;
+    protected GregorianCalendar dateCreation;
+    protected boolean shared;
+    public User unnamed_User_;
+    public Music unnamed_Music_;
+    public GetPlay unnamed_GetPlay_;
+    public User unnamed_User_2;
+    public Music unnamed_Music_2;
 
-        /**
-         * Return playlist name
-         * @return String
-         */
-	public String getName() {
-		return this.name;
-	}
+    public Playlist(String aName, User aCreator, GregorianCalendar aDateCreation) {
+        throw new UnsupportedOperationException();
+    }
 
-        /**
-         * Receive a String to set the Playlist name
-         * @param aName 
-         */
-	public void setName(String aName) {
-		this.name = aName;
-	}
+    public String getName() {
+        return this.name;
+    }
 
-        /**
-         * Return ArrayList<Music>.
-         * @return ArrayList.
-         */
-        public ArrayList<Music> getMusics() {
-            return musics;
-        }
+    public void setName(String aName) {
+        this.name = aName;
+    }
 
-        /**
-         * Receive a ArrayList<Music> to set the musics list.
-         * @param musics 
-         */
-        public void setMusics(ArrayList<Music> musics) {
-            this.musics = musics;
-        }
+    public ArrayList<Music> getMusics() {
+        throw new UnsupportedOperationException();
+    }
 
-        /**
-         * Return playlist date of creation.
-         * @return 
-         */
-	public GregorianCalendar getDateCreation() {
-		return this.dateCreation;
-	}
+    public void setMusics(ArrayList<Music> aMusics) {
+        throw new UnsupportedOperationException();
+    }
 
-        /**
-         * Receive a GregorianCalendar to set playlist date of creation.
-         * @param aDateCreation 
-         */
-	public void setDateCreation(GregorianCalendar aDateCreation) {
-		this.dateCreation = aDateCreation;
-	}
-        
-        /**
-         * Return boolean getShared.
-         * @return 
-         */
-	public boolean getShared() {
-		return this.shared;
-	}
+    public GregorianCalendar getDateCreation() {
+        return this.dateCreation;
+    }
 
-        /**
-         * Receive a boolean to set shred playlist.
-         * @param aShared 
-         */
-	public void setShared(boolean aShared) {
-		this.shared = aShared;
-	}
+    public void setDateCreation(GregorianCalendar aDateCreation) {
+        this.dateCreation = aDateCreation;
+    }
+
+    public boolean getShared() {
+        return this.shared;
+    }
+
+    public void setShared(boolean aShared) {
+        this.shared = aShared;
+    }
+
+        // metodo para o PlayList.java
+    public String getdateCreationString() {
+
+        return getDateCreation().get(Calendar.DAY_OF_MONTH) + "/"
+                + getDateCreation().get(Calendar.MONTH) + "/"
+                + getDateCreation().get(Calendar.YEAR);
+    }
+
+// metodo para o PlayList.java
+    public int getSize() {
+        return musics.size();
+    }
+
 }

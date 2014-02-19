@@ -28,21 +28,89 @@ public class PnPlayList extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabPListDir = new javax.swing.JLabel();
+        jLabPListDir1 = new javax.swing.JLabel();
+        jBNewPlay = new javax.swing.JButton();
+        jBEditPlay = new javax.swing.JButton();
+        jBRemovePlay = new javax.swing.JButton();
+
         setMinimumSize(new java.awt.Dimension(830, 100));
+
+        jLabPListDir.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabPListDir.setText("Playlist Directory");
+        jLabPListDir.setToolTipText("");
+
+        jLabPListDir1.setText("number of playlist");
+        jLabPListDir1.setToolTipText("");
+
+        jBNewPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N
+        jBNewPlay.setText("new playlist");
+        jBNewPlay.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jBNewPlay.setContentAreaFilled(false);
+        jBNewPlay.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        jBNewPlay.setMaximumSize(new java.awt.Dimension(71, 20));
+        jBNewPlay.setMinimumSize(new java.awt.Dimension(71, 20));
+        jBNewPlay.setPreferredSize(new java.awt.Dimension(71, 20));
+
+        jBEditPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit-icon.png"))); // NOI18N
+        jBEditPlay.setText(" edit");
+        jBEditPlay.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jBEditPlay.setContentAreaFilled(false);
+        jBEditPlay.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        jBEditPlay.setMaximumSize(new java.awt.Dimension(71, 20));
+        jBEditPlay.setMinimumSize(new java.awt.Dimension(71, 20));
+        jBEditPlay.setPreferredSize(new java.awt.Dimension(71, 20));
+
+        jBRemovePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Minus-icon.png"))); // NOI18N
+        jBRemovePlay.setText("remove");
+        jBRemovePlay.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jBRemovePlay.setContentAreaFilled(false);
+        jBRemovePlay.setMargin(new java.awt.Insets(2, 10, 2, 10));
+        jBRemovePlay.setMaximumSize(new java.awt.Dimension(71, 20));
+        jBRemovePlay.setMinimumSize(new java.awt.Dimension(71, 20));
+        jBRemovePlay.setPreferredSize(new java.awt.Dimension(71, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabPListDir)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabPListDir1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 518, Short.MAX_VALUE)
+                        .addComponent(jBNewPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jBEditPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jBRemovePlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addComponent(jLabPListDir)
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabPListDir1)
+                    .addComponent(jBNewPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBEditPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBRemovePlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBEditPlay;
+    private javax.swing.JButton jBNewPlay;
+    private javax.swing.JButton jBRemovePlay;
+    private javax.swing.JLabel jLabPListDir;
+    private javax.swing.JLabel jLabPListDir1;
     // End of variables declaration//GEN-END:variables
 }
