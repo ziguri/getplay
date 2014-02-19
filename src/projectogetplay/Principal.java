@@ -141,15 +141,6 @@ public class Principal extends javax.swing.JFrame {
         gridBagConstraints.gridheight = 2;
         getContentPane().add(pnLogo, gridBagConstraints);
 
-        pnLogo.setBackground(new java.awt.Color(255, 255, 153));
-        pnLogo.setMinimumSize(new java.awt.Dimension(250, 160));
-        pnLogo.setPreferredSize(new java.awt.Dimension(250, 160));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridheight = 2;
-        getContentPane().add(pnLogo, gridBagConstraints);
-
         menu.setMaximumSize(new java.awt.Dimension(56, 100));
 
         jMenu1.setText("File");

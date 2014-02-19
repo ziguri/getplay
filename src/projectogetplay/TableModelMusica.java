@@ -94,7 +94,7 @@ public class TableModelMusica extends AbstractTableModel {
             case 2:
                 return musica.getAlbum();
             case 3:
-                if (musica.getClassification()==1){
+                if (musica.isFavorite()){
                 return "*";
                 } else return "";
             case 4:
