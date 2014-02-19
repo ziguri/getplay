@@ -28,21 +28,43 @@ public class PnPlayDois extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabPListDir = new javax.swing.JLabel();
+        jLabPListDir1 = new javax.swing.JLabel();
+
         setMinimumSize(new java.awt.Dimension(830, 100));
+
+        jLabPListDir.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
+        jLabPListDir.setText("Playlist Directory");
+        jLabPListDir.setToolTipText("");
+
+        jLabPListDir1.setText("number of playlist");
+        jLabPListDir1.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabPListDir)
+                    .addComponent(jLabPListDir1))
+                .addGap(0, 712, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(60, Short.MAX_VALUE)
+                .addComponent(jLabPListDir)
+                .addGap(3, 3, 3)
+                .addComponent(jLabPListDir1)
+                .addGap(3, 3, 3))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabPListDir;
+    private javax.swing.JLabel jLabPListDir1;
     // End of variables declaration//GEN-END:variables
 }
