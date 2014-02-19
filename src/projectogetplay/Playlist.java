@@ -15,7 +15,7 @@ public class Playlist {
     public Music unnamed_Music_2;
 
     public Playlist(String aName, User aCreator, GregorianCalendar aDateCreation) {
-        throw new UnsupportedOperationException();
+       
     }
 
     public String getName() {
