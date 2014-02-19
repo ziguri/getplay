@@ -9,7 +9,7 @@ public class GetPlay {
 		
 	}
     /**
-     *
+     * Constructs a User Object with attributes name, email, password
      * @param aName
      * @param aEmail
      * @param aPassword
@@ -17,10 +17,27 @@ public class GetPlay {
     public void createUser(String aName, String aEmail, String aPassword) {
         this.usersList.add(new User(aName, aEmail, aPassword));
     }
-   
+   /**
+    * 
+    * @param editUser   User object to edit attributes 
+    * @param newName    the new name of user  
+    * @param newEmail   the new email of user
+    * @param newPassword  the new password of user
+    */
+    public void editUser(User editUser, String newName, String newEmail, String newPassword) {
+        String email = editUser.getEmail();
+        for (User u : usersList) {
+            if (u.getEmail().equals(email)) {
+                u.setName(newName);
+                u.setEmail(newEmail);
+                u.setPassword(newPassword);
+            }
+        }
+    }
+
     /**
-     * Constructs a Music object with all attributes
-     *
+     * Constructs a Music object with all attributes name, author, album, year
+     * path music e user email.
      * @param aName
      * @param aAuthor
      * @param aAlbum
@@ -33,7 +50,34 @@ public class GetPlay {
         this.musicsList.add(new Music(aName, aAuthor, aAlbum, aYear, aMusicPath,
                 aCreatorEmail));
     }
-     
+    /**
+     * Sets to a Music Object new attributes define by the user. 
+     * @param editMusic
+     * @param newName
+     * @param newAuthor
+     * @param newAlbum
+     * @param newYear 
+     */
+    public void editMusic(Music editMusic, String newName, String newAuthor, String newAlbum,
+            int newYear) {
+        String title = editMusic.getName();
+        String album = editMusic.getAlbum();
+        for (Music m : musicsList) {
+            if (m.getName().equalsIgnoreCase(title) && m.getAlbum().equalsIgnoreCase(album)) {
+                m.setName(newName);
+                m.setAuthor(newAuthor);
+                m.setAlbum(newAlbum);
+                m.setYear(newYear);
+            }            
+        }        
+    }
+    
+    /**
+     *   
+     * @param emailUser user email to check
+     * @return Returns true if user exists. False if user isn´t sign up 
+     * in the application
+     */
     public boolean existUser(String emailUser) {
         for (User u : usersList) {
             if (u.getEmail().equals(emailUser)) {
@@ -42,9 +86,7 @@ public class GetPlay {
         }
         return false;
     }
-    
-    
-        
+         
         
     /**
      * Return users list.
@@ -83,7 +125,6 @@ public class GetPlay {
      * @param u 
      */
     public void addUser(User u){
-    
         usersList.add(u);
     }
     
@@ -92,8 +133,7 @@ public class GetPlay {
      * @param u 
      */
     public void removeUser(User u){
-    
-        usersList.remove(u);
+         usersList.remove(u);
     }
     
     /**
@@ -101,8 +141,7 @@ public class GetPlay {
      * @param m 
      */
     public void addMusic(Music m){
-    
-        musicsList.add(m);
+         musicsList.add(m);
     }
     
     /**
@@ -121,7 +160,6 @@ public class GetPlay {
      * @return 
      */
     public User getUserWithEmail(String email){
-    
         User u=null;
         boolean encontrado=false;
         
