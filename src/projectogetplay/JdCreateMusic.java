@@ -12,12 +12,18 @@ package projectogetplay;
  */
 public class JdCreateMusic extends javax.swing.JDialog {
 
+    protected Principal pagPrincipal;
+        
     /**
      * Creates new form CreateMusic
+     * 
+     * @param parent
+     * @param modal
      */
     public JdCreateMusic(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);//fecha janela mas não a aplicação
         this.setLocationRelativeTo(null);//abre jDialog no centro do ecran
     }
