@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -261,6 +262,7 @@ public class GetPlay {
 
     /**
      * Copy a file to a target file.
+     *
      * @param source the path to the file to copy
      * @param target
      */
@@ -274,13 +276,24 @@ public class GetPlay {
             System.out.println("Exception occurred when copying a mp3 file. " + ex);
         }
     }//copia ficheiro para pasta audio do projecto
-    public File chooseFiles(JPanel container, String ext1, String ext2) {
+    
+    /**
+     *
+     * @param container
+     * @param ext1
+     * @param ext2
+     * @return 
+     */
+    public File chooseFiles(JDialog container, String ext1, String ext2) {
         File file = null;
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter f1 = new FileNameExtensionFilter(ext1.toUpperCase() + " file", ext1, ext1);//só mostra ficheiros do tipo ext1 e ext2
+        FileNameExtensionFilter f2 = new FileNameExtensionFilter(ext2.toUpperCase() + " file", ext2, ext2);
         fc.addChoosableFileFilter(f1);
+        fc.addChoosableFileFilter(f2);
         fc.setMultiSelectionEnabled(false);//apenas pode selecionar um ficheiro de cada vez
         fc.setFileFilter(f1);//chamamos o set file filter ao objecto criado
+        fc.setFileFilter(f2);//chamamos o set file filter ao objecto criado
         int opcao = fc.showOpenDialog(container); //abrimos a janela de diálogo para escolher o ficheiro
         if (opcao == JFileChooser.APPROVE_OPTION) {
             file = fc.getSelectedFile();//vai buscar o ficheiro 

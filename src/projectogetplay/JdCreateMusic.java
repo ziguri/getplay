@@ -7,6 +7,7 @@
 package projectogetplay;
 
 import java.awt.Color;
+import java.io.File;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.border.Border;
@@ -234,6 +235,11 @@ public class JdCreateMusic extends javax.swing.JDialog {
         jLUPLOAD.setMinimumSize(new java.awt.Dimension(25, 25));
         jLUPLOAD.setOpaque(true);
         jLUPLOAD.setPreferredSize(new java.awt.Dimension(20, 20));
+        jLUPLOAD.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLUPLOADMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 18;
@@ -339,6 +345,10 @@ public class JdCreateMusic extends javax.swing.JDialog {
             jLERROpath.setVisible(false);
         }
     }//GEN-LAST:event_jTMPathFocusLost
+
+    private void jLUPLOADMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLUPLOADMouseClicked
+        File file = pagPrincipal.getApp().chooseFiles(this, "mp3", "wav");//escolhe ficheiro
+    }//GEN-LAST:event_jLUPLOADMouseClicked
 
 
     
