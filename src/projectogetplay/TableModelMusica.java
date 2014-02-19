@@ -96,7 +96,7 @@ public class TableModelMusica extends AbstractTableModel {
             case 3:
                 if (musica.isFavorite()){
                 return "*";
- //               } else return "";
+               } else return "";
             case 4:
                 return musica.getYear();
             
