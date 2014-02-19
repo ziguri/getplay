@@ -6,7 +6,9 @@
 
 package projectogetplay;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -131,11 +133,12 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoLogin)
-                    .addComponent(botaoRegistar)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(botaoLogin)
+                        .addComponent(botaoRegistar)))
                 .addContainerGap())
         );
 
@@ -232,6 +235,7 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
 
         if(emailField.getText().isEmpty() || passwordField.getPassword()==null){
@@ -246,8 +250,16 @@ public class Principal extends javax.swing.JFrame {
         
             logged=app.getUserWithEmail(emailField.getText());
             
+            if(logged!=null){
             
-            
+                //instancia um JPanel ao qual atribui o painel a ser gerado
+                JPanel cl=new PnColuna(this);
+                
+                
+                
+                pnBaseInfo.add(new PnMyPlayList(this));
+                pnBaseColuna.add(cl);
+            }
             
         }
         revalidate();

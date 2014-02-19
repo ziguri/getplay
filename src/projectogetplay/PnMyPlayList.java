@@ -17,6 +17,10 @@ public class PnMyPlayList extends javax.swing.JPanel {
      * Creates new form PnMusica
      */
     
+    /**
+     * Creates new form PnMusica
+     * @param p
+     */
     public PnMyPlayList(Principal p) {
         initComponents();
         this.pagPrincipal=p;
@@ -40,10 +44,12 @@ public class PnMyPlayList extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(830, 100));
 
         jLabPListDir.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabPListDir.setText("My Playlist");
+        jLabPListDir.setText("My Playlists");
         jLabPListDir.setToolTipText("");
 
-        jLabPListDir1.setText("number of playlist");
+        String numPlay="";
+        numPlay+=pagPrincipal.getLogged().getPlaylists().size();
+        jLabPListDir1.setText(numPlay);
         jLabPListDir1.setToolTipText("");
 
         jBNewPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N
@@ -85,7 +91,7 @@ public class PnMyPlayList extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListDir1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 518, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 537, Short.MAX_VALUE)
                         .addComponent(jBNewPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jBEditPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
