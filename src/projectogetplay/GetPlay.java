@@ -214,6 +214,29 @@ public class GetPlay {
         }
         return validate;
     }
+    
+    /**
+     * Search in the users list, for each user search the playlist list to find
+     * public playlists and return one list with all the public playlists.
+     * @return 
+     */
+    public ArrayList<Playlist> publicPlaylists(){
+    
+        ArrayList<Playlist> pubPlaylists = new ArrayList();
+        
+        for(int i=0; i<usersList.size(); i++){
+        
+            for(int j=0; j<usersList.get(i).getPlaylists().size(); j++){
+            
+                if(usersList.get(i).getPlaylists().get(j).getShared()){
+                
+                    pubPlaylists.add(usersList.get(i).getPlaylists().get(j));
+                }
+            }
+        }
+        
+        return pubPlaylists;
+    }
 
     /**
      *
