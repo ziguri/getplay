@@ -1,20 +1,24 @@
 package projectogetplay;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
-import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author Orlando Neves
  * @author Susana Cortez
  * @author Vitor Aires
  */
-public class GetPlay {
+public class GetPlay{
 
     protected ArrayList<User> usersList;
     protected ArrayList<Music> musicsList;
@@ -31,22 +35,40 @@ public class GetPlay {
      *
      * @throws ClassNotFoundException
      */
-    public void leituraFO() throws ClassNotFoundException {
+    public void openFOUsers() {
+        fo=new FicheiroDeObjetos();
         try {
             if (fo.abreLeitura("users.dat")) {
                 usersList = (ArrayList<User>) fo.leObjeto();
                 fo.fechaLeitura();
-            }
+            }  
         } catch (IOException e) {
-            System.out.println("Ocorreu uma excepção " + e);
+            JOptionPane.showMessageDialog(null, "Ficheiro não encontrado",
+                    "Erro de leitura de Ficheiro",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "File is corrupt",
+                    "File Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
+
+    }
+
+    public void openFOMusic() {
+         fo=new FicheiroDeObjetos();
         try {
             if (fo.abreLeitura("musics.dat")) {
                 musicsList = (ArrayList<Music>) fo.leObjeto();
                 fo.fechaLeitura();
             }
         } catch (IOException e) {
-            System.out.println("Ocorreu uma excepção " + e);
+            JOptionPane.showMessageDialog(null, "File not found",
+                    "Erro de leitura de Ficheiro",
+                    JOptionPane.ERROR_MESSAGE);
+        } catch (ClassNotFoundException ex) {
+            JOptionPane.showMessageDialog(null, "File is corrupt",
+                    "File Error",
+                    JOptionPane.ERROR_MESSAGE);
         }
 
     }
@@ -65,6 +87,7 @@ public class GetPlay {
             System.out.println("ERROR: USER file wasn´t save");
         }
     }
+
     public void guardaFoMusics(ArrayList<Music> foMusic) {
         try {
             fo.abreEscrita("musics.dat");
@@ -74,9 +97,10 @@ public class GetPlay {
             System.out.println("ERROR: MUSIC file wasn´t save");
         }
     }
-        
+
     /**
      * Constructs a User Object with attributes name, email, password
+     *
      * @param aName
      * @param aEmail
      * @param aPassword
@@ -84,13 +108,14 @@ public class GetPlay {
     public void createUser(String aName, String aEmail, String aPassword) {
         this.usersList.add(new User(aName, aEmail, aPassword));
     }
-   /**
-    * 
-    * @param editUser   User object to edit attributes 
-    * @param newName    the new name of user  
-    * @param newEmail   the new email of user
-    * @param newPassword  the new password of user
-    */
+
+    /**
+     *
+     * @param editUser User object to edit attributes
+     * @param newName the new name of user
+     * @param newEmail the new email of user
+     * @param newPassword the new password of user
+     */
     public void editUser(User editUser, String newName, String newEmail, String newPassword) {
         String email = editUser.getEmail();
         for (User u : usersList) {
@@ -105,6 +130,7 @@ public class GetPlay {
     /**
      * Constructs a Music object with all attributes name, author, album, year
      * path music e user email.
+     *
      * @param aName
      * @param aAuthor
      * @param aAlbum
@@ -117,13 +143,15 @@ public class GetPlay {
         this.musicsList.add(new Music(aName, aAuthor, aAlbum, aYear, aMusicPath,
                 aCreatorEmail));
     }
+
     /**
-     * Sets to a Music Object new attributes define by the user. 
+     * Sets to a Music Object new attributes define by the user.
+     *
      * @param editMusic
      * @param newName
      * @param newAuthor
      * @param newAlbum
-     * @param newYear 
+     * @param newYear
      */
     public void editMusic(Music editMusic, String newName, String newAuthor, String newAlbum,
             int newYear) {
@@ -135,15 +163,15 @@ public class GetPlay {
                 m.setAuthor(newAuthor);
                 m.setAlbum(newAlbum);
                 m.setYear(newYear);
-            }            
-        }        
+            }
+        }
     }
-    
+
     /**
-     *   
+     *
      * @param emailUser user email to check
-     * @return Returns true if user exists. False if user isn´t sign up 
-     * in the application
+     * @return Returns true if user exists. False if user isn´t sign up in the
+     * application
      */
     public boolean existUser(String emailUser) {
         for (User u : usersList) {
@@ -151,14 +179,13 @@ public class GetPlay {
                 return true;
             }
         }
+        if(emailUser.equals("admin")){return true;}
         return false;
     }
-    
- 
-         
-        
+
     /**
      * Return users list.
+     *
      * @return arrayList<>
      */
     public ArrayList<User> getUsersList() {
@@ -167,7 +194,8 @@ public class GetPlay {
 
     /**
      * Receive a ArrayList<User> in order to ser users list
-     * @param usersList 
+     *
+     * @param usersList
      */
     public void setUsersList(ArrayList<User> usersList) {
         this.usersList = usersList;
@@ -175,7 +203,8 @@ public class GetPlay {
 
     /**
      * Return musics list.
-     * @return 
+     *
+     * @return
      */
     public ArrayList<Music> getMusicsList() {
         return musicsList;
@@ -183,73 +212,81 @@ public class GetPlay {
 
     /**
      * Receives a ArrayList<Music> in order to set musics list.
-     * @param musicsList 
+     *
+     * @param musicsList
      */
     public void setMusicsList(ArrayList<Music> musicsList) {
         this.musicsList = musicsList;
     }
-    
+
     /**
      * Receives one User and add him to the usersList.
-     * @param u 
+     *
+     * @param u
      */
-    public void addUser(User u){
+    public void addUser(User u) {
         usersList.add(u);
     }
-    
+
     /**
      * Receives one User in order to remove him from the users list.
-     * @param u 
+     *
+     * @param u
      */
-    public void removeUser(User u){
-         usersList.remove(u);
+    public void removeUser(User u) {
+        usersList.remove(u);
     }
-    
+
     /**
      * Receives one Music in order to add her to the musics list.
-     * @param m 
+     *
+     * @param m
      */
-    public void addMusic(Music m){
-         musicsList.add(m);
+    public void addMusic(Music m) {
+        musicsList.add(m);
     }
-    
+
     /**
      * Receives one Music in order to remover her from the musics list.
-     * @param m 
+     *
+     * @param m
      */
-    public void removeMusic(Music m){
-    
+    public void removeMusic(Music m) {
+
         musicsList.remove(m);
     }
-    
+
     /**
      * Receives one e-mail and use it to find a User. If the user is in the list
      * returns User, else returns null.
+     *
      * @param email
-     * @return 
+     * @return
      */
-    public User getUserWithEmail(String email){
-        User u=null;
-        boolean encontrado=false;
-        
-        for(int i=0; i<usersList.size() && !encontrado; i++){
-        
-            if(usersList.get(i).getEmail().equals(email)){
-            
-                u=usersList.get(i);
+    public User getUserWithEmail(String email) {
+        User u = null;
+        boolean encontrado = false;
+
+        for (int i = 0; i < usersList.size() && !encontrado; i++) {
+
+            if (usersList.get(i).getEmail().equals(email)) {
+
+                u = usersList.get(i);
             }
         }
-        
+
         return u;
     }
+
     /**
-     * Gets the validation of a text field. If true is because is something write, 
-     * if false text field is empty. 
+     * Gets the validation of a text field. If true is because is something
+     * write, if false text field is empty.
+     *
      * @param str
-     * @return 
+     * @return
      */
     public boolean validateName(String str) {
-            return !str.isEmpty();
+        return !str.isEmpty();
     }
 
     /**
@@ -271,27 +308,28 @@ public class GetPlay {
         }
         return validate;
     }
-    
+
     /**
      * Search in the users list, for each user search the playlist list to find
      * public playlists and return one list with all the public playlists.
-     * @return 
+     *
+     * @return
      */
-    public ArrayList<Playlist> publicPlaylists(){
-    
+    public ArrayList<Playlist> publicPlaylists() {
+
         ArrayList<Playlist> pubPlaylists = new ArrayList();
-        
-        for(int i=0; i<usersList.size(); i++){
-        
-            for(int j=0; j<usersList.get(i).getPlaylists().size(); j++){
-            
-                if(usersList.get(i).getPlaylists().get(j).getShared()){
-                
+
+        for (int i = 0; i < usersList.size(); i++) {
+
+            for (int j = 0; j < usersList.get(i).getPlaylists().size(); j++) {
+
+                if (usersList.get(i).getPlaylists().get(j).getShared()) {
+
                     pubPlaylists.add(usersList.get(i).getPlaylists().get(j));
                 }
             }
         }
-        
+
         return pubPlaylists;
     }
 
@@ -332,13 +370,13 @@ public class GetPlay {
             System.out.println("Exception occurred when copying a mp3 file. " + ex);
         }
     }//copia ficheiro para pasta audio do projecto
-    
+
     /**
      *
      * @param container
      * @param ext1
      * @param ext2
-     * @return 
+     * @return
      */
     public File chooseFiles(JDialog container, String ext1, String ext2) {
         File file = null;
@@ -356,6 +394,7 @@ public class GetPlay {
         }
         return file;
     }
+
     /**
      * Print a list of Music objects type
      */
@@ -364,7 +403,8 @@ public class GetPlay {
             System.out.println(m);
         }
     }
-     /**
+
+    /**
      * Print a list of User objects type
      */
     public void listUsers() {
