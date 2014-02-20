@@ -246,10 +246,9 @@ public class Principal extends javax.swing.JFrame {
                 
                 
                 //ativar paineis
-                pnBaseInfo.removeAll();
+                //pnBaseInfo.removeAll();
                 pnListaMusicas= new PnListaMusicas(this);
-                //getPnTabelaMusica().setBounds(pnBaseInfo.getBounds());
-                pnBaseInfo.add (getPnListaMusicas());   
+                pnBaseInfo.add(pnListaMusicas);   
                 
                 
                 //pnBaseInfo.add(new PnMyPlayList(this));

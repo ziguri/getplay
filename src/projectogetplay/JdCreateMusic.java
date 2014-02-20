@@ -341,9 +341,16 @@ public class JdCreateMusic extends javax.swing.JDialog {
                 }
             }
         
-        p.getPnListaMusicas().repaint();
-        p.getPnListaMusicas().revalidate();
-        p.getApp().listMusics();
+        //Para actualizar a tabela de musicas a cada vez que insere nova
+        p.getPnBaseTabela().removeAll();
+        p.getPnBaseInfo().removeAll();
+        
+        p.getPnBaseTabela().add(p.getPnTabelaMusica());
+        p.getPnBaseInfo().add(p.getPnListaMusicas());
+        
+        p.revalidate();
+        p.repaint();
+        
         this.dispose();//close window
     }//GEN-LAST:event_jBSaveMouseClicked
 

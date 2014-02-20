@@ -82,15 +82,17 @@ public class PnColuna extends javax.swing.JPanel {
         btnAllMusics.setMaximumSize(new java.awt.Dimension(80, 25));
         btnAllMusics.setMinimumSize(new java.awt.Dimension(80, 25));
         btnAllMusics.setPreferredSize(new java.awt.Dimension(80, 25));
+        btnAllMusics.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAllMusicsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(btnAllMusics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(150, Short.MAX_VALUE))
+            .addComponent(btnAllMusics, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +115,7 @@ public class PnColuna extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 114, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -182,11 +184,14 @@ public class PnColuna extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAllMusicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllMusicsActionPerformed
-        pagPrincipal.getPnBaseTabela().removeAll();
-        pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
-        System.out.println("Entra aqui");
-        pagPrincipal.revalidate();
-        pagPrincipal.repaint();
+        p.getPnBaseTabela().removeAll();
+        p.getPnBaseInfo().removeAll();
+        
+        p.getPnBaseTabela().add(p.getPnTabelaMusica());
+        p.getPnBaseInfo().add(p.getPnListaMusicas());
+        
+        p.revalidate();
+        p.repaint();
     }//GEN-LAST:event_btnAllMusicsActionPerformed
 
     public JList getMyPlaylistsList() {
