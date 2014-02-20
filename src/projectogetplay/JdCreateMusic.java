@@ -302,13 +302,19 @@ public class JdCreateMusic extends javax.swing.JDialog {
 
    
     private void jBSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSaveMouseClicked
+        String userEmail = ""; 
         //preenchimento de campos pelo user
         String name = jTMName.getText().trim();
         String artist = jTMArtist.getText().trim();
         String album = jTMAlbum.getText().trim();
         String year = jTMYear.getText().trim();
         String path = jTMPath.getText().trim();
-        String userEmail = principal.getLogged().getEmail();
+        try{
+            userEmail = principal.getLogged().getEmail();
+        }catch(Exception e){
+            System.out.println("Utilizador não está loggado."+e);
+        }
+       
         
         if (principal.getApp().validateName(name)
                 && principal.getApp().validateName(album)

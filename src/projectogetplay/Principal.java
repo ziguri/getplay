@@ -16,11 +16,14 @@ public class Principal extends javax.swing.JFrame {
 
     protected GetPlay app;
     protected User logged;
-    
+        
     public Principal() {
         initComponents();
         this.app=new GetPlay();
         this.logged=null;
+        
+        app.listMusics();
+        app.listUsers();
     }
 
     /**
