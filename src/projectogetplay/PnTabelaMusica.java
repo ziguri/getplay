@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package projectogetplay;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableColumn;
 
 /**
@@ -16,31 +16,41 @@ import javax.swing.table.TableColumn;
  * @author Aires
  */
 public class PnTabelaMusica extends javax.swing.JPanel {
+
     private int cliqNome = 0;
     private int cliqAlbum = 0;
     private int cliqAuthor = 0;
     private int cliqClassification = 0;
     private int cliqYear = 0;
     protected Principal pagPrincipal;
-    
-    
+
     private TableModelMusica modelo;
     private ArrayList<Music> dados;
-    
-    
+
+    private Music musicSelecionada;
+
     //
     /**
      * Creates new form PnTabelaMusica
      */
-
     public PnTabelaMusica(Principal p) {
         dados = new ArrayList<Music>();
-        pagPrincipal= new Principal();
-        dados=pagPrincipal.getApp().getMusicsList();
-        
-        modelo=new TableModelMusica(dados);
+        this.pagPrincipal = p;
+        atribuiDados(p.getApp().getMusicsList());
+        modelo = new TableModelMusica(dados);
         initComponents();
-        this.pagPrincipal=p;
+
+    }
+
+    /**
+     * Create a new Arralist dados with Object Music, to be used in the Table
+     * Model
+     *
+     * @param musica ArrayList Music
+     */
+    public void atribuiDados(ArrayList<Music> musica) {
+        dados.clear();
+        dados = musica;
     }
 
     /**
@@ -94,9 +104,20 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblMusicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMusicaMouseClicked
-      String nome = (String) tblMusica.getValueAt(tblMusica.getSelectedRow(), 0);
+        String nome = (String) tblMusica.getValueAt(tblMusica.getSelectedRow(), 0);
+        JOptionPane.showMessageDialog(null, "nome",
+                "TEste",
+                JOptionPane.ERROR_MESSAGE);
+        String album = (String) tblMusica.getValueAt(tblMusica.getSelectedRow(), 1);
+
+        musicSelecionada = pagPrincipal.app.musicaEscolhida(nome, album);
+
     }//GEN-LAST:event_tblMusicaMouseClicked
 
+    public Music getMusicSelecionada() {
+        return musicSelecionada;
+
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;

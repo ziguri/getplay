@@ -18,7 +18,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Susana Cortez
  * @author Vitor Aires
  */
-public class GetPlay{
+public class GetPlay {
 
     protected ArrayList<User> usersList;
     protected ArrayList<Music> musicsList;
@@ -27,7 +27,7 @@ public class GetPlay{
     public GetPlay() {
         this.usersList = new ArrayList();
         this.musicsList = new ArrayList();
-
+        fo = new FicheiroDeObjetos();
     }
 
     /**
@@ -36,12 +36,12 @@ public class GetPlay{
      * @throws ClassNotFoundException
      */
     public void openFOUsers() {
-        fo=new FicheiroDeObjetos();
+
         try {
             if (fo.abreLeitura("users.dat")) {
                 usersList = (ArrayList<User>) fo.leObjeto();
                 fo.fechaLeitura();
-            }  
+            }
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Ficheiro não encontrado",
                     "Erro de leitura de Ficheiro",
@@ -55,7 +55,6 @@ public class GetPlay{
     }
 
     public void openFOMusic() {
-         fo=new FicheiroDeObjetos();
         try {
             if (fo.abreLeitura("musics.dat")) {
                 musicsList = (ArrayList<Music>) fo.leObjeto();
@@ -179,7 +178,9 @@ public class GetPlay{
                 return true;
             }
         }
-        if(emailUser.equals("admin")){return true;}
+        if (emailUser.equals("admin")) {
+            return true;
+        }
         return false;
     }
 
@@ -413,4 +414,15 @@ public class GetPlay{
         }
     }
 
+    public Music musicaEscolhida(String nome, String album) {
+	Music mus=new Music();
+        for (Music m : musicsList) {
+            if (m.getName().equalsIgnoreCase(nome) && m.getAlbum().equalsIgnoreCase(album)) {
+            		mus=m;
+            }
+        }
+        return mus;
+    }
+    
+    
 }
