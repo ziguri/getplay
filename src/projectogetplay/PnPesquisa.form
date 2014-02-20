@@ -32,12 +32,12 @@
                       <Component id="searchBox" min="-2" pref="235" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton1" min="-2" pref="20" max="-2" attributes="0"/>
-                      <EmptySpace pref="430" max="32767" attributes="0"/>
+                      <EmptySpace pref="361" max="32767" attributes="0"/>
                       <Component id="lblHello" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblUserName" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="comboUserChoice" min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="comboUserChoice" min="-2" pref="87" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -55,7 +55,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblHello" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblUserName" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -90,7 +90,7 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
-            <StringItem index="0" value=""/>
+            <StringItem index="0" value="Options"/>
             <StringItem index="1" value="Edit Account"/>
             <StringItem index="2" value="Delete Account"/>
             <StringItem index="3" value="Log Out"/>
@@ -101,6 +101,9 @@
         </Property>
         <Property name="doubleBuffered" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboUserChoiceActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="searchBox">
     </Component>

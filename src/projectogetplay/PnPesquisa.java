@@ -17,9 +17,14 @@ public class PnPesquisa extends javax.swing.JPanel {
      * Creates new form PnPesquisa
      */
     
+    /**
+     * Creates new form PnPesquisa
+     * @param p
+     */
     public PnPesquisa(Principal p) {
+        this.pagPrincipal=p;
         initComponents();
-        pagPrincipal=p;
+        
     }
 
     /**
@@ -47,9 +52,14 @@ public class PnPesquisa extends javax.swing.JPanel {
 
         lblUserName.setText(pagPrincipal.getLogged().getName());
 
-        comboUserChoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "", "Edit Account", "Delete Account", "Log Out" }));
+        comboUserChoice.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Options", "Edit Account", "Delete Account", "Log Out" }));
         comboUserChoice.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
         comboUserChoice.setDoubleBuffered(true);
+        comboUserChoice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboUserChoiceActionPerformed(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
         jButton1.setToolTipText("");
@@ -77,12 +87,12 @@ public class PnPesquisa extends javax.swing.JPanel {
                         .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 430, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 361, Short.MAX_VALUE)
                         .addComponent(lblHello)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblUserName)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(comboUserChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboUserChoice, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(choiceTitle)
@@ -95,7 +105,7 @@ public class PnPesquisa extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblHello)
                     .addComponent(lblUserName)
@@ -109,6 +119,10 @@ public class PnPesquisa extends javax.swing.JPanel {
                     .addComponent(jRadioButton1)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboUserChoiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboUserChoiceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboUserChoiceActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
