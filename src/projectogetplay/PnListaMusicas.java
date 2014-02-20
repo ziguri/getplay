@@ -6,6 +6,8 @@
 
 package projectogetplay;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aires
@@ -13,6 +15,8 @@ package projectogetplay;
 public class PnListaMusicas extends javax.swing.JPanel {
 
     protected Principal p;
+    protected PnTabelaMusica musicTable;
+    private Music m;
     /**
      * Creates new form PnMusica
      */
@@ -123,7 +127,13 @@ public class PnListaMusicas extends javax.swing.JPanel {
     }//GEN-LAST:event_jBAddMusicActionPerformed
 
     private void jBEditMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEditMusicMouseClicked
-        new JdEditMusic(p, true).setVisible(true);
+        this.m = musicTable.getMusicSelecionada();
+        if(m.getCreatorEmail().equals(p.getLogged().getEmail())){
+            new JdEditMusic(p, true).setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(this, "You don´t have permission to change this music",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jBEditMusicMouseClicked
 
 

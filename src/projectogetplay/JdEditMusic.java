@@ -6,6 +6,10 @@
 
 package projectogetplay;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Bruno Maricato
@@ -13,6 +17,8 @@ package projectogetplay;
 public class JdEditMusic extends javax.swing.JDialog {
 
     protected Principal p;
+    protected PnTabelaMusica musicTable;
+    private Music m;
     
 
     /**
@@ -24,7 +30,22 @@ public class JdEditMusic extends javax.swing.JDialog {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);//fecha janela mas não a aplicação
         this.setLocationRelativeTo(null);//abre jDialog no centro do ecran
         this.p = (Principal) parent;
-            }
+    }
+    
+    public void fieldsFill() {
+        this.m = musicTable.getMusicSelecionada();
+        jTYear.setText(m.getAlbum());
+        jTYear.setEditable(false);
+        jTArtist.setText(m.getAuthor());
+        jTArtist.setEditable(false);
+        jTName.setText(m.getName());
+        jTName.setEditable(false);
+        String year = "" + m.getYear();
+        jTAlbum.setText(year);
+        jTAlbum.setEditable(false);
+        repaint();
+        revalidate();
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,131 +55,293 @@ public class JdEditMusic extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jTName = new javax.swing.JTextField();
+        jTArtist = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTYear = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        jTAlbum = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jBCancel = new javax.swing.JButton();
+        jBSave = new javax.swing.JButton();
+        jBPrevious = new javax.swing.JButton();
+        jBNext = new javax.swing.JButton();
+        jLERROAlbum = new javax.swing.JLabel();
+        jLERROano = new javax.swing.JLabel();
+        jLERROname = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Music");
-        setMinimumSize(new java.awt.Dimension(400, 200));
-        setUndecorated(true);
+        setMinimumSize(new java.awt.Dimension(400, 300));
+        setPreferredSize(new java.awt.Dimension(400, 300));
         setType(java.awt.Window.Type.UTILITY);
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        layout.columnWidths = new int[] {0, 3, 0, 3, 0, 3, 0, 3, 0};
+        layout.rowHeights = new int[] {0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0, 7, 0};
+        getContentPane().setLayout(layout);
 
         jLabel1.setText("Title");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        getContentPane().add(jLabel1, gridBagConstraints);
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextField1.setMinimumSize(new java.awt.Dimension(340, 20));
-        jTextField1.setPreferredSize(new java.awt.Dimension(340, 20));
+        jTName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jTName.setMinimumSize(new java.awt.Dimension(200, 25));
+        jTName.setPreferredSize(new java.awt.Dimension(200, 25));
+        jTName.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTNameFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTNameFocusLost(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        getContentPane().add(jTName, gridBagConstraints);
 
-        jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextField2.setMinimumSize(new java.awt.Dimension(340, 20));
-        jTextField2.setPreferredSize(new java.awt.Dimension(340, 20));
+        jTArtist.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jTArtist.setMinimumSize(new java.awt.Dimension(200, 25));
+        jTArtist.setPreferredSize(new java.awt.Dimension(200, 25));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 5);
+        getContentPane().add(jTArtist, gridBagConstraints);
 
         jLabel2.setText("Artist");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        getContentPane().add(jLabel2, gridBagConstraints);
 
-        jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextField3.setMinimumSize(new java.awt.Dimension(270, 20));
-        jTextField3.setPreferredSize(new java.awt.Dimension(270, 20));
+        jTYear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jTYear.setMinimumSize(new java.awt.Dimension(40, 25));
+        jTYear.setPreferredSize(new java.awt.Dimension(40, 25));
+        jTYear.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTYearFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTYearFocusLost(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        getContentPane().add(jTYear, gridBagConstraints);
 
         jLabel3.setText("Album");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        getContentPane().add(jLabel3, gridBagConstraints);
 
-        jTextField4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-        jTextField4.setMinimumSize(new java.awt.Dimension(340, 20));
-        jTextField4.setPreferredSize(new java.awt.Dimension(340, 20));
+        jTAlbum.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        jTAlbum.setMinimumSize(new java.awt.Dimension(150, 25));
+        jTAlbum.setPreferredSize(new java.awt.Dimension(150, 25));
+        jTAlbum.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTAlbumFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTAlbumFocusLost(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
+        getContentPane().add(jTAlbum, gridBagConstraints);
 
         jLabel4.setText("Year");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        getContentPane().add(jLabel4, gridBagConstraints);
 
-        jButton1.setText("Cancel");
-        jButton1.setMaximumSize(new java.awt.Dimension(65, 24));
-        jButton1.setMinimumSize(new java.awt.Dimension(65, 24));
-        jButton1.setPreferredSize(new java.awt.Dimension(65, 24));
+        jBCancel.setText("Cancel");
+        jBCancel.setMaximumSize(new java.awt.Dimension(71, 25));
+        jBCancel.setMinimumSize(new java.awt.Dimension(71, 25));
+        jBCancel.setPreferredSize(new java.awt.Dimension(71, 25));
+        jBCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBCancelMouseClicked(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(jBCancel, gridBagConstraints);
 
-        jButton2.setText("Save");
-        jButton2.setMaximumSize(new java.awt.Dimension(65, 24));
-        jButton2.setMinimumSize(new java.awt.Dimension(65, 24));
-        jButton2.setPreferredSize(new java.awt.Dimension(65, 24));
+        jBSave.setText("Save");
+        jBSave.setMaximumSize(new java.awt.Dimension(71, 25));
+        jBSave.setMinimumSize(new java.awt.Dimension(71, 25));
+        jBSave.setPreferredSize(new java.awt.Dimension(71, 25));
+        jBSave.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBSaveMouseClicked(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        getContentPane().add(jBSave, gridBagConstraints);
 
-        jButton3.setText("< previous");
-        jButton3.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton3.setMaximumSize(new java.awt.Dimension(65, 24));
-        jButton3.setMinimumSize(new java.awt.Dimension(65, 24));
-        jButton3.setPreferredSize(new java.awt.Dimension(65, 24));
+        jBPrevious.setText("< previous");
+        jBPrevious.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jBPrevious.setMaximumSize(new java.awt.Dimension(71, 25));
+        jBPrevious.setMinimumSize(new java.awt.Dimension(71, 25));
+        jBPrevious.setPreferredSize(new java.awt.Dimension(71, 25));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(jBPrevious, gridBagConstraints);
 
-        jButton4.setText("next >");
-        jButton4.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jButton4.setMaximumSize(new java.awt.Dimension(65, 24));
-        jButton4.setMinimumSize(new java.awt.Dimension(65, 24));
-        jButton4.setPreferredSize(new java.awt.Dimension(65, 24));
+        jBNext.setText("next >");
+        jBNext.setMargin(new java.awt.Insets(2, 2, 2, 2));
+        jBNext.setMaximumSize(new java.awt.Dimension(71, 25));
+        jBNext.setMinimumSize(new java.awt.Dimension(71, 25));
+        jBNext.setPreferredSize(new java.awt.Dimension(71, 25));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 16;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        getContentPane().add(jBNext, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(271, 271, 271)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(5, 5, 5)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(20, 20, 20))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jLabel1)
-                .addGap(0, 0, 0)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jLabel2)
-                .addGap(0, 0, 0)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
-        );
+        jLERROAlbum.setForeground(new java.awt.Color(255, 0, 0));
+        jLERROAlbum.setText("Please write de name of the album.");
+        jLERROAlbum.setToolTipText("");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 5);
+        getContentPane().add(jLERROAlbum, gridBagConstraints);
+
+        jLERROano.setForeground(new java.awt.Color(255, 0, 0));
+        jLERROano.setText("Enter a valid year.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 14;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 5);
+        getContentPane().add(jLERROano, gridBagConstraints);
+
+        jLERROname.setForeground(new java.awt.Color(255, 0, 0));
+        jLERROname.setText("Please enter the title of the music.");
+        jLERROname.setMinimumSize(new java.awt.Dimension(100, 14));
+        jLERROname.setPreferredSize(new java.awt.Dimension(100, 14));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 5);
+        getContentPane().add(jLERROname, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+    private void jBSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSaveMouseClicked
+        fieldsFill();
+         if (p.getLogged() == null) {
+            JOptionPane.showMessageDialog(this, "Please sign in to add a music to your application",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            this.dispose();//close window
+            return;
+        }
+         
+        String title = jTName.getText().trim();
+        String artist = jTArtist.getText().trim();
+        String album = jTYear.getText().trim();
+        String year = jTAlbum.getText().trim();
+
+    }//GEN-LAST:event_jBSaveMouseClicked
+
+    private void jTNameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNameFocusGained
+        jTName.setEditable(true);
+    }//GEN-LAST:event_jTNameFocusGained
+
+    private void jTNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTNameFocusLost
+        String s = jTName.getText().trim();
+        if (!p.getApp().validateName(s)) {
+            jTName.setBorder(BorderFactory.createLineBorder(Color.RED));
+            jLERROname.setVisible(true);
+        } else {
+            jTName.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+            jLERROname.setVisible(false);
+        }
+    }//GEN-LAST:event_jTNameFocusLost
+
+    private void jTAlbumFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTAlbumFocusGained
+        jTAlbum.setEditable(true);
+    }//GEN-LAST:event_jTAlbumFocusGained
+
+    private void jTAlbumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTAlbumFocusLost
+        String s = jTAlbum.getText().trim();
+        if (!p.getApp().validateName(s)) {
+            jTAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
+            jLERROAlbum.setVisible(true);
+        } else {
+            jTAlbum.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+            jLERROAlbum.setVisible(false);
+        }
+    }//GEN-LAST:event_jTAlbumFocusLost
+
+    private void jTYearFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTYearFocusGained
+        jTYear.setEditable(true);
+    }//GEN-LAST:event_jTYearFocusGained
+
+    private void jTYearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTYearFocusLost
+        String s = jTAlbum.getText().trim();
+        if (!p.getApp().validateInt(s) || !p.getApp().validateDate(s)) {
+            jTAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
+            jLERROano.setVisible(true);
+        } else {
+            jTAlbum.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+            jLERROano.setVisible(false);
+        }
+    }//GEN-LAST:event_jTYearFocusLost
+
+    private void jBCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelMouseClicked
+        this.dispose(); //fecha a janela
+    }//GEN-LAST:event_jBCancelMouseClicked
+
+      
     /**
      * @param args the command line arguments
      */
@@ -202,17 +385,20 @@ public class JdEditMusic extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jBCancel;
+    private javax.swing.JButton jBNext;
+    private javax.swing.JButton jBPrevious;
+    private javax.swing.JButton jBSave;
+    private javax.swing.JLabel jLERROAlbum;
+    private javax.swing.JLabel jLERROano;
+    private javax.swing.JLabel jLERROname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTAlbum;
+    private javax.swing.JTextField jTArtist;
+    private javax.swing.JTextField jTName;
+    private javax.swing.JTextField jTYear;
     // End of variables declaration//GEN-END:variables
 }

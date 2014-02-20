@@ -412,9 +412,6 @@ public class JdCreateMusic extends javax.swing.JDialog {
     }//GEN-LAST:event_jBCancelMouseClicked
 
 
-    
-    
-    
     /**
      * @param args the command line arguments
      */
