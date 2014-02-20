@@ -251,18 +251,29 @@ public class Principal extends javax.swing.JFrame {
 
         if (emailField.getText().isEmpty() || passwordField.getPassword() == null) {
 
-            JOptionPane.showMessageDialog(this, "Todos os campos são de preenchimento obrigatório", "!!!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "All fields are mandatory", "Error!", JOptionPane.ERROR_MESSAGE);
         } else if (!(app.existUser(emailField.getText()))) {
 
-            JOptionPane.showMessageDialog(this, "O utilizador não existe", "!!!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "User not found", "Error!", JOptionPane.ERROR_MESSAGE);
         } else {
 
             logged = app.getUserWithEmail(emailField.getText());
             
             if (logged != null) {
+                
+                //desaparece o painel de login e aparece o painel de logado
+                lbFixoEmail.setVisible(false);
+                lbFixoPassword.setVisible(false);
+                botaoLogin.setVisible(false);
+                botaoRegistar.setVisible(false);
+                emailField.setVisible(false);
+                passwordField.setVisible(false);
+                
+                
                 //ativar paineis
                 pnBaseInfo.add(new PnMyPlayList(this));
                 pnBaseColuna.add(new PnColuna(this));
+                pnBaseLogin.add(new PnPesquisa(this));
                 
                 //carregar a lista de musica
                 app.musicsList.clear();

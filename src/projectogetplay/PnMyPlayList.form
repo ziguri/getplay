@@ -71,13 +71,13 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabPListDir1">
       <Properties>
-        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="}catch(Exception e){}">
           <Connection code="numPlay" type="code"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="String numPlay=&quot;&quot;;&#xa;numPlay+=pagPrincipal.getLogged().getPlaylists().size();"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{&#xa;String numPlay=&quot;&quot;;&#xa;numPlay+=pagPrincipal.getLogged().getPlaylists().size();"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jBNewPlay">
