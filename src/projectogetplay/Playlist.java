@@ -16,6 +16,7 @@ public class Playlist {
     public Playlist(String aName) {
         this.name = aName;
         dateCreation = new GregorianCalendar();
+        this.musics = new ArrayList();
     }
 
     /**
