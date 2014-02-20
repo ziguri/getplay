@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  */
 public class JdCreateMusic extends javax.swing.JDialog {
 
-    protected Principal principal;
+    protected Principal p;
     private String source;
     private String target;
 
@@ -33,7 +33,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
     public JdCreateMusic(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.principal = (Principal) parent;
+        this.p = (Principal) parent;
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);//fecha janela mas não a aplicação
         this.setLocationRelativeTo(null);//abre jDialog no centro do ecran
 
@@ -304,7 +304,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSaveMouseClicked
-        if (principal.getLogged() == null) {
+        if (p.getLogged() == null) {
             JOptionPane.showMessageDialog(this, "Please sign in to add a music to your application",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
             this.dispose();//close window
@@ -317,43 +317,43 @@ public class JdCreateMusic extends javax.swing.JDialog {
         String album = jTMAlbum.getText().trim();
         String year = jTMYear.getText().trim();
         String path = jTMPath.getText().trim();
-        String userEmail = principal.getLogged().getEmail();
-             if (principal.getApp().validateName(name)
-                    && principal.getApp().validateName(album)
-                    && principal.getApp().validateName(path)
-                    && principal.getApp().validateInt(year)
-                    && principal.getApp().validateDate(year)) {
-                principal.getApp().createMusic(name, artist, album, Integer.parseInt(year),
+        String userEmail = p.getLogged().getEmail();
+             if (p.getApp().validateName(name)
+                    && p.getApp().validateName(album)
+                    && p.getApp().validateName(path)
+                    && p.getApp().validateInt(year)
+                    && p.getApp().validateDate(year)) {
+                p.getApp().createMusic(name, artist, album, Integer.parseInt(year),
                         path, userEmail);
-                principal.getApp().copy(source, target);//copia ficheiro
+                p.getApp().copy(source, target);//copia ficheiro
                 JOptionPane.showMessageDialog(null, "Musica adicionada");
             } else {
-                if (!principal.getApp().validateName(name)) {
+                if (!p.getApp().validateName(name)) {
                     jTMName.setBorder(BorderFactory.createLineBorder(Color.RED));
                     jLERROname.setVisible(true);
                 }
-                if (!principal.getApp().validateName(album)) {
+                if (!p.getApp().validateName(album)) {
                     jTMAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
                     jLERROAlbum.setVisible(true);
                 }
-                if (!principal.getApp().validateName(path)) {
+                if (!p.getApp().validateName(path)) {
                     jTMPath.setBorder(BorderFactory.createLineBorder(Color.RED));
                     jLERROpath.setVisible(true);
                 }
-                if (!principal.getApp().validateInt(year) && principal.getApp().validateDate(year)) {
+                if (!p.getApp().validateInt(year) && p.getApp().validateDate(year)) {
                     jTMYear.setBorder(BorderFactory.createLineBorder(Color.RED));
                     jLERROano.setVisible(true);
                 }
             }
         
 
-        principal.getApp().listMusics();
+        p.getApp().listMusics();
         this.dispose();//close window
     }//GEN-LAST:event_jBSaveMouseClicked
 
     private void jTMNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMNameFocusLost
         String s = jTMName.getText().trim();
-        if (!principal.getApp().validateName(s)) {
+        if (!p.getApp().validateName(s)) {
             jTMName.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLERROname.setVisible(true);
         } else {
@@ -364,7 +364,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
 
     private void jTMAlbumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMAlbumFocusLost
         String s = jTMAlbum.getText().trim();
-        if (!principal.getApp().validateName(s)) {
+        if (!p.getApp().validateName(s)) {
             jTMAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLERROAlbum.setVisible(true);
         } else {
@@ -375,7 +375,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
 
     private void jTMYearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMYearFocusLost
         String s = jTMYear.getText().trim();
-        if (!principal.getApp().validateInt(s) || !principal.getApp().validateDate(s)) {
+        if (!p.getApp().validateInt(s) || !p.getApp().validateDate(s)) {
             jTMYear.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLERROano.setVisible(true);
         } else {
@@ -386,7 +386,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
 
     private void jTMPathFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMPathFocusLost
         String s = jTMPath.getText().trim();
-        if (!principal.getApp().validateName(s)) {
+        if (!p.getApp().validateName(s)) {
             jTMPath.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLERROpath.setVisible(true);
         } else {
@@ -396,7 +396,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
     }//GEN-LAST:event_jTMPathFocusLost
 
     private void jLUPLOADMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLUPLOADMouseClicked
-        File file = principal.getApp().chooseFiles(this, "wav", "mp3");//escolhe ficheiro
+        File file = p.getApp().chooseFiles(this, "wav", "mp3");//escolhe ficheiro
         jTMPath.setText(file.getName());//apenas estético
         repaint();
         revalidate();
