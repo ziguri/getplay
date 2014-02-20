@@ -5,6 +5,7 @@ import java.util.*;
 
 public class User  implements Serializable{
 
+    private static final long serialVersionUID = 3901859968848387462L;
     protected String name;
     protected String email;
     protected String password;

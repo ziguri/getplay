@@ -2,6 +2,7 @@ package projectogetplay;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
@@ -18,8 +19,9 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author Susana Cortez
  * @author Vitor Aires
  */
-public class GetPlay {
-
+public class GetPlay implements Serializable {
+    
+    private static final long serialVersionUID = 3901859968848387462L;
     protected ArrayList<User> usersList;
     protected ArrayList<Music> musicsList;
     private FicheiroDeObjetos fo;

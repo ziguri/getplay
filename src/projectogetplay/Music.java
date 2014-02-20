@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class Music implements Serializable {
 
+    private static final long serialVersionUID = 3901859968848387462L;
     protected String name;
     protected String author;
     protected String album;

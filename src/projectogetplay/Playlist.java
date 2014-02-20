@@ -1,13 +1,15 @@
 package projectogetplay;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author Aires
  */
-public class Playlist {
+public class Playlist implements Serializable {
 
+    private static final long serialVersionUID = 3901859968848387462L;
     protected String name;
     protected ArrayList<Music> musics;
     protected GregorianCalendar dateCreation;
