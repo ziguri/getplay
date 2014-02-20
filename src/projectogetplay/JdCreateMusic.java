@@ -341,7 +341,8 @@ public class JdCreateMusic extends javax.swing.JDialog {
                 jLERROano.setVisible(true);
             }
         }
-        this.dispose(); //close window
+        principal.getApp().listMusics();
+        this.dispose();//close window
     }//GEN-LAST:event_jBSaveMouseClicked
 
     private void jTMNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMNameFocusLost
