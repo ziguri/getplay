@@ -21,8 +21,9 @@ public class PnListaMusicas extends javax.swing.JPanel {
      */
     
     public PnListaMusicas(Principal p) {
-        initComponents();
         this.p=p;
+        initComponents();
+        
     }
 
     /**
@@ -43,10 +44,10 @@ public class PnListaMusicas extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(830, 100));
 
         jLabPListName.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        jLabPListName.setText("List name");
+        jLabPListName.setText("All Musics");
         jLabPListName.setToolTipText("");
 
-        jLabPListName1.setText("number of musics | total time | size | user");
+        jLabPListName1.setText("Number of musics: " + p.getApp().getMusicsList().size());
         jLabPListName1.setToolTipText("");
 
         jBAddMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N
@@ -98,13 +99,12 @@ public class PnListaMusicas extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListName1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 406, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 537, Short.MAX_VALUE)
                         .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0))))
+                        .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -123,6 +123,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
 
     private void jBAddMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddMusicActionPerformed
         new JdCreateMusic(p, true).setVisible(true);
+       
     }//GEN-LAST:event_jBAddMusicActionPerformed
 
     private void jBEditMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEditMusicMouseClicked

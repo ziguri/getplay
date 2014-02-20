@@ -78,7 +78,6 @@ public class PnPesquisa extends javax.swing.JPanel {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
         jButton1.setToolTipText("");
         jButton1.setContentAreaFilled(false);
-        jButton1.setOpaque(false);
         jButton1.setPreferredSize(new java.awt.Dimension(20, 20));
 
         searchGroup.add(choiceTitle);
@@ -130,12 +129,13 @@ public class PnPesquisa extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHello)
-                    .addComponent(lblUserName)
-                    .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblHello)
+                        .addComponent(lblUserName)
+                        .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnSettings, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(choiceTitle)
@@ -157,7 +157,7 @@ public class PnPesquisa extends javax.swing.JPanel {
         pagPrincipal.getPnBaseInfo().removeAll();
         
         pagPrincipal.getApp().guardaFoMusics();
-        
+   
         pagPrincipal.revalidate();
         pagPrincipal.repaint();
 
@@ -179,8 +179,8 @@ public class PnPesquisa extends javax.swing.JPanel {
     private javax.swing.JRadioButton choiceTitle;
     private javax.swing.JButton jButton1;
     private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JLabel lblHello;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JMenuItem menuEditar;
