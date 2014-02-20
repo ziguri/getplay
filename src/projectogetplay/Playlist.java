@@ -11,7 +11,7 @@ public class Playlist implements Serializable {
 
     private static final long serialVersionUID = 3901859968848387462L;
     protected String name;
-    protected ArrayList<Music> musics;
+    protected ArrayList<Integer> musics;
     protected GregorianCalendar dateCreation;
     protected boolean shared;
 
@@ -43,7 +43,7 @@ public class Playlist implements Serializable {
      * Get the List of Music of the Playlist
      * @return a List of Music
      */
-    public ArrayList<Music> getMusics() {
+    public ArrayList<Integer> getMusics() {
         return musics;
     }
 
@@ -52,7 +52,7 @@ public class Playlist implements Serializable {
      *
      * @param aMusics List of Music
      */
-    public void setMusics(ArrayList<Music> aMusics) {
+    public void setMusics(ArrayList<Integer> aMusics) {
         this.musics.clear();
         this.musics.addAll(aMusics);
     }
@@ -98,7 +98,7 @@ public class Playlist implements Serializable {
      *
      * @param m music
      */
-    public void addMusicPlaylist(Music m) {
+    public void addMusicPlaylist(int m) {
         musics.add(m);
     }
 
@@ -135,12 +135,12 @@ public class Playlist implements Serializable {
     /**
      * Verify if the Music exist in the Playlist
      *
-     * @param m Music
+     * @param musicCode
      * @return true if Music exists in the ArrayList, false if not
      */
-    public boolean existeMusicPlaylist(Music m) {
-        for (Music music : musics) {
-            if (music.getName().equals(m.getName()) && music.getAlbum().equals(m.getAlbum())) {
+    public boolean existeMusicPlaylist(int musicCode) {
+        for (int music : musics) {
+            if(music == musicCode){
                 return true;
             }
         }

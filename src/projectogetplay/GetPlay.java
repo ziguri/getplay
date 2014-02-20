@@ -73,6 +73,24 @@ public class GetPlay implements Serializable {
         }
 
     }
+    
+    /**
+     * Generate the unique music code. 
+     * @return 
+     */
+    public int mCode(){
+    
+        int code;
+        if(musicsList.size()<=1){
+        
+            code=1;
+        }else{
+        
+            code=musicsList.get(musicsList.size()-1).getMusicCode()+1;
+        }
+        
+        return code;
+    }
 
     /**
      * Write and save on a User object file.
@@ -128,7 +146,7 @@ public class GetPlay implements Serializable {
     }
 
     /**
-     * Constructs a Music object with all attributes name, author, album, year
+     * Constructs a Music object with all attributes music code, name, author, album, year
      * path music e user email.
      *
      * @param aName
@@ -140,7 +158,7 @@ public class GetPlay implements Serializable {
      */
     public void createMusic(String aName, String aAuthor, String aAlbum,
             int aYear, String aMusicPath, String aCreatorEmail) {
-        this.musicsList.add(new Music(aName, aAuthor, aAlbum, aYear, aMusicPath,
+        this.musicsList.add(new Music(mCode(), aName, aAuthor, aAlbum, aYear, aMusicPath,
                 aCreatorEmail));
     }
 

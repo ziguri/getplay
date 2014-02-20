@@ -12,8 +12,10 @@ public class Music implements Serializable {
     protected String musicPath;
     protected boolean favorite;
     protected String creatorEmail;
+    protected int musicCode;
 
-    public Music(String aName, String aAuthor, String aAlbum, int aYear, String aMusicPath, String aCreatorEmail) {
+    public Music(int musicCode, String aName, String aAuthor, String aAlbum, int aYear, String aMusicPath, String aCreatorEmail) {
+        this.musicCode=musicCode;
         this.name = aName;
         this.author = aAuthor;
         this.album = aAlbum;
@@ -25,6 +27,15 @@ public class Music implements Serializable {
 
     public Music() {
 
+    }
+
+    
+    public int getMusicCode() {
+        return musicCode;
+    }
+
+    public void setMusicCode(int musicCode) {
+        this.musicCode = musicCode;
     }
 
     /**

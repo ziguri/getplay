@@ -59,7 +59,7 @@ public class Principal extends javax.swing.JFrame {
         pnBaseInfo = new javax.swing.JPanel();
         pnBaseTabela = new javax.swing.JPanel();
         pnLogo = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -186,9 +186,9 @@ public class Principal extends javax.swing.JFrame {
         pnLogo.setPreferredSize(new java.awt.Dimension(250, 170));
         pnLogo.setLayout(new javax.swing.BoxLayout(pnLogo, javax.swing.BoxLayout.LINE_AXIS));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aires\\Documents\\NetBeansProjects\\getplay\\src\\icons\\logo.png")); // NOI18N
-        jLabel1.setText("jLabel1");
-        pnLogo.add(jLabel1);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo.png"))); // NOI18N
+        logo.setToolTipText("");
+        pnLogo.add(logo);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -315,11 +315,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botaoLogin;
     private javax.swing.JButton botaoRegistar;
     private javax.swing.JTextField emailField;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JLabel lbFixoEmail;
     private javax.swing.JLabel lbFixoPassword;
+    private javax.swing.JLabel logo;
     private javax.swing.JMenuBar menu;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JPanel pnBaseColuna;
