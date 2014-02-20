@@ -9,19 +9,72 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 /**
- * 
+ *
  * @author Orlando Neves
  * @author Susana Cortez
  * @author Vitor Aires
  */
 public class GetPlay {
-	protected ArrayList<User> usersList;
-	protected ArrayList<Music> musicsList;
 
-	public GetPlay() {
-		this.usersList = new ArrayList();
-                this.musicsList = new ArrayList();
-	}
+    protected ArrayList<User> usersList;
+    protected ArrayList<Music> musicsList;
+    private FicheiroDeObjetos fo;
+
+    public GetPlay() {
+        this.usersList = new ArrayList();
+        this.musicsList = new ArrayList();
+
+    }
+
+    /**
+     * Read a Music or User object file.
+     *
+     * @throws ClassNotFoundException
+     */
+    public void leituraFO() throws ClassNotFoundException {
+        try {
+            if (fo.abreLeitura("users.dat")) {
+                usersList = (ArrayList<User>) fo.leObjeto();
+                fo.fechaLeitura();
+            }
+        } catch (IOException e) {
+            System.out.println("Ocorreu uma excepção " + e);
+        }
+        try {
+            if (fo.abreLeitura("musics.dat")) {
+                musicsList = (ArrayList<Music>) fo.leObjeto();
+                fo.fechaLeitura();
+            }
+        } catch (IOException e) {
+            System.out.println("Ocorreu uma excepção " + e);
+        }
+
+    }
+
+    /**
+     * Write and save on a User object file.
+     *
+     * @param foUser
+     */
+    public void guardaFoUsers(ArrayList<User> foUser) {
+        try {
+            fo.abreEscrita("users.dat");
+            fo.escreveObjeto(foUser);
+            fo.fechaEscrita();
+        } catch (Exception e) {
+            System.out.println("ERROR: USER file wasn´t save");
+        }
+    }
+    public void guardaFoMusics(ArrayList<Music> foMusic) {
+        try {
+            fo.abreEscrita("musics.dat");
+            fo.escreveObjeto(foMusic);
+            fo.fechaEscrita();
+        } catch (Exception e) {
+            System.out.println("ERROR: MUSIC file wasn´t save");
+        }
+    }
+        
     /**
      * Constructs a User Object with attributes name, email, password
      * @param aName
