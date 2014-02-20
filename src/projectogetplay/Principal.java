@@ -48,7 +48,6 @@ public class Principal extends javax.swing.JFrame {
         lbFixoEmail = new javax.swing.JLabel();
         lbFixoPassword = new javax.swing.JLabel();
         pnBaseInfo = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         pnBaseTabela = new javax.swing.JPanel();
         pnLogo = new javax.swing.JPanel();
         menu = new javax.swing.JMenuBar();
@@ -161,31 +160,6 @@ public class Principal extends javax.swing.JFrame {
         pnBaseInfo.setBackground(new java.awt.Color(102, 102, 255));
         pnBaseInfo.setMinimumSize(new java.awt.Dimension(830, 100));
         pnBaseInfo.setPreferredSize(new java.awt.Dimension(830, 100));
-
-        jButton1.setText("Teste Inserir musica");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnBaseInfoLayout = new javax.swing.GroupLayout(pnBaseInfo);
-        pnBaseInfo.setLayout(pnBaseInfoLayout);
-        pnBaseInfoLayout.setHorizontalGroup(
-            pnBaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseInfoLayout.createSequentialGroup()
-                .addContainerGap(526, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(175, 175, 175))
-        );
-        pnBaseInfoLayout.setVerticalGroup(
-            pnBaseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseInfoLayout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(20, 20, 20))
-        );
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -194,18 +168,6 @@ public class Principal extends javax.swing.JFrame {
         pnBaseTabela.setBackground(new java.awt.Color(255, 153, 204));
         pnBaseTabela.setMinimumSize(new java.awt.Dimension(830, 420));
         pnBaseTabela.setPreferredSize(new java.awt.Dimension(830, 420));
-
-        javax.swing.GroupLayout pnBaseTabelaLayout = new javax.swing.GroupLayout(pnBaseTabela);
-        pnBaseTabela.setLayout(pnBaseTabelaLayout);
-        pnBaseTabelaLayout.setHorizontalGroup(
-            pnBaseTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 830, Short.MAX_VALUE)
-        );
-        pnBaseTabelaLayout.setVerticalGroup(
-            pnBaseTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 420, Short.MAX_VALUE)
-        );
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -261,7 +223,7 @@ public class Principal extends javax.swing.JFrame {
             
             if (logged != null) {
                 
-                //desaparece o painel de login e aparece o painel de logado
+                //desaparece o painel de login
                 lbFixoEmail.setVisible(false);
                 lbFixoPassword.setVisible(false);
                 botaoLogin.setVisible(false);
@@ -289,12 +251,9 @@ public class Principal extends javax.swing.JFrame {
         repaint();
     }//GEN-LAST:event_botaoLoginActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new JdCreateMusic(this, true).setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void botaoRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRegistarActionPerformed
         new JdlRegisto(this, true).setVisible(true);
+        
     }//GEN-LAST:event_botaoRegistarActionPerformed
 
     /**
@@ -348,7 +307,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botaoLogin;
     private javax.swing.JButton botaoRegistar;
     private javax.swing.JTextField emailField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JLabel lbFixoEmail;

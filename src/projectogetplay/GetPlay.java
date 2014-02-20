@@ -75,24 +75,23 @@ public class GetPlay {
     /**
      * Write and save on a User object file.
      *
-     * @param foUser
      */
-    public void guardaFoUsers(ArrayList<User> foUser) {
+    public void guardaFoUsers() {
         try {
             fo.abreEscrita("users.dat");
-            fo.escreveObjeto(foUser);
+            fo.escreveObjeto(usersList);
             fo.fechaEscrita();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("ERROR: USER file wasn´t save");
         }
     }
 
-    public void guardaFoMusics(ArrayList<Music> foMusic) {
+    public void guardaFoMusics() {
         try {
             fo.abreEscrita("musics.dat");
-            fo.escreveObjeto(foMusic);
+            fo.escreveObjeto(musicsList);
             fo.fechaEscrita();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("ERROR: MUSIC file wasn´t save");
         }
     }

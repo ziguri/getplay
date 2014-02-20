@@ -285,6 +285,7 @@ public class JdlRegisto extends javax.swing.JDialog {
                 String passEncrypt = CodificarMD5.cryptWithMD5(String.valueOf(pass2));
                 
                 pagPrincipal.getApp().addUser(new User(nome, email, passEncrypt));
+                pagPrincipal.getApp().guardaFoUsers();
                 this.dispose();
             }
             else{

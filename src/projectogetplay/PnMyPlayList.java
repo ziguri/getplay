@@ -22,8 +22,9 @@ public class PnMyPlayList extends javax.swing.JPanel {
      * @param p
      */
     public PnMyPlayList(Principal p) {
-        initComponents();
         this.pagPrincipal=p;
+        initComponents();
+        
     }
 
     /**
