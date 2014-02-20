@@ -33,7 +33,6 @@ public class GetPlay implements Serializable {
     /**
      * Read a Music or User object file.
      *
-     * @throws ClassNotFoundException
      */
     public void openFOUsers() {
 
@@ -349,6 +348,16 @@ public class GetPlay implements Serializable {
         }
 
         return pubPlaylists;
+    }
+    
+    /**
+     * Creates a new playlist to the user who creates 
+     * @param u
+     * @param p 
+     */
+    public void createPlaylist(User u, Playlist p){
+    
+        u.getPlaylists().add(p);
     }
 
     /**
