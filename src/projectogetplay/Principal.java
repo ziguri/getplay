@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package projectogetplay;
 
 import javax.swing.JOptionPane;
@@ -16,16 +15,19 @@ public class Principal extends javax.swing.JFrame {
 
     protected GetPlay app;
     protected User logged;
-        
+
     public Principal() {
         initComponents();
-        this.app=new GetPlay();
-        this.logged=null;
-        
-        app.listMusics();
-        app.listUsers();
+        this.app = new GetPlay();
+        this.logged = null;
+        app.openFOUsers();
+        //app.listMusics();
+        //app.listUsers();
     }
 
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -244,30 +246,33 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    
+
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
 
-        if(emailField.getText().isEmpty() || passwordField.getPassword()==null){
-        
+        if (emailField.getText().isEmpty() || passwordField.getPassword() == null) {
+
             JOptionPane.showMessageDialog(this, "Todos os campos são de preenchimento obrigatório", "!!!", JOptionPane.ERROR_MESSAGE);
-        }
-        else if(!(app.existUser(emailField.getText()))){
-        
-             JOptionPane.showMessageDialog(this, "O utilizador não existe", "!!!", JOptionPane.ERROR_MESSAGE);
-        }
-        else{
-        
-            logged=app.getUserWithEmail(emailField.getText());
-            
-            if(logged!=null){
-            
+        } else if (!(app.existUser(emailField.getText()))) {
+
+            JOptionPane.showMessageDialog(this, "O utilizador não existe", "!!!", JOptionPane.ERROR_MESSAGE);
+        } else {
+
+            logged = app.getUserWithEmail(emailField.getText());
+
+            if (logged != null) {
+                //ativar paineis
                 pnBaseInfo.add(new PnMyPlayList(this));
                 pnBaseColuna.add(new PnColuna(this));
                 
-            //Só falta o código para preencher a tabela
+                //carregar a lista de musica
+                app.musicsList.clear();
+                app.openFOMusic();
+                //painel tabela
+                pnBaseTabela.add(new PnTabelaMusica(this));
                 
+            //Só falta o código para preencher a tabela
             }
-            
+
         }
         revalidate();
         repaint();

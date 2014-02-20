@@ -1,6 +1,8 @@
 package projectogetplay;
 
-public class Music {
+import java.io.Serializable;
+
+public class Music implements Serializable {
 
     protected String name;
     protected String author;

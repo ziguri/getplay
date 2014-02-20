@@ -1,8 +1,9 @@
 package projectogetplay;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class User {
+public class User  implements Serializable{
 
     protected String name;
     protected String email;

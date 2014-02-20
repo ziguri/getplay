@@ -35,6 +35,9 @@ public class PnTabelaMusica extends javax.swing.JPanel {
 
     public PnTabelaMusica(Principal p) {
         dados = new ArrayList<Music>();
+        pagPrincipal= new Principal();
+        dados=pagPrincipal.getApp().getMusicsList();
+        
         modelo=new TableModelMusica(dados);
         initComponents();
         this.pagPrincipal=p;
