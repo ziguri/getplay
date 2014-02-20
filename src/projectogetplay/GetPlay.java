@@ -6,8 +6,6 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -389,7 +387,15 @@ public class GetPlay implements Serializable {
         } catch (IOException ex) {
             System.out.println("Exception occurred when copying a mp3 file. " + ex);
         }
-    }//copia ficheiro para pasta audio do projecto
+    }//copia ficheiro
+    
+    public String createDir() {
+        String dirname = "c:\\APPGetPlay\\MyPlaylist\\";
+        File d = new File(dirname);// Create directory now.
+        d.mkdirs();
+        
+        return d.getPath();
+    }
 
     /**
      *

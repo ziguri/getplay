@@ -341,7 +341,8 @@ public class JdCreateMusic extends javax.swing.JDialog {
                 }
             }
         
-
+        p.getPnListaMusicas().repaint();
+        p.getPnListaMusicas().revalidate();
         p.getApp().listMusics();
         this.dispose();//close window
     }//GEN-LAST:event_jBSaveMouseClicked
@@ -385,10 +386,8 @@ public class JdCreateMusic extends javax.swing.JDialog {
         repaint();
         revalidate();
         this.source = file.getAbsolutePath();//path origem
-        Path currentRelativePath = Paths.get("");
-        String s = currentRelativePath.toAbsolutePath().toString();
-        this.target = s + "/AllMusics/" + file.getName();//path destino
-       //principal.getApp().copy(source, target);//copia ficheiro
+        String s = p.getApp().createDir();
+        this.target = s + "/"+file.getName();//path destino       
     }//GEN-LAST:event_jLUPLOADMouseClicked
 
     private void jBCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelMouseClicked

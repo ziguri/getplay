@@ -278,7 +278,7 @@ public class JdEditMusic extends javax.swing.JDialog {
 
     private void jBSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSaveMouseClicked
         if (p.getLogged() == null) {
-            JOptionPane.showMessageDialog(this, "Please sign in to add a music to your application",
+            JOptionPane.showMessageDialog(this, "Please sign in to edit a music",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
             this.dispose();//close window
             return;
@@ -365,6 +365,7 @@ public class JdEditMusic extends javax.swing.JDialog {
 
     private void jBCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelMouseClicked
         this.dispose(); //fecha a janela
+         
     }//GEN-LAST:event_jBCancelMouseClicked
 
       

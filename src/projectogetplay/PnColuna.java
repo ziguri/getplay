@@ -15,11 +15,11 @@ import javax.swing.JList;
  */
 public class PnColuna extends javax.swing.JPanel {
 
-    protected Principal pagPrincipal;
+    protected Principal p;
 
     public PnColuna(Principal pagPrincipal){
         
-        this.pagPrincipal=pagPrincipal;
+        this.p=pagPrincipal;
         initComponents();
         buildAllLists ();
         
@@ -47,8 +47,8 @@ public class PnColuna extends javax.swing.JPanel {
      */
     private void buildAllLists (){
     
-        myPlaylistsList.setListData(buildPlaylistList(pagPrincipal.getLogged().getPlaylists()));
-        publicPlaylists.setListData(buildPlaylistList(pagPrincipal.getApp().publicPlaylists()));
+        myPlaylistsList.setListData(buildPlaylistList(p.getLogged().getPlaylists()));
+        publicPlaylists.setListData(buildPlaylistList(p.getApp().publicPlaylists()));
         
     }
 
@@ -75,18 +75,22 @@ public class PnColuna extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(250, 420));
         setOpaque(false);
 
-        btnAllMusics.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Folder-Music-icon.png"))); // NOI18N
+        btnAllMusics.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Folder-Music-icon1_16.png"))); // NOI18N
         btnAllMusics.setText("All Musics");
-        btnAllMusics.setToolTipText("");
+        btnAllMusics.setBorder(null);
+        btnAllMusics.setContentAreaFilled(false);
+        btnAllMusics.setMaximumSize(new java.awt.Dimension(80, 25));
+        btnAllMusics.setMinimumSize(new java.awt.Dimension(80, 25));
+        btnAllMusics.setPreferredSize(new java.awt.Dimension(80, 25));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(btnAllMusics)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(btnAllMusics, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
