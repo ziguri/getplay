@@ -5,7 +5,12 @@
  */
 package projectogetplay;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -310,6 +315,48 @@ public class Principal extends javax.swing.JFrame {
     public void setLogged(User logged) {
         this.logged = logged;
     }
+
+    public JButton getBotaoLogin() {
+        return botaoLogin;
+    }
+
+    public JButton getBotaoRegistar() {
+        return botaoRegistar;
+    }
+
+    public JTextField getEmailField() {
+        return emailField;
+    }
+
+    public JLabel getLbFixoEmail() {
+        return lbFixoEmail;
+    }
+
+    public JLabel getLbFixoPassword() {
+        return lbFixoPassword;
+    }
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public JPanel getPnBaseColuna() {
+        return pnBaseColuna;
+    }
+
+    public JPanel getPnBaseInfo() {
+        return pnBaseInfo;
+    }
+
+    public JPanel getPnBaseLogin() {
+        return pnBaseLogin;
+    }
+
+    public JPanel getPnBaseTabela() {
+        return pnBaseTabela;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogin;
