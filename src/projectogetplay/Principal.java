@@ -43,8 +43,8 @@ public class Principal extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         botaoLogin = new javax.swing.JButton();
         botaoRegistar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbFixoEmail = new javax.swing.JLabel();
+        lbFixoPassword = new javax.swing.JLabel();
         pnBaseInfo = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         pnBaseTabela = new javax.swing.JPanel();
@@ -82,12 +82,31 @@ public class Principal extends javax.swing.JFrame {
         pnBaseLogin.setBackground(new java.awt.Color(255, 102, 51));
         pnBaseLogin.setMinimumSize(new java.awt.Dimension(830, 60));
         pnBaseLogin.setPreferredSize(new java.awt.Dimension(830, 60));
+        pnBaseLogin.setLayout(new java.awt.GridBagLayout());
 
         emailField.setToolTipText("");
         emailField.setPreferredSize(new java.awt.Dimension(111, 23));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 105;
+        gridBagConstraints.ipady = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 434, 12, 0);
+        pnBaseLogin.add(emailField, gridBagConstraints);
 
         passwordField.setToolTipText("");
         passwordField.setPreferredSize(new java.awt.Dimension(111, 23));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.ipadx = 105;
+        gridBagConstraints.ipady = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 18, 12, 0);
+        pnBaseLogin.add(passwordField, gridBagConstraints);
 
         botaoLogin.setText("Log in");
         botaoLogin.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +114,12 @@ public class Principal extends javax.swing.JFrame {
                 botaoLoginActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 6, 12, 0);
+        pnBaseLogin.add(botaoLogin, gridBagConstraints);
 
         botaoRegistar.setText("Register");
         botaoRegistar.setToolTipText("");
@@ -103,50 +128,28 @@ public class Principal extends javax.swing.JFrame {
                 botaoRegistarActionPerformed(evt);
             }
         });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(0, 6, 12, 10);
+        pnBaseLogin.add(botaoRegistar, gridBagConstraints);
 
-        jLabel1.setText("E-mail");
+        lbFixoEmail.setText("E-mail");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 436, 0, 0);
+        pnBaseLogin.add(lbFixoEmail, gridBagConstraints);
 
-        jLabel2.setText("Password");
-
-        javax.swing.GroupLayout pnBaseLoginLayout = new javax.swing.GroupLayout(pnBaseLogin);
-        pnBaseLogin.setLayout(pnBaseLoginLayout);
-        pnBaseLoginLayout.setHorizontalGroup(
-            pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseLoginLayout.createSequentialGroup()
-                .addContainerGap(434, Short.MAX_VALUE)
-                .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseLoginLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(99, 99, 99))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseLoginLayout.createSequentialGroup()
-                        .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)))
-                .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnBaseLoginLayout.createSequentialGroup()
-                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoLogin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botaoRegistar))
-                    .addComponent(jLabel2))
-                .addContainerGap())
-        );
-        pnBaseLoginLayout.setVerticalGroup(
-            pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseLoginLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnBaseLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(botaoLogin)
-                        .addComponent(botaoRegistar)))
-                .addContainerGap())
-        );
+        lbFixoPassword.setText("Password");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 18, 0, 0);
+        pnBaseLogin.add(lbFixoPassword, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -330,10 +333,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botaoRegistar;
     private javax.swing.JTextField emailField;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel lbFixoEmail;
+    private javax.swing.JLabel lbFixoPassword;
     private javax.swing.JMenuBar menu;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JPanel pnBaseColuna;
