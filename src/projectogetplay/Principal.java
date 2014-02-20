@@ -258,7 +258,7 @@ public class Principal extends javax.swing.JFrame {
         } else {
 
             logged = app.getUserWithEmail(emailField.getText());
-
+            
             if (logged != null) {
                 //ativar paineis
                 pnBaseInfo.add(new PnMyPlayList(this));
