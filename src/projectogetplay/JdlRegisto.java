@@ -92,48 +92,6 @@ public class JdlRegisto extends javax.swing.JDialog {
         return validated;
     }
 
-    /*
-    private boolean validaDados(String nome, String email, char[] pass1, char[] pass2) {
-
-        
-        String msg = "";
-        boolean preenchido = true, verificacao;
-        ValidadorEmail valida = new ValidadorEmail();
-
-        if (nome.isEmpty()) {
-            preenchido = false;
-            msg += "Nome, ";
-        }
-
-
-        if (!valida.validarEmail(email)) {
-            preenchido = false;
-            msg +=  "Email, ";
-        }
-
-        //verificar password
-        boolean verificapass = true;
-        if (pass1.length != pass2.length) {
-            verificapass = false;
-        } else {
-            verificapass = Arrays.equals(pass1, pass2);
-        }
-
-        if (!verificapass) {
-            JOptionPane.showMessageDialog(null, msg, "As Password inseridas não são iguais", JOptionPane.ERROR_MESSAGE);
-            //lblPass1AV.setVisible(true);
-            //lblPass2AV.setVisible(true);
-        }
-        if (!preenchido) {
-            
-            JOptionPane.showMessageDialog(null, msg, "Existem campos nao preenchidos", JOptionPane.ERROR_MESSAGE);
-        }
-
-        verificacao = verificapass && preenchido;
-        return verificacao;
-    }
-    */
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
