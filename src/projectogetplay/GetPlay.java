@@ -100,6 +100,8 @@ public class GetPlay {
         }
         return false;
     }
+    
+ 
          
         
     /**
@@ -300,6 +302,22 @@ public class GetPlay {
             file = fc.getSelectedFile();//vai buscar o ficheiro 
         }
         return file;
+    }
+    /**
+     * Print a list of Music objects type
+     */
+    public void listMusics() {
+        for (Music m : musicsList) {
+            System.out.println(m);
+        }
+    }
+     /**
+     * Print a list of User objects type
+     */
+    public void listUsers() {
+        for (User u : usersList) {
+            System.out.println(u);
+        }
     }
 
 }

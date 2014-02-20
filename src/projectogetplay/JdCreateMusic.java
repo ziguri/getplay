@@ -8,8 +8,12 @@ package projectogetplay;
 
 import java.awt.Color;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.plaf.BorderUIResource;
 
@@ -20,7 +24,7 @@ import javax.swing.plaf.BorderUIResource;
  * @author Vitor Aires
  */
 public class JdCreateMusic extends javax.swing.JDialog {
-    protected Principal pagPrincipal;
+    protected Principal principal;
         
     /**
      * Creates new form CreateMusic
@@ -31,7 +35,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
     public JdCreateMusic(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.pagPrincipal = (Principal) parent;
+        this.principal = (Principal) parent;
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);//fecha janela mas não a aplicação
         this.setLocationRelativeTo(null);//abre jDialog no centro do ecran
 
@@ -72,11 +76,11 @@ public class JdCreateMusic extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Add Music");
-        setMinimumSize(new java.awt.Dimension(300, 350));
-        setPreferredSize(new java.awt.Dimension(300, 350));
+        setMinimumSize(new java.awt.Dimension(400, 350));
+        setPreferredSize(new java.awt.Dimension(400, 350));
         setType(java.awt.Window.Type.UTILITY);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 2, 0, 2, 0};
+        layout.columnWidths = new int[] {0, 3, 0, 3, 0, 3, 0, 3, 0};
         layout.rowHeights = new int[] {0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0, 2, 0};
         getContentPane().setLayout(layout);
 
@@ -100,7 +104,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
@@ -113,7 +117,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 5);
@@ -138,6 +142,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 12;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
@@ -160,19 +165,20 @@ public class JdCreateMusic extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 12;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 5);
         getContentPane().add(jTMYear, gridBagConstraints);
 
         jLabel4.setText("Year");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 10;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
         getContentPane().add(jLabel4, gridBagConstraints);
 
         jLabel5.setText("At path");
@@ -194,7 +200,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 18;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
@@ -206,7 +212,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
         jBCancel.setMinimumSize(new java.awt.Dimension(71, 25));
         jBCancel.setPreferredSize(new java.awt.Dimension(71, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 20, 0);
@@ -223,7 +229,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 22;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 20, 0);
@@ -241,25 +247,23 @@ public class JdCreateMusic extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 18;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 5);
         getContentPane().add(jLUPLOAD, gridBagConstraints);
 
-        jLERROname.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLERROname.setForeground(new java.awt.Color(255, 0, 0));
         jLERROname.setText("Please enter the title of the music.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.gridwidth = 9;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 5);
         getContentPane().add(jLERROname, gridBagConstraints);
 
-        jLERROAlbum.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLERROAlbum.setForeground(new java.awt.Color(255, 0, 0));
         jLERROAlbum.setText("Please write de name of the album.");
         jLERROAlbum.setToolTipText("");
@@ -271,11 +275,10 @@ public class JdCreateMusic extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 0);
         getContentPane().add(jLERROAlbum, gridBagConstraints);
 
-        jLERROano.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLERROano.setForeground(new java.awt.Color(255, 0, 0));
         jLERROano.setText("Enter a valid year.");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
@@ -283,7 +286,6 @@ public class JdCreateMusic extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 5);
         getContentPane().add(jLERROano, gridBagConstraints);
 
-        jLERROpath.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLERROpath.setForeground(new java.awt.Color(255, 0, 0));
         jLERROpath.setText("Please upload a music.");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -298,13 +300,47 @@ public class JdCreateMusic extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+   
     private void jBSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSaveMouseClicked
-        //salvar a musica verifica
+        //preenchimento de campos pelo user
+        String name = jTMName.getText().trim();
+        String artist = jTMArtist.getText().trim();
+        String album = jTMAlbum.getText().trim();
+        String year = jTMYear.getText().trim();
+        String path = jTMPath.getText().trim();
+        String userEmail = principal.getLogged().getEmail();
+        
+        if (principal.getApp().validateName(name)
+                && principal.getApp().validateName(album)
+                && principal.getApp().validateName(path)
+                && principal.getApp().validateInt(year)
+                && principal.getApp().validateDate(year)){
+            principal.getApp().createMusic(name, artist, album, Integer.parseInt(year), path, userEmail);
+            JOptionPane.showMessageDialog(null, "Musica adicionada");
+        } else {
+            if (!principal.getApp().validateName(name)) {
+                jTMName.setBorder(BorderFactory.createLineBorder(Color.RED));
+                jLERROname.setVisible(true);
+            }
+            if (!principal.getApp().validateName(album)) {
+                jTMAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
+                jLERROAlbum.setVisible(true);
+            }
+            if (!principal.getApp().validateName(path)) {
+                jTMPath.setBorder(BorderFactory.createLineBorder(Color.RED));
+                jLERROpath.setVisible(true);
+            }
+            if (!principal.getApp().validateInt(year) && principal.getApp().validateDate(year)) {
+                jTMYear.setBorder(BorderFactory.createLineBorder(Color.RED));
+                jLERROano.setVisible(true);
+            }
+        }
+        this.dispose(); //close window
     }//GEN-LAST:event_jBSaveMouseClicked
 
     private void jTMNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMNameFocusLost
         String s = jTMName.getText().trim();
-        if (!pagPrincipal.getApp().validateName(s)) {
+        if (!principal.getApp().validateName(s)) {
             jTMName.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLERROname.setVisible(true);
         } else {
@@ -315,7 +351,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
 
     private void jTMAlbumFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMAlbumFocusLost
         String s = jTMAlbum.getText().trim();
-        if (!pagPrincipal.getApp().validateName(s)) {
+        if (!principal.getApp().validateName(s)) {
             jTMAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLERROAlbum.setVisible(true);
         } else {
@@ -326,7 +362,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
 
     private void jTMYearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMYearFocusLost
         String s = jTMYear.getText().trim();
-        if (!pagPrincipal.getApp().validateInt(s) || !pagPrincipal.getApp().validateDate(s)) {
+        if (!principal.getApp().validateInt(s) || !principal.getApp().validateDate(s)) {
             jTMYear.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLERROano.setVisible(true);
         } else {
@@ -337,7 +373,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
 
     private void jTMPathFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMPathFocusLost
         String s = jTMPath.getText().trim();
-        if (!pagPrincipal.getApp().validateName(s)) {
+        if (!principal.getApp().validateName(s)) {
             jTMPath.setBorder(BorderFactory.createLineBorder(Color.RED));
             jLERROpath.setVisible(true);
         } else {
@@ -347,7 +383,15 @@ public class JdCreateMusic extends javax.swing.JDialog {
     }//GEN-LAST:event_jTMPathFocusLost
 
     private void jLUPLOADMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLUPLOADMouseClicked
-        File file = pagPrincipal.getApp().chooseFiles(this, "mp3", "wav");//escolhe ficheiro
+        File file = principal.getApp().chooseFiles(this, "mp3", "wav");//escolhe ficheiro
+        jTMPath.setText(file.getName());//apenas estético
+        repaint();
+        revalidate();
+        String source = file.getAbsolutePath();//path origem
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        String target = s + "/AllMusics/" + file.getName();//path destino
+        principal.getApp().copy(source, target);//copia ficheiro
     }//GEN-LAST:event_jLUPLOADMouseClicked
 
 

@@ -1,139 +1,158 @@
 package projectogetplay;
 
-
 public class Music {
-	protected String name;
-	protected String author;
-	protected String album;
-	protected int year;
-	protected String musicPath;
-	protected boolean favorite;
-	protected String creatorEmail;
-	
 
-	public Music(String aName, String aAuthor, String aAlbum, int aYear, String aMusicPath, String aCreatorEmail) {
-		this.name=aName;
-                this.author=aAuthor;
-                this.album=aAlbum;
-                this.year=aYear;
-                this.creatorEmail=aCreatorEmail;
-                this.favorite=false;
-                this.musicPath=aMusicPath;
-	}
+    protected String name;
+    protected String author;
+    protected String album;
+    protected int year;
+    protected String musicPath;
+    protected boolean favorite;
+    protected String creatorEmail;
 
-	public Music() {
-		
-	}
+    public Music(String aName, String aAuthor, String aAlbum, int aYear, String aMusicPath, String aCreatorEmail) {
+        this.name = aName;
+        this.author = aAuthor;
+        this.album = aAlbum;
+        this.year = aYear;
+        this.creatorEmail = aCreatorEmail;
+        this.favorite = false;
+        this.musicPath = aMusicPath;
+    }
 
-        /**
-         * Return music name.
-         * @return String
-         */
-	public String getName() {
-		return this.name;
-	}
+    public Music() {
 
-        /**
-         * Receive a String in order to set music name.
-         * @param aName 
-         */
-	public void setName(String aName) {
-		this.name = aName;
-	}
+    }
 
-        /**
-         * Return music author.
-         * @return String
-         */
-	public String getAuthor() {
-		return this.author;
-	}
+    /**
+     * Return music name.
+     *
+     * @return String
+     */
+    public String getName() {
+        return this.name;
+    }
 
-        /**
-         * Receive a String in order to set music author.
-         * @param aAuthor 
-         */
-	public void setAuthor(String aAuthor) {
-		this.author = aAuthor;
-	}
+    /**
+     * Receive a String in order to set music name.
+     *
+     * @param aName
+     */
+    public void setName(String aName) {
+        this.name = aName;
+    }
 
-        /**
-         * Return music path.
-         * @return String
-         */
-	public String getMusicPath() {
-		return this.musicPath;
-	}
+    /**
+     * Return music author.
+     *
+     * @return String
+     */
+    public String getAuthor() {
+        return this.author;
+    }
 
-        /**
-         * Receive String in order to set music path.
-         * @param aMusicPath 
-         */
-	public void setMusicPath(String aMusicPath) {
-		this.musicPath = aMusicPath;
-	}
+    /**
+     * Receive a String in order to set music author.
+     *
+     * @param aAuthor
+     */
+    public void setAuthor(String aAuthor) {
+        this.author = aAuthor;
+    }
 
-        /**
-         * Return music album.
-         * @return 
-         */
-	public String getAlbum() {
-		return this.album;
-	}
+    /**
+     * Return music path.
+     *
+     * @return String
+     */
+    public String getMusicPath() {
+        return this.musicPath;
+    }
 
-        /**
-         * Receive a String in order to set music album
-         * @param aAlbum 
-         */
-	public void setAlbum(String aAlbum) {
-		this.album = aAlbum;
-	}
+    /**
+     * Receive String in order to set music path.
+     *
+     * @param aMusicPath
+     */
+    public void setMusicPath(String aMusicPath) {
+        this.musicPath = aMusicPath;
+    }
 
-        /**
-         * Return year of the music.
-         * @return int
-         */
-	public int getYear() {
-		return this.year;
-	}
+    /**
+     * Return music album.
+     *
+     * @return
+     */
+    public String getAlbum() {
+        return this.album;
+    }
 
-        /**
-         * Receive int, in order to set the year of the music.
-         * @param aYear 
-         */
-	public void setYear(int aYear) {
-		this.year = aYear;
-	}
+    /**
+     * Receive a String in order to set music album
+     *
+     * @param aAlbum
+     */
+    public void setAlbum(String aAlbum) {
+        this.album = aAlbum;
+    }
 
-        /**
-         * Return true if the music is favorite, and false if is not.
-         * @return boolean
-         */
-        public boolean isFavorite() {
-            return favorite;
-        }
+    /**
+     * Return year of the music.
+     *
+     * @return int
+     */
+    public int getYear() {
+        return this.year;
+    }
 
-        /**
-         * Receive a boolean in order to set music favorite.
-         * @param favorite 
-         */
-        public void setFavorite(boolean favorite) {
-            this.favorite = favorite;
-        }
+    /**
+     * Receive int, in order to set the year of the music.
+     *
+     * @param aYear
+     */
+    public void setYear(int aYear) {
+        this.year = aYear;
+    }
 
-        /**
-         * Return music creator e-mail.
-         * @return String
-         */
-	public String getCreatorEmail() {
-		return this.creatorEmail;
-	}
+    /**
+     * Return true if the music is favorite, and false if is not.
+     *
+     * @return boolean
+     */
+    public boolean isFavorite() {
+        return favorite;
+    }
 
-        /**
-         * Receive a String in order to set music creator e-mail
-         * @param aCreatorEmail 
-         */
-	public void setCreatorEmail(String aCreatorEmail) {
-		this.creatorEmail = aCreatorEmail;
-	}
+    /**
+     * Receive a boolean in order to set music favorite.
+     *
+     * @param favorite
+     */
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
+
+    /**
+     * Return music creator e-mail.
+     *
+     * @return String
+     */
+    public String getCreatorEmail() {
+        return this.creatorEmail;
+    }
+
+    /**
+     * Receive a String in order to set music creator e-mail
+     *
+     * @param aCreatorEmail
+     */
+    public void setCreatorEmail(String aCreatorEmail) {
+        this.creatorEmail = aCreatorEmail;
+    }
+
+    @Override
+    public String toString() {
+        return "Music{ " + name + ", " + author + ", " + album + ", " + year + ", " + musicPath + ", " + creatorEmail + '}';
+    }
+
 }
