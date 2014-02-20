@@ -5,7 +5,7 @@
  */
 package projectogetplay;
 
-import java.util.Arrays;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 public class JdlRegisto extends javax.swing.JDialog {
@@ -20,8 +20,79 @@ public class JdlRegisto extends javax.swing.JDialog {
     public JdlRegisto(Principal pagPrincipal, boolean modal) {
         
         initComponents();
+        this.pagPrincipal=pagPrincipal;
+    }
+    
+    /**
+     * Recebe uma String com o e-mail e verifica se o padrão condiz com o descrito
+     * na expressão regular. Devolve true se corresponder e false se não corresponder.
+     * @param email
+     * @return 
+     */
+    private boolean emailValidation(String email){
+    
+        String emailReg = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+		+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        
+        return email.matches(emailReg);
+    }
+    
+    /**
+     * Recebe uma String com o nome e verifica se o padrão condiz com o descrito
+     * na expressão regular. Devolve true se corresponder e false se não corresponder.
+     * @param nome
+     * @return 
+     */
+    private boolean nameValidation(String nome){
+    
+        String nomeReg = "^[\\p{L} .'-]+$";
+        
+        return nome.matches(nomeReg);
+    }
+    
+    
+    /**
+     * Validate the name an email, user auxiliar methods with regex to validate
+     * each one individualy. Return boolean with the result.
+     * @param name
+     * @param email
+     * @return 
+     */
+    private boolean dataValidation(String name, String email){
+    
+        boolean validated=false;
+        
+        if(nameValidation(name) && emailValidation(email)){
+        
+            validated=true;
+        }
+
+        return validated;
+    }
+    
+    /**
+     * Receives two char[] from password fields and verify if the content
+     * matches, return one boolean with the result. 
+     * @param pass1
+     * @param pass2
+     * @return 
+     */
+    private boolean passwordValidation(char[] pass1, char[] pass2){
+    
+        boolean validated=false;
+        
+        String passw1 = String.valueOf(pass1);
+        String passw2 = String.valueOf(pass2);
+        
+        if(passw1.equals(passw2)){
+        
+            validated = true;
+        }
+        
+        return validated;
     }
 
+    /*
     private boolean validaDados(String nome, String email, char[] pass1, char[] pass2) {
 
         
@@ -61,6 +132,7 @@ public class JdlRegisto extends javax.swing.JDialog {
         verificacao = verificapass && preenchido;
         return verificacao;
     }
+    */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,13 +153,14 @@ public class JdlRegisto extends javax.swing.JDialog {
         pwPass2 = new javax.swing.JPasswordField();
         btnRegistar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setIconImage(null);
 
         lblNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblNome.setText("Nome");
+        lblNome.setText("Name");
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEmail.setText("Email\n");
@@ -96,17 +169,25 @@ public class JdlRegisto extends javax.swing.JDialog {
         lblPass1.setText("Password");
 
         lbPass2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lbPass2.setText("Reescreva a Password");
+        lbPass2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbPass2.setText("Confirm Password");
+        lbPass2.setToolTipText("");
 
         txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtNomeFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNomeFocusLost(evt);
             }
         });
 
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtEmailFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtEmailFocusLost(evt);
             }
         });
 
@@ -116,6 +197,12 @@ public class JdlRegisto extends javax.swing.JDialog {
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 pwPass1FocusLost(evt);
+            }
+        });
+
+        pwPass2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                pwPass2FocusLost(evt);
             }
         });
 
@@ -133,40 +220,52 @@ public class JdlRegisto extends javax.swing.JDialog {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_100.png"))); // NOI18N
+        jLabel1.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(lblNome)
-                .addGap(6, 6, 6)
-                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
-                .addComponent(lblEmail)
-                .addGap(6, 6, 6)
-                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(lblPass1)
-                .addGap(6, 6, 6)
-                .addComponent(pwPass1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(27, 27, 27)
-                .addComponent(lbPass2)
-                .addGap(6, 6, 6)
-                .addComponent(pwPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(160, 160, 160)
-                .addComponent(btnRegistar)
-                .addGap(30, 30, 30)
-                .addComponent(btnCancelar))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbPass2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pwPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(lblNome)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addComponent(lblEmail)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(lblPass1)
+                        .addGap(6, 6, 6)
+                        .addComponent(pwPass1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(125, 125, 125)
+                        .addComponent(btnRegistar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(90, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -185,15 +284,14 @@ public class JdlRegisto extends javax.swing.JDialog {
                         .addComponent(lblPass1))
                     .addComponent(pwPass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lbPass2))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbPass2)
                     .addComponent(pwPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRegistar)
-                    .addComponent(btnCancelar)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelar)
+                    .addComponent(btnRegistar))
+                .addGap(18, 18, 18))
         );
 
         pack();
@@ -209,41 +307,87 @@ public class JdlRegisto extends javax.swing.JDialog {
     private void pwPass1FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwPass1FocusGained
     }//GEN-LAST:event_pwPass1FocusGained
 
-    private void pwPass1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwPass1FocusLost
-    }//GEN-LAST:event_pwPass1FocusLost
-
     private void btnRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistarActionPerformed
 
-
-//validar
         String nome = txtNome.getText();
         String email = txtEmail.getText();
         char[] pass1 = pwPass1.getPassword();
         char[] pass2 = pwPass2.getPassword();
-
-        if (validaDados(nome, email, pass1, pass2)) {
-           //Convert pass em String
+        
+        
+        if(nome.isEmpty() || email.isEmpty() || pass1==null ||pass2==null){
+        
+            JOptionPane.showMessageDialog(this, "All the fields are mandatory", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+        
+            if(nameValidation(nome) && emailValidation(email) && passwordValidation(pass1, pass2)){
+                
+                CodificarMD5 md5= new CodificarMD5();
+                String passEncrypt = CodificarMD5.cryptWithMD5(String.valueOf(pass2));
+                
+                pagPrincipal.getApp().addUser(new User(nome, email, passEncrypt));
+                this.dispose();
+            }
+            else{
             
-           if (!pagPrincipal.getApp().existUser(email)) {
-
-               String password = String.valueOf(pass2);
-               //CodificarMD5 md5= new CodificarMD5();
-               System.out.println("Password sem encript" + password);
-               String passEncriptada=CodificarMD5.cryptWithMD5(password);
-
-               System.out.println("Password encript" + passEncriptada);
-               pagPrincipal.getApp().addUser(new User(nome, email, password));
-               this.dispose();
-               
-            } else {
-                JOptionPane.showMessageDialog(this, "Já existe um utilizador registado com este e-mail", "!!!", JOptionPane.ERROR_MESSAGE);
-           }
+                JOptionPane.showMessageDialog(this, "Something is wrong, please check the red fields.", "Error!", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }//GEN-LAST:event_btnRegistarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void txtNomeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNomeFocusLost
+        if(nameValidation(txtNome.getText())){
+        
+            lblNome.setForeground(Color.black);
+        }else{
+        
+            lblNome.setForeground(Color.red);
+        }
+    }//GEN-LAST:event_txtNomeFocusLost
+
+    private void txtEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtEmailFocusLost
+        if(emailValidation(txtEmail.getText())){
+        
+            lblEmail.setForeground(Color.black);
+        }
+        else{
+        
+            lblEmail.setForeground(Color.red);
+        }
+    }//GEN-LAST:event_txtEmailFocusLost
+
+    private void pwPass1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwPass1FocusLost
+        if(passwordValidation(pwPass1.getPassword(), pwPass2.getPassword())){
+        
+            lblPass1.setForeground(Color.black);
+            lbPass2.setForeground(Color.black);
+        }
+        else{
+        
+            lblPass1.setForeground(Color.red);
+            lbPass2.setForeground(Color.red);
+            
+        }
+    }//GEN-LAST:event_pwPass1FocusLost
+
+    private void pwPass2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pwPass2FocusLost
+        if(passwordValidation(pwPass1.getPassword(), pwPass2.getPassword())){
+        
+            lblPass1.setForeground(Color.black);
+            lbPass2.setForeground(Color.black);
+        }
+        else{
+        
+            lblPass1.setForeground(Color.red);
+            lbPass2.setForeground(Color.red);
+            
+        }
+    }//GEN-LAST:event_pwPass2FocusLost
 
     /**
      * @param args the command line arguments
@@ -252,6 +396,7 @@ public class JdlRegisto extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRegistar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lbPass2;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblNome;
