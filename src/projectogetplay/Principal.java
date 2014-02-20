@@ -6,9 +6,7 @@
 
 package projectogetplay;
 
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
@@ -97,6 +95,11 @@ public class Principal extends javax.swing.JFrame {
 
         botaoRegistar.setText("Register");
         botaoRegistar.setToolTipText("");
+        botaoRegistar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoRegistarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("E-mail");
 
@@ -252,13 +255,11 @@ public class Principal extends javax.swing.JFrame {
             
             if(logged!=null){
             
-                //instancia um JPanel ao qual atribui o painel a ser gerado
-                JPanel cl=new PnColuna(this);
-                
-                
-                
                 pnBaseInfo.add(new PnMyPlayList(this));
-                pnBaseColuna.add(cl);
+                pnBaseColuna.add(new PnColuna(this));
+                
+            //Só falta o código para preencher a tabela
+                
             }
             
         }
@@ -269,6 +270,10 @@ public class Principal extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new JdCreateMusic(this, true).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botaoRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRegistarActionPerformed
+        new JdlRegisto(this, true).setVisible(true);
+    }//GEN-LAST:event_botaoRegistarActionPerformed
 
     /**
      * @param args the command line arguments

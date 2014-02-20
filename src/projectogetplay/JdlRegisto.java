@@ -9,15 +9,16 @@ import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class JdlRegisto extends javax.swing.JDialog {
-    //private ListaUtilizadores utilizadores;
+    
 
+    protected Principal pagPrincipal;
     /**
      * Creates new form JdlRegisto
+     * @param pagPrincipal
+     * @param modal
      */
-    public JdlRegisto() {
+    public JdlRegisto(Principal pagPrincipal, boolean modal) {
         
-        //utilizadores = new ListaUtilizadores();
-
         initComponents();
     }
 
@@ -69,7 +70,6 @@ public class JdlRegisto extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         lblNome = new javax.swing.JLabel();
         lblEmail = new javax.swing.JLabel();
@@ -85,75 +85,30 @@ public class JdlRegisto extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setIconImage(null);
-        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
-        layout.columnWidths = new int[] {0, 6, 0, 6, 0, 6, 0};
-        layout.rowHeights = new int[] {0, 6, 0, 6, 0, 6, 0, 6, 0};
-        getContentPane().setLayout(layout);
 
         lblNome.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblNome.setText("Nome");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 20, 0, 0);
-        getContentPane().add(lblNome, gridBagConstraints);
 
         lblEmail.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblEmail.setText("Email\n");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
-        getContentPane().add(lblEmail, gridBagConstraints);
 
         lblPass1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lblPass1.setText("Password");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
-        getContentPane().add(lblPass1, gridBagConstraints);
 
         lbPass2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPass2.setText("Reescreva a Password");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 20, 0, 0);
-        getContentPane().add(lbPass2, gridBagConstraints);
 
         txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtNomeFocusGained(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 172;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        getContentPane().add(txtNome, gridBagConstraints);
 
         txtEmail.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 txtEmailFocusGained(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 172;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(txtEmail, gridBagConstraints);
 
         pwPass1.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -163,22 +118,6 @@ public class JdlRegisto extends javax.swing.JDialog {
                 pwPass1FocusLost(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 172;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(pwPass1, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 172;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(pwPass2, gridBagConstraints);
 
         btnRegistar.setText("Registar");
         btnRegistar.addActionListener(new java.awt.event.ActionListener() {
@@ -186,12 +125,6 @@ public class JdlRegisto extends javax.swing.JDialog {
                 btnRegistarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
-        getContentPane().add(btnRegistar, gridBagConstraints);
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -199,12 +132,69 @@ public class JdlRegisto extends javax.swing.JDialog {
                 btnCancelarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 20, 0);
-        getContentPane().add(btnCancelar, gridBagConstraints);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addComponent(lblNome)
+                .addGap(6, 6, 6)
+                .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(124, 124, 124)
+                .addComponent(lblEmail)
+                .addGap(6, 6, 6)
+                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(lblPass1)
+                .addGap(6, 6, 6)
+                .addComponent(pwPass1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(lbPass2)
+                .addGap(6, 6, 6)
+                .addComponent(pwPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(btnRegistar)
+                .addGap(30, 30, 30)
+                .addComponent(btnCancelar))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblNome))
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblEmail))
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblPass1))
+                    .addComponent(pwPass1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lbPass2))
+                    .addComponent(pwPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRegistar)
+                    .addComponent(btnCancelar)))
+        );
 
         pack();
         setLocationRelativeTo(null);
@@ -223,8 +213,7 @@ public class JdlRegisto extends javax.swing.JDialog {
     }//GEN-LAST:event_pwPass1FocusLost
 
     private void btnRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistarActionPerformed
-       
-/////////////////////////////// 
+
 
 //validar
         String nome = txtNome.getText();
@@ -232,32 +221,24 @@ public class JdlRegisto extends javax.swing.JDialog {
         char[] pass1 = pwPass1.getPassword();
         char[] pass2 = pwPass2.getPassword();
 
-//        if (validaDados(nome, email, pass1, pass2)) {
-//            //Convert pass em String
-//            //if (!utilizadores.seExiste(login)) {
-//
-//                String password = String.valueOf(pass2);
-//                CodificarMD5 md5= new CodificarMD5();
-//                String passEncriptada=md5.cryptWithMD5(password);
-//                
-//                
-//                //encriptacao
-//                if (JOptionPane.showConfirmDialog(
-//                        null,  "Pretende inserir o Vistante  \n"
-//                        +  "Nome  : " + nome + "\n"
-//                        +  "Email  : " + email + "\n",
-//                        JOptionPane.YES_NO_OPTION)
-//                        == JOptionPane.YES_OPTION) {
-//                    utilizadores.inserirVisitante(nome, email, password);
-//                    dispose();
-//                }
-//            } else {
-//                JOptionPane.showMessageDialog(null,
-//                         "Ja existe um Utilizador",
-//                         "Login"),
-//                        JOptionPane.WARNING_MESSAGE);
-//            }
-//        }
+        if (validaDados(nome, email, pass1, pass2)) {
+           //Convert pass em String
+            
+           if (!pagPrincipal.getApp().existUser(email)) {
+
+               String password = String.valueOf(pass2);
+               //CodificarMD5 md5= new CodificarMD5();
+               System.out.println("Password sem encript" + password);
+               String passEncriptada=CodificarMD5.cryptWithMD5(password);
+
+               System.out.println("Password encript" + passEncriptada);
+               pagPrincipal.getApp().addUser(new User(nome, email, password));
+               this.dispose();
+               
+            } else {
+                JOptionPane.showMessageDialog(this, "Já existe um utilizador registado com este e-mail", "!!!", JOptionPane.ERROR_MESSAGE);
+           }
+        }
     }//GEN-LAST:event_btnRegistarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

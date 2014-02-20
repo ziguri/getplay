@@ -18,28 +18,37 @@ public class PnColuna extends javax.swing.JPanel {
     protected Principal pagPrincipal;
 
     public PnColuna(Principal pagPrincipal){
-    
-        initComponents();
+        
         this.pagPrincipal=pagPrincipal;
+        initComponents();
+        buildAllLists ();
+        
         
         //pagPrincipal.getApp().getUsersList().get(1).ge<
     }
     
-    private Playlist[] buildMusicList(ArrayList<Playlist> playlists){
+    /**
+     * Accessor method to build one playlist vector from a playlist ArrayList in
+     * order to construct JList component.
+     * @param playlists
+     * @return 
+     */
+    private Playlist[] buildPlaylistList(ArrayList<Playlist> playlists){
 
         //Recebe um ArrayList de Playlist, transforma-o num vector e devolve-o 
         //pronto a adicionar à lista correspondente
         Playlist[] playL = playlists.toArray(new Playlist[0]);
         return playL;
         
-        //myPlaylistsList.setListData(playL);
-        
     }
     
+    /**
+     * Build all the lists to show in the main page. 
+     */
     private void buildAllLists (){
     
-        myPlaylistsList.setListData(buildMusicList(pagPrincipal.getLogged().getPlaylists()));
-        publicPlaylists.setListData(buildMusicList());
+        myPlaylistsList.setListData(buildPlaylistList(pagPrincipal.getLogged().getPlaylists()));
+        publicPlaylists.setListData(buildPlaylistList(pagPrincipal.getApp().publicPlaylists()));
         
     }
 
@@ -86,11 +95,6 @@ public class PnColuna extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        myPlaylistsList.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane1.setViewportView(myPlaylistsList);
 
         jLabel1.setText("My Playlists");
@@ -102,7 +106,7 @@ public class PnColuna extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -120,11 +124,6 @@ public class PnColuna extends javax.swing.JPanel {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        publicPlaylists.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(publicPlaylists);
 
         jLabel2.setText("Public Playlists");
@@ -137,7 +136,7 @@ public class PnColuna extends javax.swing.JPanel {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(0, 0, Short.MAX_VALUE)))
