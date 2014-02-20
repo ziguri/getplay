@@ -156,13 +156,11 @@ public class PnPesquisa extends javax.swing.JPanel {
         pagPrincipal.getPnBaseTabela().removeAll();
         pagPrincipal.getPnBaseInfo().removeAll();
         
+        pagPrincipal.getApp().guardaFoMusics();
+        
         pagPrincipal.revalidate();
         pagPrincipal.repaint();
-        
-        
-        
-      
-        
+
         pagPrincipal.getLbFixoEmail().setVisible(true);
         pagPrincipal.getLbFixoPassword().setVisible(true);
         pagPrincipal.getBotaoLogin().setVisible(true);

@@ -28,6 +28,7 @@ public class Principal extends javax.swing.JFrame {
     private PnPesquisa pnPesquisa;
     private PnTabelaMusica pnTabelaMusica;
     private PnTabelaPlayList pnTabelaPlayList;
+    private JdEditMusic jdEditMusic;
     
     
     public Principal() {
@@ -35,8 +36,8 @@ public class Principal extends javax.swing.JFrame {
         this.app = new GetPlay();
         this.logged = null;
         app.openFOUsers();
-        //app.listMusics();
-        //app.listUsers();
+        app.listMusics();
+        app.listUsers();
     }
 
     
@@ -74,6 +75,11 @@ public class Principal extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1080, 701));
         setPreferredSize(new java.awt.Dimension(1080, 701));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         pnBaseFundo.setBackground(new java.awt.Color(255, 255, 102));
@@ -241,9 +247,9 @@ public class Principal extends javax.swing.JFrame {
                 
                 //ativar paineis
                 pnBaseInfo.removeAll();
-                pnMyPlaylist= new PnMyPlayList(this);
-                getPnMyPlaylist().setBounds(pnBaseInfo.getBounds());
-                pnBaseInfo.add (getPnMyPlaylist());   
+                pnListaMusicas= new PnListaMusicas(this);
+                //getPnTabelaMusica().setBounds(pnBaseInfo.getBounds());
+                pnBaseInfo.add (getPnListaMusicas());   
                 
                 
                 //pnBaseInfo.add(new PnMyPlayList(this));
@@ -268,6 +274,11 @@ public class Principal extends javax.swing.JFrame {
         new JdlRegisto(this, true).setVisible(true);
         
     }//GEN-LAST:event_botaoRegistarActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        app.guardaFoMusics();
+        app.guardaFoUsers();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
