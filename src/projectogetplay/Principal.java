@@ -15,7 +15,16 @@ public class Principal extends javax.swing.JFrame {
 
     protected GetPlay app;
     protected User logged;
-
+    private PnColuna pnColuna;
+    private PnLeitor pnLeitor;
+    private PnListaMusicas pnListaMusicas;
+    private PnListaPLOutros pnListaPLOutros;        
+    private PnMyPlayList pnMyPlaylist;
+    private PnPesquisa pnPesquisa;
+    private PnTabelaMusica pnTabelaMusica;
+    private PnTabelaPlayList pnTabelaPlayList;
+    
+    
     public Principal() {
         initComponents();
         this.app = new GetPlay();
@@ -50,6 +59,7 @@ public class Principal extends javax.swing.JFrame {
         pnBaseInfo = new javax.swing.JPanel();
         pnBaseTabela = new javax.swing.JPanel();
         pnLogo = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -62,8 +72,8 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         pnBaseFundo.setBackground(new java.awt.Color(255, 255, 102));
-        pnBaseFundo.setMinimumSize(new java.awt.Dimension(1080, 100));
-        pnBaseFundo.setPreferredSize(new java.awt.Dimension(1080, 100));
+        pnBaseFundo.setMinimumSize(new java.awt.Dimension(1080, 90));
+        pnBaseFundo.setPreferredSize(new java.awt.Dimension(1080, 90));
         pnBaseFundo.setLayout(new java.awt.GridBagLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -80,9 +90,8 @@ public class Principal extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         getContentPane().add(pnBaseColuna, gridBagConstraints);
 
-        pnBaseLogin.setBackground(new java.awt.Color(255, 102, 51));
-        pnBaseLogin.setMinimumSize(new java.awt.Dimension(830, 60));
-        pnBaseLogin.setPreferredSize(new java.awt.Dimension(830, 60));
+        pnBaseLogin.setMinimumSize(new java.awt.Dimension(830, 70));
+        pnBaseLogin.setPreferredSize(new java.awt.Dimension(830, 70));
         pnBaseLogin.setLayout(new java.awt.GridBagLayout());
 
         emailField.setToolTipText("");
@@ -160,12 +169,12 @@ public class Principal extends javax.swing.JFrame {
         pnBaseInfo.setBackground(new java.awt.Color(102, 102, 255));
         pnBaseInfo.setMinimumSize(new java.awt.Dimension(830, 100));
         pnBaseInfo.setPreferredSize(new java.awt.Dimension(830, 100));
+        pnBaseInfo.setLayout(new javax.swing.BoxLayout(pnBaseInfo, javax.swing.BoxLayout.LINE_AXIS));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         getContentPane().add(pnBaseInfo, gridBagConstraints);
 
-        pnBaseTabela.setBackground(new java.awt.Color(255, 153, 204));
         pnBaseTabela.setMinimumSize(new java.awt.Dimension(830, 420));
         pnBaseTabela.setPreferredSize(new java.awt.Dimension(830, 420));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -173,20 +182,13 @@ public class Principal extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         getContentPane().add(pnBaseTabela, gridBagConstraints);
 
-        pnLogo.setBackground(new java.awt.Color(255, 255, 153));
-        pnLogo.setMinimumSize(new java.awt.Dimension(250, 160));
-        pnLogo.setPreferredSize(new java.awt.Dimension(250, 160));
+        pnLogo.setMinimumSize(new java.awt.Dimension(250, 170));
+        pnLogo.setPreferredSize(new java.awt.Dimension(250, 170));
+        pnLogo.setLayout(new javax.swing.BoxLayout(pnLogo, javax.swing.BoxLayout.LINE_AXIS));
 
-        javax.swing.GroupLayout pnLogoLayout = new javax.swing.GroupLayout(pnLogo);
-        pnLogo.setLayout(pnLogoLayout);
-        pnLogoLayout.setHorizontalGroup(
-            pnLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
-        );
-        pnLogoLayout.setVerticalGroup(
-            pnLogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Aires\\Documents\\NetBeansProjects\\getplay\\src\\icons\\logo.png")); // NOI18N
+        jLabel1.setText("jLabel1");
+        pnLogo.add(jLabel1);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -233,7 +235,13 @@ public class Principal extends javax.swing.JFrame {
                 
                 
                 //ativar paineis
-                pnBaseInfo.add(new PnMyPlayList(this));
+                pnBaseInfo.removeAll();
+                pnMyPlaylist= new PnMyPlayList(this);
+                getPnMyPlaylist().setBounds(pnBaseInfo.getBounds());
+                pnBaseInfo.add (getPnMyPlaylist());   
+                
+                
+                //pnBaseInfo.add(new PnMyPlayList(this));
                 pnBaseColuna.add(new PnColuna(this));
                 pnBaseLogin.add(new PnPesquisa(this));
                 
@@ -307,6 +315,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botaoLogin;
     private javax.swing.JButton botaoRegistar;
     private javax.swing.JTextField emailField;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JLabel lbFixoEmail;
@@ -320,4 +329,60 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel pnBaseTabela;
     private javax.swing.JPanel pnLogo;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the pnColuna
+     */
+    public PnColuna getPnColuna() {
+        return pnColuna;
+    }
+
+    /**
+     * @return the pnLeitor
+     */
+    public PnLeitor getPnLeitor() {
+        return pnLeitor;
+    }
+
+    /**
+     * @return the pnListaMusicas
+     */
+    public PnListaMusicas getPnListaMusicas() {
+        return pnListaMusicas;
+    }
+
+    /**
+     * @return the pnListaPLOutros
+     */
+    public PnListaPLOutros getPnListaPLOutros() {
+        return pnListaPLOutros;
+    }
+
+    /**
+     * @return the pnMyPlaylist
+     */
+    public PnMyPlayList getPnMyPlaylist() {
+        return pnMyPlaylist;
+    }
+
+    /**
+     * @return the pnPesquisa
+     */
+    public PnPesquisa getPnPesquisa() {
+        return pnPesquisa;
+    }
+
+    /**
+     * @return the pnTabelaMusica
+     */
+    public PnTabelaMusica getPnTabelaMusica() {
+        return pnTabelaMusica;
+    }
+
+    /**
+     * @return the pnTabelaPlayList
+     */
+    public PnTabelaPlayList getPnTabelaPlayList() {
+        return pnTabelaPlayList;
+    }
 }
