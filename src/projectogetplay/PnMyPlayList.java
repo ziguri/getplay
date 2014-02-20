@@ -47,9 +47,11 @@ public class PnMyPlayList extends javax.swing.JPanel {
         jLabPListDir.setText("My Playlists");
         jLabPListDir.setToolTipText("");
 
-        String numPlay="";
-        numPlay+=pagPrincipal.getLogged().getPlaylists().size();
-        jLabPListDir1.setText(numPlay);
+        try{
+            String numPlay="";
+            numPlay+=pagPrincipal.getLogged().getPlaylists().size();
+            jLabPListDir1.setText(numPlay);
+        }catch(Exception e){}
         jLabPListDir1.setToolTipText("");
 
         jBNewPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N

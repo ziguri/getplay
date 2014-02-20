@@ -3,32 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package projectogetplay;
 
 import java.awt.Color;
 import java.io.File;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.swing.BorderFactory;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.border.Border;
-import javax.swing.plaf.BorderUIResource;
 
 /**
- * 
+ *
  * @author Orlando Neves
  * @author Susana Cortez
  * @author Vitor Aires
  */
 public class JdCreateMusic extends javax.swing.JDialog {
+
     protected Principal principal;
-        
+    private String source;
+    private String target;
+
     /**
      * Creates new form CreateMusic
-     * 
+     *
      * @param parent
      * @param modal
      */
@@ -211,6 +209,11 @@ public class JdCreateMusic extends javax.swing.JDialog {
         jBCancel.setMaximumSize(new java.awt.Dimension(71, 25));
         jBCancel.setMinimumSize(new java.awt.Dimension(71, 25));
         jBCancel.setPreferredSize(new java.awt.Dimension(71, 25));
+        jBCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBCancelMouseClicked(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 22;
@@ -300,47 +303,50 @@ public class JdCreateMusic extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-   
     private void jBSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSaveMouseClicked
-        String userEmail = ""; 
+        if (principal.getLogged() == null) {
+            JOptionPane.showMessageDialog(this, "Please sign in to add a music to your application",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            this.dispose();//close window
+            return;
+        }
+        
         //preenchimento de campos pelo user
         String name = jTMName.getText().trim();
         String artist = jTMArtist.getText().trim();
         String album = jTMAlbum.getText().trim();
         String year = jTMYear.getText().trim();
         String path = jTMPath.getText().trim();
-        try{
-            userEmail = principal.getLogged().getEmail();
-        }catch(Exception e){
-            System.out.println("Utilizador não está loggado."+e);
-        }
-       
+        String userEmail = principal.getLogged().getEmail();
+             if (principal.getApp().validateName(name)
+                    && principal.getApp().validateName(album)
+                    && principal.getApp().validateName(path)
+                    && principal.getApp().validateInt(year)
+                    && principal.getApp().validateDate(year)) {
+                principal.getApp().createMusic(name, artist, album, Integer.parseInt(year),
+                        path, userEmail);
+                principal.getApp().copy(source, target);//copia ficheiro
+                JOptionPane.showMessageDialog(null, "Musica adicionada");
+            } else {
+                if (!principal.getApp().validateName(name)) {
+                    jTMName.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    jLERROname.setVisible(true);
+                }
+                if (!principal.getApp().validateName(album)) {
+                    jTMAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    jLERROAlbum.setVisible(true);
+                }
+                if (!principal.getApp().validateName(path)) {
+                    jTMPath.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    jLERROpath.setVisible(true);
+                }
+                if (!principal.getApp().validateInt(year) && principal.getApp().validateDate(year)) {
+                    jTMYear.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    jLERROano.setVisible(true);
+                }
+            }
         
-        if (principal.getApp().validateName(name)
-                && principal.getApp().validateName(album)
-                && principal.getApp().validateName(path)
-                && principal.getApp().validateInt(year)
-                && principal.getApp().validateDate(year)){
-            principal.getApp().createMusic(name, artist, album, Integer.parseInt(year), path, userEmail);
-            JOptionPane.showMessageDialog(null, "Musica adicionada");
-        } else {
-            if (!principal.getApp().validateName(name)) {
-                jTMName.setBorder(BorderFactory.createLineBorder(Color.RED));
-                jLERROname.setVisible(true);
-            }
-            if (!principal.getApp().validateName(album)) {
-                jTMAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
-                jLERROAlbum.setVisible(true);
-            }
-            if (!principal.getApp().validateName(path)) {
-                jTMPath.setBorder(BorderFactory.createLineBorder(Color.RED));
-                jLERROpath.setVisible(true);
-            }
-            if (!principal.getApp().validateInt(year) && principal.getApp().validateDate(year)) {
-                jTMYear.setBorder(BorderFactory.createLineBorder(Color.RED));
-                jLERROano.setVisible(true);
-            }
-        }
+
         principal.getApp().listMusics();
         this.dispose();//close window
     }//GEN-LAST:event_jBSaveMouseClicked
@@ -390,16 +396,20 @@ public class JdCreateMusic extends javax.swing.JDialog {
     }//GEN-LAST:event_jTMPathFocusLost
 
     private void jLUPLOADMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLUPLOADMouseClicked
-        File file = principal.getApp().chooseFiles(this, "mp3", "wav");//escolhe ficheiro
+        File file = principal.getApp().chooseFiles(this, "wav", "mp3");//escolhe ficheiro
         jTMPath.setText(file.getName());//apenas estético
         repaint();
         revalidate();
-        String source = file.getAbsolutePath();//path origem
+        this.source = file.getAbsolutePath();//path origem
         Path currentRelativePath = Paths.get("");
         String s = currentRelativePath.toAbsolutePath().toString();
-        String target = s + "/AllMusics/" + file.getName();//path destino
-        principal.getApp().copy(source, target);//copia ficheiro
+        this.target = s + "/AllMusics/" + file.getName();//path destino
+       //principal.getApp().copy(source, target);//copia ficheiro
     }//GEN-LAST:event_jLUPLOADMouseClicked
+
+    private void jBCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelMouseClicked
+        this.dispose(); //fecha a janela
+    }//GEN-LAST:event_jBCancelMouseClicked
 
 
     
