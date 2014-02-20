@@ -12,14 +12,14 @@ package projectogetplay;
  */
 public class PnListaMusicas extends javax.swing.JPanel {
 
-    protected Principal pagPrincipal;
+    protected Principal p;
     /**
      * Creates new form PnMusica
      */
     
     public PnListaMusicas(Principal p) {
         initComponents();
-        this.pagPrincipal=p;
+        this.p=p;
     }
 
     /**
@@ -54,6 +54,11 @@ public class PnListaMusicas extends javax.swing.JPanel {
         jBAddMusic.setMaximumSize(new java.awt.Dimension(71, 20));
         jBAddMusic.setMinimumSize(new java.awt.Dimension(71, 20));
         jBAddMusic.setPreferredSize(new java.awt.Dimension(71, 20));
+        jBAddMusic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAddMusicActionPerformed(evt);
+            }
+        });
 
         jBEditMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit-icon.png"))); // NOI18N
         jBEditMusic.setText(" edit");
@@ -107,6 +112,10 @@ public class PnListaMusicas extends javax.swing.JPanel {
                 .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBAddMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddMusicActionPerformed
+        new JdCreateMusic(p, true).setVisible(true);
+    }//GEN-LAST:event_jBAddMusicActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
