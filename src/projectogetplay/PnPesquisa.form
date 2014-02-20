@@ -94,7 +94,7 @@
                   <Component id="jButton1" alignment="0" min="-2" pref="21" max="-2" attributes="0"/>
                   <Component id="btnSettings" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="12" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="choiceTitle" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="choiceArtist" alignment="3" min="-2" max="-2" attributes="0"/>
