@@ -17,7 +17,6 @@ import javax.swing.JOptionPane;
 public class JdEditMusic extends javax.swing.JDialog {
 
     protected Principal p;
-    protected PnTabelaMusica musicTable;
     private Music m;
     
 
@@ -30,10 +29,11 @@ public class JdEditMusic extends javax.swing.JDialog {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);//fecha janela mas não a aplicação
         this.setLocationRelativeTo(null);//abre jDialog no centro do ecran
         this.p = (Principal) parent;
+        
+        this.m = p.getPnTabelaMusica().getMusicSelecionada();
     }
     
-    public void fieldsFill() {
-        this.m = musicTable.getMusicSelecionada();
+    public void fillFields() {
         jTYear.setText(m.getAlbum());
         jTYear.setEditable(false);
         jTArtist.setText(m.getAuthor());
@@ -277,18 +277,44 @@ public class JdEditMusic extends javax.swing.JDialog {
 
 
     private void jBSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSaveMouseClicked
-        fieldsFill();
-         if (p.getLogged() == null) {
+        if (p.getLogged() == null) {
             JOptionPane.showMessageDialog(this, "Please sign in to add a music to your application",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
             this.dispose();//close window
             return;
         }
-         
+       
+        //novos campos preenchidos pelo utilizador 
         String title = jTName.getText().trim();
         String artist = jTArtist.getText().trim();
         String album = jTYear.getText().trim();
         String year = jTAlbum.getText().trim();
+        String userEmail = p.getLogged().getEmail();
+        String path = m.getMusicPath();
+          if (p.getApp().validateName(title)
+                    && p.getApp().validateName(album)
+                    && p.getApp().validateInt(year)
+                    && p.getApp().validateDate(year)) {
+                p.getApp().createMusic(title, artist, album, Integer.parseInt(year),
+                        path, userEmail);
+                JOptionPane.showMessageDialog(null, "Musica alterada");
+            } else {
+                if (!p.getApp().validateName(title)) {
+                    jTName.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    jLERROname.setVisible(true);
+                }
+                if (!p.getApp().validateName(album)) {
+                    jTAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    jLERROAlbum.setVisible(true);
+                }
+                
+                if (!p.getApp().validateInt(year) && p.getApp().validateDate(year)) {
+                    jTYear.setBorder(BorderFactory.createLineBorder(Color.RED));
+                    jLERROano.setVisible(true);
+                }
+            }
+        p.getApp().listMusics();
+        this.dispose();//close window
 
     }//GEN-LAST:event_jBSaveMouseClicked
 

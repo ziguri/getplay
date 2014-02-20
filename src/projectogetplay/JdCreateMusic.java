@@ -190,11 +190,6 @@ public class JdCreateMusic extends javax.swing.JDialog {
         jTMPath.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jTMPath.setMinimumSize(new java.awt.Dimension(200, 25));
         jTMPath.setPreferredSize(new java.awt.Dimension(200, 25));
-        jTMPath.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTMPathFocusLost(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 18;
@@ -383,17 +378,6 @@ public class JdCreateMusic extends javax.swing.JDialog {
             jLERROano.setVisible(false);
         }
     }//GEN-LAST:event_jTMYearFocusLost
-
-    private void jTMPathFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMPathFocusLost
-        String s = jTMPath.getText().trim();
-        if (!p.getApp().validateName(s)) {
-            jTMPath.setBorder(BorderFactory.createLineBorder(Color.RED));
-            jLERROpath.setVisible(true);
-        } else {
-            jTMPath.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-            jLERROpath.setVisible(false);
-        }
-    }//GEN-LAST:event_jTMPathFocusLost
 
     private void jLUPLOADMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLUPLOADMouseClicked
         File file = p.getApp().chooseFiles(this, "wav", "mp3");//escolhe ficheiro

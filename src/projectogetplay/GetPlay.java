@@ -401,8 +401,8 @@ public class GetPlay implements Serializable {
     public File chooseFiles(JDialog container, String ext1, String ext2) {
         File file = null;
         JFileChooser fc = new JFileChooser();
-        FileNameExtensionFilter f1 = new FileNameExtensionFilter(ext1.toUpperCase() + " file", ext1, ext1);//só mostra ficheiros do tipo ext1 e ext2
-        FileNameExtensionFilter f2 = new FileNameExtensionFilter(ext2.toUpperCase() + " file", ext2, ext2);
+        FileNameExtensionFilter f1 = new FileNameExtensionFilter(ext1.toUpperCase() + " file", ext1);//só mostra ficheiros do tipo ext1 e ext2
+        FileNameExtensionFilter f2 = new FileNameExtensionFilter(ext2.toUpperCase() + " file", ext2);
         fc.addChoosableFileFilter(f1);
         fc.addChoosableFileFilter(f2);
         fc.setMultiSelectionEnabled(false);//apenas pode selecionar um ficheiro de cada vez
