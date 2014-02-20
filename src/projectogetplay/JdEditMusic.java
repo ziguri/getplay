@@ -12,6 +12,9 @@ package projectogetplay;
  */
 public class JdEditMusic extends javax.swing.JDialog {
 
+    protected Principal p;
+    
+
     /**
      * Creates new form CreateMusic
      */
@@ -20,8 +23,8 @@ public class JdEditMusic extends javax.swing.JDialog {
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);//fecha janela mas não a aplicação
         this.setLocationRelativeTo(null);//abre jDialog no centro do ecran
-        
-    }
+        this.p = (Principal) parent;
+            }
 
     /**
      * This method is called from within the constructor to initialize the form.
