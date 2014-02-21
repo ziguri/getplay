@@ -21,7 +21,6 @@ public class Principal extends javax.swing.JFrame {
     protected GetPlay app;
     protected User logged;
     private PnColuna pnColuna;
-    private PnLeitor pnLeitor;
     private PnListaMusicas pnListaMusicas;
     private PnListaPLOutros pnListaPLOutros;        
     private PnMyPlayList pnMyPlaylist;
@@ -512,12 +511,7 @@ public class Principal extends javax.swing.JFrame {
         return pnColuna;
     }
 
-    /**
-     * @return the pnLeitor
-     */
-    public PnLeitor getPnLeitor() {
-        return pnLeitor;
-    }
+   
 
     /**
      * @return the pnListaMusicas
