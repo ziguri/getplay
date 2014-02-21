@@ -484,6 +484,10 @@ public class Principal extends javax.swing.JFrame {
     public void setPnPesquisa(PnPesquisa pnPesquisa) {
         this.pnPesquisa = pnPesquisa;
     }
+
+    public void setPnBaseTabela(JPanel pnBaseTabela) {
+        this.pnBaseTabela = pnBaseTabela;
+    }
     
     
 
