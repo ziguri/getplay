@@ -14,11 +14,13 @@ public class Playlist implements Serializable {
     protected ArrayList<Integer> musics;
     protected GregorianCalendar dateCreation;
     protected boolean shared;
+    private MusicPlayer player;
 
     public Playlist(String aName) {
         this.name = aName;
         dateCreation = new GregorianCalendar();
         this.musics = new ArrayList();
+        player = new MusicPlayer();
     }
 
     /**
@@ -156,4 +158,23 @@ public class Playlist implements Serializable {
         return musics.size();
     }
 
+    /**
+     * Start playing a file in the collection. Use stopPlaying() to stop it
+     * playing.
+     *
+     * @param index The index of the file to be played.
+     */
+    public void startPlaying(int index) {
+        Integer codeMusic = musics.get(index);
+        GetPlay gp = new GetPlay();
+        Music mus = gp.searchMusic(codeMusic);
+        player.startPlaying(mus.getMusicPath());
+    }
+
+    /**
+     * Stop the player.
+     */
+    public void stopPlaying() {
+        player.stop();
+    }
 }
