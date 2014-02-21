@@ -23,11 +23,13 @@ public class GetPlay implements Serializable {
     protected ArrayList<User> usersList;
     protected ArrayList<Music> musicsList;
     private FicheiroDeObjetos fo;
+    private MusicPlayer player;
 
     public GetPlay() {
         this.usersList = new ArrayList();
         this.musicsList = new ArrayList();
         fo = new FicheiroDeObjetos();
+        player = new MusicPlayer();
     }
 
     /**
@@ -543,6 +545,31 @@ public class GetPlay implements Serializable {
             }
         }
         return mus;
+    }
+    /**
+     * Start playing a file in the collection. Use stopPlaying() to stop it
+     * playing.
+     *
+     * 
+     * @param musicCode
+     */
+    public void startPlaying(int musicCode) {
+        Music mus = new Music();
+        for(int i=0; i<musicsList.size();i++){
+            if( musicsList.get(i).getMusicCode() == musicCode){
+                mus = musicsList.get(i);
+            }
+        }
+        System.out.println("AQUI2"+ mus.getMusicPath());
+        String s = "c:\\APPGetPlay\\MyPlaylist\\";
+        player.startPlaying(s+mus.getMusicPath());
+    }
+
+    /**
+     * Stop the player.
+     */
+    public void stopPlaying() {
+        player.stop();
     }
     
     
