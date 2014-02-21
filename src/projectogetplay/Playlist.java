@@ -162,13 +162,20 @@ public class Playlist implements Serializable {
      * Start playing a file in the collection. Use stopPlaying() to stop it
      * playing.
      *
-     * @param index The index of the file to be played.
+     * 
+     * @param musicCode
      */
     public void startPlaying(int musicCode) {
-        
+        Music mus = new Music();
         GetPlay gp = new GetPlay();
-        //Music mus = gp.searchMusic(codeMusic);
-        //player.startPlaying(mus.getMusicPath());
+        for(int i=0; i<musics.size();i++){
+            if( musics.get(i) == musicCode){
+                System.out.println("Aqui" + musics.get(i));
+                mus = gp.searchMusic(musics.get(i));
+            }
+        }
+        System.out.println(mus.getMusicPath());
+        player.startPlaying(mus.getMusicPath());
     }
 
     /**

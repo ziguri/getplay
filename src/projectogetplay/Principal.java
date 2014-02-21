@@ -5,6 +5,7 @@
  */
 package projectogetplay;
 
+import java.io.FileNotFoundException;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +29,7 @@ public class Principal extends javax.swing.JFrame {
     private PnTabelaMusica pnTabelaMusica;
     private PnTabelaPlayList pnTabelaPlayList;
     protected JdEditMusic jdEditMusic;
+    protected Playlist player;
     
     
     public Principal() {
@@ -383,7 +385,12 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jBPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPlayActionPerformed
-        
+        int musicCode = pnTabelaMusica.getCliqueMusica();
+        try{
+        player.startPlaying(musicCode);
+        }catch(Exception e){
+            System.out.println("ERRO não encontrou mp3"+e);
+        }
     }//GEN-LAST:event_jBPlayActionPerformed
 
     /**
