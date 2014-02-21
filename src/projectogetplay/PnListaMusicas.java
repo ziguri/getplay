@@ -131,7 +131,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
         System.out.println(m);
         if(m.getCreatorEmail().equals(p.getLogged().getEmail())){
             new JdEditMusic(p, true).setVisible(true);
-            
+            p.jdEditMusic.fillFields();
         }else{
             JOptionPane.showMessageDialog(this, "You don´t have permission to change this music",
                     "ERROR", JOptionPane.ERROR_MESSAGE);

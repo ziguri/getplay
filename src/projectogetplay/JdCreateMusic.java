@@ -7,8 +7,6 @@ package projectogetplay;
 
 import java.awt.Color;
 import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 

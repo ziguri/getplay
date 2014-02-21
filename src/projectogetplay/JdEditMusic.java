@@ -29,7 +29,6 @@ public class JdEditMusic extends javax.swing.JDialog {
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);//fecha janela mas não a aplicação
         this.setLocationRelativeTo(null);//abre jDialog no centro do ecran
         this.p = (Principal) parent;
-        
         this.m = p.getPnTabelaMusica().getMusicSelecionada();
     }
     
