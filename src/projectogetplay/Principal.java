@@ -28,7 +28,7 @@ public class Principal extends javax.swing.JFrame {
     private PnPesquisa pnPesquisa;
     private PnTabelaMusica pnTabelaMusica;
     private PnTabelaPlayList pnTabelaPlayList;
-    private JdEditMusic jdEditMusic;
+    protected JdEditMusic jdEditMusic;
     
     
     public Principal() {
