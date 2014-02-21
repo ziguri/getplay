@@ -101,25 +101,28 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        pnBaseFundo.setBackground(new java.awt.Color(255, 255, 255));
+        pnBaseFundo.setInheritsPopupMenu(true);
         pnBaseFundo.setMinimumSize(new java.awt.Dimension(1080, 90));
         pnBaseFundo.setPreferredSize(new java.awt.Dimension(1080, 90));
 
         jBStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Stop-32.png"))); // NOI18N
         jBStop.setBorder(null);
-        jBStop.setContentAreaFilled(false);
         jBStop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBStopActionPerformed(evt);
             }
         });
 
+        jBBackward.setBackground(new java.awt.Color(51, 51, 255));
         jBBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Backward-32_green.png"))); // NOI18N
         jBBackward.setBorder(null);
+        jBBackward.setBorderPainted(false);
         jBBackward.setContentAreaFilled(false);
 
+        jBPlay.setBackground(new java.awt.Color(51, 51, 255));
         jBPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png"))); // NOI18N
         jBPlay.setBorder(null);
+        jBPlay.setBorderPainted(false);
         jBPlay.setContentAreaFilled(false);
         jBPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,10 +132,11 @@ public class Principal extends javax.swing.JFrame {
 
         jBPause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png"))); // NOI18N
         jBPause.setBorder(null);
-        jBPause.setContentAreaFilled(false);
 
+        jBForward.setBackground(new java.awt.Color(51, 51, 255));
         jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Forward-32.png"))); // NOI18N
         jBForward.setBorder(null);
+        jBForward.setBorderPainted(false);
         jBForward.setContentAreaFilled(false);
         jBForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

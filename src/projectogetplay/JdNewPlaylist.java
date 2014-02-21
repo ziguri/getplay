@@ -5,6 +5,8 @@
  */
 package projectogetplay;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aires
@@ -33,7 +35,6 @@ public class JdNewPlaylist extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         txtNomePlaylist = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -42,27 +43,11 @@ public class JdNewPlaylist extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Playlist");
-        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         txtNomePlaylist.setMinimumSize(new java.awt.Dimension(100, 20));
         txtNomePlaylist.setPreferredSize(new java.awt.Dimension(100, 20));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.gridheight = 2;
-        gridBagConstraints.ipadx = 40;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(33, 10, 0, 64);
-        getContentPane().add(txtNomePlaylist, gridBagConstraints);
 
         jLabel1.setText("Name");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(36, 81, 0, 0);
-        getContentPane().add(jLabel1, gridBagConstraints);
 
         btOk.setText("Ok");
         btOk.addActionListener(new java.awt.event.ActionListener() {
@@ -70,13 +55,6 @@ public class JdNewPlaylist extends javax.swing.JDialog {
                 btOkActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 99, 11, 0);
-        getContentPane().add(btOk, gridBagConstraints);
 
         btCancel.setText("Cancel");
         btCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -84,12 +62,41 @@ public class JdNewPlaylist extends javax.swing.JDialog {
                 btCancelActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(18, 24, 11, 0);
-        getContentPane().add(btCancel, gridBagConstraints);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(jLabel1)
+                        .addGap(10, 10, 10)
+                        .addComponent(txtNomePlaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btOk)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btCancel)))
+                .addGap(64, 64, 64))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(txtNomePlaylist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btCancel)
+                    .addComponent(btOk))
+                .addGap(7, 7, 7))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -99,15 +106,25 @@ public class JdNewPlaylist extends javax.swing.JDialog {
     }//GEN-LAST:event_btCancelActionPerformed
 
     private void btOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOkActionPerformed
-        String nome = txtNomePlaylist.getName();
-        Playlist novo = new Playlist(nome);
-        p.getLogged().addNewPlaylist(novo);
-        p.getPnColuna().buildPlaylistList(p.getLogged().getPlaylists());
+        String nome = txtNomePlaylist.getText();
+        
+        if(p.getLogged().existPlaylist(nome)){
+        
+            JOptionPane.showMessageDialog(this, "This playlist already exist, please change the name.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            Playlist novo = new Playlist(nome);
 
-        p.getPnBaseColuna().removeAll();
-        p.getPnBaseColuna().add(new PnColuna(p));
-        p.getPnBaseColuna().revalidate();
-        p.getPnBaseColuna().repaint();
+            p.getLogged().addNewPlaylist(novo);
+            p.getPnColuna().buildPlaylistListProp(p.getLogged().getPlaylists());
+
+            p.getPnBaseColuna().removeAll();
+            p.getPnBaseColuna().add(new PnColuna(p));
+            p.getPnBaseColuna().revalidate();
+            p.getPnBaseColuna().repaint();
+        }
+        this.dispose();
 
     }//GEN-LAST:event_btOkActionPerformed
 
