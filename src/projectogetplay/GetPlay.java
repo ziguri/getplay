@@ -560,7 +560,6 @@ public class GetPlay implements Serializable {
                 mus = musicsList.get(i);
             }
         }
-        System.out.println("AQUI2"+ mus.getMusicPath());
         String s = "c:\\APPGetPlay\\MyPlaylist\\";
         player.startPlaying(s+mus.getMusicPath());
     }
@@ -571,6 +570,34 @@ public class GetPlay implements Serializable {
     public void stopPlaying() {
         player.stop();
     }
+     /**
+     * Play the first track in the collection, if there is one.
+     */
+    public void playFirst()
+    {
+        if(musicsList.size() > 0) {
+            String s = "c:\\APPGetPlay\\MyPlaylist\\";
+            player.startPlaying(s+musicsList.get(0).getMusicPath());
+        }
+    }
+    /**
+     * Play a track in the collection.
+     * @param musicCode The index of the track to be played.
+     */
+    public void playMusic(int musicCode){
+        Music mus = new Music();
+        if (musicCode != -1) {
+            for (int i = 0; i < musicsList.size(); i++) {
+                if (musicsList.get(i).getMusicCode() == musicCode) {
+                    mus = musicsList.get(i);
+                }
+            }
+        }
+            String s = "c:\\APPGetPlay\\MyPlaylist\\";
+            player.startPlaying(s+mus.getMusicPath());
+            System.out.println("Now playing: " + mus.getAuthor() + " - " + mus.getName());
+        }
+   
     
     
 }
