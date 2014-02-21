@@ -171,7 +171,7 @@ public class Playlist implements Serializable {
 
     @Override
     public String toString() {
-        return name + " Date of Creation=" + getdateCreationString() + "Shared? " + sharedString();
+        return name;
     }
     
     
