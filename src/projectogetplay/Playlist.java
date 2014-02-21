@@ -157,5 +157,12 @@ public class Playlist implements Serializable {
     public int getSize() {
         return musics.size();
     }
+
+    @Override
+    public String toString() {
+        return "Name: " + name + " Date of Creation=" + dateCreation + "Shared=" + shared;
+    }
+    
+    
     
 }

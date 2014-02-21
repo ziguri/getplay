@@ -93,6 +93,11 @@ public class PnListaMusicas extends javax.swing.JPanel {
         jBRemoveMusic.setMaximumSize(new java.awt.Dimension(71, 20));
         jBRemoveMusic.setMinimumSize(new java.awt.Dimension(71, 20));
         jBRemoveMusic.setPreferredSize(new java.awt.Dimension(71, 20));
+        jBRemoveMusic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRemoveMusicActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -153,6 +158,43 @@ public class PnListaMusicas extends javax.swing.JPanel {
         }
       
     }//GEN-LAST:event_jBEditMusicMouseClicked
+
+    private void jBRemoveMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveMusicActionPerformed
+        int cod = p.getPnTabelaMusica().getCliqueMusica();
+        Music mu = p.getApp().searchMusic(cod);
+        
+        if(mu!=null){
+        
+            if(mu.getCreatorEmail().equalsIgnoreCase(p.getLogged().getEmail())){
+
+                p.getApp().removeMusic(mu);
+                p.getPnTabelaMusica().removeLinha();
+
+                //Actualiza a tabela de musicas
+                p.getPnBaseTabela().removeAll();
+                p.getPnBaseInfo().removeAll();
+
+                p.getPnBaseTabela().add(new PnTabelaMusica(p));
+                p.getPnBaseInfo().add(p.getPnListaMusicas());
+
+                p.revalidate();
+                p.repaint();
+                JOptionPane.showMessageDialog(this, "Music Removed", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+
+            }   
+            else{
+
+                JOptionPane.showMessageDialog(this, "You don´t have permission to remove this music",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else{
+        
+             JOptionPane.showMessageDialog(this, "Please select one music from the table",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jBRemoveMusicActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

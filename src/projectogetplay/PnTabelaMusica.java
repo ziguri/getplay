@@ -5,8 +5,11 @@
  */
 package projectogetplay;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,7 +33,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados = new ArrayList<Music>();
         this.pagPrincipal = p;
         atribuiDados(p.getApp().getMusicsList());
-        cliqueMusica=-1;
+        cliqueMusica = -1;
         initComponents();
     }
 
@@ -46,28 +49,60 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     }
 
     public void criaModeloTabela() {
-        String[] colunas = new String[]{"Name","Author", "Album",  "Favorite", "Year", "User",""};
+        String[] colunas = new String[]{"Name", "Author", "Album", "Favorite", "Year", "User", ""};
         Object[][] dados = new Object[][]{};
         modelo = new DefaultTableModel(dados, colunas);
     }
 
     public void carregaTabela() {
-
+        String fav = "*";
         for (Music music : dados) {
-            
-            modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), music.isFavorite(), music.getYear(), music.getCreatorEmail(),music.getMusicCode()});
+            if (music.isFavorite()) {
+                fav = "*";
+            } else {
+                fav = "";
+            }
+
+            modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), fav, music.getYear(), music.getCreatorEmail(), music.getMusicCode()});
         }
-        
+
     }
 
-    public void adicionaLinha(String name, String album, String artist, int year,String user) {
-        int index=pagPrincipal.getApp().musicsList.size();
-        int controlo= pagPrincipal.getApp().musicsList.get(index-1).getMusicCode();
-        
-        Object novo[] = {name, artist, album,  false, year, user, controlo};
+    public void removeLinha() {
+        modelo.removeRow(tblMusic.getSelectedRow());
+        refresh();
+
+    }
+
+    public int tamanhoTabela() {
+        return tblMusic.getRowCount();
+    }
+
+    public int linhaSelecionada() {
+        return tblMusic.getSelectedRow();
+    }
+
+    private int procuraLinha() {
+        int num = 0;
+        int aux = 0;
+
+        for (int i = 1; i <= tblMusic.getRowCount(); i++) {
+            aux = (Integer) tblMusic.getValueAt(i, 6);
+            if (aux == cliqueMusica) {
+                num = i;
+            }
+        }
+        return num;
+    }
+
+    public void adicionaLinha(String name, String album, String artist, int year, String user) {
+        int index = pagPrincipal.getApp().musicsList.size();
+        int controlo = pagPrincipal.getApp().musicsList.get(index - 1).getMusicCode();
+
+        Object novo[] = {name, artist, album, "", year, user, controlo};
         modelo.addRow(novo);
         refresh();
-        
+
     }
 
     public void refresh() {
@@ -98,27 +133,40 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         tblMusic.setModel(modelo);
         tblMusic.getColumnModel().getColumn(6).setMinWidth(0);
         tblMusic.getColumnModel().getColumn(6).setMaxWidth(0);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tblMusic.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+
         //tblMusic.getColumnModel().getColumn(6).setPreferredWidth(0);
         carregaTabela();
-        tblMusic.setRowHeight(30);
+        tblMusic.setRowHeight(30);/*
         tblMusic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblMusicMouseClicked(evt);
             }
         });
+        */
         jScrollPane2.setViewportView(tblMusic);
 
         add(jScrollPane2, new java.awt.GridBagConstraints());
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMusicMouseClicked
-          int num = (Integer) tblMusic.getValueAt(tblMusic.getSelectedRow(), 6);
-          JOptionPane.showMessageDialog(null, "Codigo "+ num);
-          cliqueMusica=num;
+//        int num = (Integer) tblMusic.getValueAt(tblMusic.getSelectedRow(), 6);
+//        JOptionPane.showMessageDialog(null, "Codigo " + num);
+//        cliqueMusica = num;
     }//GEN-LAST:event_tblMusicMouseClicked
 
-    
-    
+    public void mouseClicked(MouseEvent e) {
+        int num = 0;
+        if (e.getSource() == tblMusic && e.getClickCount() == 1) {
+            num = (Integer) tblMusic.getValueAt(tblMusic.getSelectedRow(), 6);
+            JOptionPane.showMessageDialog(null, "BHBA " + num);
+            System.out.println("CLIQUE DUPLO" + num);
+
+        }
+    }
+
     public Music getMusicSelecionada() {
         return musicSelecionada;
 
@@ -135,5 +183,6 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     public int getCliqueMusica() {
         return cliqueMusica;
     }
+
 }
 //table.getColumnModel().getColumn(5).setHeaderValue("newHeader");
