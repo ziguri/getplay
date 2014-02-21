@@ -6,7 +6,9 @@
 package projectogetplay;
 
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,9 +16,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Aires
  */
 public class PnTabelaMusica extends javax.swing.JPanel {
-
+    
     protected Principal pagPrincipal;
-
+    
     private DefaultTableModel modelo;
     private ArrayList<Music> dados;
     private int cliqueMusica;
@@ -30,7 +32,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados = new ArrayList<Music>();
         this.pagPrincipal = p;
         atribuiDados(p.getApp().getMusicsList());
-        cliqueMusica=-1;
+        cliqueMusica = -1;
         initComponents();
     }
 
@@ -44,32 +46,53 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados.clear();
         dados = musica;
     }
-
+    
     public void criaModeloTabela() {
-        String[] colunas = new String[]{"Name","Author", "Album",  "Favorite", "Year", "User",""};
+        String[] colunas = new String[]{"Name", "Author", "Album", "Favorite", "Year", "User", ""};
         Object[][] dados = new Object[][]{};
         modelo = new DefaultTableModel(dados, colunas);
     }
-
+    
     public void carregaTabela() {
-
+        String fav = "*";
         for (Music music : dados) {
+            if (music.isFavorite()) {
+                fav = "*";
+            } else {
+                fav = "";
+            }
             
-            modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), music.isFavorite(), music.getYear(), music.getCreatorEmail(),music.getMusicCode()});
+            modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), fav, music.getYear(), music.getCreatorEmail(), music.getMusicCode()});
         }
         
     }
-
-    public void adicionaLinha(String name, String album, String artist, int year,String user) {
-        int index=pagPrincipal.getApp().musicsList.size();
-        int controlo= pagPrincipal.getApp().musicsList.get(index-1).getMusicCode();
+    
+    public void removeLinha() {
+        modelo.removeRow(procuraLinha());
+        refresh();
         
-        Object novo[] = {name, artist, album,  false, year, user, controlo};
+    }
+    
+    private int procuraLinha() {
+        int num = 0;
+        for (int i = 1; i <= tblMusic.getRowCount(); i++) {
+            if (tblMusic.getValueAt(i, 6).equals(cliqueMusica)) {
+                num = i;
+            }
+        }
+        return num;
+    }
+    
+    public void adicionaLinha(String name, String album, String artist, int year, String user) {
+        int index = pagPrincipal.getApp().musicsList.size();
+        int controlo = pagPrincipal.getApp().musicsList.get(index - 1).getMusicCode();
+        
+        Object novo[] = {name, artist, album, "", year, user, controlo};
         modelo.addRow(novo);
         refresh();
         
     }
-
+    
     public void refresh() {
         modelo.fireTableDataChanged();
     }
@@ -98,6 +121,10 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         tblMusic.setModel(modelo);
         tblMusic.getColumnModel().getColumn(6).setMinWidth(0);
         tblMusic.getColumnModel().getColumn(6).setMaxWidth(0);
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        tblMusic.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
+
         //tblMusic.getColumnModel().getColumn(6).setPreferredWidth(0);
         carregaTabela();
         tblMusic.setRowHeight(30);
@@ -112,16 +139,14 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMusicMouseClicked
-          int num = (Integer) tblMusic.getValueAt(tblMusic.getSelectedRow(), 6);
-          JOptionPane.showMessageDialog(null, "Codigo "+ num);
-          cliqueMusica=num;
+        int num = (Integer) tblMusic.getValueAt(tblMusic.getSelectedRow(), 6);
+        JOptionPane.showMessageDialog(null, "Codigo " + num);
+        cliqueMusica = num;
     }//GEN-LAST:event_tblMusicMouseClicked
-
-    
     
     public Music getMusicSelecionada() {
         return musicSelecionada;
-
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
