@@ -15,11 +15,11 @@ import javax.swing.JList;
  */
 public class PnColuna extends javax.swing.JPanel {
 
-    protected Principal p;
+    protected Principal pagPrincipal;
 
     public PnColuna(Principal pagPrincipal){
         
-        this.p=pagPrincipal;
+        this.pagPrincipal=pagPrincipal;
         initComponents();
         buildAllLists ();
         
@@ -47,8 +47,8 @@ public class PnColuna extends javax.swing.JPanel {
      */
     private void buildAllLists (){
     
-        myPlaylistsList.setListData(buildPlaylistList(p.getLogged().getPlaylists()));
-        publicPlaylists.setListData(buildPlaylistList(p.getApp().publicPlaylists()));
+        myPlaylistsList.setListData(buildPlaylistList(pagPrincipal.getLogged().getPlaylists()));
+        publicPlaylists.setListData(buildPlaylistList(pagPrincipal.getApp().publicPlaylists()));
         
     }
 
