@@ -15,11 +15,11 @@ import javax.swing.JList;
  */
 public class PnColuna extends javax.swing.JPanel {
 
-    protected Principal p;
+    protected Principal pagPrincipal;
 
     public PnColuna(Principal pagPrincipal){
         
-        this.p=pagPrincipal;
+        this.pagPrincipal=pagPrincipal;
         initComponents();
         buildAllLists ();
         
@@ -47,8 +47,8 @@ public class PnColuna extends javax.swing.JPanel {
      */
     private void buildAllLists (){
     
-        myPlaylistsList.setListData(buildPlaylistList(p.getLogged().getPlaylists()));
-        publicPlaylists.setListData(buildPlaylistList(p.getApp().publicPlaylists()));
+        myPlaylistsList.setListData(buildPlaylistList(pagPrincipal.getLogged().getPlaylists()));
+        publicPlaylists.setListData(buildPlaylistList(pagPrincipal.getApp().publicPlaylists()));
         
     }
 
@@ -182,11 +182,11 @@ public class PnColuna extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAllMusicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllMusicsActionPerformed
-        p.getPnBaseTabela().removeAll();
-        p.getPnBaseTabela().add(p.getPnTabelaMusica());
+        pagPrincipal.getPnBaseTabela().removeAll();
+        pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
         System.out.println("Entra aqui");
-        p.revalidate();
-        p.repaint();
+        pagPrincipal.revalidate();
+        pagPrincipal.repaint();
     }//GEN-LAST:event_btnAllMusicsActionPerformed
 
     public JList getMyPlaylistsList() {
