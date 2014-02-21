@@ -5,11 +5,9 @@
  */
 package projectogetplay;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import javax.swing.table.TableColumn;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -17,16 +15,11 @@ import javax.swing.table.TableColumn;
  */
 public class PnTabelaMusica extends javax.swing.JPanel {
 
-    private int cliqNome = 0;
-    private int cliqAlbum = 0;
-    private int cliqAuthor = 0;
-    private int cliqClassification = 0;
-    private int cliqYear = 0;
     protected Principal pagPrincipal;
 
-    private TableModelMusica modelo;
+    private DefaultTableModel modelo;
     private ArrayList<Music> dados;
-
+    private int cliqueMusica;
     private Music musicSelecionada;
 
     //
@@ -37,9 +30,8 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados = new ArrayList<Music>();
         this.pagPrincipal = p;
         atribuiDados(p.getApp().getMusicsList());
-        modelo = new TableModelMusica(dados);
+        cliqueMusica=-1;
         initComponents();
-
     }
 
     /**
@@ -53,6 +45,35 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados = musica;
     }
 
+    public void criaModeloTabela() {
+        String[] colunas = new String[]{"Name","Author", "Album",  "Favorite", "Year", "User",""};
+        Object[][] dados = new Object[][]{};
+        modelo = new DefaultTableModel(dados, colunas);
+    }
+
+    public void carregaTabela() {
+
+        for (Music music : dados) {
+            
+            modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), music.isFavorite(), music.getYear(), music.getCreatorEmail(),music.getMusicCode()});
+        }
+        
+    }
+
+    public void adicionaLinha(String name, String album, String artist, int year,String user) {
+        int index=pagPrincipal.getApp().musicsList.size();
+        int controlo= pagPrincipal.getApp().musicsList.get(index-1).getMusicCode();
+        
+        Object novo[] = {name, artist, album,  false, year, user, controlo};
+        modelo.addRow(novo);
+        refresh();
+        
+    }
+
+    public void refresh() {
+        modelo.fireTableDataChanged();
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -62,66 +83,57 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblMusica = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblMusic = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(830, 420));
         setPreferredSize(new java.awt.Dimension(830, 420));
         setLayout(new java.awt.GridBagLayout());
 
-        jScrollPane1.setMinimumSize(new java.awt.Dimension(820, 420));
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(820, 420));
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(830, 420));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(830, 420));
 
-        tblMusica.setModel(modelo);
-        //dimensões das colunas
-        TableColumn column = null;
-        for (int i = 0; i < 5; i++) {
-            column = tblMusica.getColumnModel().getColumn(i);
-            column.setPreferredWidth(100);
-
-        }
-        tblMusica.setRowHeight(50);
-        // listener
-        tblMusica.getTableHeader().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // cliques++;
-                int col = tblMusica.columnAtPoint(e.getPoint());
-                if (col==0){ modelo.ordenarPorNome();modelo.fireTableDataChanged(); }
-                // if (col==2){ modelo.ordenarPorLocalizacao();modelo.fireTableDataChanged(); }
-                //if (col==3){ modelo.ordenarPorPontuacao();modelo.fireTableDataChanged(); }
-                //if (col==4){ modelo.ordenarPorVisualizacao(cliques);modelo.fireTableDataChanged(); }
-            }
-        });
-        tblMusica.addMouseListener(new java.awt.event.MouseAdapter() {
+        criaModeloTabela();
+        tblMusic.setAutoCreateRowSorter(true);
+        tblMusic.setModel(modelo);
+        tblMusic.getColumnModel().getColumn(6).setMinWidth(0);
+        tblMusic.getColumnModel().getColumn(6).setMaxWidth(0);
+        //tblMusic.getColumnModel().getColumn(6).setPreferredWidth(0);
+        carregaTabela();
+        tblMusic.setRowHeight(30);
+        tblMusic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblMusicaMouseClicked(evt);
+                tblMusicMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblMusica);
+        jScrollPane2.setViewportView(tblMusic);
 
-        add(jScrollPane1, new java.awt.GridBagConstraints());
+        add(jScrollPane2, new java.awt.GridBagConstraints());
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblMusicaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMusicaMouseClicked
-        String nome = (String) tblMusica.getValueAt(tblMusica.getSelectedRow(), 0);
-        JOptionPane.showMessageDialog(null, "nome",
-                "TEste",
-                JOptionPane.ERROR_MESSAGE);
-        String album = (String) tblMusica.getValueAt(tblMusica.getSelectedRow(), 1);
+    private void tblMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMusicMouseClicked
+          int num = (Integer) tblMusic.getValueAt(tblMusic.getSelectedRow(), 6);
+          JOptionPane.showMessageDialog(null, "Codigo "+ num);
+          cliqueMusica=num;
+    }//GEN-LAST:event_tblMusicMouseClicked
 
-        musicSelecionada = pagPrincipal.app.musicaEscolhida(nome, album);
-
-    }//GEN-LAST:event_tblMusicaMouseClicked
-
+    
+    
     public Music getMusicSelecionada() {
         return musicSelecionada;
 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblMusica;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable tblMusic;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the cliqueMusica
+     */
+    public int getCliqueMusica() {
+        return cliqueMusica;
+    }
 }
 //table.getColumnModel().getColumn(5).setHeaderValue("newHeader");
