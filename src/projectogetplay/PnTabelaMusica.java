@@ -58,9 +58,9 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         String fav = "*";
         for (Music music : dados) {
             if (music.isFavorite()) {
-                fav = "*";
-            } else {
                 fav = "";
+            } else {
+                fav = "*";
             }
 
             modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), fav, music.getYear(), music.getCreatorEmail(), music.getMusicCode()});
