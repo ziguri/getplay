@@ -164,11 +164,11 @@ public class Playlist implements Serializable {
      *
      * @param index The index of the file to be played.
      */
-    public void startPlaying(int index) {
-        Integer codeMusic = musics.get(index);
+    public void startPlaying(int musicCode) {
+        
         GetPlay gp = new GetPlay();
-        Music mus = gp.searchMusic(codeMusic);
-        player.startPlaying(mus.getMusicPath());
+        //Music mus = gp.searchMusic(codeMusic);
+        //player.startPlaying(mus.getMusicPath());
     }
 
     /**
