@@ -407,9 +407,13 @@ public class Principal extends javax.swing.JFrame {
         getApp().stopPlaying();
     }//GEN-LAST:event_jBStopActionPerformed
 
+        
     private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
-        Music m = getApp().searchMusic(getPnTabelaMusica().getCliqueMusica());
         pnTabelaMusica = new PnTabelaMusica(this);
+        int i = pnTabelaMusica.linhaSelecionada();
+       
+        Music m = getApp().searchMusic(getPnTabelaMusica().getCliqueMusica());//devolve IDcódigo da musica
+        
         
         
     }//GEN-LAST:event_jBForwardActionPerformed
