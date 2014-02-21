@@ -28,6 +28,10 @@ public class JdEditMusic extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);//abre jDialog no centro do ecran
         this.p = (Principal) parent;
 
+        //não mostra as mensagens de erro 
+        jLERROname.setVisible(false);
+        jLERROAlbum.setVisible(false);
+        jLERROYear.setVisible(false);
     }
 
     public void fillFields(Music m) {
@@ -40,15 +44,15 @@ public class JdEditMusic extends javax.swing.JDialog {
 //           // m= p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
         System.out.println(m);
             System.out.println(m.getAlbum());
-            jTYear.setText(m.getAlbum());
-            jTYear.setEditable(false);
+            jTAlbum.setText(m.getAlbum());
+            jTAlbum.setEditable(false);
             jTArtist.setText(m.getAuthor());
             jTArtist.setEditable(false);
             jTName.setText(m.getName());
             jTName.setEditable(false);
             String year = "" + m.getYear();
-            jTAlbum.setText(year);
-            jTAlbum.setEditable(false);
+            jTYear.setText(year);
+            jTYear.setEditable(false);
             repaint();
             revalidate();
 //        }
@@ -77,13 +81,12 @@ public class JdEditMusic extends javax.swing.JDialog {
         jBPrevious = new javax.swing.JButton();
         jBNext = new javax.swing.JButton();
         jLERROAlbum = new javax.swing.JLabel();
-        jLERROano = new javax.swing.JLabel();
+        jLERROYear = new javax.swing.JLabel();
         jLERROname = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Music");
         setMinimumSize(new java.awt.Dimension(400, 300));
-        setPreferredSize(new java.awt.Dimension(400, 300));
         setType(java.awt.Window.Type.UTILITY);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {0, 3, 0, 3, 0, 3, 0, 3, 0};
@@ -257,14 +260,14 @@ public class JdEditMusic extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 5);
         getContentPane().add(jLERROAlbum, gridBagConstraints);
 
-        jLERROano.setForeground(new java.awt.Color(255, 0, 0));
-        jLERROano.setText("Enter a valid year.");
+        jLERROYear.setForeground(new java.awt.Color(255, 0, 0));
+        jLERROYear.setText("Enter a valid year.");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 5);
-        getContentPane().add(jLERROano, gridBagConstraints);
+        getContentPane().add(jLERROYear, gridBagConstraints);
 
         jLERROname.setForeground(new java.awt.Color(255, 0, 0));
         jLERROname.setText("Please enter the title of the music.");
@@ -294,16 +297,16 @@ public class JdEditMusic extends javax.swing.JDialog {
         //novos campos preenchidos pelo utilizador 
         String title = jTName.getText().trim();
         String artist = jTArtist.getText().trim();
-        String album = jTYear.getText().trim();
-        String year = jTAlbum.getText().trim();
-        String userEmail = p.getLogged().getEmail();
-        String path = m.getMusicPath();
+        String album = jTAlbum.getText().trim();
+        String year = jTYear.getText().trim();
+        this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
+        
         if (p.getApp().validateName(title)
                 && p.getApp().validateName(album)
                 && p.getApp().validateInt(year)
                 && p.getApp().validateDate(year)) {
-            p.getApp().createMusic(title, artist, album, Integer.parseInt(year),
-                    path, userEmail);
+            p.getApp().editMusic(m, title, artist, album,
+            Integer.parseInt(year));
             JOptionPane.showMessageDialog(null, "Musica alterada");
         } else {
             if (!p.getApp().validateName(title)) {
@@ -317,7 +320,7 @@ public class JdEditMusic extends javax.swing.JDialog {
 
             if (!p.getApp().validateInt(year) && p.getApp().validateDate(year)) {
                 jTYear.setBorder(BorderFactory.createLineBorder(Color.RED));
-                jLERROano.setVisible(true);
+                jLERROYear.setVisible(true);
             }
         }
         p.getApp().listMusics();
@@ -360,13 +363,13 @@ public class JdEditMusic extends javax.swing.JDialog {
     }//GEN-LAST:event_jTYearFocusGained
 
     private void jTYearFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTYearFocusLost
-        String s = jTAlbum.getText().trim();
+        String s = jTYear.getText().trim();
         if (!p.getApp().validateInt(s) || !p.getApp().validateDate(s)) {
-            jTAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
-            jLERROano.setVisible(true);
+            jTYear.setBorder(BorderFactory.createLineBorder(Color.RED));
+            jLERROYear.setVisible(true);
         } else {
-            jTAlbum.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
-            jLERROano.setVisible(false);
+            jTYear.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY));
+            jLERROYear.setVisible(false);
         }
     }//GEN-LAST:event_jTYearFocusLost
 
@@ -423,7 +426,7 @@ public class JdEditMusic extends javax.swing.JDialog {
     private javax.swing.JButton jBPrevious;
     private javax.swing.JButton jBSave;
     private javax.swing.JLabel jLERROAlbum;
-    private javax.swing.JLabel jLERROano;
+    private javax.swing.JLabel jLERROYear;
     private javax.swing.JLabel jLERROname;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
