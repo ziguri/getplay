@@ -37,7 +37,7 @@ public class JdEditMusic extends javax.swing.JDialog {
                     JOptionPane.ERROR_MESSAGE);
 
         } else {
-           //m= p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
+           m= p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
             jTYear.setText(m.getAlbum());
             jTYear.setEditable(false);
             jTArtist.setText(m.getAuthor());
