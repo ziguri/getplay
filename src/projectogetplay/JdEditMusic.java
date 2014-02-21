@@ -30,14 +30,16 @@ public class JdEditMusic extends javax.swing.JDialog {
 
     }
 
-    public void fillFields() {
-        if (p.getPnTabelaMusica().getCliqueMusica() == -1) {
-            JOptionPane.showMessageDialog(null, "Please select the music",
-                    "Error",
-                    JOptionPane.ERROR_MESSAGE);
-
-        } else {
-           m= p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
+    public void fillFields(Music m) {
+//        if (p.getPnTabelaMusica().getCliqueMusica() == -1) {
+//            JOptionPane.showMessageDialog(null, "Please select the music",
+//                    "Error",
+//                    JOptionPane.ERROR_MESSAGE);
+//
+//        } else {
+//           // m= p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
+        System.out.println(m);
+            System.out.println(m.getAlbum());
             jTYear.setText(m.getAlbum());
             jTYear.setEditable(false);
             jTArtist.setText(m.getAuthor());
@@ -49,7 +51,7 @@ public class JdEditMusic extends javax.swing.JDialog {
             jTAlbum.setEditable(false);
             repaint();
             revalidate();
-        }
+//        }
     }
 
     /**
