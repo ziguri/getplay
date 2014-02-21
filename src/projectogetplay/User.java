@@ -3,22 +3,20 @@ package projectogetplay;
 import java.io.Serializable;
 import java.util.*;
 
-public class User  implements Serializable{
+public class User implements Serializable {
 
     private static final long serialVersionUID = 3901859968848387462L;
     protected String name;
     protected String email;
     protected String password;
     protected ArrayList<Playlist> playlists;
-   
 
+    
     public User(String aName, String aEmail, String aPassword) {
         this.name = aName;
         this.email = aEmail;
         this.password = aPassword;
         this.playlists = new ArrayList();
-        
-
     }
 
     public User() {
@@ -95,16 +93,28 @@ public class User  implements Serializable{
     public void setPlaylists(ArrayList<Playlist> playlists) {
         this.playlists = playlists;
     }
-    
+
     /**
-     * 
-     * @return  Returns true if user is authenticate. False otherwise. 
+     *
+     * @return Returns true if user is authenticate. False otherwise.
      */
-   
+    public void addNewPlaylist(Playlist novo) {
+        playlists.add(novo);
+
+    }
+
+    public void removePlaylist(Playlist novo) {
+        playlists.remove(novo);
+
+    }
+
+    public void removeALLPlaylist() {
+        playlists.removeAll(playlists);
+    }
 
     @Override
     public String toString() {
-        return "User{ "+ name + ", " + email + ", " + password + ", " + playlists + '}';
+        return "User{ " + name + ", " + email + ", " + password + ", " + playlists + '}';
     }
 
 }

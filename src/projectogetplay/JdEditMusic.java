@@ -83,7 +83,6 @@ public class JdEditMusic extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit Music");
         setMinimumSize(new java.awt.Dimension(400, 300));
-        setPreferredSize(new java.awt.Dimension(400, 300));
         setType(java.awt.Window.Type.UTILITY);
         java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
         layout.columnWidths = new int[] {0, 3, 0, 3, 0, 3, 0, 3, 0};
@@ -202,6 +201,11 @@ public class JdEditMusic extends javax.swing.JDialog {
                 jBCancelMouseClicked(evt);
             }
         });
+        jBCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCancelActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 16;
@@ -215,6 +219,11 @@ public class JdEditMusic extends javax.swing.JDialog {
         jBSave.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBSaveMouseClicked(evt);
+            }
+        });
+        jBSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSaveActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -374,6 +383,14 @@ public class JdEditMusic extends javax.swing.JDialog {
         this.dispose(); //fecha a janela
 
     }//GEN-LAST:event_jBCancelMouseClicked
+
+    private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBCancelActionPerformed
+
+    private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBSaveActionPerformed
 
     /**
      * @param args the command line arguments

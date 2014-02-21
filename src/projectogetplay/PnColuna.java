@@ -33,7 +33,7 @@ public class PnColuna extends javax.swing.JPanel {
      * @param playlists
      * @return 
      */
-    private Playlist[] buildPlaylistList(ArrayList<Playlist> playlists){
+    public Playlist[] buildPlaylistList(ArrayList<Playlist> playlists){
 
         //Recebe um ArrayList de Playlist, transforma-o num vector e devolve-o 
         //pronto a adicionar à lista correspondente
@@ -67,6 +67,8 @@ public class PnColuna extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         myPlaylistsList = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
+        lblFixoAddPL = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         publicPlaylists = new javax.swing.JList();
@@ -105,6 +107,15 @@ public class PnColuna extends javax.swing.JPanel {
 
         jLabel1.setText("My Playlists");
 
+        lblFixoAddPL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N
+        lblFixoAddPL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblFixoAddPLMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Minus-icon.png"))); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -115,14 +126,22 @@ public class PnColuna extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 114, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblFixoAddPL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4)
+                        .addGap(0, 90, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(lblFixoAddPL))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -194,6 +213,11 @@ public class PnColuna extends javax.swing.JPanel {
         pagPrincipal.repaint();
     }//GEN-LAST:event_btnAllMusicsActionPerformed
 
+    private void lblFixoAddPLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblFixoAddPLMouseClicked
+        JdNewPlaylist jdNewPlaylist = new JdNewPlaylist(pagPrincipal, true);
+        jdNewPlaylist.setVisible(true);
+    }//GEN-LAST:event_lblFixoAddPLMouseClicked
+
     public JList getMyPlaylistsList() {
         return myPlaylistsList;
     }
@@ -215,11 +239,13 @@ public class PnColuna extends javax.swing.JPanel {
     private javax.swing.JButton btnAllMusics;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblFixoAddPL;
     private javax.swing.JList myPlaylistsList;
     private javax.swing.JList publicPlaylists;
     // End of variables declaration//GEN-END:variables
