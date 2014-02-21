@@ -100,7 +100,7 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        pnBaseFundo.setBackground(new java.awt.Color(255, 255, 102));
+        pnBaseFundo.setBackground(new java.awt.Color(255, 255, 255));
         pnBaseFundo.setMinimumSize(new java.awt.Dimension(1080, 90));
         pnBaseFundo.setPreferredSize(new java.awt.Dimension(1080, 90));
         pnBaseFundo.setLayout(new java.awt.GridBagLayout());
