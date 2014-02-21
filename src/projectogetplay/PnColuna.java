@@ -184,14 +184,14 @@ public class PnColuna extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAllMusicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllMusicsActionPerformed
-        p.getPnBaseTabela().removeAll();
-        p.getPnBaseInfo().removeAll();
+        pagPrincipal.getPnBaseTabela().removeAll();
+        pagPrincipal.getPnBaseInfo().removeAll();
         
-        p.getPnBaseTabela().add(p.getPnTabelaMusica());
-        p.getPnBaseInfo().add(p.getPnListaMusicas());
+        pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
+        pagPrincipal.getPnBaseInfo().add(pagPrincipal.getPnListaMusicas());
         
-        p.revalidate();
-        p.repaint();
+        pagPrincipal.revalidate();
+        pagPrincipal.repaint();
     }//GEN-LAST:event_btnAllMusicsActionPerformed
 
     public JList getMyPlaylistsList() {
