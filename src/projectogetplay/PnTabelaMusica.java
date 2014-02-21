@@ -5,6 +5,7 @@
  */
 package projectogetplay;
 
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -16,9 +17,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Aires
  */
 public class PnTabelaMusica extends javax.swing.JPanel {
-    
+
     protected Principal pagPrincipal;
-    
+
     private DefaultTableModel modelo;
     private ArrayList<Music> dados;
     private int cliqueMusica;
@@ -46,13 +47,13 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados.clear();
         dados = musica;
     }
-    
+
     public void criaModeloTabela() {
         String[] colunas = new String[]{"Name", "Author", "Album", "Favorite", "Year", "User", ""};
         Object[][] dados = new Object[][]{};
         modelo = new DefaultTableModel(dados, colunas);
     }
-    
+
     public void carregaTabela() {
         String fav = "*";
         for (Music music : dados) {
@@ -61,41 +62,49 @@ public class PnTabelaMusica extends javax.swing.JPanel {
             } else {
                 fav = "";
             }
-            
+
             modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), fav, music.getYear(), music.getCreatorEmail(), music.getMusicCode()});
         }
-        
+
     }
-    
+
     public void removeLinha() {
         modelo.removeRow(tblMusic.getSelectedRow());
         refresh();
-        
+
     }
-    
+
+    public int tamanhoTabela() {
+        return tblMusic.getRowCount();
+    }
+
+    public int linhaSelecionada() {
+        return tblMusic.getSelectedRow();
+    }
+
     private int procuraLinha() {
         int num = 0;
-        int aux=0;
-        
+        int aux = 0;
+
         for (int i = 1; i <= tblMusic.getRowCount(); i++) {
-            aux=(Integer)tblMusic.getValueAt(i, 6);
-            if (aux==cliqueMusica) {
+            aux = (Integer) tblMusic.getValueAt(i, 6);
+            if (aux == cliqueMusica) {
                 num = i;
             }
         }
         return num;
     }
-    
+
     public void adicionaLinha(String name, String album, String artist, int year, String user) {
         int index = pagPrincipal.getApp().musicsList.size();
         int controlo = pagPrincipal.getApp().musicsList.get(index - 1).getMusicCode();
-        
+
         Object novo[] = {name, artist, album, "", year, user, controlo};
         modelo.addRow(novo);
         refresh();
-        
+
     }
-    
+
     public void refresh() {
         modelo.fireTableDataChanged();
     }
@@ -128,7 +137,6 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         tblMusic.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
 
-        //tblMusic.getColumnModel().getColumn(6).setPreferredWidth(0);
         carregaTabela();
         tblMusic.setRowHeight(30);
         tblMusic.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -146,12 +154,22 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Codigo " + num);
         cliqueMusica = num;
     }//GEN-LAST:event_tblMusicMouseClicked
-    
+
     public Music getMusicSelecionada() {
         return musicSelecionada;
-        
-    }
 
+    }
+/**
+ * 
+ * @param n linha a que se prentende buscar o valor
+ * @return codigo de musica
+ */
+    public int getValoresLinha(int n) {
+        int num;
+        num = (Integer) tblMusic.getValueAt(n, 6);
+        return num;
+
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblMusic;
@@ -163,7 +181,6 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     public int getCliqueMusica() {
         return cliqueMusica;
     }
-    
-    
+
 }
 //table.getColumnModel().getColumn(5).setHeaderValue("newHeader");

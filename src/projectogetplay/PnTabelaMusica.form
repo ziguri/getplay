@@ -47,7 +47,7 @@
         <Component class="javax.swing.JTable" name="tblMusic">
           <Properties>
             <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="tblMusic.getColumnModel().getColumn(6).setMinWidth(0);&#xa;tblMusic.getColumnModel().getColumn(6).setMaxWidth(0);&#xa;DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();&#xa;centerRenderer.setHorizontalAlignment( JLabel.CENTER );&#xa;tblMusic.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );&#xa;&#xa;//tblMusic.getColumnModel().getColumn(6).setPreferredWidth(0);&#xa;carregaTabela();">
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="tblMusic.getColumnModel().getColumn(6).setMinWidth(0);&#xa;tblMusic.getColumnModel().getColumn(6).setMaxWidth(0);&#xa;DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();&#xa;centerRenderer.setHorizontalAlignment( JLabel.CENTER );&#xa;tblMusic.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );&#xa;&#xa;&#xa;carregaTabela();">
               <Connection code="modelo" type="code"/>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

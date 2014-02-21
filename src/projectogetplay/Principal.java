@@ -151,6 +151,11 @@ public class Principal extends javax.swing.JFrame {
         jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Seek-forward-64.png"))); // NOI18N
         jBForward.setBorder(null);
         jBForward.setContentAreaFilled(false);
+        jBForward.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBForwardActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
@@ -391,7 +396,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void jBPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPlayActionPerformed
         int musicCode = pnTabelaMusica.getCliqueMusica();
-        System.out.println("Aqui"+musicCode);
         try{
         getApp().startPlaying(musicCode);
         }catch(Exception e){
@@ -402,6 +406,17 @@ public class Principal extends javax.swing.JFrame {
     private void jBStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStopActionPerformed
         getApp().stopPlaying();
     }//GEN-LAST:event_jBStopActionPerformed
+
+        
+    private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
+        pnTabelaMusica = new PnTabelaMusica(this);
+        int i = pnTabelaMusica.linhaSelecionada();
+       
+        Music m = getApp().searchMusic(getPnTabelaMusica().getCliqueMusica());//devolve IDcódigo da musica
+        
+        
+        
+    }//GEN-LAST:event_jBForwardActionPerformed
 
     /**
      * @param args the command line arguments
