@@ -135,5 +135,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     public int getCliqueMusica() {
         return cliqueMusica;
     }
+    
+    
 }
 //table.getColumnModel().getColumn(5).setHeaderValue("newHeader");
