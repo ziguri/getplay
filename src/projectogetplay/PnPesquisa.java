@@ -55,10 +55,20 @@ public class PnPesquisa extends javax.swing.JPanel {
 
         menuEditar.setText("Edit Account");
         menuEditar.setToolTipText("");
+        menuEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditarActionPerformed(evt);
+            }
+        });
         popupMenu.add(menuEditar);
         popupMenu.add(jSeparator1);
 
         menuEliminar.setText("Delete Account");
+        menuEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEliminarActionPerformed(evt);
+            }
+        });
         popupMenu.add(menuEliminar);
         popupMenu.add(jSeparator2);
 
@@ -152,28 +162,23 @@ public class PnPesquisa extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSettingsActionPerformed
 
     private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
-        pagPrincipal.setLogged(null);
-        
-        pagPrincipal.getPnBaseLogin().remove(this);  
-        pagPrincipal.getPnBaseColuna().removeAll();
-        pagPrincipal.getPnBaseTabela().removeAll();
-        pagPrincipal.getPnBaseInfo().removeAll();
-        
-        pagPrincipal.getApp().guardaFoMusics();
-   
-        pagPrincipal.revalidate();
-        pagPrincipal.repaint();
-
-        pagPrincipal.getLbFixoEmail().setVisible(true);
-        pagPrincipal.getLbFixoPassword().setVisible(true);
-        pagPrincipal.getBotaoLogin().setVisible(true);
-        pagPrincipal.getBotaoRegistar().setVisible(true);
-        pagPrincipal.getEmailField().setVisible(true);
-        pagPrincipal.getPasswordField().setVisible(true);
-        
-        
-        
+        pagPrincipal.logOut();
     }//GEN-LAST:event_menuLogoutActionPerformed
+
+    private void menuEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarActionPerformed
+        
+        //Remove todas as musicas inseridas pelo utilizador, na lista de musicas
+        //e nas playlists de outros utilizadores
+        pagPrincipal.getApp().removeAllUserMusics(pagPrincipal.getLogged());
+        
+        //Remove o utilizador da lista de utilizadores
+        pagPrincipal.getApp().removeUser(pagPrincipal.getLogged());
+        pagPrincipal.logOut();
+    }//GEN-LAST:event_menuEliminarActionPerformed
+
+    private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
+        new JdlEditaUtilizador(pagPrincipal, true).setVisible(true);
+    }//GEN-LAST:event_menuEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
