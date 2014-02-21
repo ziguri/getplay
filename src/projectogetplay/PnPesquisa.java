@@ -22,6 +22,7 @@ public class PnPesquisa extends javax.swing.JPanel {
      * @param p
      */
     public PnPesquisa(Principal p) {
+        
         this.pagPrincipal=p;
         initComponents();
         
@@ -73,7 +74,9 @@ public class PnPesquisa extends javax.swing.JPanel {
 
         lblHello.setText("Hello");
 
-        lblUserName.setText(pagPrincipal.getLogged().getName());
+        try{
+            lblUserName.setText(pagPrincipal.getLogged().getName());
+        }catch(Exception e){}
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/search.png"))); // NOI18N
         jButton1.setToolTipText("");

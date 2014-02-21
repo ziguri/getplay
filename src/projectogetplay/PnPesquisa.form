@@ -118,6 +118,10 @@
           <Connection code="pagPrincipal.getLogged().getName()" type="code"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="}catch(Exception e){}"/>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JTextField" name="searchBox">
     </Component>

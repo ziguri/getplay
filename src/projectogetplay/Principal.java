@@ -33,6 +33,18 @@ public class Principal extends javax.swing.JFrame {
     
     public Principal() {
         initComponents();
+        
+        //inicializa os paineis
+        //this.pnListaMusicas=new PnListaMusicas(this);
+        //this.pnListaPLOutros= new PnListaPLOutros(this);
+        //this.pnMyPlaylist= new PnMyPlayList(this);
+        //this.pnPesquisa= new PnPesquisa(this);
+        //this.pnTabelaMusica = new PnTabelaMusica(this);
+        //this.pnTabelaPlayList = new PnTabelaPlayList(this);
+        //this.jdEditMusic = new JdEditMusic(this, true);
+        //this.pnColuna = new PnColuna(this);
+        //this.pnLeitor = new PnLeitor(this);
+        
         this.app = new GetPlay();
         this.logged = null;
         app.openFOUsers();
@@ -254,19 +266,20 @@ public class Principal extends javax.swing.JFrame {
                 
                 //ativar paineis
                 //pnBaseInfo.removeAll();
-                pnListaMusicas= new PnListaMusicas(this);
+                pnListaMusicas=new PnListaMusicas(this);
                 pnBaseInfo.add(pnListaMusicas);   
                 
                 
-                //pnBaseInfo.add(new PnMyPlayList(this));
-                pnBaseColuna.add(new PnColuna(this));
+                pnColuna = new PnColuna(this);
+                pnBaseColuna.add(pnColuna);
                 pnBaseLogin.add(new PnPesquisa(this));
                 
                 //carregar a lista de musica
                 app.musicsList.clear();
                 app.openFOMusic();
+                
                 //painel tabela
-                this.pnTabelaMusica=new PnTabelaMusica(this);
+                pnTabelaMusica = new PnTabelaMusica(this);
                 pnBaseTabela.add(pnTabelaMusica);
                 
             //Só falta o código para preencher a tabela

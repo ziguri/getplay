@@ -70,11 +70,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabPListName1">
       <Properties>
-        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor" postCode="}catch(Exception e){}">
           <Connection code="&quot;Number of musics: &quot; + p.getApp().getMusicsList().size()" type="code"/>
         </Property>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="try{"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="jBAddMusic">
       <Properties>

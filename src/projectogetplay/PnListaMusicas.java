@@ -20,7 +20,12 @@ public class PnListaMusicas extends javax.swing.JPanel {
      * Creates new form PnMusica
      */
     
+    /**
+     * Creates new form PnMusica
+     * @param p
+     */
     public PnListaMusicas(Principal p) {
+        
         this.p=p;
         initComponents();
         
@@ -47,7 +52,9 @@ public class PnListaMusicas extends javax.swing.JPanel {
         jLabPListName.setText("All Musics");
         jLabPListName.setToolTipText("");
 
-        jLabPListName1.setText("Number of musics: " + p.getApp().getMusicsList().size());
+        try{
+            jLabPListName1.setText("Number of musics: " + p.getApp().getMusicsList().size());
+        }catch(Exception e){}
         jLabPListName1.setToolTipText("");
 
         jBAddMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N

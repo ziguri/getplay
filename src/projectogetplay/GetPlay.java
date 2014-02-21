@@ -192,8 +192,11 @@ public class GetPlay implements Serializable {
     public boolean passwordCorrect(String email, String password){
     
         User u = getUserWithEmail(email);
+        CodificarMD5 encript = new CodificarMD5();
+        String pass = CodificarMD5.cryptWithMD5(password);
         
-        return u.getPassword().equals(password);
+        return u.getPassword().equals(pass);
+        
         
     }
 
