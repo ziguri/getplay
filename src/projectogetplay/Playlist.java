@@ -149,6 +149,17 @@ public class Playlist implements Serializable {
 
         return false;
     }
+    
+    private String sharedString(){
+    
+        if(shared){
+        
+            return "Yes";
+        }else{
+        
+            return "false";
+        }
+    }
 
     /**
      *
@@ -160,7 +171,7 @@ public class Playlist implements Serializable {
 
     @Override
     public String toString() {
-        return "Name: " + name + " Date of Creation=" + dateCreation + "Shared=" + shared;
+        return name;
     }
     
     

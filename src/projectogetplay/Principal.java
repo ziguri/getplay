@@ -101,71 +101,85 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        pnBaseFundo.setBackground(new java.awt.Color(255, 255, 255));
+        pnBaseFundo.setInheritsPopupMenu(true);
         pnBaseFundo.setMinimumSize(new java.awt.Dimension(1080, 90));
         pnBaseFundo.setPreferredSize(new java.awt.Dimension(1080, 90));
-        pnBaseFundo.setLayout(new java.awt.GridBagLayout());
 
-        jBStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Playback-Stop-64.png"))); // NOI18N
+        jBStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Stop-32.png"))); // NOI18N
         jBStop.setBorder(null);
-        jBStop.setContentAreaFilled(false);
         jBStop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBStopActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        pnBaseFundo.add(jBStop, gridBagConstraints);
 
-        jBBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Seek-Backward-64.png"))); // NOI18N
+        jBBackward.setBackground(new java.awt.Color(51, 51, 255));
+        jBBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Backward-32_green.png"))); // NOI18N
         jBBackward.setBorder(null);
+        jBBackward.setBorderPainted(false);
         jBBackward.setContentAreaFilled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        pnBaseFundo.add(jBBackward, gridBagConstraints);
 
-        jBPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Playback-Start-64.png"))); // NOI18N
+        jBPlay.setBackground(new java.awt.Color(51, 51, 255));
+        jBPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png"))); // NOI18N
         jBPlay.setBorder(null);
+        jBPlay.setBorderPainted(false);
         jBPlay.setContentAreaFilled(false);
         jBPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBPlayActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        pnBaseFundo.add(jBPlay, gridBagConstraints);
 
-        jBPause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Playback-Pause-64.png"))); // NOI18N
+        jBPause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png"))); // NOI18N
         jBPause.setBorder(null);
-        jBPause.setContentAreaFilled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        pnBaseFundo.add(jBPause, gridBagConstraints);
 
-        jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Seek-forward-64.png"))); // NOI18N
+        jBForward.setBackground(new java.awt.Color(51, 51, 255));
+        jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Forward-32.png"))); // NOI18N
         jBForward.setBorder(null);
+        jBForward.setBorderPainted(false);
         jBForward.setContentAreaFilled(false);
         jBForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBForwardActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        pnBaseFundo.add(jBForward, gridBagConstraints);
 
-        jLTitleMusica.setText("Title Musica");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
-        pnBaseFundo.add(jLTitleMusica, gridBagConstraints);
+        jLTitleMusica.setText("<Title Musica>");
+
+        javax.swing.GroupLayout pnBaseFundoLayout = new javax.swing.GroupLayout(pnBaseFundo);
+        pnBaseFundo.setLayout(pnBaseFundoLayout);
+        pnBaseFundoLayout.setHorizontalGroup(
+            pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnBaseFundoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnBaseFundoLayout.createSequentialGroup()
+                        .addComponent(jBStop)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBBackward)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBPlay)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBForward)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBPause))
+                    .addComponent(jLTitleMusica))
+                .addContainerGap())
+        );
+        pnBaseFundoLayout.setVerticalGroup(
+            pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnBaseFundoLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBStop)
+                    .addComponent(jBBackward)
+                    .addComponent(jBPlay)
+                    .addComponent(jBForward)
+                    .addComponent(jBPause))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLTitleMusica)
+                .addContainerGap())
+        );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -395,11 +409,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jBPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPlayActionPerformed
-        int musicCode = pnTabelaMusica.getCliqueMusica();
-        try{
-        getApp().startPlaying(musicCode);
-        }catch(Exception e){
-            System.out.println("ERRO não encontrou mp3"+e);
+        pnTabelaMusica = new PnTabelaMusica(this);
+        int beginAt = pnTabelaMusica.linhaSelecionada();
+        for (int i = beginAt; i < pnTabelaMusica.tamanhoTabela(); i++) {
+            try {
+                getApp().startPlaying(pnTabelaMusica.getValoresLinha(i));
+            } catch (Exception e) {
+                System.out.println("ERRO não encontrou mp3" + e);
+            }
         }
     }//GEN-LAST:event_jBPlayActionPerformed
 
@@ -407,9 +424,13 @@ public class Principal extends javax.swing.JFrame {
         getApp().stopPlaying();
     }//GEN-LAST:event_jBStopActionPerformed
 
+        
     private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
-        Music m = getApp().searchMusic(getPnTabelaMusica().getCliqueMusica());
         pnTabelaMusica = new PnTabelaMusica(this);
+        int i = pnTabelaMusica.linhaSelecionada();
+       
+        Music m = getApp().searchMusic(getPnTabelaMusica().getCliqueMusica());//devolve IDcódigo da musica
+        
         
         
     }//GEN-LAST:event_jBForwardActionPerformed

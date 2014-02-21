@@ -430,6 +430,29 @@ public class GetPlay implements Serializable {
     }
     
     /**
+     * This receives 
+     * @param playlist
+     * @return 
+     */
+    public ArrayList<Music> getMusiclistFromPlaylist(ArrayList<Integer> playlist){
+    
+        ArrayList<Music> m = new ArrayList();
+        
+        for(int i=0; i<playlist.size(); i++){
+        
+            for(int j=0; j<musicsList.size(); j++){
+            
+                if(playlist.get(i).intValue()==musicsList.get(j).getMusicCode()){
+                
+                    m.add(musicsList.get(j));
+                }
+            }
+        }
+        
+        return m;
+    }
+    
+    /**
      * Creates a new playlist to the user who creates 
      * @param u
      * @param p 
@@ -584,19 +607,19 @@ public class GetPlay implements Serializable {
      * Play a track in the collection.
      * @param musicCode The index of the track to be played.
      */
-    public void playMusic(int musicCode){
-        Music mus = new Music();
-        if (musicCode != -1) {
-            for (int i = 0; i < musicsList.size(); i++) {
-                if (musicsList.get(i).getMusicCode() == musicCode) {
-                    mus = musicsList.get(i);
-                }
-            }
-        }
-            String s = "c:\\APPGetPlay\\MyPlaylist\\";
-            player.startPlaying(s+mus.getMusicPath());
-            System.out.println("Now playing: " + mus.getAuthor() + " - " + mus.getName());
-        }
+//    public void playMusic(int musicCode){
+//        Music mus = new Music();
+//        if (musicCode != -1) {
+//            for (int i = 0; i < musicsList.size(); i++) {
+//                if (musicsList.get(i).getMusicCode() == musicCode) {
+//                    mus = musicsList.get(i);
+//                }
+//            }
+//        }
+//            String s = "c:\\APPGetPlay\\MyPlaylist\\";
+//            player.startPlaying(s+mus.getMusicPath());
+//            System.out.println("Now playing: " + mus.getAuthor() + " - " + mus.getName());
+//        }
    
     
     

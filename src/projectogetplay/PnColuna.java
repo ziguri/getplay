@@ -8,6 +8,7 @@ package projectogetplay;
 
 import java.util.ArrayList;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -16,6 +17,8 @@ import javax.swing.JList;
 public class PnColuna extends javax.swing.JPanel {
 
     protected Principal pagPrincipal;
+    protected ArrayList <Playlist> playlistProp;
+    protected ArrayList <Playlist> playlistPub;
 
     public PnColuna(Principal pagPrincipal){
         
@@ -33,12 +36,29 @@ public class PnColuna extends javax.swing.JPanel {
      * @param playlists
      * @return 
      */
-    public Playlist[] buildPlaylistList(ArrayList<Playlist> playlists){
+    public Playlist[] buildPlaylistListProp(ArrayList<Playlist> playlists){
 
         //Recebe um ArrayList de Playlist, transforma-o num vector e devolve-o 
         //pronto a adicionar à lista correspondente
         Playlist[] playL = playlists.toArray(new Playlist[0]);
+        this.playlistProp=playlists;
         return playL;
+        
+    }
+    
+    /**
+     * Accessor method to build one playlist vector from a playlist ArrayList in
+     * order to construct JList component.
+     * @param playlists
+     * @return 
+     */
+    public Playlist[] buildPlaylistListPub(ArrayList<Playlist> playlists){
+
+        //Recebe um ArrayList de Playlist, transforma-o num vector e devolve-o 
+        //pronto a adicionar à lista correspondente
+        Playlist[] playLP = playlists.toArray(new Playlist[0]);
+        this.playlistPub=playlists;
+        return playLP;
         
     }
     
@@ -47,8 +67,8 @@ public class PnColuna extends javax.swing.JPanel {
      */
     private void buildAllLists (){
     
-        myPlaylistsList.setListData(buildPlaylistList(pagPrincipal.getLogged().getPlaylists()));
-        publicPlaylists.setListData(buildPlaylistList(pagPrincipal.getApp().publicPlaylists()));
+        myPlaylistsList.setListData(buildPlaylistListProp(pagPrincipal.getLogged().getPlaylists()));
+        publicPlaylists.setListData(buildPlaylistListPub(pagPrincipal.getApp().publicPlaylists()));
         
     }
 
@@ -69,6 +89,7 @@ public class PnColuna extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         lblFixoAddPL = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         publicPlaylists = new javax.swing.JList();
@@ -103,6 +124,11 @@ public class PnColuna extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        myPlaylistsList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                myPlaylistsListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(myPlaylistsList);
 
         jLabel1.setText("My Playlists");
@@ -115,6 +141,18 @@ public class PnColuna extends javax.swing.JPanel {
         });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Minus-icon.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Share", "Don´t Share", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -123,14 +161,15 @@ public class PnColuna extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(29, 29, 29)
                         .addComponent(lblFixoAddPL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
-                        .addGap(0, 90, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -138,10 +177,12 @@ public class PnColuna extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(lblFixoAddPL))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(lblFixoAddPL))
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -218,6 +259,70 @@ public class PnColuna extends javax.swing.JPanel {
         jdNewPlaylist.setVisible(true);
     }//GEN-LAST:event_lblFixoAddPLMouseClicked
 
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        
+        
+        myPlaylistsList.getSelectedIndex();
+        if(myPlaylistsList.getSelectedIndex()==-1){
+        
+            JOptionPane.showMessageDialog(this, "Please select one playlist.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+        
+            pagPrincipal.getLogged().removePlaylist(this.playlistProp.get(this.myPlaylistsList.getSelectedIndex()));
+            buildAllLists();
+        }
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+         myPlaylistsList.getSelectedIndex();
+         
+         
+        if(myPlaylistsList.getSelectedIndex()==-1){
+        
+            JOptionPane.showMessageDialog(this, "Please select one playlist.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+        
+            if(jComboBox1.getSelectedIndex()==0){
+            
+                pagPrincipal.getLogged().getPlaylistByName(this.playlistProp.
+                        get(myPlaylistsList.getSelectedIndex()).getName()).
+                        setShared(true);
+            }
+            else{
+            
+             pagPrincipal.getLogged().getPlaylistByName(this.playlistProp.
+                     get(myPlaylistsList.getSelectedIndex()).getName()).
+                     setShared(false);  
+            }
+            buildAllLists();
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void myPlaylistsListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myPlaylistsListMouseClicked
+        if(evt.getClickCount()==2){
+        
+            //int index = theList.locationToIndex(mouseEvent.getPoint());
+            int index = myPlaylistsList.getSelectedIndex();
+            
+            if (index >= 0) {
+                
+                Playlist p = playlistProp.
+                        get(myPlaylistsList.getSelectedIndex());
+                
+                
+                
+                
+            myPlaylistsList.get    
+            Object o = theList.getModel().getElementAt(index);
+            System.out.println("Double-clicked on: " + o.toString());
+          }
+        }
+    }//GEN-LAST:event_myPlaylistsListMouseClicked
+
     public JList getMyPlaylistsList() {
         return myPlaylistsList;
     }
@@ -237,6 +342,7 @@ public class PnColuna extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAllMusics;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
