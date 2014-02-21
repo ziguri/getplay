@@ -6,7 +6,9 @@
 
 package projectogetplay;
 
+import java.util.ArrayList;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -52,7 +54,7 @@ public class PnPesquisa extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         choiceTitle = new javax.swing.JRadioButton();
         choiceArtist = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        both = new javax.swing.JRadioButton();
         btnSettings = new javax.swing.JButton();
 
         menuEditar.setText("Edit Account");
@@ -94,6 +96,11 @@ public class PnPesquisa extends javax.swing.JPanel {
         jButton1.setToolTipText("");
         jButton1.setContentAreaFilled(false);
         jButton1.setPreferredSize(new java.awt.Dimension(20, 20));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         searchGroup.add(choiceTitle);
         choiceTitle.setText("Title");
@@ -101,8 +108,8 @@ public class PnPesquisa extends javax.swing.JPanel {
         searchGroup.add(choiceArtist);
         choiceArtist.setText("Artist");
 
-        searchGroup.add(jRadioButton1);
-        jRadioButton1.setText("Both");
+        searchGroup.add(both);
+        both.setText("Both");
 
         btnSettings.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/settings2.png"))); // NOI18N
         btnSettings.setToolTipText("");
@@ -137,7 +144,7 @@ public class PnPesquisa extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(choiceArtist)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton1)
+                        .addComponent(both)
                         .addGap(563, 563, 563))))
         );
         layout.setVerticalGroup(
@@ -155,7 +162,7 @@ public class PnPesquisa extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(choiceTitle)
                     .addComponent(choiceArtist)
-                    .addComponent(jRadioButton1)))
+                    .addComponent(both)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -182,6 +189,56 @@ public class PnPesquisa extends javax.swing.JPanel {
         new JdlEditaUtilizador(pagPrincipal, true).setVisible(true);
     }//GEN-LAST:event_menuEditarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       CharSequence txtpesquisa=searchBox.getText();
+       ArrayList <Music> dados= pagPrincipal.getApp().getMusicsList();
+        ArrayList<Music> listPesquisa= new ArrayList<Music>();
+        
+        if (txtpesquisa.equals("")) {
+             JOptionPane.showMessageDialog(null, "Empty searchbox!",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+ 
+        else{
+       if (choiceArtist.isSelected()){
+           for (Music music : dados) {
+               if (music.getAuthor().contains(txtpesquisa)){
+                   dados.add(music);
+               }
+           }
+       }
+       if (choiceTitle.isSelected()){
+           for (Music music : dados) {
+               if (music.getName().contains(txtpesquisa)){
+                   dados.add(music);
+               }
+           }}
+        if (both.isSelected()){
+           for (Music music : dados) {
+               if (music.getName().contains(txtpesquisa)){
+                   dados.add(music);
+               }
+           }
+        }
+       
+        
+        
+        
+        pagPrincipal.getPnBaseTabela().removeAll();
+        pagPrincipal.getPnBaseTabela().add(new PnTabelaMusica(pagPrincipal));
+        pagPrincipal.getPnBaseTabela().revalidate();
+        pagPrincipal.getPnBaseTabela().repaint();
+        pagPrincipal.getPnTabelaMusica().atribuiDados(dados);
+        pagPrincipal.getPnTabelaMusica().refresh();
+        
+        
+       }
+       
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public JLabel getLblUserName() {
         return lblUserName;
     }
@@ -189,11 +246,11 @@ public class PnPesquisa extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton both;
     private javax.swing.JButton btnSettings;
     private javax.swing.JRadioButton choiceArtist;
     private javax.swing.JRadioButton choiceTitle;
     private javax.swing.JButton jButton1;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JLabel lblHello;
