@@ -183,6 +183,44 @@ public class GetPlay implements Serializable {
     }
     
     /**
+     * Receive the music code and remove the code from all users and all playlists
+     * the music code sent.
+     * @param musicCode 
+     */
+    public void removeMusicsFromAnotherPlaylists(int musicCode){
+    
+        for(int i=0; i<usersList.size(); i++){
+        
+            for(int j=0; j<usersList.get(i).getPlaylists().size(); j++){
+            
+                for(int h=0; h<usersList.get(i).getPlaylists().get(j).getMusics().size(); h++){
+                
+                    if(usersList.get(i).getPlaylists().get(j).getMusics().get(h) == musicCode){
+                    
+                        usersList.get(i).getPlaylists().get(j).getMusics().
+                                remove(usersList.get(i).getPlaylists().get(j).getMusics().get(h));
+                    }
+                }
+            }
+        }
+    }
+    
+    /**
+     * Receives one user, and remove all the musics inserted by this user.
+     * @param u 
+     */
+    public void removeAllUserMusics(User u){
+    
+        for(int i=0; i<musicsList.size(); i++){
+        
+            if(musicsList.get(i).getCreatorEmail().equalsIgnoreCase(u.getEmail())){
+            
+                removeMusicsFromAnotherPlaylists(musicsList.get(i).getMusicCode());
+            }
+            
+        }
+    }
+    /**
      * Check if the password inserted is correct or not. Returns true if it is,
      * and false if not.
      * @param email
