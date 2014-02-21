@@ -9,6 +9,7 @@ package projectogetplay;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
 /**
@@ -16,13 +17,11 @@ import javax.swing.table.TableColumn;
  * @author Aires
  */
 public class PnTabelaPlayList extends javax.swing.JPanel {
-    private int cliqNome = 0;
-    private int cliqCriado = 0;
-    private int cliqNmusica = 0;
+
     protected Principal pagPrincipal;
 
     
-    private TableModelPlaylist modelo;
+    private DefaultTableModel modelo;
     private ArrayList<Playlist> dados;
     
     
@@ -32,8 +31,30 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
     public PnTabelaPlayList(Principal p) {
         initComponents();
         this.pagPrincipal=p;
+        dados=new ArrayList<>();
+        
     }
 
+     public void atribuiDadosPL(ArrayList<Playlist> playList) {
+        dados.clear();
+        dados =playList;
+;
+    }
+
+    public void criaModeloTabelaPL() {
+        String[] colunas = new String[]{"Name", "Creation Date", "Size", "Shared","User"};
+        Object[][] dados = new Object[][]{};
+        modelo = new DefaultTableModel(dados, colunas);
+    }
+
+    public void carregaTabelaPL() {
+        for (Playlist playlist : dados) {
+            modelo.addRow(new Object[]{playlist.getName(), playlist.getdateCreationString(),playlist.getSize(), playlist.getShared()});
+        }
+
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,53 +63,29 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         tblPlaylist = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(830, 420));
         setLayout(new java.awt.GridBagLayout());
 
+        jScrollPane2.setMinimumSize(new java.awt.Dimension(830, 420));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(830, 420));
+
+        tblPlaylist.setRowHeight(30);
+        criaModeloTabelaPL();
+        tblPlaylist.setAutoCreateRowSorter(true);
         tblPlaylist.setModel(modelo);
-        //dimensões das colunas
-        TableColumn column = null;
-        for (int i = 0; i < 5; i++) {
-            column = tblPlaylist.getColumnModel().getColumn(i);
-            column.setPreferredWidth(100);
+        carregaTabelaPL();
+        jScrollPane2.setViewportView(tblPlaylist);
 
-        }
-        tblPlaylist.setRowHeight(50);
-        // listener
-        tblPlaylist.getTableHeader().addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // cliques++;
-                int col = tblPlaylist.columnAtPoint(e.getPoint());
-                // if (col==0){ modelo.ordenarPorNome();modelo.fireTableDataChanged(); }
-                // if (col==2){ modelo.ordenarPorLocalizacao();modelo.fireTableDataChanged(); }
-                //if (col==3){ modelo.ordenarPorPontuacao();modelo.fireTableDataChanged(); }
-                //if (col==4){ modelo.ordenarPorVisualizacao(cliques);modelo.fireTableDataChanged(); }
-            }
-        });
-        jScrollPane1.setViewportView(tblPlaylist);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 787;
-        gridBagConstraints.ipady = 356;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(11, 10, 26, 10);
-        add(jScrollPane1, gridBagConstraints);
+        add(jScrollPane2, new java.awt.GridBagConstraints());
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblPlaylist;
     // End of variables declaration//GEN-END:variables
 }
