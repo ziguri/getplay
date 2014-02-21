@@ -230,7 +230,14 @@ public class Principal extends javax.swing.JFrame {
         } else if (!(app.existUser(emailField.getText()))) {
 
             JOptionPane.showMessageDialog(this, "User not found", "Error!", JOptionPane.ERROR_MESSAGE);
-        } else {
+        }
+        
+        else if(!(app.passwordCorrect(emailField.getText(), String.valueOf(passwordField.getPassword())))){
+        
+            JOptionPane.showMessageDialog(this, "Password is incorrect.", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        else {
 
             logged = app.getUserWithEmail(emailField.getText());
             

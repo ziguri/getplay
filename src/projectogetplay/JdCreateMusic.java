@@ -221,9 +221,9 @@ public class JdCreateMusic extends javax.swing.JDialog {
         jBSave.setMaximumSize(new java.awt.Dimension(71, 25));
         jBSave.setMinimumSize(new java.awt.Dimension(71, 25));
         jBSave.setPreferredSize(new java.awt.Dimension(71, 25));
-        jBSave.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jBSaveMouseClicked(evt);
+        jBSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSaveActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -298,62 +298,6 @@ public class JdCreateMusic extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSaveMouseClicked
-        if (p.getLogged() == null) {
-            JOptionPane.showMessageDialog(this, "Please sign in to add a music to your application",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-            this.dispose();//close window
-            return;
-        }
-        
-        //preenchimento de campos pelo user
-        String name = jTMName.getText().trim();
-        String artist = jTMArtist.getText().trim();
-        String album = jTMAlbum.getText().trim();
-        String year = jTMYear.getText().trim();
-        String path = jTMPath.getText().trim();
-        String userEmail = p.getLogged().getEmail();
-             if (p.getApp().validateName(name)
-                    && p.getApp().validateName(album)
-                    && p.getApp().validateName(path)
-                    && p.getApp().validateInt(year)
-                    && p.getApp().validateDate(year)) {
-                p.getApp().createMusic(name, artist, album, Integer.parseInt(year),
-                        path, userEmail);
-                p.getApp().copy(source, target);//copia ficheiro
-                JOptionPane.showMessageDialog(null, "Musica adicionada");
-            } else {
-                if (!p.getApp().validateName(name)) {
-                    jTMName.setBorder(BorderFactory.createLineBorder(Color.RED));
-                    jLERROname.setVisible(true);
-                }
-                if (!p.getApp().validateName(album)) {
-                    jTMAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
-                    jLERROAlbum.setVisible(true);
-                }
-                if (!p.getApp().validateName(path)) {
-                    jTMPath.setBorder(BorderFactory.createLineBorder(Color.RED));
-                    jLERROpath.setVisible(true);
-                }
-                if (!p.getApp().validateInt(year) && p.getApp().validateDate(year)) {
-                    jTMYear.setBorder(BorderFactory.createLineBorder(Color.RED));
-                    jLERROano.setVisible(true);
-                }
-            }
-        
-        //Para actualizar a tabela de musicas a cada vez que insere nova
-        p.getPnBaseTabela().removeAll();
-        p.getPnBaseInfo().removeAll();
-        
-        p.getPnBaseTabela().add(p.getPnTabelaMusica());
-        p.getPnBaseInfo().add(p.getPnListaMusicas());
-        
-        p.revalidate();
-        p.repaint();
-        
-        this.dispose();//close window
-    }//GEN-LAST:event_jBSaveMouseClicked
-
     private void jTMNameFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTMNameFocusLost
         String s = jTMName.getText().trim();
         if (!p.getApp().validateName(s)) {
@@ -400,6 +344,73 @@ public class JdCreateMusic extends javax.swing.JDialog {
     private void jBCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelMouseClicked
         this.dispose(); //fecha a janela
     }//GEN-LAST:event_jBCancelMouseClicked
+
+    private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
+         if (p.getLogged() == null) {
+            JOptionPane.showMessageDialog(this, "Please sign in to add a music to your application",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            this.dispose();//close window
+            return;
+        }
+        
+        //preenchimento de campos pelo user
+        String name = jTMName.getText().trim();
+        String artist = jTMArtist.getText().trim();
+        String album = jTMAlbum.getText().trim();
+        String year = jTMYear.getText().trim();
+        String path = jTMPath.getText().trim();
+        String userEmail = p.getLogged().getEmail();
+             
+        
+        if(p.getApp().existMusic(name, album)){
+        
+            JOptionPane.showMessageDialog(this, "This music already exist!",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        else{
+        
+            if (p.getApp().validateName(name)
+                        && p.getApp().validateName(album)
+                        && p.getApp().validateName(path)
+                        && p.getApp().validateInt(year)
+                        && p.getApp().validateDate(year)) {
+                    p.getApp().createMusic(name, artist, album, Integer.parseInt(year),
+                            path, userEmail);
+                    p.getApp().copy(source, target);//copia ficheiro
+                    JOptionPane.showMessageDialog(null, "Musica adicionada");
+                } else {
+                    if (!p.getApp().validateName(name)) {
+                        jTMName.setBorder(BorderFactory.createLineBorder(Color.RED));
+                        jLERROname.setVisible(true);
+                    }
+                    if (!p.getApp().validateName(album)) {
+                        jTMAlbum.setBorder(BorderFactory.createLineBorder(Color.RED));
+                        jLERROAlbum.setVisible(true);
+                    }
+                    if (!p.getApp().validateName(path)) {
+                        jTMPath.setBorder(BorderFactory.createLineBorder(Color.RED));
+                        jLERROpath.setVisible(true);
+                    }
+                    if (!p.getApp().validateInt(year) && p.getApp().validateDate(year)) {
+                        jTMYear.setBorder(BorderFactory.createLineBorder(Color.RED));
+                        jLERROano.setVisible(true);
+                    }
+                }
+        }
+        
+        //Para actualizar a tabela de musicas a cada vez que insere nova
+        p.getPnBaseTabela().removeAll();
+        p.getPnBaseInfo().removeAll();
+        
+        p.getPnBaseTabela().add(p.getPnTabelaMusica());
+        p.getPnBaseInfo().add(p.getPnListaMusicas());
+        
+        p.revalidate();
+        p.repaint();
+        
+        this.dispose();//close window
+    }//GEN-LAST:event_jBSaveActionPerformed
 
 
     /**

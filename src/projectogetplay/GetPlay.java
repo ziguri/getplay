@@ -181,6 +181,21 @@ public class GetPlay implements Serializable {
             }
         }
     }
+    
+    /**
+     * Check if the password inserted is correct or not. Returns true if it is,
+     * and false if not.
+     * @param email
+     * @param password
+     * @return 
+     */
+    public boolean passwordCorrect(String email, String password){
+    
+        User u = getUserWithEmail(email);
+        
+        return u.getPassword().equals(password);
+        
+    }
 
     /**
      *
@@ -198,6 +213,28 @@ public class GetPlay implements Serializable {
             return true;
         }
         return false;
+    }
+    
+    /**
+     * Check if exist another music with the same name and album in the music
+     * list, return true if exist and false if not.
+     * @param nome
+     * @param album
+     * @return 
+     */
+    public boolean existMusic(String nome, String album){
+    
+        boolean exist=false;
+        for(int i=0; i<musicsList.size() && !exist; i++){
+        
+            if(musicsList.get(i).getName().equalsIgnoreCase(nome) && 
+                    musicsList.get(i).getAlbum().equalsIgnoreCase(album)){
+            
+                exist=true;
+            }
+        }
+        
+        return exist;
     }
 
     /**
