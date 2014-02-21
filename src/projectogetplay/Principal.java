@@ -29,7 +29,7 @@ public class Principal extends javax.swing.JFrame {
     private PnTabelaMusica pnTabelaMusica;
     private PnTabelaPlayList pnTabelaPlayList;
     protected JdEditMusic jdEditMusic;
-    protected Playlist player;
+    
     
     
     public Principal() {
@@ -386,8 +386,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void jBPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPlayActionPerformed
         int musicCode = pnTabelaMusica.getCliqueMusica();
+        System.out.println("Aqui"+musicCode);
         try{
-        player.startPlaying(musicCode);
+        getApp().startPlaying(musicCode);
         }catch(Exception e){
             System.out.println("ERRO não encontrou mp3"+e);
         }

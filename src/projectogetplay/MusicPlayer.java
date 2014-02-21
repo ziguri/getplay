@@ -62,6 +62,7 @@ public class MusicPlayer {
         try {
             setupPlayer(filename);
             Thread playerThread = new Thread() {
+                @Override
                 public void run()
                 {
                     try {
