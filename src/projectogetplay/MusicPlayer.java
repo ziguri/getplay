@@ -66,7 +66,7 @@ public class MusicPlayer {
                 public void run()
                 {
                     try {
-                        player.play(5000);
+                        player.play();
                     }
                     catch(JavaLayerException e) {
                         reportProblem(filename);
@@ -83,8 +83,7 @@ public class MusicPlayer {
         }
     }
     
-    public void stop()
-    {
+    public void stop(){
         killPlayer();
     }
     
@@ -137,11 +136,11 @@ public class MusicPlayer {
      */
     private void killPlayer()
     {
-        synchronized(this) {
+        //synchronized(this) {
             if(player != null) {
-                player.stop();
+                player.close();
                 player = null;
-            }
+           // }
         }
     }
     

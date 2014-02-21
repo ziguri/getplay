@@ -109,6 +109,11 @@ public class Principal extends javax.swing.JFrame {
         jBStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Playback-Stop-64.png"))); // NOI18N
         jBStop.setBorder(null);
         jBStop.setContentAreaFilled(false);
+        jBStop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBStopActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -393,6 +398,10 @@ public class Principal extends javax.swing.JFrame {
             System.out.println("ERRO não encontrou mp3"+e);
         }
     }//GEN-LAST:event_jBPlayActionPerformed
+
+    private void jBStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStopActionPerformed
+        getApp().stopPlaying();
+    }//GEN-LAST:event_jBStopActionPerformed
 
     /**
      * @param args the command line arguments
