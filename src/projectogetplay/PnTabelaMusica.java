@@ -68,15 +68,18 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     }
     
     public void removeLinha() {
-        modelo.removeRow(procuraLinha());
+        modelo.removeRow(tblMusic.getSelectedRow());
         refresh();
         
     }
     
     private int procuraLinha() {
         int num = 0;
+        int aux=0;
+        
         for (int i = 1; i <= tblMusic.getRowCount(); i++) {
-            if (tblMusic.getValueAt(i, 6).equals(cliqueMusica)) {
+            aux=(Integer)tblMusic.getValueAt(i, 6);
+            if (aux==cliqueMusica) {
                 num = i;
             }
         }

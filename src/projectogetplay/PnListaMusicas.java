@@ -168,6 +168,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
             if(mu.getCreatorEmail().equalsIgnoreCase(p.getLogged().getEmail())){
 
                 p.getApp().removeMusic(mu);
+                p.getPnTabelaMusica().removeLinha();
 
                 //Actualiza a tabela de musicas
                 p.getPnBaseTabela().removeAll();
