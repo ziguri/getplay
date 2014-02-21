@@ -237,7 +237,7 @@ public class Principal extends javax.swing.JFrame {
     
         setLogged(null);
         
-        pnBaseLogin.remove(this);  
+        pnBaseLogin.remove(pnPesquisa);  
         pnBaseColuna.removeAll();
         pnBaseTabela.removeAll();
         pnBaseInfo.removeAll();
@@ -278,6 +278,7 @@ public class Principal extends javax.swing.JFrame {
                 
                 emailField.setText("");
                 passwordField.setText("");
+                
                 //desaparece o painel de login
                 lbFixoEmail.setVisible(false);
                 lbFixoPassword.setVisible(false);
@@ -295,7 +296,8 @@ public class Principal extends javax.swing.JFrame {
                 
                 pnColuna = new PnColuna(this);
                 pnBaseColuna.add(pnColuna);
-                pnBaseLogin.add(new PnPesquisa(this));
+                pnPesquisa = new PnPesquisa(this);
+                pnBaseLogin.add(pnPesquisa);
                 
                 //carregar a lista de musica
                 app.musicsList.clear();
@@ -408,6 +410,10 @@ public class Principal extends javax.swing.JFrame {
 
     public JPanel getPnBaseTabela() {
         return pnBaseTabela;
+    }
+
+    public void setPnPesquisa(PnPesquisa pnPesquisa) {
+        this.pnPesquisa = pnPesquisa;
     }
     
     
