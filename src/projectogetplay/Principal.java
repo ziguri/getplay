@@ -395,11 +395,14 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jBPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPlayActionPerformed
-        int musicCode = pnTabelaMusica.getCliqueMusica();
-        try{
-        getApp().startPlaying(musicCode);
-        }catch(Exception e){
-            System.out.println("ERRO não encontrou mp3"+e);
+        pnTabelaMusica = new PnTabelaMusica(this);
+        int beginAt = pnTabelaMusica.linhaSelecionada();
+        for (int i = beginAt; i < pnTabelaMusica.tamanhoTabela(); i++) {
+            try {
+                getApp().startPlaying(pnTabelaMusica.getValoresLinha(i));
+            } catch (Exception e) {
+                System.out.println("ERRO não encontrou mp3" + e);
+            }
         }
     }//GEN-LAST:event_jBPlayActionPerformed
 
