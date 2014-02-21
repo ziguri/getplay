@@ -385,7 +385,6 @@ public class Principal extends javax.swing.JFrame {
 
     private void jBPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPlayActionPerformed
         
-
     }//GEN-LAST:event_jBPlayActionPerformed
 
     /**
