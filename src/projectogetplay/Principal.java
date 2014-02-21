@@ -233,6 +233,27 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public void logOut(){
+    
+        setLogged(null);
+        
+        pnBaseLogin.remove(this);  
+        pnBaseColuna.removeAll();
+        pnBaseTabela.removeAll();
+        pnBaseInfo.removeAll();
+        
+        app.guardaFoMusics();
+   
+        revalidate();
+        repaint();
+
+        lbFixoEmail.setVisible(true);
+        lbFixoPassword.setVisible(true);
+        botaoLogin.setVisible(true);
+        botaoRegistar.setVisible(true);
+        emailField.setVisible(true);
+        passwordField.setVisible(true);
+    }
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
 
@@ -255,6 +276,8 @@ public class Principal extends javax.swing.JFrame {
             
             if (logged != null) {
                 
+                emailField.setText("");
+                passwordField.setText("");
                 //desaparece o painel de login
                 lbFixoEmail.setVisible(false);
                 lbFixoPassword.setVisible(false);
