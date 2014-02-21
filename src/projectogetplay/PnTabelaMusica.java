@@ -155,21 +155,21 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         cliqueMusica = num;
     }//GEN-LAST:event_tblMusicMouseClicked
 
-    public void mouseClicked(MouseEvent e) {
-//        int num = 0;
-//        if (e.getSource() == tblMusic && e.getButton() == MouseEvent.BUTTON3) {
-//            num = (Integer) tblMusic.getValueAt(tblMusic.getSelectedRow(), 6);
-//            JOptionPane.showMessageDialog(null, "BHBA " + num);
-//            System.out.println("CLIQUE DUPLO" + num);
-//
-//        }
-    }
-
     public Music getMusicSelecionada() {
         return musicSelecionada;
 
     }
+/**
+ * 
+ * @param n linha a que se prentende buscar o valor
+ * @return codigo de musica
+ */
+    public int getValoresLinha(int n) {
+        int num;
+        num = (Integer) tblMusic.getValueAt(n, 6);
+        return num;
 
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblMusic;
