@@ -5,6 +5,7 @@
  */
 package projectogetplay;
 
+import java.io.FileNotFoundException;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -28,6 +29,7 @@ public class Principal extends javax.swing.JFrame {
     private PnTabelaMusica pnTabelaMusica;
     private PnTabelaPlayList pnTabelaPlayList;
     protected JdEditMusic jdEditMusic;
+    
     
     
     public Principal() {
@@ -107,6 +109,11 @@ public class Principal extends javax.swing.JFrame {
         jBStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Playback-Stop-64.png"))); // NOI18N
         jBStop.setBorder(null);
         jBStop.setContentAreaFilled(false);
+        jBStop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBStopActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -383,8 +390,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void jBPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPlayActionPerformed
-        
+        int musicCode = pnTabelaMusica.getCliqueMusica();
+        System.out.println("Aqui"+musicCode);
+        try{
+        getApp().startPlaying(musicCode);
+        }catch(Exception e){
+            System.out.println("ERRO não encontrou mp3"+e);
+        }
     }//GEN-LAST:event_jBPlayActionPerformed
+
+    private void jBStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStopActionPerformed
+        getApp().stopPlaying();
+    }//GEN-LAST:event_jBStopActionPerformed
 
     /**
      * @param args the command line arguments
@@ -475,6 +492,10 @@ public class Principal extends javax.swing.JFrame {
 
     public void setPnPesquisa(PnPesquisa pnPesquisa) {
         this.pnPesquisa = pnPesquisa;
+    }
+
+    public void setPnBaseTabela(JPanel pnBaseTabela) {
+        this.pnBaseTabela = pnBaseTabela;
     }
     
     

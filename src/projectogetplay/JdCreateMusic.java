@@ -378,7 +378,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
                
 
                 p.getApp().copy(source, target);//copia ficheiro
-                JOptionPane.showMessageDialog(null, "Musica adicionada");
+                JOptionPane.showMessageDialog(this, "Musica adicionada");
             } else {
                 if (!p.getApp().validateName(name)) {
                     jTMName.setBorder(BorderFactory.createLineBorder(Color.RED));
