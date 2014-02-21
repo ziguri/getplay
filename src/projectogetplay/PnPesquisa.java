@@ -59,6 +59,11 @@ public class PnPesquisa extends javax.swing.JPanel {
         popupMenu.add(jSeparator1);
 
         menuEliminar.setText("Delete Account");
+        menuEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEliminarActionPerformed(evt);
+            }
+        });
         popupMenu.add(menuEliminar);
         popupMenu.add(jSeparator2);
 
@@ -152,28 +157,13 @@ public class PnPesquisa extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSettingsActionPerformed
 
     private void menuLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLogoutActionPerformed
-        pagPrincipal.setLogged(null);
-        
-        pagPrincipal.getPnBaseLogin().remove(this);  
-        pagPrincipal.getPnBaseColuna().removeAll();
-        pagPrincipal.getPnBaseTabela().removeAll();
-        pagPrincipal.getPnBaseInfo().removeAll();
-        
-        pagPrincipal.getApp().guardaFoMusics();
-   
-        pagPrincipal.revalidate();
-        pagPrincipal.repaint();
-
-        pagPrincipal.getLbFixoEmail().setVisible(true);
-        pagPrincipal.getLbFixoPassword().setVisible(true);
-        pagPrincipal.getBotaoLogin().setVisible(true);
-        pagPrincipal.getBotaoRegistar().setVisible(true);
-        pagPrincipal.getEmailField().setVisible(true);
-        pagPrincipal.getPasswordField().setVisible(true);
-        
-        
-        
+        pagPrincipal.logOut();
     }//GEN-LAST:event_menuLogoutActionPerformed
+
+    private void menuEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarActionPerformed
+        
+        pagPrincipal.logOut();
+    }//GEN-LAST:event_menuEliminarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
