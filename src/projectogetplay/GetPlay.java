@@ -430,6 +430,29 @@ public class GetPlay implements Serializable {
     }
     
     /**
+     * This receives 
+     * @param playlist
+     * @return 
+     */
+    public ArrayList<Music> getMusiclistFromPlaylist(ArrayList<Integer> playlist){
+    
+        ArrayList<Music> m = new ArrayList();
+        
+        for(int i=0; i<playlist.size(); i++){
+        
+            for(int j=0; j<musicsList.size(); j++){
+            
+                if(playlist.get(i).intValue()==musicsList.get(j).getMusicCode()){
+                
+                    m.add(musicsList.get(j));
+                }
+            }
+        }
+        
+        return m;
+    }
+    
+    /**
      * Creates a new playlist to the user who creates 
      * @param u
      * @param p 

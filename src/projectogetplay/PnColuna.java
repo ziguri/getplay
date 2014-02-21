@@ -124,6 +124,11 @@ public class PnColuna extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        myPlaylistsList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                myPlaylistsListMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(myPlaylistsList);
 
         jLabel1.setText("My Playlists");
@@ -158,8 +163,8 @@ public class PnColuna extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(29, 29, 29)
                         .addComponent(lblFixoAddPL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
@@ -296,6 +301,27 @@ public class PnColuna extends javax.swing.JPanel {
             buildAllLists();
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void myPlaylistsListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myPlaylistsListMouseClicked
+        if(evt.getClickCount()==2){
+        
+            //int index = theList.locationToIndex(mouseEvent.getPoint());
+            int index = myPlaylistsList.getSelectedIndex();
+            
+            if (index >= 0) {
+                
+                Playlist p = playlistProp.
+                        get(myPlaylistsList.getSelectedIndex());
+                
+                
+                
+                
+            myPlaylistsList.get    
+            Object o = theList.getModel().getElementAt(index);
+            System.out.println("Double-clicked on: " + o.toString());
+          }
+        }
+    }//GEN-LAST:event_myPlaylistsListMouseClicked
 
     public JList getMyPlaylistsList() {
         return myPlaylistsList;
