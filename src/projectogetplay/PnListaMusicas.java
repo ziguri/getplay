@@ -134,12 +134,19 @@ public class PnListaMusicas extends javax.swing.JPanel {
     }//GEN-LAST:event_jBAddMusicActionPerformed
 
     private void jBEditMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEditMusicMouseClicked
-        this.m = p.getPnTabelaMusica().getMusicSelecionada();
+        this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
         System.out.println(m);
         
         if(m.getCreatorEmail().equals(p.getLogged().getEmail())){
-            new JdEditMusic(p, true).setVisible(true);
-            p.jdEditMusic.fillFields();
+            JdEditMusic jdEditMusic=new JdEditMusic(p, true);
+            jdEditMusic.fillFields(m);
+            jdEditMusic.setVisible(true);
+//            ;
+//                p.jdEditMusic.setVisible(true);
+//                
+           // p.jdEditMusic.fillFields(m);
+           //p.jdEditMusic.revalidate();
+           // p.jdEditMusic.repaint();
         }else{
             JOptionPane.showMessageDialog(this, "You don´t have permission to change this music",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
