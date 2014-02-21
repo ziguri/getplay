@@ -136,6 +136,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
     private void jBEditMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEditMusicMouseClicked
         this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
         System.out.println(m);
+        
         if(m.getCreatorEmail().equals(p.getLogged().getEmail())){
             JdEditMusic jdEditMusic=new JdEditMusic(p, true);
             jdEditMusic.fillFields(m);

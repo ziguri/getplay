@@ -6,6 +6,8 @@
 
 package projectogetplay;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Aires
@@ -179,6 +181,11 @@ public class PnPesquisa extends javax.swing.JPanel {
     private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
         new JdlEditaUtilizador(pagPrincipal, true).setVisible(true);
     }//GEN-LAST:event_menuEditarActionPerformed
+
+    public JLabel getLblUserName() {
+        return lblUserName;
+    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

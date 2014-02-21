@@ -288,22 +288,19 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
         
         String oldPassEncr = CodificarMD5.cryptWithMD5(String.valueOf(oldPass));
         
-        if(txtNome.getText().isEmpty() || txtEmail.getText().isEmpty() || oldPass==null){
+        if(txtNome.getText().isEmpty() || txtEmail.getText().isEmpty() || oldPass.length == 0){
         
             JOptionPane.showMessageDialog(this, "The Fields name, email and old pass are mandatory!", "Error!", JOptionPane.ERROR_MESSAGE);
         }
         
-        else if(!(pagPrincipal.getApp().passwordCorrect(pagPrincipal.getLogged().getEmail(), oldPassEncr))){
-        
-            System.out.println("Pass guardada: " + pagPrincipal.getLogged().getPassword());
-            System.out.println("Pass Colocada: " + oldPassEncr);
+        else if(!(pagPrincipal.getLogged().getPassword().equals(oldPassEncr))){
             
             JOptionPane.showMessageDialog(this, "Old password is wrong!", "Error!", JOptionPane.ERROR_MESSAGE);
         }
         
         else{
         
-            if(pass1!=null && pass2!=null){
+            if(pass1.length>0){
                 if(nameValidation(nome) && emailValidation(email) && passwordValidation(pass1, pass2)){
 
 
@@ -313,7 +310,17 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
                     pagPrincipal.getLogged().setEmail(email);
                     pagPrincipal.getLogged().setPassword(passEncrypt);
                     
-                    JOptionPane.showMessageDialog(null, "Your data were successfully edited.", "", JOptionPane.INFORMATION_MESSAGE);
+                    //Actualiza o painel com o nome do utilizador
+
+                    pagPrincipal.getPnBaseLogin().remove(pagPrincipal.getPnPesquisa());
+                    
+                    pagPrincipal.setPnPesquisa(new PnPesquisa(pagPrincipal));
+                    pagPrincipal.getPnBaseLogin().add(pagPrincipal.getPnPesquisa());
+                    
+                    pagPrincipal.getPnBaseLogin().revalidate();
+                    pagPrincipal.getPnBaseLogin().repaint();
+                    
+                    JOptionPane.showMessageDialog(this, "Your data were successfully edited.", "", JOptionPane.INFORMATION_MESSAGE);
 
                     this.dispose();
                 }
@@ -329,7 +336,26 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
                     pagPrincipal.getLogged().setName(nome);
                     pagPrincipal.getLogged().setEmail(email);
                     
-                    JOptionPane.showMessageDialog(null, "Your data were successfully edited.", "", JOptionPane.INFORMATION_MESSAGE);
+                     //Actualiza o painel com o nome do utilizador
+
+                    pagPrincipal.getPnBaseLogin().remove(pagPrincipal.getPnPesquisa());
+                    
+                    pagPrincipal.setPnPesquisa(new PnPesquisa(pagPrincipal));
+                    pagPrincipal.getPnBaseLogin().add(pagPrincipal.getPnPesquisa());
+                    
+                    pagPrincipal.getPnBaseLogin().revalidate();
+                    pagPrincipal.getPnBaseLogin().repaint();
+                    
+                    /*
+                    //Actualiza o painel com o nome do utilizador
+                    pagPrincipal.getPnBaseLogin().remove(pagPrincipal.getPnPesquisa());
+                    pagPrincipal.getPnBaseLogin().add(new PnPesquisa(pagPrincipal));
+                    pagPrincipal.getPnBaseLogin().revalidate();
+                    pagPrincipal.getPnBaseLogin().repaint();
+                    */
+                    //pnBaseLogin.add(pnPesquisa);
+                    
+                    JOptionPane.showMessageDialog(this, "Your data were successfully edited.", "", JOptionPane.INFORMATION_MESSAGE);
 
                     this.dispose();
                 }

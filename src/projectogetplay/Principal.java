@@ -21,7 +21,6 @@ public class Principal extends javax.swing.JFrame {
     protected GetPlay app;
     protected User logged;
     private PnColuna pnColuna;
-    private PnLeitor pnLeitor;
     private PnListaMusicas pnListaMusicas;
     private PnListaPLOutros pnListaPLOutros;        
     private PnMyPlayList pnMyPlaylist;
@@ -66,6 +65,12 @@ public class Principal extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         pnBaseFundo = new javax.swing.JPanel();
+        jBStop = new javax.swing.JButton();
+        jBBackward = new javax.swing.JButton();
+        jBPlay = new javax.swing.JButton();
+        jBPause = new javax.swing.JButton();
+        jBForward = new javax.swing.JButton();
+        jLTitleMusica = new javax.swing.JLabel();
         pnBaseColuna = new javax.swing.JPanel();
         pnBaseLogin = new javax.swing.JPanel();
         emailField = new javax.swing.JTextField();
@@ -94,10 +99,62 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        pnBaseFundo.setBackground(new java.awt.Color(255, 255, 102));
+        pnBaseFundo.setBackground(new java.awt.Color(255, 255, 255));
         pnBaseFundo.setMinimumSize(new java.awt.Dimension(1080, 90));
         pnBaseFundo.setPreferredSize(new java.awt.Dimension(1080, 90));
         pnBaseFundo.setLayout(new java.awt.GridBagLayout());
+
+        jBStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Playback-Stop-64.png"))); // NOI18N
+        jBStop.setBorder(null);
+        jBStop.setContentAreaFilled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        pnBaseFundo.add(jBStop, gridBagConstraints);
+
+        jBBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Seek-Backward-64.png"))); // NOI18N
+        jBBackward.setBorder(null);
+        jBBackward.setContentAreaFilled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        pnBaseFundo.add(jBBackward, gridBagConstraints);
+
+        jBPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Playback-Start-64.png"))); // NOI18N
+        jBPlay.setBorder(null);
+        jBPlay.setContentAreaFilled(false);
+        jBPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPlayActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        pnBaseFundo.add(jBPlay, gridBagConstraints);
+
+        jBPause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Playback-Pause-64.png"))); // NOI18N
+        jBPause.setBorder(null);
+        jBPause.setContentAreaFilled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        pnBaseFundo.add(jBPause, gridBagConstraints);
+
+        jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Gnome-Media-Seek-forward-64.png"))); // NOI18N
+        jBForward.setBorder(null);
+        jBForward.setContentAreaFilled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        pnBaseFundo.add(jBForward, gridBagConstraints);
+
+        jLTitleMusica.setText("Title Musica");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        pnBaseFundo.add(jLTitleMusica, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -237,7 +294,7 @@ public class Principal extends javax.swing.JFrame {
     
         setLogged(null);
         
-        pnBaseLogin.remove(this);  
+        pnBaseLogin.remove(pnPesquisa);  
         pnBaseColuna.removeAll();
         pnBaseTabela.removeAll();
         pnBaseInfo.removeAll();
@@ -278,6 +335,7 @@ public class Principal extends javax.swing.JFrame {
                 
                 emailField.setText("");
                 passwordField.setText("");
+                
                 //desaparece o painel de login
                 lbFixoEmail.setVisible(false);
                 lbFixoPassword.setVisible(false);
@@ -295,7 +353,8 @@ public class Principal extends javax.swing.JFrame {
                 
                 pnColuna = new PnColuna(this);
                 pnBaseColuna.add(pnColuna);
-                pnBaseLogin.add(new PnPesquisa(this));
+                pnPesquisa = new PnPesquisa(this);
+                pnBaseLogin.add(pnPesquisa);
                 
                 //carregar a lista de musica
                 app.musicsList.clear();
@@ -322,6 +381,10 @@ public class Principal extends javax.swing.JFrame {
         app.guardaFoMusics();
         app.guardaFoUsers();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jBPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPlayActionPerformed
+        
+    }//GEN-LAST:event_jBPlayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -409,6 +472,10 @@ public class Principal extends javax.swing.JFrame {
     public JPanel getPnBaseTabela() {
         return pnBaseTabela;
     }
+
+    public void setPnPesquisa(PnPesquisa pnPesquisa) {
+        this.pnPesquisa = pnPesquisa;
+    }
     
     
 
@@ -416,6 +483,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botaoLogin;
     private javax.swing.JButton botaoRegistar;
     private javax.swing.JTextField emailField;
+    private javax.swing.JButton jBBackward;
+    private javax.swing.JButton jBForward;
+    private javax.swing.JButton jBPause;
+    private javax.swing.JButton jBPlay;
+    private javax.swing.JButton jBStop;
+    private javax.swing.JLabel jLTitleMusica;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JLabel lbFixoEmail;
@@ -438,12 +511,7 @@ public class Principal extends javax.swing.JFrame {
         return pnColuna;
     }
 
-    /**
-     * @return the pnLeitor
-     */
-    public PnLeitor getPnLeitor() {
-        return pnLeitor;
-    }
+   
 
     /**
      * @return the pnListaMusicas

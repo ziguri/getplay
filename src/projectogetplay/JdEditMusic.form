@@ -272,7 +272,7 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLERROano">
+    <Component class="javax.swing.JLabel" name="jLERROYear">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -1593,11 +1593,11 @@
         <CodeMethod name="add" class="java.awt.Container" parameterTypes="java.awt.Component, java.lang.Object"/>
       </StatementProvider>
       <Parameters>
-        <CodeExpression id="94_jLERROano">
-          <CodeVariable name="jLERROano" type="8194" declaredType="javax.swing.JLabel"/>
+        <CodeExpression id="94_jLERROYear">
+          <CodeVariable name="jLERROYear" type="8194" declaredType="javax.swing.JLabel"/>
           <ExpressionOrigin>
             <ExpressionProvider type="ComponentRef">
-              <ComponentRef name="jLERROano"/>
+              <ComponentRef name="jLERROYear"/>
             </ExpressionProvider>
           </ExpressionOrigin>
         </CodeExpression>
