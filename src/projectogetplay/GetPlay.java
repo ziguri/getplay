@@ -78,7 +78,7 @@ public class GetPlay implements Serializable {
     public int mCode(){
     
         int code;
-        if(musicsList.size()<=1){
+        if(musicsList.size()<1){
         
             code=1;
         }else{
