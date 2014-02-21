@@ -21,7 +21,60 @@ public class User implements Serializable {
 
     public User() {
     }
+    
+    /**
+     * Verify if exist another playlist with the same name.
+     * @param name
+     * @return 
+     */
+    public boolean existPlaylist(String name){
+    
+        boolean exist=false;
+        
+        for(int i=0; i<playlists.size() && !exist; i++){
+        
+            if(playlists.get(i).getName().equalsIgnoreCase(name)){
+            
+                exist=true;
+            }
+        }
+        
+        return exist;
+    }
+    
+    public Playlist getPlaylistByName(String name){
+    
+        Playlist p=null;
+        
+        for(int i=0; i<playlists.size(); i++){
+        
+            if(playlists.get(i).getName().equalsIgnoreCase(name)){
+            
+                p=playlists.get(i);
+            }
+        }
+        
+        return p;
+    }
 
+    /**
+     * Search playlist list by name and return his index.
+     * @param nome
+     * @return 
+     */
+    public int getIndexPlaylist (String nome){
+    
+        int index=0;
+        for(int i=0; i<playlists.size(); i++){
+        
+            if(playlists.get(i).getName().equalsIgnoreCase(nome)){
+            
+                index=i;
+            }
+        }
+        
+        return index;
+    }
     /**
      * Return user e-mail.
      *
