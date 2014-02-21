@@ -229,7 +229,6 @@ public class GetPlay implements Serializable {
     
         boolean exist=false;
         for(int i=0; i<musicsList.size() && !exist; i++){
-        
             if(musicsList.get(i).getName().equalsIgnoreCase(nome) && 
                     musicsList.get(i).getAlbum().equalsIgnoreCase(album)){
             
@@ -493,6 +492,16 @@ public class GetPlay implements Serializable {
         for (Music m : musicsList) {
             if (m.getName().equalsIgnoreCase(nome) && m.getAlbum().equalsIgnoreCase(album)) {
             		mus=m;
+            }
+        }
+        return mus;
+    }
+    
+    public Music searchMusic(int codMusic){
+        Music mus = new Music();
+        for(Music m: musicsList){
+            if(m.getMusicCode()==codMusic){
+                mus = m;
             }
         }
         return mus;
