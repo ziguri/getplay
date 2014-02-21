@@ -46,6 +46,9 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     public void atribuiDados(ArrayList<Music> musica) {
         dados.clear();
         dados = musica;
+        System.out.println(dados);
+        System.out.println("aqui");
+        
     }
 
     public void criaModeloTabela() {

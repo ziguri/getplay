@@ -33,7 +33,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jBRemoveMusic" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jBAddMusic1" min="-2" pref="161" max="-2" attributes="0"/>
+                      <Component id="jBAddMusicPLaylist" min="-2" pref="161" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabPListName" min="-2" max="-2" attributes="0"/>
@@ -53,7 +53,7 @@
                   <Component id="jBAddMusic" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBEditMusic" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jBRemoveMusic" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jBAddMusic1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jBAddMusicPLaylist" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
@@ -168,12 +168,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRemoveMusicActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jBAddMusic1">
+    <Component class="javax.swing.JButton" name="jBAddMusicPLaylist">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/Basic-Plus-icon.png"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="add music im my PlayList"/>
+        <Property name="text" type="java.lang.String" value="add music in my PlayList"/>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
             <EtchetBorder/>
@@ -194,7 +194,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAddMusic1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAddMusicPLaylistActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
