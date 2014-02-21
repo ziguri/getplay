@@ -21,6 +21,9 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
         
         initComponents();
         this.pagPrincipal=pagPrincipal;
+        txtNome.setText(pagPrincipal.getLogged().getName());
+        txtEmail.setText(pagPrincipal.getLogged().getEmail());
+        
     }
     
     /**
@@ -112,6 +115,8 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
         btnRegistar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        lblOldPass = new javax.swing.JLabel();
+        txtOldPass = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -124,11 +129,12 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
         lblEmail.setText("Email\n");
 
         lblPass1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        lblPass1.setText("Password");
+        lblPass1.setText("New Password");
+        lblPass1.setToolTipText("");
 
         lbPass2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         lbPass2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lbPass2.setText("Confirm Password");
+        lbPass2.setText("Confirm New Password");
         lbPass2.setToolTipText("");
 
         txtNome.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -164,14 +170,14 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
             }
         });
 
-        btnRegistar.setText("Registar");
+        btnRegistar.setText("Edit");
         btnRegistar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistarActionPerformed(evt);
             }
         });
 
-        btnCancelar.setText("Cancelar");
+        btnCancelar.setText("Cancel");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -180,6 +186,11 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/logo_100.png"))); // NOI18N
         jLabel1.setToolTipText("");
+
+        lblOldPass.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        lblOldPass.setText("Old Password");
+
+        txtOldPass.setToolTipText("");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,49 +204,50 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pwPass2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(lblNome)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(lblEmail)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(45, 45, 45)
                         .addComponent(lblPass1)
                         .addGap(6, 6, 6)
                         .addComponent(pwPass1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnRegistar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(90, Short.MAX_VALUE))
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(46, 46, 46)
+                                .addComponent(lblOldPass))
+                            .addComponent(lblNome, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblEmail, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtNome, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                            .addComponent(txtOldPass))))
+                .addContainerGap(26, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(108, 108, 108))
+                .addGap(99, 99, 99))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblNome))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(lblEmail))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblEmail)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblOldPass)
+                    .addComponent(txtOldPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -245,7 +257,7 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbPass2)
                     .addComponent(pwPass2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnRegistar))
@@ -269,28 +281,62 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
 
         String nome = txtNome.getText();
         String email = txtEmail.getText();
+        char [] oldPass = txtOldPass.getPassword();
         char[] pass1 = pwPass1.getPassword();
         char[] pass2 = pwPass2.getPassword();
+        CodificarMD5 md5= new CodificarMD5();
         
+        String oldPassEncr = CodificarMD5.cryptWithMD5(String.valueOf(oldPass));
         
-        if(nome.isEmpty() || email.isEmpty() || pass1==null ||pass2==null){
+        if(txtNome.getText().isEmpty() || txtEmail.getText().isEmpty() || oldPass==null){
         
-            JOptionPane.showMessageDialog(this, "All the fields are mandatory", "Error!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "The Fields name, email and old pass are mandatory!", "Error!", JOptionPane.ERROR_MESSAGE);
         }
+        
+        else if(!(pagPrincipal.getApp().passwordCorrect(pagPrincipal.getLogged().getEmail(), oldPassEncr))){
+        
+            System.out.println("Pass guardada: " + pagPrincipal.getLogged().getPassword());
+            System.out.println("Pass Colocada: " + oldPassEncr);
+            
+            JOptionPane.showMessageDialog(this, "Old password is wrong!", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        
         else{
         
-            if(nameValidation(nome) && emailValidation(email) && passwordValidation(pass1, pass2)){
-                
-                CodificarMD5 md5= new CodificarMD5();
-                String passEncrypt = CodificarMD5.cryptWithMD5(String.valueOf(pass2));
-                
-                pagPrincipal.getApp().addUser(new User(nome, email, passEncrypt));
-                pagPrincipal.getApp().guardaFoUsers();
-                this.dispose();
+            if(pass1!=null && pass2!=null){
+                if(nameValidation(nome) && emailValidation(email) && passwordValidation(pass1, pass2)){
+
+
+                    String passEncrypt = CodificarMD5.cryptWithMD5(String.valueOf(pass2));
+                    
+                    pagPrincipal.getLogged().setName(nome);
+                    pagPrincipal.getLogged().setEmail(email);
+                    pagPrincipal.getLogged().setPassword(passEncrypt);
+                    
+                    JOptionPane.showMessageDialog(null, "Your data were successfully edited.", "", JOptionPane.INFORMATION_MESSAGE);
+
+                    this.dispose();
+                }
+                else{
+
+                    JOptionPane.showMessageDialog(this, "Something is wrong, please check the red fields.", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
             }
             else{
             
-                JOptionPane.showMessageDialog(this, "Something is wrong, please check the red fields.", "Error!", JOptionPane.ERROR_MESSAGE);
+                 if(nameValidation(nome) && emailValidation(email)){
+
+                    pagPrincipal.getLogged().setName(nome);
+                    pagPrincipal.getLogged().setEmail(email);
+                    
+                    JOptionPane.showMessageDialog(null, "Your data were successfully edited.", "", JOptionPane.INFORMATION_MESSAGE);
+
+                    this.dispose();
+                }
+                else{
+
+                    JOptionPane.showMessageDialog(this, "Something is wrong, please check the red fields.", "Error!", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }//GEN-LAST:event_btnRegistarActionPerformed
@@ -359,10 +405,12 @@ public class JdlEditaUtilizador extends javax.swing.JDialog {
     private javax.swing.JLabel lbPass2;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblOldPass;
     private javax.swing.JLabel lblPass1;
     private javax.swing.JPasswordField pwPass1;
     private javax.swing.JPasswordField pwPass2;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JPasswordField txtOldPass;
     // End of variables declaration//GEN-END:variables
 }

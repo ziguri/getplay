@@ -55,6 +55,11 @@ public class PnPesquisa extends javax.swing.JPanel {
 
         menuEditar.setText("Edit Account");
         menuEditar.setToolTipText("");
+        menuEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEditarActionPerformed(evt);
+            }
+        });
         popupMenu.add(menuEditar);
         popupMenu.add(jSeparator1);
 
@@ -170,6 +175,10 @@ public class PnPesquisa extends javax.swing.JPanel {
         pagPrincipal.getApp().removeUser(pagPrincipal.getLogged());
         pagPrincipal.logOut();
     }//GEN-LAST:event_menuEliminarActionPerformed
+
+    private void menuEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEditarActionPerformed
+        new JdlEditaUtilizador(pagPrincipal, true).setVisible(true);
+    }//GEN-LAST:event_menuEditarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
