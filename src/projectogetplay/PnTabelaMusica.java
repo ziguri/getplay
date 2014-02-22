@@ -49,7 +49,12 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados = musica;
         System.out.println(dados);
         System.out.println("aqui");
-        
+
+    }
+
+    public void novosDados(ArrayList<Music> musica) {
+        atribuiDados(musica);
+        refresh();
     }
 
     public void criaModeloTabela() {
@@ -62,9 +67,9 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         String fav = "*";
         for (Music music : dados) {
             if (music.isFavorite()) {
-                fav = "";
-            } else {
                 fav = "*";
+            } else {
+                fav = "";
             }
 
             modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), fav, music.getYear(), music.getCreatorEmail(), music.getMusicCode()});
@@ -99,7 +104,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         return num;
     }
 
-    public void adicionaLinha(String name, String album, String artist, int year, String user) {
+    public void adicionaLinha(String name, String artist, String album, int year, String user) {
         int index = pagPrincipal.getApp().musicsList.size();
         int controlo = pagPrincipal.getApp().musicsList.get(index - 1).getMusicCode();
 
@@ -163,11 +168,12 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         return musicSelecionada;
 
     }
-/**
- * 
- * @param n linha a que se prentende buscar o valor
- * @return codigo de musica
- */
+
+    /**
+     *
+     * @param n linha a que se prentende buscar o valor
+     * @return codigo de musica
+     */
     public int getValoresLinha(int n) {
         int num;
         num = (Integer) tblMusic.getValueAt(n, 6);

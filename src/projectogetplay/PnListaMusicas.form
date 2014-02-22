@@ -169,7 +169,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBRemoveMusicActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jBAddMusic1">
+    <Component class="javax.swing.JButton" name="jBAddMusicPLaylist">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/icons/Basic-Plus-icon.png"/>
@@ -195,7 +195,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAddMusic1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBAddMusicPLaylistActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
