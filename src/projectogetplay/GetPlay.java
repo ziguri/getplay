@@ -569,6 +569,18 @@ public class GetPlay implements Serializable {
         }
         return mus;
     }
+    
+    public File[] stringToMp3(ArrayList<Music> mlist){
+        File[] f = new File[mlist.size()];
+        for(int i =0;i<mlist.size();i++){
+            String s = "c:\\APPGetPlay\\MyPlaylist\\";
+            f[i]=new File(s+mlist.get(i).getMusicPath());
+            System.out.println(f[i].getAbsolutePath());
+        }
+        return f;
+    }
+
+   
     /**
      * Start playing a file in the collection. Use stopPlaying() to stop it
      * playing.
@@ -576,33 +588,37 @@ public class GetPlay implements Serializable {
      * 
      * @param musicCode
      */
-    public void startPlaying(int musicCode) {
-        Music mus = new Music();
-        for(int i=0; i<musicsList.size();i++){
-            if( musicsList.get(i).getMusicCode() == musicCode){
-                mus = musicsList.get(i);
-            }
-        }
-        String s = "c:\\APPGetPlay\\MyPlaylist\\";
-        player.startPlaying(s+mus.getMusicPath());
-    }
-
+//    public void startPlaying(int musicCode) {
+//        Music mus = new Music();
+//        for(int i=0; i<musicsList.size();i++){
+//            if( musicsList.get(i).getMusicCode() == musicCode){
+//                mus = musicsList.get(i);
+//            }
+//        }
+//        String s = "c:\\APPGetPlay\\MyPlaylist\\";
+//        player.startPlaying(s+mus.getMusicPath());
+//    }
+    
+    
+    
+    
     /**
      * Stop the player.
      */
-    public void stopPlaying() {
-        player.stop();
-    }
-     /**
-     * Play the first track in the collection, if there is one.
-     */
-    public void playFirst()
-    {
-        if(musicsList.size() > 0) {
-            String s = "c:\\APPGetPlay\\MyPlaylist\\";
-            player.startPlaying(s+musicsList.get(0).getMusicPath());
-        }
-    }
+//    public void stopPlaying() {
+//        player.stop();
+//    }
+//     /**
+//     * Play the first track in the collection, if there is one.
+//     */
+//    public void playFirst(){
+//        if(musicsList.size() > 0) {
+//            String s = "c:\\APPGetPlay\\MyPlaylist\\";
+//            player.startPlaying(s+musicsList.get(0).getMusicPath());
+//        }
+//    }
+    
+    
     /**
      * Play a track in the collection.
      * @param musicCode The index of the track to be played.

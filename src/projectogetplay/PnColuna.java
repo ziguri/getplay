@@ -316,9 +316,9 @@ public class PnColuna extends javax.swing.JPanel {
                 
                 
                 
-            myPlaylistsList.get    
-            Object o = theList.getModel().getElementAt(index);
-            System.out.println("Double-clicked on: " + o.toString());
+            //myPlaylistsList.get    
+            //Object o = theList.getModel().getElementAt(index);
+            //System.out.println("Double-clicked on: " + o.toString());
           }
         }
     }//GEN-LAST:event_myPlaylistsListMouseClicked

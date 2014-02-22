@@ -361,7 +361,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
 
         if (p.getApp().existMusic(name, album)) {
 
-            JOptionPane.showMessageDialog(this, "This music already exist!",
+            JOptionPane.showMessageDialog(this, "This music exist already!",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
         } else {
 
@@ -378,7 +378,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
                
 
                 p.getApp().copy(source, target);//copia ficheiro
-                JOptionPane.showMessageDialog(this, "Musica adicionada");
+                JOptionPane.showMessageDialog(this, "Add Music");
             } else {
                 if (!p.getApp().validateName(name)) {
                     jTMName.setBorder(BorderFactory.createLineBorder(Color.RED));

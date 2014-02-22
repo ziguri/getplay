@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,7 +34,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados = new ArrayList<Music>();
         this.pagPrincipal = p;
         atribuiDados(p.getApp().getMusicsList());
-        cliqueMusica = -1;
+        cliqueMusica=-1;
         initComponents();
     }
 
@@ -46,6 +47,14 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     public void atribuiDados(ArrayList<Music> musica) {
         dados.clear();
         dados = musica;
+        System.out.println(dados);
+        System.out.println("aqui");
+
+    }
+
+    public void novosDados(ArrayList<Music> musica) {
+        atribuiDados(musica);
+        refresh();
     }
 
     public void criaModeloTabela() {
@@ -81,7 +90,8 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     public int linhaSelecionada() {
         return tblMusic.getSelectedRow();
     }
-
+    
+    
     private int procuraLinha() {
         int num = 0;
         int aux = 0;
@@ -95,7 +105,15 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         return num;
     }
 
-    public void adicionaLinha(String name, String album, String artist, int year, String user) {
+    public DefaultTableModel getModelo() {
+        return modelo;
+    }
+
+    public JTable getTblMusic() {
+        return tblMusic;
+    }
+
+    public void adicionaLinha(String name, String artist, String album, int year, String user) {
         int index = pagPrincipal.getApp().musicsList.size();
         int controlo = pagPrincipal.getApp().musicsList.get(index - 1).getMusicCode();
 
@@ -159,11 +177,12 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         return musicSelecionada;
 
     }
-/**
- * 
- * @param n linha a que se prentende buscar o valor
- * @return codigo de musica
- */
+
+    /**
+     *
+     * @param n linha a que se prentende buscar o valor
+     * @return codigo de musica
+     */
     public int getValoresLinha(int n) {
         int num;
         num = (Integer) tblMusic.getValueAt(n, 6);
@@ -180,6 +199,10 @@ public class PnTabelaMusica extends javax.swing.JPanel {
      */
     public int getCliqueMusica() {
         return cliqueMusica;
+    }
+
+    public ArrayList<Music> getDados() {
+        return dados;
     }
 
 }
