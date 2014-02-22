@@ -229,11 +229,14 @@ public class PnListaMusicas extends javax.swing.JPanel {
 
     private void jBAddMusicPLaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddMusicPLaylistActionPerformed
 
-        
-        this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
-        int cod = p.getPnTabelaMusica().getCliqueMusica();
-        Playlist playlist = p.getPnColuna().getPlaylistProp().
-                        get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
+        try{
+            
+            this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
+            int cod = p.getPnTabelaMusica().getCliqueMusica();        
+            Playlist playlist = p.getPnColuna().getPlaylistProp().
+                            get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
+            
+       
         
         if(playlist.existeMusicPlaylist(cod)){
         
@@ -267,7 +270,8 @@ public class PnListaMusicas extends javax.swing.JPanel {
             }
 
         }
-        
+         }catch(Exception e){JOptionPane.showMessageDialog(this, "Something is wrong",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);}
     }//GEN-LAST:event_jBAddMusicPLaylistActionPerformed
 
     private void jBEditMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditMusicActionPerformed
