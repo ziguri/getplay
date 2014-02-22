@@ -25,7 +25,7 @@ public class MusicPlayer extends javax.swing.JPanel {
         //this.listMusic = new File("");        
     }
     
-    public void playlistToPlay(){
+    public void playlistToPlay(ArrayList<Music> m){
         
     }
     
