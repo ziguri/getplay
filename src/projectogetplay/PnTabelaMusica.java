@@ -91,7 +91,21 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         return tblMusic.getRowCount();
     }
 
+    
+    public int getSelectedRow() {
+        
+        int selection = -100;
+        if (tblMusic.getRowSelectionAllowed()) {
+            selection = tblMusic.getSelectedRow();
+            System.out.println("Aqui" + selection);
+            selection = tblMusic.convertRowIndexToModel(selection);
+        }
+
+        return selection;
+    }
+    
     public int linhaSelecionada() {
+        System.out.println("linha seleccionada tabela: "+tblMusic.getSelectedRow());
         return tblMusic.getSelectedRow();
     }
 

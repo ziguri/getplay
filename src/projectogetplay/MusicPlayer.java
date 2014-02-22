@@ -17,14 +17,17 @@ import java.util.ArrayList;
 public class MusicPlayer extends javax.swing.JPanel {
     
     private MP3Player player;
-    private ArrayList<Music> musicFiles;
+    private File[] listMusic; 
     private Thread thread;
     
     public MusicPlayer() {
         this.player=null;
-        this.musicFiles = new ArrayList<>();        
+        //this.listMusic = new File("");        
     }
     
+    public void playlistToPlay(){
+        
+    }
     
         
          

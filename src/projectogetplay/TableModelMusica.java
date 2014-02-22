@@ -35,7 +35,7 @@ public class TableModelMusica extends AbstractTableModel {
     public TableModelMusica(ArrayList<Music> d) {
         dados = d;
     }
-
+    
     @Override
             public String getColumnName(int column) {
                 //qual o nome da coluna
@@ -64,7 +64,7 @@ public class TableModelMusica extends AbstractTableModel {
     public int getRowCount() {
         return dados.size();
     }
-   
+    
     /**
      * Returns the number of columns of the table
      *

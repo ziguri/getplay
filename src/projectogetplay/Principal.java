@@ -6,6 +6,9 @@
 package projectogetplay;
 
 import jaco.mp3.player.MP3Player;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -13,6 +16,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -33,6 +37,7 @@ public class Principal extends javax.swing.JFrame {
     private PnTabelaPlayList pnTabelaPlayList;
     protected JdEditMusic jdEditMusic;
     private MP3Player player;
+    private int rowIndex;
     
     
     
@@ -382,22 +387,21 @@ public class Principal extends javax.swing.JFrame {
                 //pnBaseInfo.removeAll();
                 pnListaMusicas=new PnListaMusicas(this);
                 pnBaseInfo.add(pnListaMusicas);   
-                
-                
+
                 pnColuna = new PnColuna(this);
                 pnBaseColuna.add(pnColuna);
                 pnPesquisa = new PnPesquisa(this);
                 pnBaseLogin.add(pnPesquisa);
-                
+
                 //carregar a lista de musica
                 //app.musicsList.clear();
                 app.openFOMusic();
-                
+
                 //painel tabela               
                 pnTabelaMusica = new PnTabelaMusica(this);
                 pnBaseTabela.add(pnTabelaMusica);
-                
-            //Só falta o código para preencher a tabela
+
+                //Só falta o código para preencher a tabela
             }
 
         }
@@ -407,7 +411,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void botaoRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRegistarActionPerformed
         new JdlRegisto(this, true).setVisible(true);
-        
+
     }//GEN-LAST:event_botaoRegistarActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -422,36 +426,40 @@ public class Principal extends javax.swing.JFrame {
         togglePlay.setContentAreaFilled(false);
     }//GEN-LAST:event_jBStopActionPerformed
 
-        
+
     private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
         player.skipForward();
     }//GEN-LAST:event_jBForwardActionPerformed
 
     private void togglePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglePlayActionPerformed
-        //Music m = getApp().searchMusic(getPnTabelaMusica().getCliqueMusica());//devolve IDcódigo da musica
-        
-        pnTabelaMusica = new PnTabelaMusica(this);
+        final JTable tabela = pnTabelaMusica.getTblMusic();
         ArrayList<Music> mlistTbl = pnTabelaMusica.getDados();
-        //DefaultTableModel model = (DefaultTableModel) pnTabelaMusica.getModelo();
         File[] f = getApp().stringToMp3(mlistTbl);
-        System.out.println(f[1].getPath());
-        int beginAt = pnTabelaMusica.linhaSelecionada();//devolve valor -1, indicando que não há linha seleccionada
-        System.out.println("Begin: " + beginAt);
-        System.out.println("Tamanho tabela: " + pnTabelaMusica.tamanhoTabela());
         for (int i = 0; i < pnTabelaMusica.tamanhoTabela(); i++) {
-            player.addToPlayList(f[i]);
-        }
-                
-        if (togglePlay.isSelected()) {
-            togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png")));
-            togglePlay.setBorder(null);
-            togglePlay.setContentAreaFilled(true);
-            player.play();
-        }else{
-            togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));  
-            togglePlay.setBorder(null);
-            togglePlay.setContentAreaFilled(false);
-            player.pause();
+                    player.addToPlayList(f[i]);
+        }//adiciona as musicas da playlist da tabela ao MP3player
+        rowIndex = tabela.getSelectedRow();
+        System.out.println("rowIndex " + rowIndex);//devolve valor -1, indicando que não há linha seleccionada
+        
+        for(int i=0; i < player.getPlayList().size();i++){
+            if (rowIndex != -1) {//linhas seleccionadas
+               if (togglePlay.isSelected()) {
+                    togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png")));
+                    togglePlay.setBorder(null);
+                    togglePlay.setContentAreaFilled(true);
+                    player.play();
+                } else {
+                    togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
+                    togglePlay.setBorder(null);
+                    togglePlay.setContentAreaFilled(false);
+                    player.pause();
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "select a music to play ");
+            }
+
+            System.out.println("Tamanho tabela: " + pnTabelaMusica.tamanhoTabela());
         }
     }//GEN-LAST:event_togglePlayActionPerformed
 
