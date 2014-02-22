@@ -97,7 +97,6 @@ public class Principal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Getplay");
         setMinimumSize(new java.awt.Dimension(1080, 701));
-        setPreferredSize(new java.awt.Dimension(1080, 701));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -160,34 +159,33 @@ public class Principal extends javax.swing.JFrame {
             pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnBaseFundoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnBaseFundoLayout.createSequentialGroup()
-                        .addComponent(jBStop)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBBackward)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(togglePlay)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBForward))
-                    .addComponent(jLTitleMusica))
-                .addGap(160, 160, 160))
+                .addComponent(jBStop)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBBackward)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(togglePlay)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBForward)
+                .addGap(18, 18, 18)
+                .addComponent(jLTitleMusica)
+                .addContainerGap())
         );
         pnBaseFundoLayout.setVerticalGroup(
             pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnBaseFundoLayout.createSequentialGroup()
-                .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnBaseFundoLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBStop)
-                            .addComponent(jBBackward)
-                            .addComponent(jBForward)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseFundoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(togglePlay)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLTitleMusica)
-                .addContainerGap())
+                .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLTitleMusica)
+                    .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pnBaseFundoLayout.createSequentialGroup()
+                            .addGap(19, 19, 19)
+                            .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jBStop)
+                                .addComponent(jBBackward)
+                                .addComponent(jBForward)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseFundoLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(togglePlay))))
+                .addGap(38, 38, 38))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
