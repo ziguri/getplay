@@ -570,11 +570,11 @@ public class GetPlay implements Serializable {
         return mus;
     }
     
-    public File[] stringToMp3(ArrayList<Music> mlist){
-        File[] f = new File[mlist.size()];
-        for(int i =0;i<mlist.size();i++){
+    public File[] stringToMp3(ArrayList<Music> mlist, int linha){
+        File[] f = new File[mlist.size()-linha];
+        for(int i =0;i<mlist.size()-linha;i++){
             String s = "c:\\APPGetPlay\\MyPlaylist\\";
-            f[i]=(new File(s+mlist.get(i).getMusicPath()));
+            f[i]=(new File(s+mlist.get(i+linha).getMusicPath()));
             System.out.println(f[i].getAbsolutePath());
         }
         return f;

@@ -223,12 +223,22 @@ public class PnPesquisa extends javax.swing.JPanel {
 
             pagPrincipal.getPnBaseTabela().removeAll();
 
-            pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
-            pagPrincipal.getPnTabelaMusica().novosDados(listPesquisa);
-            pagPrincipal.getPnBaseTabela().revalidate();
-            pagPrincipal.getPnBaseTabela().repaint();
-            //pagPrincipal.getPnTabelaMusica().refresh();
+            //Preenche a tabela com musicas da playlist seleccionada
+            PnTabelaMusica pntm = new PnTabelaMusica(pagPrincipal, listPesquisa);
 
+            //pntm.atribuiDados(msc);
+            pntm.refresh();
+            pagPrincipal.getPnBaseTabela().add(pntm);
+            pagPrincipal.revalidate();
+            pagPrincipal.repaint();
+
+//            pagPrincipal.getPnBaseTabela().removeAll();
+//
+//            pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
+//            pagPrincipal.getPnTabelaMusica().novosDados(listPesquisa);
+//            pagPrincipal.getPnBaseTabela().revalidate();
+//            pagPrincipal.getPnBaseTabela().repaint();
+            //pagPrincipal.getPnTabelaMusica().refresh();
         }
 
 

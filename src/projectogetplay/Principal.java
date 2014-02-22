@@ -30,7 +30,7 @@ public class Principal extends javax.swing.JFrame {
     protected User logged;
     private PnColuna pnColuna;
     private PnListaMusicas pnListaMusicas;
-    private PnListaPLOutros pnListaPLOutros;        
+    private PnListaPLOutros pnListaPLOutros;
     private PnMyPlayList pnMyPlaylist;
     private PnPesquisa pnPesquisa;
     private PnTabelaMusica pnTabelaMusica;
@@ -39,12 +39,10 @@ public class Principal extends javax.swing.JFrame {
     private final MP3Player player;
     private int rowIndex;
     private ArrayList<Music> mlistTbl;
-    
-    
-    
+
     public Principal() {
         initComponents();
-        
+
         //inicializa os paineis
         //this.pnListaMusicas=new PnListaMusicas(this);
         //this.pnListaPLOutros= new PnListaPLOutros(this);
@@ -55,7 +53,6 @@ public class Principal extends javax.swing.JFrame {
         //this.jdEditMusic = new JdEditMusic(this, true);
         //this.pnColuna = new PnColuna(this);
         //this.pnLeitor = new PnLeitor(this);
-        
         this.app = new GetPlay();
         this.logged = null;
         app.openFOUsers();
@@ -65,9 +62,6 @@ public class Principal extends javax.swing.JFrame {
         mlistTbl = new ArrayList<>();
     }
 
-    
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -330,17 +324,17 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    public void logOut(){
-    
+    public void logOut() {
+
         setLogged(null);
-        
-        pnBaseLogin.remove(pnPesquisa);  
+
+        pnBaseLogin.remove(pnPesquisa);
         pnBaseColuna.removeAll();
         pnBaseTabela.removeAll();
         pnBaseInfo.removeAll();
-        
+
         app.guardaFoMusics();
-   
+
         revalidate();
         repaint();
 
@@ -360,22 +354,18 @@ public class Principal extends javax.swing.JFrame {
         } else if (!(app.existUser(emailField.getText()))) {
 
             JOptionPane.showMessageDialog(this, "User not found", "Error!", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        else if(!(app.passwordCorrect(emailField.getText(), String.valueOf(passwordField.getPassword())))){
-        
+        } else if (!(app.passwordCorrect(emailField.getText(), String.valueOf(passwordField.getPassword())))) {
+
             JOptionPane.showMessageDialog(this, "Password is incorrect.", "Error!", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        else {
+        } else {
 
             logged = app.getUserWithEmail(emailField.getText());
-            
+
             if (logged != null) {
-                
+
                 emailField.setText("");
                 passwordField.setText("");
-                
+
                 //desaparece o painel de login
                 lbFixoEmail.setVisible(false);
                 lbFixoPassword.setVisible(false);
@@ -383,13 +373,13 @@ public class Principal extends javax.swing.JFrame {
                 botaoRegistar.setVisible(false);
                 emailField.setVisible(false);
                 passwordField.setVisible(false);
-                
+
                 app.openFOMusic();
                 //ativar paineis
                 //pnBaseInfo.removeAll();
-                pnListaMusicas=new PnListaMusicas(this);
+                pnListaMusicas = new PnListaMusicas(this);
                 pnListaMusicas.getjLabPListName1().setText("Number of musics: " + app.getMusicsList().size());
-                pnBaseInfo.add(pnListaMusicas);   
+                pnBaseInfo.add(pnListaMusicas);
 
                 pnColuna = new PnColuna(this);
                 pnBaseColuna.add(pnColuna);
@@ -398,8 +388,6 @@ public class Principal extends javax.swing.JFrame {
 
                 //carregar a lista de musica
                 //app.musicsList.clear();
-                
-
                 //painel tabela               
                 pnTabelaMusica = new PnTabelaMusica(this, app.getMusicsList());
                 pnBaseTabela.add(pnTabelaMusica);
@@ -428,6 +416,38 @@ public class Principal extends javax.swing.JFrame {
         togglePlay.setContentAreaFilled(false);
     }//GEN-LAST:event_jBStopActionPerformed
 
+    public void paraMusica() {
+        player.stop();
+        togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
+        togglePlay.setBorder(null);
+        togglePlay.setContentAreaFilled(false);
+    }
+
+    public void iniciaMusica() {
+        final JTable tabela = pnTabelaMusica.getTblMusic();
+        mlistTbl.clear();
+        mlistTbl = pnTabelaMusica.getDados();
+        rowIndex = tabela.getSelectedRow();
+        File[] f = getApp().stringToMp3(mlistTbl,rowIndex );
+        rowIndex = tabela.getSelectedRow();
+
+        for (int i =0; i < mlistTbl.size()-rowIndex; i++) {
+            player.addToPlayList(f[i]);
+        }//adiciona as musicas da playlist da tabela ao MP3player
+        if (togglePlay.isSelected()) {
+            togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png")));
+            togglePlay.setBorder(null);
+            togglePlay.setContentAreaFilled(true);
+            player.play();
+        } else {
+            togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
+            togglePlay.setBorder(null);
+            togglePlay.setContentAreaFilled(false);
+            player.pause();
+        }
+
+    }
+
 
     private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
         player.skipForward();
@@ -437,12 +457,13 @@ public class Principal extends javax.swing.JFrame {
         final JTable tabela = pnTabelaMusica.getTblMusic();
         mlistTbl.clear();
         mlistTbl = pnTabelaMusica.getDados();
-        File[] f = getApp().stringToMp3(mlistTbl);
         rowIndex = tabela.getSelectedRow();
+        File[] f = getApp().stringToMp3(mlistTbl,rowIndex);
+   
         System.out.println("rowIndex " + rowIndex);
-      
+
         if (rowIndex != -1) {//linhas seleccionadas
-            for (int i = rowIndex; i < mlistTbl.size(); i++) {
+            for (int i = 0; i < mlistTbl.size()-rowIndex; i++) {
                 player.addToPlayList(f[i]);
             }//adiciona as musicas da playlist da tabela ao MP3player
             if (togglePlay.isSelected()) {
@@ -462,10 +483,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_togglePlayActionPerformed
 
     private void jBBackwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackwardActionPerformed
-         player.skipBackward();
+        player.skipBackward();
     }//GEN-LAST:event_jBBackwardActionPerformed
-
-   
 
     /**
      * @param args the command line arguments
@@ -561,8 +580,7 @@ public class Principal extends javax.swing.JFrame {
     public void setPnBaseTabela(JPanel pnBaseTabela) {
         this.pnBaseTabela = pnBaseTabela;
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogin;
@@ -595,8 +613,6 @@ public class Principal extends javax.swing.JFrame {
     public PnColuna getPnColuna() {
         return pnColuna;
     }
-
-   
 
     /**
      * @return the pnListaMusicas

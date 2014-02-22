@@ -65,7 +65,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     }
 
     public void criaModeloTabela() {
-        String[] colunas = new String[]{"Name", "Author", "Album", "Favorite", "Year", "User", ""};
+        String[] colunas = new String[]{"Title", "Artist", "Album", "Favorite", "Year", "User", ""};
         Object[][] dados = new Object[][]{};
         modelo = new DefaultTableModel(dados, colunas);
     }
@@ -183,6 +183,14 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         int num = (Integer) tblMusic.getValueAt(tblMusic.getSelectedRow(), 6);
         JOptionPane.showMessageDialog(null, "Codigo " + num);
         cliqueMusica = num;
+        
+//        pagPrincipal.paraMusica();
+//        pagPrincipal.iniciaMusica();
+//        pagPrincipal.revalidate();
+//        pagPrincipal.repaint();
+        
+        
+        
     }//GEN-LAST:event_tblMusicMouseClicked
 
     public Music getMusicSelecionada() {
