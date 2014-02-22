@@ -6,6 +6,7 @@
 
 package projectogetplay;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +17,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
 
     protected Principal p;
     private Music m;
+    private Playlist play;
     /**
      * Creates new form PnMusica
      */
@@ -26,6 +28,13 @@ public class PnListaMusicas extends javax.swing.JPanel {
      */
     public PnListaMusicas(Principal p) {
         
+        this.p=p;
+        initComponents();
+        
+    }
+    
+    public PnListaMusicas(Principal p, Playlist play) {
+        this.play=play;
         this.p=p;
         initComponents();
         
@@ -83,6 +92,11 @@ public class PnListaMusicas extends javax.swing.JPanel {
         jBEditMusic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBEditMusicMouseClicked(evt);
+            }
+        });
+        jBEditMusic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEditMusicActionPerformed(evt);
             }
         });
 
@@ -214,15 +228,69 @@ public class PnListaMusicas extends javax.swing.JPanel {
     }//GEN-LAST:event_jBRemoveMusicActionPerformed
 
     private void jBAddMusicPLaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddMusicPLaylistActionPerformed
-     
+
+        
         this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
+        int cod = p.getPnTabelaMusica().getCliqueMusica();
+        Playlist playlist = p.getPnColuna().getPlaylistProp().
+                        get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
+        
+        if(playlist.existeMusicPlaylist(cod)){
+        
+            JOptionPane.showMessageDialog(this, "The music was already added to this playlist before",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        else{
         
         
-        
-        
+            if(p.getPnTabelaMusica().getTblMusic().getSelectedRow()==-1 && p.getPnColuna().getMyPlaylistsList().getSelectedIndex()!=-1){
+
+                JOptionPane.showMessageDialog(this, "Please select one music from the table",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            else if(p.getPnTabelaMusica().getTblMusic().getSelectedRow()!=-1 && p.getPnColuna().getMyPlaylistsList().getSelectedIndex()==-1){
+
+                JOptionPane.showMessageDialog(this, "Please select one playlist from \"My Playlist\" list",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+            else if(p.getPnTabelaMusica().getTblMusic().getSelectedRow()==-1 && p.getPnColuna().getMyPlaylistsList().getSelectedIndex()==-1){
+
+                JOptionPane.showMessageDialog(this, "Please select one music and one playlist",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+
+            }
+            else{
+
+                playlist.addMusicPlaylist(cod);
+                JOptionPane.showMessageDialog(this, "Music added to playlist " + playlist.getName(), "Success", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        }
         
     }//GEN-LAST:event_jBAddMusicPLaylistActionPerformed
 
+    private void jBEditMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditMusicActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBEditMusicActionPerformed
+
+    public JLabel getjLabPListName() {
+        return jLabPListName;
+    }
+
+    public void setjLabPListName(JLabel jLabPListName) {
+        this.jLabPListName = jLabPListName;
+    }
+
+    public JLabel getjLabPListName1() {
+        return jLabPListName1;
+    }
+
+    public void setjLabPListName1(JLabel jLabPListName1) {
+        this.jLabPListName1 = jLabPListName1;
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAddMusic;

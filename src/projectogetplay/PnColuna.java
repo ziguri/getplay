@@ -322,12 +322,13 @@ public class PnColuna extends javax.swing.JPanel {
                 //Preenche a tabel com musicas da playlist seleccionada
                 PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal);
                 pntm.atribuiDados(msc);
-                pagPrincipal.getPnBaseInfo().add(pntm);
+                pagPrincipal.getPnBaseTabela().add(pntm);
+                
                 
                 //Preenche cabeçalho
                 PnListaMusicas pnlist = new PnListaMusicas(pagPrincipal, p);
                 pnlist.getjLabPListName().setText(p.getName());
-                pnlist.getjLabPListNumbMusics().setText(""+p.getMusics().size());
+                pnlist.getjLabPListName1().setText(""+p.getMusics().size());
                 pagPrincipal.getPnBaseInfo().add(pnlist);
                 
                 pagPrincipal.revalidate();
