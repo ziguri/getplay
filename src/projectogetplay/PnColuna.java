@@ -90,10 +90,12 @@ public class PnColuna extends javax.swing.JPanel {
         lblFixoAddPL = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         publicPlaylists = new javax.swing.JList();
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(250, 420));
         setOpaque(false);
@@ -124,11 +126,6 @@ public class PnColuna extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        myPlaylistsList.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                myPlaylistsListMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(myPlaylistsList);
 
         jLabel1.setText("My Playlists");
@@ -155,6 +152,15 @@ public class PnColuna extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/go.png"))); // NOI18N
+        jButton1.setToolTipText("");
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -169,14 +175,17 @@ public class PnColuna extends javax.swing.JPanel {
                         .addComponent(lblFixoAddPL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 13, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(15, 15, 15)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -185,8 +194,10 @@ public class PnColuna extends javax.swing.JPanel {
                         .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(6, 6, 6))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
@@ -195,6 +206,9 @@ public class PnColuna extends javax.swing.JPanel {
 
         jLabel2.setText("Public Playlists");
         jLabel2.setToolTipText("");
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/go.png"))); // NOI18N
+        jButton2.setContentAreaFilled(false);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -206,16 +220,21 @@ public class PnColuna extends javax.swing.JPanel {
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 142, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
                 .addContainerGap())
         );
 
@@ -236,11 +255,11 @@ public class PnColuna extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -303,26 +322,28 @@ public class PnColuna extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-    private void myPlaylistsListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_myPlaylistsListMouseClicked
-        if(evt.getClickCount()==2){
-        
-            //int index = theList.locationToIndex(mouseEvent.getPoint());
-            int index = myPlaylistsList.getSelectedIndex();
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         int index = myPlaylistsList.getSelectedIndex();
             
-            if (index >= 0) {
+         //pagPrincipal.getPnTabelaMusica().atribuiDados(null);
+         
+            if (index != -1) {
                 
-                Playlist p = playlistProp.
-                        get(myPlaylistsList.getSelectedIndex());
+                Playlist p = playlistProp.get(myPlaylistsList.getSelectedIndex());
                 
                 ArrayList<Music> msc = pagPrincipal.getApp().getMusiclistFromPlaylist(p.getMusics());
                 
                 pagPrincipal.getPnBaseInfo().removeAll();
                 pagPrincipal.getPnBaseTabela().removeAll();
                 
-                //Preenche a tabel com musicas da playlist seleccionada
+                //Preenche a tabela com musicas da playlist seleccionada
+                
                 PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal);
+
                 pntm.atribuiDados(msc);
+                pntm.refresh();
                 pagPrincipal.getPnBaseTabela().add(pntm);
+                
                 
                 
                 //Preenche cabeçalho
@@ -330,26 +351,18 @@ public class PnColuna extends javax.swing.JPanel {
                 pnlist.getjLabPListName().setText(p.getName());
                 pnlist.getjLabPListName1().setText(""+p.getMusics().size());
                 pagPrincipal.getPnBaseInfo().add(pnlist);
-                
                 pagPrincipal.revalidate();
                 pagPrincipal.repaint();
                 
+            }
+            
+            else{
+            
+                JOptionPane.showMessageDialog(this, "Please select one playlist.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
                 
-         /*       
-       pagPrincipal.getPnBaseTabela().removeAll();
-       PnTabelaMusica pnt = new PnTabelaMusica(pagPrincipal);
-       pnt.atribuiDados(listPesquisa);
-       pagPrincipal.getPnBaseTabela().add(pnt);
-       pagPrincipal.revalidate();
-       pagPrincipal.repaint();
-*/
-                
-            //myPlaylistsList.get    
-            //Object o = theList.getModel().getElementAt(index);
-            //System.out.println("Double-clicked on: " + o.toString());
-          }
-        }
-    }//GEN-LAST:event_myPlaylistsListMouseClicked
+            }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public JList getMyPlaylistsList() {
         return myPlaylistsList;
@@ -396,6 +409,8 @@ public class PnColuna extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAllMusics;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
