@@ -205,7 +205,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
                 p.getPnBaseTabela().removeAll();
                 p.getPnBaseInfo().removeAll();
 
-                p.getPnBaseTabela().add(new PnTabelaMusica(p));
+                p.getPnBaseTabela().add(new PnTabelaMusica(p, p.getApp().getMusicsList()));
                 p.getPnBaseInfo().add(p.getPnListaMusicas());
 
                 p.revalidate();

@@ -338,10 +338,10 @@ public class PnColuna extends javax.swing.JPanel {
                 
                 //Preenche a tabela com musicas da playlist seleccionada
                 
-                PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal);
+                PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal, msc);
 
-                pntm.atribuiDados(msc);
-                pntm.refresh();
+                //pntm.atribuiDados(msc);
+                //pntm.refresh();
                 pagPrincipal.getPnBaseTabela().add(pntm);
                 
                 

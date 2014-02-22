@@ -34,10 +34,10 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     /**
      * Creates new form PnTabelaMusica
      */
-    public PnTabelaMusica(Principal p) {
-        dados = new ArrayList<Music>();
+    public PnTabelaMusica(Principal p, ArrayList<Music> play) {
+        dados = new ArrayList();
         this.pagPrincipal = p;
-        atribuiDados(p.getApp().getMusicsList());
+        atribuiDados(play);
         cliqueMusica = -1;
         initComponents();
     }
@@ -50,7 +50,8 @@ public class PnTabelaMusica extends javax.swing.JPanel {
      */
     public void atribuiDados(ArrayList<Music> musica) {
         dados.clear();
-        dados = musica;
+        dados.addAll(musica);
+        
         System.out.println(dados);
         System.out.println("aqui");
 

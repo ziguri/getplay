@@ -398,7 +398,7 @@ public class Principal extends javax.swing.JFrame {
                 app.openFOMusic();
 
                 //painel tabela               
-                pnTabelaMusica = new PnTabelaMusica(this);
+                pnTabelaMusica = new PnTabelaMusica(this, app.getMusicsList());
                 pnBaseTabela.add(pnTabelaMusica);
 
                 //Só falta o código para preencher a tabela
