@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -46,6 +47,9 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     public void atribuiDados(ArrayList<Music> musica) {
         dados.clear();
         dados = musica;
+        System.out.println(dados);
+        System.out.println("aqui");
+        
     }
 
     public void criaModeloTabela() {
@@ -181,6 +185,16 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     public int getCliqueMusica() {
         return cliqueMusica;
     }
+
+    public DefaultTableModel getModelo() {
+        return modelo;
+    }
+
+    public JTable getTblMusic() {
+        return tblMusic;
+    }
+    
+    
 
 }
 //table.getColumnModel().getColumn(5).setHeaderValue("newHeader");

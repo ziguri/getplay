@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package projectogetplay;
 
 import java.util.ArrayList;
@@ -17,19 +16,21 @@ import javax.swing.JOptionPane;
 public class PnPesquisa extends javax.swing.JPanel {
 
     protected Principal pagPrincipal;
+
     /**
      * Creates new form PnPesquisa
      */
-    
+
     /**
      * Creates new form PnPesquisa
+     *
      * @param p
      */
     public PnPesquisa(Principal p) {
-        
-        this.pagPrincipal=p;
+
+        this.pagPrincipal = p;
         initComponents();
-        
+
     }
 
     /**
@@ -175,11 +176,11 @@ public class PnPesquisa extends javax.swing.JPanel {
     }//GEN-LAST:event_menuLogoutActionPerformed
 
     private void menuEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarActionPerformed
-        
+
         //Remove todas as musicas inseridas pelo utilizador, na lista de musicas
         //e nas playlists de outros utilizadores
         pagPrincipal.getApp().removeAllUserMusics(pagPrincipal.getLogged());
-        
+
         //Remove o utilizador da lista de utilizadores
         pagPrincipal.getApp().removeUser(pagPrincipal.getLogged());
         pagPrincipal.logOut();
@@ -190,59 +191,60 @@ public class PnPesquisa extends javax.swing.JPanel {
     }//GEN-LAST:event_menuEditarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       CharSequence txtpesquisa=searchBox.getText();
-       ArrayList <Music> dados= pagPrincipal.getApp().getMusicsList();
-        ArrayList<Music> listPesquisa= new ArrayList<Music>();
-        
+        CharSequence txtpesquisa = searchBox.getText();
+        ArrayList<Music> dados = pagPrincipal.getApp().getMusicsList();
+        ArrayList<Music> listPesquisa = new ArrayList<Music>();
+
         if (txtpesquisa.equals("")) {
-             JOptionPane.showMessageDialog(null, "Empty searchbox!",
+            JOptionPane.showMessageDialog(null, "Empty searchbox!",
                     "Error",
                     JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (choiceArtist.isSelected()) {
+                for (Music music : dados) {
+                    if (music.getAuthor().contains(txtpesquisa)) {
+                        listPesquisa.add(music);
+                    }
+                }
+            }
+            if (choiceTitle.isSelected()) {
+                for (Music music : dados) {
+                    if (music.getName().contains(txtpesquisa)) {
+                        listPesquisa.add(music);
+                    }
+                }
+            }
+            if (both.isSelected()) {
+                for (Music music : dados) {
+                    if (music.getName().contains(txtpesquisa)) {
+                        listPesquisa.add(music);
+                    }
+                }
+            }
+
+//        pagPrincipal.getPnBaseTabela().removeAll();
+//        pagPrincipal.getPnBaseTabela().add(new PnTabelaMusica(pagPrincipal));
+//        pagPrincipal.getPnBaseTabela().revalidate();
+//        pagPrincipal.getPnBaseTabela().repaint();
+//        pagPrincipal.getPnTabelaMusica().atribuiDados(listPesquisa);
+//        pagPrincipal.getPnTabelaMusica().refresh();
+            pagPrincipal.getPnBaseTabela().removeAll();
+            PnTabelaMusica novo = new PnTabelaMusica(pagPrincipal);
+            pagPrincipal.getPnBaseTabela().add(novo);
+            pagPrincipal.getPnTabelaMusica().atribuiDados(listPesquisa);
+            //pagPrincipal.getPnTabelaMusica().refresh();
+            pagPrincipal.getPnBaseTabela().revalidate();
+            pagPrincipal.getPnBaseTabela().repaint();
+            //pagPrincipal.getPnTabelaMusica().refresh();
+
         }
- 
-        else{
-       if (choiceArtist.isSelected()){
-           for (Music music : dados) {
-               if (music.getAuthor().contains(txtpesquisa)){
-                   dados.add(music);
-               }
-           }
-       }
-       if (choiceTitle.isSelected()){
-           for (Music music : dados) {
-               if (music.getName().contains(txtpesquisa)){
-                   dados.add(music);
-               }
-           }}
-        if (both.isSelected()){
-           for (Music music : dados) {
-               if (music.getName().contains(txtpesquisa)){
-                   dados.add(music);
-               }
-           }
-        }
-       
-        
-        
-        
-        pagPrincipal.getPnBaseTabela().removeAll();
-        pagPrincipal.getPnBaseTabela().add(new PnTabelaMusica(pagPrincipal));
-        pagPrincipal.getPnBaseTabela().revalidate();
-        pagPrincipal.getPnBaseTabela().repaint();
-        pagPrincipal.getPnTabelaMusica().atribuiDados(dados);
-        pagPrincipal.getPnTabelaMusica().refresh();
-        
-        
-       }
-       
-        
-        
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public JLabel getLblUserName() {
         return lblUserName;
     }
-    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

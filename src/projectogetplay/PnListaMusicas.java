@@ -8,6 +8,8 @@ package projectogetplay;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
@@ -132,9 +134,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabPListName)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabPListName1)
-                        .addGap(4, 4, 4)))
+                    .addComponent(jLabPListName1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 320, Short.MAX_VALUE)
                 .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -157,6 +157,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
                         .addComponent(jBAddMusic1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabPListName)
+                        .addGap(0, 0, 0)
                         .addComponent(jLabPListName1)
                         .addContainerGap())))
         );
@@ -169,7 +170,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
 
     private void jBEditMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEditMusicMouseClicked
         this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
-        System.out.println(m);
+        //System.out.println(m);
         
         if(m.getCreatorEmail().equals(p.getLogged().getEmail())){
             JdEditMusic jdEditMusic=new JdEditMusic(p, true);
@@ -238,10 +239,23 @@ public class PnListaMusicas extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select one playlist from your personal playlists.",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        else if(p.getPnTabelaMusica().getTblMusic().getSelectedRow()==-1){
+        
+            JOptionPane.showMessageDialog(this, "Please select one music from music list.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
         else{
         
+           int row = p.getPnTabelaMusica().getTblMusic().convertRowIndexToModel(p.getPnTabelaMusica().getTblMusic().getSelectedRow());
+            DefaultTableModel mdl = p.getPnTabelaMusica().getModelo();
+            
+            mdl =(DefaultTableModel) p.getPnTabelaMusica().getTblMusic().getModel();
+            
+            Music msd =(Music) mdl.getValueAt(row, 0);
+            
             Playlist playlis = p.getPnColuna().getPlaylistProp().get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
-            playlis.addMusicPlaylist(p.getPnTabelaMusica().getMusicSelecionada().getMusicCode());
+ 
+            playlis.addMusicPlaylist(msd.getMusicCode());
             JOptionPane.showMessageDialog(this, "Music successfuly added to playlist " + playlis.getName(), "Success", JOptionPane.INFORMATION_MESSAGE);
             
         }
