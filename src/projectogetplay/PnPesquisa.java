@@ -224,10 +224,7 @@ public class PnPesquisa extends javax.swing.JPanel {
             pagPrincipal.getPnBaseTabela().removeAll();
 
             pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
-
-            pagPrincipal.getPnTabelaMusica().atribuiDados(listPesquisa);
-            pagPrincipal.getPnTabelaMusica().carregaTabela();
-            pagPrincipal.getPnTabelaMusica().refresh();
+            pagPrincipal.getPnTabelaMusica().novosDados(listPesquisa);
             pagPrincipal.getPnBaseTabela().revalidate();
             pagPrincipal.getPnBaseTabela().repaint();
             //pagPrincipal.getPnTabelaMusica().refresh();
