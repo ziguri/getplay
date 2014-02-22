@@ -229,14 +229,17 @@ public class PnListaMusicas extends javax.swing.JPanel {
 
     private void jBAddMusicPLaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddMusicPLaylistActionPerformed
 
-        try{
+        
             
-            this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
-            int cod = p.getPnTabelaMusica().getCliqueMusica();        
             Playlist playlist = p.getPnColuna().getPlaylistProp().
                             get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
             
-       
+            this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
+            int cod = p.getPnTabelaMusica().getCliqueMusica();        
+            
+            
+        System.out.println("Logado: " + p.getLogged().toString());
+        System.out.println("NumPlaylists do logged: " + p.getLogged().getPlaylists().size());
         
         if(playlist.existeMusicPlaylist(cod)){
         
@@ -267,11 +270,12 @@ public class PnListaMusicas extends javax.swing.JPanel {
 
                 playlist.addMusicPlaylist(cod);
                 JOptionPane.showMessageDialog(this, "Music added to playlist " + playlist.getName(), "Success", JOptionPane.INFORMATION_MESSAGE);
+                p.revalidate();
+                p.repaint();
             }
 
         }
-         }catch(Exception e){JOptionPane.showMessageDialog(this, "Something is wrong",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);}
+         
     }//GEN-LAST:event_jBAddMusicPLaylistActionPerformed
 
     private void jBEditMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditMusicActionPerformed

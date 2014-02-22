@@ -122,6 +122,7 @@ public class JdNewPlaylist extends javax.swing.JDialog {
 
             p.getPnBaseColuna().removeAll();
             p.getPnBaseColuna().add(new PnColuna(p));
+            
             p.revalidate();
             p.repaint();
         }

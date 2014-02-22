@@ -22,6 +22,8 @@ public class Playlist implements Serializable {
         this.musics = new ArrayList();
         
     }
+    
+    public Playlist(){}
 
     /**
      * Get the Playlist name
