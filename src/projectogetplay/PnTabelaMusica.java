@@ -33,6 +33,8 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     //
     /**
      * Creates new form PnTabelaMusica
+     * @param p
+     * @param play
      */
     public PnTabelaMusica(Principal p, ArrayList<Music> play) {
         dados = new ArrayList();
