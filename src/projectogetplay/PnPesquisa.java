@@ -20,7 +20,6 @@ public class PnPesquisa extends javax.swing.JPanel {
     /**
      * Creates new form PnPesquisa
      */
-
     /**
      * Creates new form PnPesquisa
      *
@@ -193,7 +192,7 @@ public class PnPesquisa extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         CharSequence txtpesquisa = searchBox.getText();
         ArrayList<Music> dados = pagPrincipal.getApp().getMusicsList();
-        ArrayList<Music> listPesquisa = new ArrayList<Music>();
+        ArrayList<Music> listPesquisa = new ArrayList<>();
 
         if (txtpesquisa.equals("")) {
             JOptionPane.showMessageDialog(null, "Empty searchbox!",
@@ -222,17 +221,13 @@ public class PnPesquisa extends javax.swing.JPanel {
                 }
             }
 
-//        pagPrincipal.getPnBaseTabela().removeAll();
-//        pagPrincipal.getPnBaseTabela().add(new PnTabelaMusica(pagPrincipal));
-//        pagPrincipal.getPnBaseTabela().revalidate();
-//        pagPrincipal.getPnBaseTabela().repaint();
-//        pagPrincipal.getPnTabelaMusica().atribuiDados(listPesquisa);
-//        pagPrincipal.getPnTabelaMusica().refresh();
             pagPrincipal.getPnBaseTabela().removeAll();
-            PnTabelaMusica novo = new PnTabelaMusica(pagPrincipal);
-            pagPrincipal.getPnBaseTabela().add(novo);
+
+            pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
+
             pagPrincipal.getPnTabelaMusica().atribuiDados(listPesquisa);
-            //pagPrincipal.getPnTabelaMusica().refresh();
+            pagPrincipal.getPnTabelaMusica().carregaTabela();
+            pagPrincipal.getPnTabelaMusica().refresh();
             pagPrincipal.getPnBaseTabela().revalidate();
             pagPrincipal.getPnBaseTabela().repaint();
             //pagPrincipal.getPnTabelaMusica().refresh();
