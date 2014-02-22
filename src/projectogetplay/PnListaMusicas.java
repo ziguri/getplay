@@ -6,6 +6,7 @@
 
 package projectogetplay;
 
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,6 +17,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
 
     protected Principal p;
     private Music m;
+    private Playlist play;
     /**
      * Creates new form PnMusica
      */
@@ -26,6 +28,14 @@ public class PnListaMusicas extends javax.swing.JPanel {
      */
     public PnListaMusicas(Principal p) {
         
+        this.p=p;
+        initComponents();
+        
+    }
+    
+     public PnListaMusicas(Principal p, Playlist play) {
+        
+        this.play=play;
         this.p=p;
         initComponents();
         
@@ -101,7 +111,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
         });
 
         jBAddMusic1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N
-        jBAddMusic1.setText("add music im my PlayList");
+        jBAddMusic1.setText("add music to PlayList");
         jBAddMusic1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jBAddMusic1.setContentAreaFilled(false);
         jBAddMusic1.setMargin(new java.awt.Insets(2, 10, 2, 10));
@@ -119,34 +129,36 @@ public class PnListaMusicas extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabPListName)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListName1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 358, Short.MAX_VALUE)
-                        .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBAddMusic1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabPListName)
-                        .addContainerGap())))
+                        .addGap(4, 4, 4)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 320, Short.MAX_VALUE)
+                .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBAddMusic1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
-                .addComponent(jLabPListName)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabPListName1)
-                    .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBAddMusic1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBAddMusic1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabPListName)
+                        .addComponent(jLabPListName1)
+                        .addContainerGap())))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -214,9 +226,60 @@ public class PnListaMusicas extends javax.swing.JPanel {
     }//GEN-LAST:event_jBRemoveMusicActionPerformed
 
     private void jBAddMusic1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddMusic1ActionPerformed
-        // TODO add your handling code here:
+        int index = p.getPnColuna().getMyPlaylistsList().getSelectedIndex();
+        
+        if(!(p.getPnColuna().getPublicPlaylists().isSelectionEmpty())){
+        
+            JOptionPane.showMessageDialog(this, "You can´t add musics to public playlists.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else if(p.getPnColuna().getMyPlaylistsList().isSelectionEmpty()){
+        
+            JOptionPane.showMessageDialog(this, "Please select one playlist from your personal playlists.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+        
+            Playlist playlis = p.getPnColuna().getPlaylistProp().get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
+            playlis.addMusicPlaylist(p.getPnTabelaMusica().getMusicSelecionada().getMusicCode());
+            JOptionPane.showMessageDialog(this, "Music successfuly added to playlist " + playlis.getName(), "Success", JOptionPane.INFORMATION_MESSAGE);
+            
+        }
     }//GEN-LAST:event_jBAddMusic1ActionPerformed
 
+    public Principal getP() {
+        return p;
+    }
+
+    public void setP(Principal p) {
+        this.p = p;
+    }
+
+    public Music getM() {
+        return m;
+    }
+
+    public void setM(Music m) {
+        this.m = m;
+    }
+
+    public JLabel getjLabPListName() {
+        return jLabPListName;
+    }
+
+    public void setjLabPListName(JLabel jLabPListName) {
+        this.jLabPListName = jLabPListName;
+    }
+
+    public JLabel getjLabPListNumbMusics() {
+        return jLabPListName1;
+    }
+
+    public void setjLabPListNumbMusics(JLabel jLabPListNumbMusics) {
+        this.jLabPListName1 = jLabPListNumbMusics;
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAddMusic;
