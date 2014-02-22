@@ -384,10 +384,11 @@ public class Principal extends javax.swing.JFrame {
                 emailField.setVisible(false);
                 passwordField.setVisible(false);
                 
-                
+                app.openFOMusic();
                 //ativar paineis
                 //pnBaseInfo.removeAll();
                 pnListaMusicas=new PnListaMusicas(this);
+                pnListaMusicas.getjLabPListName1().setText("Number of musics: " + app.getMusicsList().size());
                 pnBaseInfo.add(pnListaMusicas);   
 
                 pnColuna = new PnColuna(this);
@@ -397,18 +398,17 @@ public class Principal extends javax.swing.JFrame {
 
                 //carregar a lista de musica
                 //app.musicsList.clear();
-                app.openFOMusic();
+                
 
                 //painel tabela               
-                pnTabelaMusica = new PnTabelaMusica(this);
+                pnTabelaMusica = new PnTabelaMusica(this, app.getMusicsList());
                 pnBaseTabela.add(pnTabelaMusica);
 
-                //Só falta o código para preencher a tabela
+                revalidate();
+                repaint();
             }
 
         }
-        revalidate();
-        repaint();
     }//GEN-LAST:event_botaoLoginActionPerformed
 
     private void botaoRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRegistarActionPerformed

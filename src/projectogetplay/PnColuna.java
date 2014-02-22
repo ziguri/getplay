@@ -209,6 +209,11 @@ public class PnColuna extends javax.swing.JPanel {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/go.png"))); // NOI18N
         jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -330,7 +335,6 @@ public class PnColuna extends javax.swing.JPanel {
             if (index != -1) {
                 
                 Playlist p = playlistProp.get(myPlaylistsList.getSelectedIndex());
-                
                 ArrayList<Music> msc = pagPrincipal.getApp().getMusiclistFromPlaylist(p.getMusics());
                 
                 pagPrincipal.getPnBaseInfo().removeAll();
@@ -338,9 +342,9 @@ public class PnColuna extends javax.swing.JPanel {
                 
                 //Preenche a tabela com musicas da playlist seleccionada
                 
-                PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal);
+                PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal, msc);
 
-                pntm.atribuiDados(msc);
+                //pntm.atribuiDados(msc);
                 pntm.refresh();
                 pagPrincipal.getPnBaseTabela().add(pntm);
                 
@@ -348,8 +352,8 @@ public class PnColuna extends javax.swing.JPanel {
                 
                 //Preenche cabeçalho
                 PnListaMusicas pnlist = new PnListaMusicas(pagPrincipal, p);
-                pnlist.getjLabPListName().setText(p.getName());
-                pnlist.getjLabPListName1().setText(""+p.getMusics().size());
+                pnlist.getjLabPListName().setText("Playlist " + p.getName());
+                pnlist.getjLabPListName1().setText("Number of musics: "+msc.size());
                 pagPrincipal.getPnBaseInfo().add(pnlist);
                 pagPrincipal.revalidate();
                 pagPrincipal.repaint();
@@ -363,6 +367,47 @@ public class PnColuna extends javax.swing.JPanel {
                 
             }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int index = publicPlaylists.getSelectedIndex();
+            
+         //pagPrincipal.getPnTabelaMusica().atribuiDados(null);
+         
+            if (index != -1) {
+                
+                Playlist p = playlistPub.get(publicPlaylists.getSelectedIndex());
+                ArrayList<Music> msc = pagPrincipal.getApp().getMusiclistFromPlaylist(p.getMusics());
+                
+                pagPrincipal.getPnBaseInfo().removeAll();
+                pagPrincipal.getPnBaseTabela().removeAll();
+                
+                //Preenche a tabela com musicas da playlist seleccionada
+                
+                PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal, msc);
+
+                //pntm.atribuiDados(msc);
+                pntm.refresh();
+                pagPrincipal.getPnBaseTabela().add(pntm);
+                
+                
+                
+                //Preenche cabeçalho
+                PnListaMusicas pnlist = new PnListaMusicas(pagPrincipal, p);
+                pnlist.getjLabPListName().setText("Playlist " + p.getName());
+                pnlist.getjLabPListName1().setText("Number of musics: "+msc.size());
+                pagPrincipal.getPnBaseInfo().add(pnlist);
+                pagPrincipal.revalidate();
+                pagPrincipal.repaint();
+                
+            }
+            
+            else{
+            
+                JOptionPane.showMessageDialog(this, "Please select one playlist.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                
+            }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public JList getMyPlaylistsList() {
         return myPlaylistsList;

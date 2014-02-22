@@ -403,6 +403,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
         p.getPnBaseTabela().removeAll();
         p.getPnBaseInfo().removeAll();
 
+        p.getPnListaMusicas().getjLabPListName1().setText("Number of musics: " + p.getApp().getMusicsList().size());
         p.getPnBaseTabela().add(p.getPnTabelaMusica());
         p.getPnBaseInfo().add(p.getPnListaMusicas());
 
