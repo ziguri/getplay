@@ -574,7 +574,7 @@ public class GetPlay implements Serializable {
         File[] f = new File[mlist.size()];
         for(int i =0;i<mlist.size();i++){
             String s = "c:\\APPGetPlay\\MyPlaylist\\";
-            f[i]=new File(s+mlist.get(i).getMusicPath());
+            f[i]=(new File(s+mlist.get(i).getMusicPath()));
             System.out.println(f[i].getAbsolutePath());
         }
         return f;

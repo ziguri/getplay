@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class MusicPlayer extends javax.swing.JPanel {
     
     private MP3Player player;
-    private File[] listMusic; 
     private Thread thread;
     
     public MusicPlayer() {
@@ -25,13 +24,31 @@ public class MusicPlayer extends javax.swing.JPanel {
         //this.listMusic = new File("");        
     }
     
-    public void playlistToPlay(){
-        
-    }
-    
-        
-         
+    public void playAll(ArrayList<File> playlist) {
+        while (true) {
+            if (thread == null) {
+                final File f = playlist.listIterator().next();
+                thread = new Thread(new Runnable() {
 
-    }
+                    @Override
+                    public void run() {
+                        player = new MP3Player(f);
+                        player.play();
+                        //mp3IsStillPlaying();      
+                    }
+                });
+                thread.start();
+            } else {
+                if (!thread.isAlive()) {
+                    thread.interrupt();
+                    thread = null;
+                }
+            }
+        } 
+    }  
+
+        
+}
+
     
 

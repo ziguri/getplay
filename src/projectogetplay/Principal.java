@@ -36,8 +36,9 @@ public class Principal extends javax.swing.JFrame {
     private PnTabelaMusica pnTabelaMusica;
     private PnTabelaPlayList pnTabelaPlayList;
     protected JdEditMusic jdEditMusic;
-    private MP3Player player;
+    private final MP3Player player;
     private int rowIndex;
+    private ArrayList<Music> mlistTbl;
     
     
     
@@ -61,6 +62,7 @@ public class Principal extends javax.swing.JFrame {
         app.listMusics();
         app.listUsers();
         player = new MP3Player();
+        mlistTbl = new ArrayList<>();
     }
 
     
@@ -171,7 +173,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(togglePlay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBForward)
-                .addGap(18, 18, 18)
+                .addGap(96, 96, 96)
                 .addComponent(jLTitleMusica)
                 .addContainerGap())
         );
@@ -179,7 +181,6 @@ public class Principal extends javax.swing.JFrame {
             pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnBaseFundoLayout.createSequentialGroup()
                 .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLTitleMusica)
                     .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pnBaseFundoLayout.createSequentialGroup()
                             .addGap(19, 19, 19)
@@ -189,8 +190,9 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(jBForward)))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseFundoLayout.createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(togglePlay))))
-                .addGap(38, 38, 38))
+                            .addComponent(togglePlay)))
+                    .addComponent(jLTitleMusica))
+                .addGap(16, 16, 16))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -433,33 +435,29 @@ public class Principal extends javax.swing.JFrame {
 
     private void togglePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglePlayActionPerformed
         final JTable tabela = pnTabelaMusica.getTblMusic();
-        ArrayList<Music> mlistTbl = pnTabelaMusica.getDados();
+        mlistTbl.clear();
+        mlistTbl = pnTabelaMusica.getDados();
         File[] f = getApp().stringToMp3(mlistTbl);
-        for (int i = 0; i < pnTabelaMusica.tamanhoTabela(); i++) {
-                    player.addToPlayList(f[i]);
-        }//adiciona as musicas da playlist da tabela ao MP3player
         rowIndex = tabela.getSelectedRow();
-        System.out.println("rowIndex " + rowIndex);//devolve valor -1, indicando que não há linha seleccionada
-        
-        for(int i=0; i < player.getPlayList().size();i++){
-            if (rowIndex != -1) {//linhas seleccionadas
-               if (togglePlay.isSelected()) {
-                    togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png")));
-                    togglePlay.setBorder(null);
-                    togglePlay.setContentAreaFilled(true);
-                    player.play();
-                } else {
-                    togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
-                    togglePlay.setBorder(null);
-                    togglePlay.setContentAreaFilled(false);
-                    player.pause();
-                }
-
+        System.out.println("rowIndex " + rowIndex);
+      
+        if (rowIndex != -1) {//linhas seleccionadas
+            for (int i = rowIndex; i < mlistTbl.size(); i++) {
+                player.addToPlayList(f[i]);
+            }//adiciona as musicas da playlist da tabela ao MP3player
+            if (togglePlay.isSelected()) {
+                togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png")));
+                togglePlay.setBorder(null);
+                togglePlay.setContentAreaFilled(true);
+                player.play();
             } else {
-                JOptionPane.showMessageDialog(null, "select a music to play ");
+                togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
+                togglePlay.setBorder(null);
+                togglePlay.setContentAreaFilled(false);
+                player.pause();
             }
-
-            System.out.println("Tamanho tabela: " + pnTabelaMusica.tamanhoTabela());
+        } else {
+            JOptionPane.showMessageDialog(null, "select a music to play ");
         }
     }//GEN-LAST:event_togglePlayActionPerformed
 
