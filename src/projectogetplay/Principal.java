@@ -390,7 +390,7 @@ public class Principal extends javax.swing.JFrame {
                 pnBaseLogin.add(pnPesquisa);
                 
                 //carregar a lista de musica
-                app.musicsList.clear();
+                //app.musicsList.clear();
                 app.openFOMusic();
                 
                 //painel tabela               

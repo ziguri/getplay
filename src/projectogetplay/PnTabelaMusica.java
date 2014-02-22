@@ -34,7 +34,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados = new ArrayList<Music>();
         this.pagPrincipal = p;
         atribuiDados(p.getApp().getMusicsList());
-        cliqueMusica=-1;
+        cliqueMusica = -1;
         initComponents();
     }
 
@@ -90,8 +90,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     public int linhaSelecionada() {
         return tblMusic.getSelectedRow();
     }
-    
-    
+
     private int procuraLinha() {
         int num = 0;
         int aux = 0;
@@ -103,14 +102,6 @@ public class PnTabelaMusica extends javax.swing.JPanel {
             }
         }
         return num;
-    }
-
-    public DefaultTableModel getModelo() {
-        return modelo;
-    }
-
-    public JTable getTblMusic() {
-        return tblMusic;
     }
 
     public void adicionaLinha(String name, String artist, String album, int year, String user) {
@@ -201,9 +192,15 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         return cliqueMusica;
     }
 
-    public ArrayList<Music> getDados() {
-        return dados;
+    public DefaultTableModel getModelo() {
+        return modelo;
     }
+
+    public JTable getTblMusic() {
+        return tblMusic;
+    }
+    
+    
 
 }
 //table.getColumnModel().getColumn(5).setHeaderValue("newHeader");
