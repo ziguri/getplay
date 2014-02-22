@@ -330,7 +330,6 @@ public class PnColuna extends javax.swing.JPanel {
             if (index != -1) {
                 
                 Playlist p = playlistProp.get(myPlaylistsList.getSelectedIndex());
-                
                 ArrayList<Music> msc = pagPrincipal.getApp().getMusiclistFromPlaylist(p.getMusics());
                 
                 pagPrincipal.getPnBaseInfo().removeAll();
@@ -341,15 +340,15 @@ public class PnColuna extends javax.swing.JPanel {
                 PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal, msc);
 
                 //pntm.atribuiDados(msc);
-                //pntm.refresh();
+                pntm.refresh();
                 pagPrincipal.getPnBaseTabela().add(pntm);
                 
                 
                 
                 //Preenche cabeçalho
                 PnListaMusicas pnlist = new PnListaMusicas(pagPrincipal, p);
-                pnlist.getjLabPListName().setText(p.getName());
-                pnlist.getjLabPListName1().setText(""+p.getMusics().size());
+                pnlist.getjLabPListName().setText("Playlist " + p.getName());
+                pnlist.getjLabPListName1().setText("Number of musics: "+msc.size());
                 pagPrincipal.getPnBaseInfo().add(pnlist);
                 pagPrincipal.revalidate();
                 pagPrincipal.repaint();

@@ -63,7 +63,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
         jLabPListName.setToolTipText("");
 
         try{
-            jLabPListName1.setText("Number of musics: " + p.getApp().getMusicsList().size());
+            jLabPListName1.setText("Number of musics: ");
         }catch(Exception e){}
         jLabPListName1.setToolTipText("");
 

@@ -55,7 +55,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados.addAll(musica);
         
         System.out.println(dados);
-        System.out.println("aqui");
+        System.out.println("aqui atribuiDados() PnTabelaMusica");
 
     }
 
