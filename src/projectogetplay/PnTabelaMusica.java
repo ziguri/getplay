@@ -26,6 +26,10 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     private int cliqueMusica;
     private Music musicSelecionada;
 
+    public ArrayList<Music> getDados() {
+        return dados;
+    }
+
     //
     /**
      * Creates new form PnTabelaMusica
