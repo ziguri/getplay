@@ -5,13 +5,16 @@
  */
 package projectogetplay;
 
-import java.io.FileNotFoundException;
+import jaco.mp3.player.MP3Player;
+import java.io.File;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -29,6 +32,7 @@ public class Principal extends javax.swing.JFrame {
     private PnTabelaMusica pnTabelaMusica;
     private PnTabelaPlayList pnTabelaPlayList;
     protected JdEditMusic jdEditMusic;
+    private MP3Player player;
     
     
     
@@ -51,6 +55,7 @@ public class Principal extends javax.swing.JFrame {
         app.openFOUsers();
         app.listMusics();
         app.listUsers();
+        player = new MP3Player();
     }
 
     
@@ -66,13 +71,13 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        buttonGroup = new javax.swing.ButtonGroup();
         pnBaseFundo = new javax.swing.JPanel();
         jBStop = new javax.swing.JButton();
         jBBackward = new javax.swing.JButton();
-        jBPlay = new javax.swing.JButton();
-        jBPause = new javax.swing.JButton();
         jBForward = new javax.swing.JButton();
         jLTitleMusica = new javax.swing.JLabel();
+        togglePlay = new javax.swing.JToggleButton();
         pnBaseColuna = new javax.swing.JPanel();
         pnBaseLogin = new javax.swing.JPanel();
         emailField = new javax.swing.JTextField();
@@ -107,6 +112,7 @@ public class Principal extends javax.swing.JFrame {
 
         jBStop.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Stop-32.png"))); // NOI18N
         jBStop.setBorder(null);
+        buttonGroup.add(jBStop);
         jBStop.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBStopActionPerformed(evt);
@@ -117,26 +123,19 @@ public class Principal extends javax.swing.JFrame {
         jBBackward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Backward-32_green.png"))); // NOI18N
         jBBackward.setBorder(null);
         jBBackward.setBorderPainted(false);
+        buttonGroup.add(jBBackward);
         jBBackward.setContentAreaFilled(false);
-
-        jBPlay.setBackground(new java.awt.Color(51, 51, 255));
-        jBPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png"))); // NOI18N
-        jBPlay.setBorder(null);
-        jBPlay.setBorderPainted(false);
-        jBPlay.setContentAreaFilled(false);
-        jBPlay.addActionListener(new java.awt.event.ActionListener() {
+        jBBackward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBPlayActionPerformed(evt);
+                jBBackwardActionPerformed(evt);
             }
         });
-
-        jBPause.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png"))); // NOI18N
-        jBPause.setBorder(null);
 
         jBForward.setBackground(new java.awt.Color(51, 51, 255));
         jBForward.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Forward-32.png"))); // NOI18N
         jBForward.setBorder(null);
         jBForward.setBorderPainted(false);
+        buttonGroup.add(jBForward);
         jBForward.setContentAreaFilled(false);
         jBForward.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +144,15 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jLTitleMusica.setText("<Title Musica>");
+
+        togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png"))); // NOI18N
+        togglePlay.setBorder(null);
+        togglePlay.setContentAreaFilled(false);
+        togglePlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                togglePlayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnBaseFundoLayout = new javax.swing.GroupLayout(pnBaseFundo);
         pnBaseFundo.setLayout(pnBaseFundoLayout);
@@ -158,25 +166,26 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jBBackward)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBPlay)
+                        .addComponent(togglePlay)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBForward)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBPause))
+                        .addComponent(jBForward))
                     .addComponent(jLTitleMusica))
-                .addContainerGap())
+                .addGap(160, 160, 160))
         );
         pnBaseFundoLayout.setVerticalGroup(
             pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnBaseFundoLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBStop)
-                    .addComponent(jBBackward)
-                    .addComponent(jBPlay)
-                    .addComponent(jBForward)
-                    .addComponent(jBPause))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(pnBaseFundoLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBStop)
+                            .addComponent(jBBackward)
+                            .addComponent(jBForward)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseFundoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(togglePlay)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLTitleMusica)
                 .addContainerGap())
         );
@@ -408,32 +417,51 @@ public class Principal extends javax.swing.JFrame {
         app.guardaFoUsers();
     }//GEN-LAST:event_formWindowClosing
 
-    private void jBPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPlayActionPerformed
-        pnTabelaMusica = new PnTabelaMusica(this);
-        int beginAt = pnTabelaMusica.linhaSelecionada();
-        for (int i = beginAt; i < pnTabelaMusica.tamanhoTabela(); i++) {
-            try {
-                getApp().startPlaying(pnTabelaMusica.getValoresLinha(i));
-            } catch (Exception e) {
-                System.out.println("ERRO não encontrou mp3" + e);
-            }
-        }
-    }//GEN-LAST:event_jBPlayActionPerformed
-
     private void jBStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBStopActionPerformed
-        getApp().stopPlaying();
+        player.stop();
+        togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
+        togglePlay.setBorder(null);
+        togglePlay.setContentAreaFilled(false);
     }//GEN-LAST:event_jBStopActionPerformed
 
         
     private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
-        pnTabelaMusica = new PnTabelaMusica(this);
-        int i = pnTabelaMusica.linhaSelecionada();
-       
-        Music m = getApp().searchMusic(getPnTabelaMusica().getCliqueMusica());//devolve IDcódigo da musica
-        
-        
-        
+        player.skipForward();
     }//GEN-LAST:event_jBForwardActionPerformed
+
+    private void togglePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglePlayActionPerformed
+        //Music m = getApp().searchMusic(getPnTabelaMusica().getCliqueMusica());//devolve IDcódigo da musica
+        
+        pnTabelaMusica = new PnTabelaMusica(this);
+        ArrayList<Music> mlistTbl = pnTabelaMusica.getDados();
+        //DefaultTableModel model = (DefaultTableModel) pnTabelaMusica.getModelo();
+        File[] f = getApp().stringToMp3(mlistTbl);
+        System.out.println(f[1].getPath());
+        int beginAt = pnTabelaMusica.linhaSelecionada();//devolve valor -1, indicando que não há linha seleccionada
+        System.out.println("Begin: " + beginAt);
+        System.out.println("Tamanho tabela: " + pnTabelaMusica.tamanhoTabela());
+        for (int i = 0; i < pnTabelaMusica.tamanhoTabela(); i++) {
+            player.addToPlayList(f[i]);
+        }
+                
+        if (togglePlay.isSelected()) {
+            togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png")));
+            togglePlay.setBorder(null);
+            togglePlay.setContentAreaFilled(true);
+            player.play();
+        }else{
+            togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));  
+            togglePlay.setBorder(null);
+            togglePlay.setContentAreaFilled(false);
+            player.pause();
+        }
+    }//GEN-LAST:event_togglePlayActionPerformed
+
+    private void jBBackwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackwardActionPerformed
+         player.skipBackward();
+    }//GEN-LAST:event_jBBackwardActionPerformed
+
+   
 
     /**
      * @param args the command line arguments
@@ -535,11 +563,10 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogin;
     private javax.swing.JButton botaoRegistar;
+    private javax.swing.ButtonGroup buttonGroup;
     private javax.swing.JTextField emailField;
     private javax.swing.JButton jBBackward;
     private javax.swing.JButton jBForward;
-    private javax.swing.JButton jBPause;
-    private javax.swing.JButton jBPlay;
     private javax.swing.JButton jBStop;
     private javax.swing.JLabel jLTitleMusica;
     private javax.swing.JMenu jMenu1;
@@ -555,6 +582,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel pnBaseLogin;
     private javax.swing.JPanel pnBaseTabela;
     private javax.swing.JPanel pnLogo;
+    private javax.swing.JToggleButton togglePlay;
     // End of variables declaration//GEN-END:variables
 
     /**
