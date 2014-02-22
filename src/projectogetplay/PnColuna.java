@@ -147,6 +147,7 @@ public class PnColuna extends javax.swing.JPanel {
             }
         });
 
+        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Share", "Don´t Share", " " }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,15 +162,15 @@ public class PnColuna extends javax.swing.JPanel {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(29, 29, 29)
                         .addComponent(lblFixoAddPL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -313,12 +314,35 @@ public class PnColuna extends javax.swing.JPanel {
                 Playlist p = playlistProp.
                         get(myPlaylistsList.getSelectedIndex());
                 
+                ArrayList<Music> msc = pagPrincipal.getApp().getMusiclistFromPlaylist(p.getMusics());
+                
+                pagPrincipal.getPnBaseInfo().removeAll();
+                pagPrincipal.getPnBaseTabela().removeAll();
+                
+                //Preenche a tabel com musicas da playlist seleccionada
+                PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal);
+                pntm.atribuiDados(msc);
+                pagPrincipal.getPnBaseInfo().add(pntm);
+                
+                //Preenche cabeçalho
+                PnListaMusicas pnlist = new PnListaMusicas(pagPrincipal, p);
+                pnlist.getjLabPListName().setText(p.getName());
+                pnlist.getjLabPListNumbMusics().setText(""+p.getMusics().size());
+                pagPrincipal.getPnBaseInfo().add(pnlist);
+                
+                pagPrincipal.revalidate();
+                pagPrincipal.repaint();
                 
                 
+         /*       
+       pagPrincipal.getPnBaseTabela().removeAll();
+       PnTabelaMusica pnt = new PnTabelaMusica(pagPrincipal);
+       pnt.atribuiDados(listPesquisa);
+       pagPrincipal.getPnBaseTabela().add(pnt);
+       pagPrincipal.revalidate();
+       pagPrincipal.repaint();
+*/
                 
-            myPlaylistsList.get    
-            Object o = theList.getModel().getElementAt(index);
-            System.out.println("Double-clicked on: " + o.toString());
           }
         }
     }//GEN-LAST:event_myPlaylistsListMouseClicked
@@ -338,6 +362,32 @@ public class PnColuna extends javax.swing.JPanel {
     public void setPublicPlaylists(JList publicPlaylists) {
         this.publicPlaylists = publicPlaylists;
     }
+
+    public Principal getPagPrincipal() {
+        return pagPrincipal;
+    }
+
+    public void setPagPrincipal(Principal pagPrincipal) {
+        this.pagPrincipal = pagPrincipal;
+    }
+
+    public ArrayList<Playlist> getPlaylistProp() {
+        return playlistProp;
+    }
+
+    public void setPlaylistProp(ArrayList<Playlist> playlistProp) {
+        this.playlistProp = playlistProp;
+    }
+
+    public ArrayList<Playlist> getPlaylistPub() {
+        return playlistPub;
+    }
+
+    public void setPlaylistPub(ArrayList<Playlist> playlistPub) {
+        this.playlistPub = playlistPub;
+    }
+    
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
