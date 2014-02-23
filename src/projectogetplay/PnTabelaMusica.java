@@ -25,6 +25,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     private ArrayList<Music> dados;
     private int cliqueMusica;
     private Music musicSelecionada;
+    private String[][] dadosArray;
 
     public ArrayList<Music> getDados() {
         return dados;
@@ -40,10 +41,30 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         dados = new ArrayList();
         this.pagPrincipal = p;
         atribuiDados(play);
+        criaArray(play);
         cliqueMusica = -1;
         initComponents();
     }
 
+    //criar um array com duas colunas. 1 coluna com o musicCount e outra coluna com o Path da musica
+    public void criaArray(ArrayList<Music> musica){
+    int tamanho= musica.size();
+    dadosArray= new String[tamanho][3];
+    
+        for (int i = 0; i < tamanho; i++) {
+                dadosArray[i][0]=musica.get(i).getMusicPath();
+                dadosArray[i][1]=musica.get(i).getAuthor();
+                dadosArray[i][1]=musica.get(i).getName();
+        }
+    }
+
+    public String[][] getArray(){
+    return dadosArray;
+    
+    }
+    
+    
+    
     /**
      * Create a new Arralist dados with Object Music, to be used in the Table
      * Model
@@ -169,7 +190,8 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     private void tblMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMusicMouseClicked
         int num = (Integer) tblMusic.getValueAt(tblMusic.getSelectedRow(), 6);
        // JOptionPane.showMessageDialog(null, "Codigo " + num);
-        cliqueMusica = num;       
+        cliqueMusica = num;
+        
     }//GEN-LAST:event_tblMusicMouseClicked
 
     public Music getMusicSelecionada() {

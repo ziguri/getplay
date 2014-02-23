@@ -39,7 +39,6 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
         dados.clear();
         dados.addAll(playList);
     }
-
     public void criaModeloTabelaPL() {
         String[] colunas = new String[]{"Name", "Creation Date", "Size", "Shared","User"};
         Object[][] dados = new Object[][]{};
