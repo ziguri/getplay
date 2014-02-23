@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -167,7 +168,7 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(togglePlay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBForward)
-                .addGap(96, 96, 96)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLTitleMusica)
                 .addContainerGap())
         );
@@ -346,6 +347,10 @@ public class Principal extends javax.swing.JFrame {
         passwordField.setVisible(true);
     }
 
+    
+    private void update(){
+        
+    }
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
 
         if (emailField.getText().isEmpty() || passwordField.getPassword() == null) {
@@ -470,7 +475,9 @@ public class Principal extends javax.swing.JFrame {
                 togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png")));
                 togglePlay.setBorder(null);
                 togglePlay.setContentAreaFilled(true);
+                
                 player.play();
+                
             } else {
                 togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
                 togglePlay.setBorder(null);
@@ -481,6 +488,22 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "select a music to play ");
         }
     }//GEN-LAST:event_togglePlayActionPerformed
+
+    public int getRowIndex() {
+        return rowIndex;
+    }
+
+    public void setRowIndex(int rowIndex) {
+        this.rowIndex = rowIndex;
+    }
+
+    public JToggleButton getTogglePlay() {
+        return togglePlay;
+    }
+
+    public void setTogglePlay(JToggleButton togglePlay) {
+        this.togglePlay = togglePlay;
+    }
 
     private void jBBackwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBackwardActionPerformed
         player.skipBackward();

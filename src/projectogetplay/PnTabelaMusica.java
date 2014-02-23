@@ -81,7 +81,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
 
             modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), fav, music.getYear(), music.getCreatorEmail(), music.getMusicCode()});
         }
-
+        
     }
 
     public void removeLinha() {
@@ -92,19 +92,6 @@ public class PnTabelaMusica extends javax.swing.JPanel {
 
     public int tamanhoTabela() {
         return tblMusic.getRowCount();
-    }
-
-    
-    public int getSelectedRow() {
-        
-        int selection = -100;
-        if (tblMusic.getRowSelectionAllowed()) {
-            selection = tblMusic.getSelectedRow();
-            System.out.println("Aqui" + selection);
-            selection = tblMusic.convertRowIndexToModel(selection);
-        }
-
-        return selection;
     }
     
     public int linhaSelecionada() {

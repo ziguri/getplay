@@ -24,7 +24,38 @@ public class MusicPlayer extends javax.swing.JPanel {
         //this.listMusic = new File("");        
     }
     
-    public void playAll(ArrayList<File> playlist) {
+    public void stop(){
+        player.stop();
+    }
+    public void skipForward(){
+        player.skipForward();
+    }
+    public void skipBackward(){
+        player.skipBackward();
+    }
+    public void pause(){
+        player.pause();
+    }
+    public void play(){
+        player.play();
+    }
+
+    public MP3Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(MP3Player player) {
+        this.player = player;
+    }
+
+    public Thread getThread() {
+        return thread;
+    }
+
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
+    public void playSelect(ArrayList<File> playlist) {
         while (true) {
             if (thread == null) {
                 final File f = playlist.listIterator().next();

@@ -88,7 +88,7 @@ public class PnColuna extends javax.swing.JPanel {
         myPlaylistsList = new javax.swing.JList();
         jLabel1 = new javax.swing.JLabel();
         lblFixoAddPL = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jLMinus = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -137,10 +137,10 @@ public class PnColuna extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Minus-icon.png"))); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Minus-icon.png"))); // NOI18N
+        jLMinus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                jLMinusMouseClicked(evt);
             }
         });
 
@@ -174,7 +174,7 @@ public class PnColuna extends javax.swing.JPanel {
                         .addGap(29, 29, 29)
                         .addComponent(lblFixoAddPL)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
+                        .addComponent(jLMinus)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 13, Short.MAX_VALUE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -191,7 +191,7 @@ public class PnColuna extends javax.swing.JPanel {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(lblFixoAddPL))
-                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(jLMinus, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -284,9 +284,8 @@ public class PnColuna extends javax.swing.JPanel {
         jdNewPlaylist.setVisible(true);
     }//GEN-LAST:event_lblFixoAddPLMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        
-        
+    private void jLMinusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLMinusMouseClicked
+               
         myPlaylistsList.getSelectedIndex();
         if(myPlaylistsList.getSelectedIndex()==-1){
         
@@ -298,7 +297,7 @@ public class PnColuna extends javax.swing.JPanel {
             pagPrincipal.getLogged().removePlaylist(this.playlistProp.get(this.myPlaylistsList.getSelectedIndex()));
             buildAllLists();
         }
-    }//GEN-LAST:event_jLabel4MouseClicked
+    }//GEN-LAST:event_jLMinusMouseClicked
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
          myPlaylistsList.getSelectedIndex();
@@ -457,9 +456,9 @@ public class PnColuna extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLMinus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

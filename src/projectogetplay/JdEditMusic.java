@@ -8,6 +8,7 @@ package projectogetplay;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -17,6 +18,7 @@ public class JdEditMusic extends javax.swing.JDialog {
 
     protected Principal p;
     private Music m;
+    private int rowIndex;
 
     /**
      * Creates new form CreateMusic
@@ -35,13 +37,6 @@ public class JdEditMusic extends javax.swing.JDialog {
     }
 
     public void fillFields(Music m) {
-//        if (p.getPnTabelaMusica().getCliqueMusica() == -1) {
-//            JOptionPane.showMessageDialog(null, "Please select the music",
-//                    "Error",
-//                    JOptionPane.ERROR_MESSAGE);
-//
-//        } else {
-//           // m= p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
         System.out.println(m);
             System.out.println(m.getAlbum());
             jTAlbum.setText(m.getAlbum());
@@ -55,7 +50,7 @@ public class JdEditMusic extends javax.swing.JDialog {
             jTYear.setEditable(false);
             repaint();
             revalidate();
-//        }
+
     }
 
     /**
@@ -78,8 +73,6 @@ public class JdEditMusic extends javax.swing.JDialog {
         jLabel4 = new javax.swing.JLabel();
         jBCancel = new javax.swing.JButton();
         jBSave = new javax.swing.JButton();
-        jBPrevious = new javax.swing.JButton();
-        jBNext = new javax.swing.JButton();
         jLERROAlbum = new javax.swing.JLabel();
         jLERROYear = new javax.swing.JLabel();
         jLERROname = new javax.swing.JLabel();
@@ -225,38 +218,11 @@ public class JdEditMusic extends javax.swing.JDialog {
                 jBSaveMouseClicked(evt);
             }
         });
-        jBSave.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBSaveActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 16;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         getContentPane().add(jBSave, gridBagConstraints);
-
-        jBPrevious.setText("< previous");
-        jBPrevious.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jBPrevious.setMaximumSize(new java.awt.Dimension(71, 25));
-        jBPrevious.setMinimumSize(new java.awt.Dimension(71, 25));
-        jBPrevious.setPreferredSize(new java.awt.Dimension(71, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(jBPrevious, gridBagConstraints);
-
-        jBNext.setText("next >");
-        jBNext.setMargin(new java.awt.Insets(2, 2, 2, 2));
-        jBNext.setMaximumSize(new java.awt.Dimension(71, 25));
-        jBNext.setMinimumSize(new java.awt.Dimension(71, 25));
-        jBNext.setPreferredSize(new java.awt.Dimension(71, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        getContentPane().add(jBNext, gridBagConstraints);
 
         jLERROAlbum.setForeground(new java.awt.Color(255, 0, 0));
         jLERROAlbum.setText("Please write de name of the album.");
@@ -389,12 +355,8 @@ public class JdEditMusic extends javax.swing.JDialog {
     }//GEN-LAST:event_jBCancelMouseClicked
 
     private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
-        // TODO add your handling code here:
+        this.dispose(); //fecha a janela
     }//GEN-LAST:event_jBCancelActionPerformed
-
-    private void jBSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSaveActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBSaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -440,8 +402,6 @@ public class JdEditMusic extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCancel;
-    private javax.swing.JButton jBNext;
-    private javax.swing.JButton jBPrevious;
     private javax.swing.JButton jBSave;
     private javax.swing.JLabel jLERROAlbum;
     private javax.swing.JLabel jLERROYear;
