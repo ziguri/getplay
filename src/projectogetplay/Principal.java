@@ -7,8 +7,11 @@ package projectogetplay;
 
 import jaco.mp3.a.f;
 import jaco.mp3.player.MP3Player;
+import java.awt.event.ActionEvent;
 import java.io.File;
 import java.util.ArrayList;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -616,8 +619,20 @@ public class Principal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
-                new Principal().setVisible(true);
+                Principal novo = new Principal();
+                novo.setVisible(true);
+                Action logout = new AbstractAction() {
+                    public void actionPerformed(ActionEvent e) {
+                        //JFrame frame = (JFrame) e.getSource();
+                        Principal executavel = (Principal) e.getSource();
+                        //frame.dispose();
+                        executavel.logOut();
+                    }
+                };
+
+                InactivityListener listener = new InactivityListener(novo, logout, 1);
+                listener.start();
+                // new Principal().setVisible(true);
             }
         });
     }
