@@ -43,16 +43,21 @@ public class JdNewPlaylist extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Playlist");
-        setMinimumSize(new java.awt.Dimension(220, 95));
-        setPreferredSize(new java.awt.Dimension(220, 95));
+        setMinimumSize(new java.awt.Dimension(240, 120));
+        setPreferredSize(new java.awt.Dimension(240, 120));
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txtNomePlaylist.setMinimumSize(new java.awt.Dimension(140, 25));
         txtNomePlaylist.setPreferredSize(new java.awt.Dimension(140, 25));
+        getContentPane().add(txtNomePlaylist, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 26, -1, 28));
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Name");
         jLabel1.setMaximumSize(new java.awt.Dimension(30, 25));
         jLabel1.setMinimumSize(new java.awt.Dimension(30, 25));
-        jLabel1.setPreferredSize(new java.awt.Dimension(27, 25));
+        jLabel1.setPreferredSize(new java.awt.Dimension(30, 25));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 28, 50, -1));
 
         btOk.setText("Ok");
         btOk.addActionListener(new java.awt.event.ActionListener() {
@@ -60,6 +65,7 @@ public class JdNewPlaylist extends javax.swing.JDialog {
                 btOkActionPerformed(evt);
             }
         });
+        getContentPane().add(btOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 65, -1, -1));
 
         btCancel.setText("Cancel");
         btCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -67,37 +73,7 @@ public class JdNewPlaylist extends javax.swing.JDialog {
                 btCancelActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
-                        .addComponent(txtNomePlaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btOk)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btCancel)))
-                .addGap(20, 20, 20))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNomePlaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCancel)
-                    .addComponent(btOk))
-                .addGap(7, 7, 7))
-        );
+        getContentPane().add(btCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 65, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

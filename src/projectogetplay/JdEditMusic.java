@@ -117,6 +117,14 @@ public class JdEditMusic extends javax.swing.JDialog {
         jTArtist.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jTArtist.setMinimumSize(new java.awt.Dimension(200, 25));
         jTArtist.setPreferredSize(new java.awt.Dimension(200, 25));
+        jTArtist.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jTArtistFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTArtistFocusLost(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
@@ -265,7 +273,7 @@ public class JdEditMusic extends javax.swing.JDialog {
     private void jBSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSaveMouseClicked
         if (p.getLogged() == null) {
             JOptionPane.showMessageDialog(this, "Please sign in to edit a music",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
+                    "INFO", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();//close window
             return;
         }
@@ -351,12 +359,19 @@ public class JdEditMusic extends javax.swing.JDialog {
 
     private void jBCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBCancelMouseClicked
         this.dispose(); //fecha a janela
-
     }//GEN-LAST:event_jBCancelMouseClicked
 
     private void jBCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCancelActionPerformed
         this.dispose(); //fecha a janela
     }//GEN-LAST:event_jBCancelActionPerformed
+
+    private void jTArtistFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTArtistFocusGained
+        jTYear.setEditable(true);
+    }//GEN-LAST:event_jTArtistFocusGained
+
+    private void jTArtistFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTArtistFocusLost
+        String s = jTArtist.getText().trim();
+    }//GEN-LAST:event_jTArtistFocusLost
 
     /**
      * @param args the command line arguments

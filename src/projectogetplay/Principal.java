@@ -61,6 +61,10 @@ public class Principal extends javax.swing.JFrame {
         app.listUsers();
         player = new MP3Player();
         mlistTbl = new ArrayList<>();
+        jBBackward.setEnabled(false);
+        jBForward.setEnabled(false);
+        jBStop.setEnabled(false);
+        togglePlay.setEnabled(false);
     }
 
     /**
@@ -78,7 +82,6 @@ public class Principal extends javax.swing.JFrame {
         jBStop = new javax.swing.JButton();
         jBBackward = new javax.swing.JButton();
         jBForward = new javax.swing.JButton();
-        jLTitleMusica = new javax.swing.JLabel();
         togglePlay = new javax.swing.JToggleButton();
         pnBaseColuna = new javax.swing.JPanel();
         pnBaseLogin = new javax.swing.JPanel();
@@ -144,8 +147,6 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jLTitleMusica.setText("<Title Musica>");
-
         togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png"))); // NOI18N
         togglePlay.setBorder(null);
         togglePlay.setContentAreaFilled(false);
@@ -160,7 +161,7 @@ public class Principal extends javax.swing.JFrame {
         pnBaseFundoLayout.setHorizontalGroup(
             pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnBaseFundoLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(98, 98, 98)
                 .addComponent(jBStop)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBBackward)
@@ -168,26 +169,18 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(togglePlay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBForward)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLTitleMusica)
-                .addContainerGap())
+                .addContainerGap(832, Short.MAX_VALUE))
         );
         pnBaseFundoLayout.setVerticalGroup(
             pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnBaseFundoLayout.createSequentialGroup()
-                .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pnBaseFundoLayout.createSequentialGroup()
-                            .addGap(19, 19, 19)
-                            .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jBStop)
-                                .addComponent(jBBackward)
-                                .addComponent(jBForward)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnBaseFundoLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(togglePlay)))
-                    .addComponent(jLTitleMusica))
-                .addGap(16, 16, 16))
+                .addGap(25, 25, 25)
+                .addGroup(pnBaseFundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBStop)
+                    .addComponent(jBBackward)
+                    .addComponent(jBForward)
+                    .addComponent(togglePlay))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -196,7 +189,6 @@ public class Principal extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         getContentPane().add(pnBaseFundo, gridBagConstraints);
 
-        pnBaseColuna.setBackground(new java.awt.Color(102, 255, 102));
         pnBaseColuna.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         pnBaseColuna.setMinimumSize(new java.awt.Dimension(250, 420));
         pnBaseColuna.setPreferredSize(new java.awt.Dimension(250, 420));
@@ -207,73 +199,84 @@ public class Principal extends javax.swing.JFrame {
 
         pnBaseLogin.setMinimumSize(new java.awt.Dimension(830, 70));
         pnBaseLogin.setPreferredSize(new java.awt.Dimension(830, 70));
-        pnBaseLogin.setLayout(new java.awt.GridBagLayout());
+        java.awt.GridBagLayout pnBaseLoginLayout = new java.awt.GridBagLayout();
+        pnBaseLoginLayout.columnWidths = new int[] {0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0};
+        pnBaseLoginLayout.rowHeights = new int[] {0, 0, 0};
+        pnBaseLogin.setLayout(pnBaseLoginLayout);
 
-        emailField.setToolTipText("");
-        emailField.setPreferredSize(new java.awt.Dimension(111, 23));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 105;
-        gridBagConstraints.ipady = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHEAST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 434, 12, 0);
-        pnBaseLogin.add(emailField, gridBagConstraints);
-
-        passwordField.setToolTipText("");
-        passwordField.setPreferredSize(new java.awt.Dimension(111, 23));
+        emailField.setMinimumSize(new java.awt.Dimension(30, 25));
+        emailField.setPreferredSize(new java.awt.Dimension(30, 25));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 105;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.ipady = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 426, 0, 0);
+        pnBaseLogin.add(emailField, gridBagConstraints);
+
+        passwordField.setMinimumSize(new java.awt.Dimension(30, 25));
+        passwordField.setPreferredSize(new java.awt.Dimension(30, 25));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 70;
         gridBagConstraints.ipady = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 18, 12, 0);
         pnBaseLogin.add(passwordField, gridBagConstraints);
 
         botaoLogin.setText("Log in");
+        botaoLogin.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        botaoLogin.setMaximumSize(new java.awt.Dimension(71, 25));
+        botaoLogin.setMinimumSize(new java.awt.Dimension(71, 25));
+        botaoLogin.setPreferredSize(new java.awt.Dimension(71, 25));
         botaoLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoLoginActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 6, 12, 0);
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         pnBaseLogin.add(botaoLogin, gridBagConstraints);
 
         botaoRegistar.setText("Register");
-        botaoRegistar.setToolTipText("");
+        botaoRegistar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoRegistar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        botaoRegistar.setMaximumSize(new java.awt.Dimension(90, 25));
+        botaoRegistar.setMinimumSize(new java.awt.Dimension(90, 25));
+        botaoRegistar.setPreferredSize(new java.awt.Dimension(90, 25));
         botaoRegistar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoRegistarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(0, 6, 12, 10);
+        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         pnBaseLogin.add(botaoRegistar, gridBagConstraints);
 
         lbFixoEmail.setText("E-mail");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 436, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 429, 0, 0);
         pnBaseLogin.add(lbFixoEmail, gridBagConstraints);
 
         lbFixoPassword.setText("Password");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 18, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 1, 0, 0);
         pnBaseLogin.add(lbFixoPassword, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -281,7 +284,6 @@ public class Principal extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         getContentPane().add(pnBaseLogin, gridBagConstraints);
 
-        pnBaseInfo.setBackground(new java.awt.Color(102, 102, 255));
         pnBaseInfo.setMinimumSize(new java.awt.Dimension(830, 100));
         pnBaseInfo.setPreferredSize(new java.awt.Dimension(830, 100));
         pnBaseInfo.setLayout(new javax.swing.BoxLayout(pnBaseInfo, javax.swing.BoxLayout.LINE_AXIS));
@@ -333,6 +335,10 @@ public class Principal extends javax.swing.JFrame {
         pnBaseColuna.removeAll();
         pnBaseTabela.removeAll();
         pnBaseInfo.removeAll();
+        jBBackward.setEnabled(false);
+        jBForward.setEnabled(false);
+        jBStop.setEnabled(false);
+        togglePlay.setEnabled(false);
 
         app.guardaFoMusics();
 
@@ -345,6 +351,7 @@ public class Principal extends javax.swing.JFrame {
         botaoRegistar.setVisible(true);
         emailField.setVisible(true);
         passwordField.setVisible(true);
+      
     }
 
     
@@ -396,6 +403,11 @@ public class Principal extends javax.swing.JFrame {
                 //painel tabela               
                 pnTabelaMusica = new PnTabelaMusica(this, app.getMusicsList());
                 pnBaseTabela.add(pnTabelaMusica);
+                
+                jBBackward.setEnabled(true);
+                jBForward.setEnabled(true);
+                jBStop.setEnabled(true);
+                togglePlay.setEnabled(true);
 
                 revalidate();
                 repaint();
@@ -613,7 +625,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jBBackward;
     private javax.swing.JButton jBForward;
     private javax.swing.JButton jBStop;
-    private javax.swing.JLabel jLTitleMusica;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JLabel lbFixoEmail;

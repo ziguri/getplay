@@ -83,14 +83,13 @@ public class PnListaMusicas extends javax.swing.JPanel {
             }
         });
 
-        jBEditMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit-icon.png"))); // NOI18N
-        jBEditMusic.setText(" edit");
+        jBEditMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/music-pencil-icon-icon.png"))); // NOI18N
         jBEditMusic.setBorder(null);
         jBEditMusic.setContentAreaFilled(false);
         jBEditMusic.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        jBEditMusic.setMaximumSize(new java.awt.Dimension(71, 25));
-        jBEditMusic.setMinimumSize(new java.awt.Dimension(71, 25));
-        jBEditMusic.setPreferredSize(new java.awt.Dimension(71, 25));
+        jBEditMusic.setMaximumSize(new java.awt.Dimension(30, 25));
+        jBEditMusic.setMinimumSize(new java.awt.Dimension(30, 25));
+        jBEditMusic.setPreferredSize(new java.awt.Dimension(30, 25));
         jBEditMusic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBEditMusicMouseClicked(evt);
@@ -157,35 +156,37 @@ public class PnListaMusicas extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListName1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 444, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jBFavorBlack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jBAddMusicPLaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListName)
-                        .addContainerGap())))
+                        .addGap(0, 740, Short.MAX_VALUE)))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(55, Short.MAX_VALUE)
                 .addComponent(jLabPListName)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabPListName1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBAddMusicPLaylist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBFavorBlack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabPListName1)
+                        .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBAddMusicPLaylist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jBFavorBlack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -194,52 +195,57 @@ public class PnListaMusicas extends javax.swing.JPanel {
         new JdCreateMusic(p, true).setVisible(true);
        
     }//GEN-LAST:event_jBAddMusicActionPerformed
-
-    private void jBEditMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEditMusicMouseClicked
-        if (p.getLogged() == null) {
-            JOptionPane.showMessageDialog(this, "Please sign in to edit a music",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-           return;
-        }  
-        this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
-              
-        if(m.getCreatorEmail().equals(p.getLogged().getEmail())){
-            JdEditMusic jdEditMusic=new JdEditMusic(p, true);
-            jdEditMusic.fillFields(m);
-            jdEditMusic.setVisible(true);
-
-        }else{
-            JOptionPane.showMessageDialog(this, "You don´t have permission to change this music",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-      
-    }//GEN-LAST:event_jBEditMusicMouseClicked
-
-    private void update(){
+    private void update() {
         p.getPnBaseTabela().removeAll();
         p.getPnBaseInfo().removeAll();
-        
+
         p.getPnBaseTabela().add(p.getPnTabelaMusica());
         p.getPnBaseInfo().add(p.getPnListaMusicas());
         p.getPnTabelaMusica().repaint();
         p.getPnTabelaMusica().revalidate();
-            
+
         p.repaint();
         p.revalidate();
-        
-        
-    }
-    
-    
-    private void jBRemoveMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveMusicActionPerformed
-        int cod = p.getPnTabelaMusica().getCliqueMusica();
-        Music mu = p.getApp().searchMusic(cod);
-        
-        if(mu!=null){
-        
-            if(mu.getCreatorEmail().equalsIgnoreCase(p.getLogged().getEmail())){
 
-                p.getApp().removeMusic(mu);
+    }
+    private void jBEditMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEditMusicMouseClicked
+        if (p.getLogged() == null) {
+            JOptionPane.showMessageDialog(this, "Please sign in to edit a music",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        final JTable tabela = p.getPnTabelaMusica().getTblMusic();
+        int rowIndex = tabela.getSelectedRow();
+        this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
+        //linhas seleccionada na tabela
+        if (rowIndex != -1) {
+            if (m.getCreatorEmail().equals(p.getLogged().getEmail())) {
+                JdEditMusic jdEditMusic = new JdEditMusic(p, true);
+                jdEditMusic.fillFields(m);
+                jdEditMusic.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "You don´t have permission to change this music",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select one music from the table",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        update();
+    }//GEN-LAST:event_jBEditMusicMouseClicked
+
+
+    private void jBRemoveMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveMusicActionPerformed
+        final JTable tabela = p.getPnTabelaMusica().getTblMusic();
+        int rowIndex = tabela.getSelectedRow();
+        System.out.println("rowIndex: "+rowIndex);
+        int cod = p.getPnTabelaMusica().getCliqueMusica();
+        this.m = p.getApp().searchMusic(cod);
+        //linhas seleccionada na tabela
+            if (m.getCreatorEmail().equals(p.getLogged().getEmail())) {
+
+                p.getApp().removeMusic(m);
                 p.getPnTabelaMusica().removeLinha();
 
                 //Actualiza a tabela de musicas
@@ -253,67 +259,54 @@ public class PnListaMusicas extends javax.swing.JPanel {
                 p.repaint();
                 JOptionPane.showMessageDialog(this, "Music Removed", "Success", JOptionPane.INFORMATION_MESSAGE);
 
-
-            }   
-            else{
-
+            }else if(rowIndex == -1){
+                JOptionPane.showMessageDialog(this, "Please select one music from the table",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+            }         
+            else {
                 JOptionPane.showMessageDialog(this, "You don´t have permission to remove this music",
                         "ERROR", JOptionPane.ERROR_MESSAGE);
             }
-        }
-        else{
-        
-             JOptionPane.showMessageDialog(this, "Please select one music from the table",
-                    "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
+        update();
     }//GEN-LAST:event_jBRemoveMusicActionPerformed
 
     private void jBAddMusicPLaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddMusicPLaylistActionPerformed
-            Playlist playlist = p.getPnColuna().getPlaylistProp().
-                            get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
-            
-            this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
-            int cod = p.getPnTabelaMusica().getCliqueMusica();        
-            
-            
+        System.out.println("Aqui");
+        final JTable tabela = p.getPnTabelaMusica().getTblMusic();
+        int rowIndex = tabela.getSelectedRow();
+        int playlistIndex = p.getPnColuna().getMyPlaylistsList().getSelectedIndex();
+//            Playlist playlist = p.getPnColuna().getPlaylistProp().
+//                get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
+//        //codigo rebenta neste playlist
+        int cod = p.getPnTabelaMusica().getCliqueMusica();
+        this.m = p.getApp().searchMusic(cod);
+
         System.out.println("Logado: " + p.getLogged().toString());
         System.out.println("NumPlaylists do logged: " + p.getLogged().getPlaylists().size());
-        
-        if(playlist.existeMusicPlaylist(cod)){
-        
+
+        if (playlistIndex != -1 && p.getPnColuna().getPlaylistProp().
+                get(playlistIndex).existeMusicPlaylist(cod)) {
             JOptionPane.showMessageDialog(this, "The music was already added to this playlist before",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        else{
-        
-        
-            if(p.getPnTabelaMusica().getTblMusic().getSelectedRow()==-1 && p.getPnColuna().getMyPlaylistsList().getSelectedIndex()!=-1){
-
+        } else {
+            if (rowIndex == -1 && playlistIndex == -1) {
+                JOptionPane.showMessageDialog(this, "Please select one music from the table and a Playlist from MyPlaylist.",
+                        "ERROR", JOptionPane.ERROR_MESSAGE);
+            } else if (rowIndex == -1 && playlistIndex != -1) {
                 JOptionPane.showMessageDialog(this, "Please select one music from the table",
                         "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-            else if(p.getPnTabelaMusica().getTblMusic().getSelectedRow()!=-1 && p.getPnColuna().getMyPlaylistsList().getSelectedIndex()==-1){
-
+            } else if ( playlistIndex == -1 && rowIndex != -1) {
                 JOptionPane.showMessageDialog(this, "Please select one playlist from \"My Playlist\" list",
                         "ERROR", JOptionPane.ERROR_MESSAGE);
-            }
-            else if(p.getPnTabelaMusica().getTblMusic().getSelectedRow()==-1 && p.getPnColuna().getMyPlaylistsList().getSelectedIndex()==-1){
-
-                JOptionPane.showMessageDialog(this, "Please select one music and one playlist",
-                        "ERROR", JOptionPane.ERROR_MESSAGE);
-
-            }
-            else{
-
+            } else {
+                Playlist playlist = p.getPnColuna().getPlaylistProp().get(playlistIndex);
                 playlist.addMusicPlaylist(cod);
                 JOptionPane.showMessageDialog(this, "Music added to playlist " + playlist.getName(), "Success", JOptionPane.INFORMATION_MESSAGE);
                 p.revalidate();
                 p.repaint();
             }
-
         }
-         
+        
     }//GEN-LAST:event_jBAddMusicPLaylistActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -324,8 +317,8 @@ public class PnListaMusicas extends javax.swing.JPanel {
         //linhas seleccionada na tabela
         if (rowIndex != -1 || p.getPnColuna().getMyPlaylistsList().getSelectedIndex() !=-1) {
             m.setFavorite(true);
-             JOptionPane.showMessageDialog(this, "FAVORITE",
-                    "OK", JOptionPane.OK_OPTION);
+             JOptionPane.showMessageDialog(this, "Favorite Music",
+                    "Favorite", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/Favorite_32.png")));
             update();
         }else{
             JOptionPane.showMessageDialog(this, "Please select a music",
@@ -342,9 +335,9 @@ public class PnListaMusicas extends javax.swing.JPanel {
         this.m = p.getApp().searchMusic(musicCode);
         //linhas seleccionada na tabela
         if (rowIndex != -1 || rowIndex != -1 || p.getPnColuna().getMyPlaylistsList().getSelectedIndex() !=-1) {
-            JOptionPane.showMessageDialog(this, "NO FAVORITE",
-                    "OK", JOptionPane.OK_OPTION);
             m.setFavorite(false);
+            JOptionPane.showMessageDialog(this, "This is not your favorite Music",
+                    "Favorite", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/Favorite_32_black.png")));
             p.getPnTabelaMusica().refresh();
             update();
         }else{

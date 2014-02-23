@@ -175,7 +175,6 @@ public class PnPesquisa extends javax.swing.JPanel {
     }//GEN-LAST:event_menuLogoutActionPerformed
 
     private void menuEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEliminarActionPerformed
-
         //Remove todas as musicas inseridas pelo utilizador, na lista de musicas
         //e nas playlists de outros utilizadores
         pagPrincipal.getApp().removeAllUserMusics(pagPrincipal.getLogged());

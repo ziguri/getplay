@@ -206,7 +206,7 @@ public class GetPlay implements Serializable {
             }
         }
     }
-    
+   
     /**
      * Receives one user, and remove all the musics inserted by this user.
      * @param u 
@@ -214,11 +214,9 @@ public class GetPlay implements Serializable {
     public void removeAllUserMusics(User u){
     
         for(int i=0; i<musicsList.size(); i++){
-        
-            if(musicsList.get(i).getCreatorEmail().equalsIgnoreCase(u.getEmail())){
-            
-                removeMusicsFromAnotherPlaylists(musicsList.get(i).getMusicCode());
-            }
+            if(musicsList.get(i).getCreatorEmail().equals(u.getEmail())){
+                 removeMusicsFromAnotherPlaylists(musicsList.get(i).getMusicCode());
+     }
             
         }
     }
