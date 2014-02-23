@@ -275,10 +275,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
         final JTable tabela = p.getPnTabelaMusica().getTblMusic();
         int rowIndex = tabela.getSelectedRow();
         int playlistIndex = p.getPnColuna().getMyPlaylistsList().getSelectedIndex();
-//            Playlist playlist = p.getPnColuna().getPlaylistProp().
-//                get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
-//        //codigo rebenta neste playlist
-        System.out.println("index "+playlistIndex);
+     
         int cod = p.getPnTabelaMusica().getCliqueMusica();
         this.m = p.getApp().searchMusic(cod);
 
@@ -302,8 +299,11 @@ public class PnListaMusicas extends javax.swing.JPanel {
             } else {
                 Playlist playlist = p.getPnColuna().getPlaylistProp().get(playlistIndex);
                 playlist.addMusicPlaylist(cod);
+                
                 JOptionPane.showMessageDialog(this, "Music added to playlist " + playlist.getName(), "Success", JOptionPane.INFORMATION_MESSAGE);
-                System.out.println("playlist name: "+playlist.getName());
+                p.getPnTabelaMusica().getTblMusic().clearSelection();
+                p.getPnColuna().getMyPlaylistsList().clearSelection();
+                
                 p.revalidate();
                 p.repaint();
             }
