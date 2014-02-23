@@ -39,6 +39,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
      */
     public PnTabelaMusica(Principal p, ArrayList<Music> play) {
         dados = new ArrayList();
+        dadosArray= new ArrayList<>();
         this.pagPrincipal = p;
         atribuiDados(play);
         //criaArray(play);
@@ -48,8 +49,9 @@ public class PnTabelaMusica extends javax.swing.JPanel {
 
     //criar um array com duas colunas. 1 coluna com o musicCount e outra coluna com o Path da musica
     public void criaArray(){
+        
     int tamanho= tblMusic.getRowCount();
-    dadosArray= new ArrayList<>();
+    
     
         for (int i = 0; i < tamanho; i++) {
             dadosArray.add(new Music(

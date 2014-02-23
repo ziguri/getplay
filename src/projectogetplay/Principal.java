@@ -38,8 +38,6 @@ public class Principal extends javax.swing.JFrame {
     private int rowIndex;
     private ArrayList<Music> dadosTabela;
 
-    
-
     public Principal() {
         initComponents();
 
@@ -59,13 +57,13 @@ public class Principal extends javax.swing.JFrame {
         app.listMusics();
         app.listUsers();
         player = new MP3Player();
-       
+
         jBBackward.setEnabled(false);
         jBForward.setEnabled(false);
         jBStop.setEnabled(false);
         togglePlay.setEnabled(false);
         playPanel.setVisible(false);
-        
+
     }
 
     /**
@@ -378,7 +376,6 @@ public class Principal extends javax.swing.JFrame {
         botaoRegistar.setVisible(true);
         emailField.setVisible(true);
         passwordField.setVisible(true);
-        
 
     }
 
@@ -525,10 +522,16 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jBForwardActionPerformed
 
     private void togglePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglePlayActionPerformed
-    
-      dadosTabela = pnTabelaMusica.getArray();
+//        dadosTabela = pnTabelaMusica.getArray();
+//        if (!dadosTabela.isEmpty()) {
+//            int tamanho = dadosTabela.size();
+//            for (int i = tamanho - 1; i >= 0; i--) {
+//                dadosTabela.remove(i);
+//            }
+//        }
+
+        dadosTabela = pnTabelaMusica.getArray();
         rowIndex = pnTabelaMusica.linhaSelecionada();
-       
 
         File[] f = getApp().stringToMp3(dadosTabela);
         //rowIndex = tabela.getSelectedRow();
@@ -558,8 +561,7 @@ public class Principal extends javax.swing.JFrame {
 //            }catch(Exception e){ System.err.println(e);}
 //        }	   
 //	}    
-    
-    
+//    
     public int getRowIndex() {
         return rowIndex;
     }
@@ -683,7 +685,6 @@ public class Principal extends javax.swing.JFrame {
         this.pnTabelaMusica = pnTabelaMusica;
     }
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogin;
@@ -760,9 +761,9 @@ public class Principal extends javax.swing.JFrame {
     public PnTabelaPlayList getPnTabelaPlayList() {
         return pnTabelaPlayList;
     }
-    
+
     public void setPnColuna(PnColuna pnColuna) {
-       this.pnColuna = pnColuna;
-   }
-    
+        this.pnColuna = pnColuna;
+    }
+
 }
