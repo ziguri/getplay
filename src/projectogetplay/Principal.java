@@ -616,6 +616,11 @@ public class Principal extends javax.swing.JFrame {
         this.pnBaseTabela = pnBaseTabela;
     }
 
+    public void setPnTabelaMusica(PnTabelaMusica pnTabelaMusica) {
+        this.pnTabelaMusica = pnTabelaMusica;
+    }
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogin;

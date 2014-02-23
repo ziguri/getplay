@@ -71,7 +71,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     }
 
     public void carregaTabela() {
-        String fav = "*";
+        String fav;
         for (Music music : dados) {
             if (music.isFavorite()) {
                 fav = "*";

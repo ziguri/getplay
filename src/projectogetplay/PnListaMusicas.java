@@ -310,22 +310,33 @@ public class PnListaMusicas extends javax.swing.JPanel {
     }//GEN-LAST:event_jBAddMusicPLaylistActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        final JTable tabela = p.getPnTabelaMusica().getTblMusic();
+        JTable tabela = p.getPnTabelaMusica().getTblMusic();
         int rowIndex = tabela.getSelectedRow();
         int musicCode = p.getPnTabelaMusica().getCliqueMusica(); 
         this.m = p.getApp().searchMusic(musicCode);
+        
         //linhas seleccionada na tabela
         if (rowIndex != -1 || p.getPnColuna().getMyPlaylistsList().getSelectedIndex() !=-1) {
             m.setFavorite(true);
              JOptionPane.showMessageDialog(this, "Favorite Music",
                     "Favorite", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/Favorite_32.png")));
-            update();
+            
+             
+             //Actualiza os dados da tabela, gera uma nova tabela e mostra-a
+             p.getPnBaseTabela().removeAll();
+             p.setPnTabelaMusica(new PnTabelaMusica (p, p.getApp().getMusicsList()));
+             p.getPnTabelaMusica().refresh();
+
+             p.getPnBaseTabela().add(p.getPnTabelaMusica());
+             p.revalidate();
+             p.repaint();
+
+
         }else{
             JOptionPane.showMessageDialog(this, "Please select a music",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-         update();
-         p.getPnTabelaMusica().refresh();
+         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBFavorBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFavorBlackActionPerformed
@@ -338,14 +349,22 @@ public class PnListaMusicas extends javax.swing.JPanel {
             m.setFavorite(false);
             JOptionPane.showMessageDialog(this, "This is not your favorite Music",
                     "Favorite", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/Favorite_32_black.png")));
-            p.getPnTabelaMusica().refresh();
-            update();
+            
+
+            //Actualiza os dados da tabela, gera uma nova tabela e mostra-a
+             p.getPnBaseTabela().removeAll();
+             p.setPnTabelaMusica(new PnTabelaMusica (p, p.getApp().getMusicsList()));
+             p.getPnTabelaMusica().refresh();
+
+             p.getPnBaseTabela().add(p.getPnTabelaMusica());
+             p.revalidate();
+             p.repaint();
+             
         }else{
              JOptionPane.showMessageDialog(this, "Please select a music",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        update();
-        p.getPnTabelaMusica().refresh();
+
     }//GEN-LAST:event_jBFavorBlackActionPerformed
 
     public JLabel getjLabPListName() {
