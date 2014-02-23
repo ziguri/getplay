@@ -157,13 +157,22 @@ public class PnMyPlayList extends javax.swing.JPanel {
          int indiceLista = pagPrincipal.getPnColuna().getMyPlaylistsList().getSelectedIndex();
          int indiceTabela = pagPrincipal.getPnTabelaPlayList().getTblPlaylist().getSelectedRow();
          String nomePlay = (String) pagPrincipal.getPnTabelaPlayList().getTblPlaylist().getValueAt(indiceTabela, 0);
-        Playlist playl = pagPrincipal.getLogged().findPlaylist(nomePlay);
+            Playlist playl = pagPrincipal.getLogged().findPlaylist(nomePlay);
          
          if(indiceLista==-1 && indiceTabela==-1){
         
             JOptionPane.showMessageDialog(this, "Please select one playlist from table or from the \"My Playlists\" list on the left.",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+         else if(indiceLista!=-1 && indiceTabela!=-1){
+         
+              JOptionPane.showMessageDialog(this, "Please select just from table, or from playlist",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+              pagPrincipal.getPnTabelaPlayList().getTblPlaylist().clearSelection();
+              pagPrincipal.getPnColuna().getMyPlaylistsList().clearSelection();
+              
+              
+         }
         else{
         
             if(indiceTabela==-1){
