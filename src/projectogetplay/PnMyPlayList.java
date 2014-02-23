@@ -6,6 +6,8 @@
 
 package projectogetplay;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Aires
@@ -26,6 +28,24 @@ public class PnMyPlayList extends javax.swing.JPanel {
         initComponents();
         
     }
+
+    public JLabel getjLabPListDir() {
+        return jLabPListDir;
+    }
+
+    public void setjLabPListDir(JLabel jLabPListDir) {
+        this.jLabPListDir = jLabPListDir;
+    }
+
+    public JLabel getjLabPListDir1() {
+        return jLabPListDir1;
+    }
+
+    public void setjLabPListDir1(JLabel jLabPListDir1) {
+        this.jLabPListDir1 = jLabPListDir1;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +69,7 @@ public class PnMyPlayList extends javax.swing.JPanel {
         jLabPListDir.setToolTipText("");
 
         try{
-            String numPlay="";
+            String numPlay="Number of Playlists: ";
             numPlay+=pagPrincipal.getLogged().getPlaylists().size();
             jLabPListDir1.setText(numPlay);
         }catch(Exception e){}

@@ -19,8 +19,6 @@ import javax.swing.table.TableColumn;
 public class PnTabelaPlayList extends javax.swing.JPanel {
 
     protected Principal pagPrincipal;
-
-    
     private DefaultTableModel modelo;
     private ArrayList<Playlist> dados;
     
@@ -28,17 +26,17 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
     /**
      * Creates new form PnTabelaMusica
      */
-    public PnTabelaPlayList(Principal p) {
-        initComponents();
-        this.pagPrincipal=p;
-        dados=new ArrayList<>();
+    public PnTabelaPlayList(Principal p, ArrayList<Playlist> play) {
         
+        this.pagPrincipal=p;
+        dados=new ArrayList();
+        atribuiDadosPL(play);
+        initComponents();
     }
 
      public void atribuiDadosPL(ArrayList<Playlist> playList) {
         dados.clear();
-        dados =playList;
-;
+        dados.addAll(playList);
     }
 
     public void criaModeloTabelaPL() {

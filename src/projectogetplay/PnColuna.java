@@ -411,7 +411,20 @@ public class PnColuna extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void lbMyPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMyPlayMouseClicked
-        // TODO add your handling code here:
+        
+        //Limpa o cabeçalho e a tabela
+        pagPrincipal.getPnBaseTabela().removeAll();
+        pagPrincipal.getPnBaseInfo().removeAll();
+        
+        //Adiciona a nova tabela de Playlist´s
+        pagPrincipal.getPnBaseTabela().add(new PnTabelaPlayList(pagPrincipal, this.playlistProp));
+        
+        PnMyPlayList panel = new PnMyPlayList(pagPrincipal);
+        panel.getjLabPListDir1().setText("Number of Playlists: " + playlistProp.size());
+        pagPrincipal.getPnBaseInfo().add(new PnMyPlayList(pagPrincipal));
+        
+        pagPrincipal.revalidate();
+        pagPrincipal.repaint();
     }//GEN-LAST:event_lbMyPlayMouseClicked
 
     public JList getMyPlaylistsList() {

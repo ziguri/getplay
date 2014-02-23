@@ -216,6 +216,7 @@ public class GetPlay implements Serializable {
         for(int i=0; i<musicsList.size(); i++){
             if(musicsList.get(i).getCreatorEmail().equals(u.getEmail())){
                  removeMusicsFromAnotherPlaylists(musicsList.get(i).getMusicCode());
+                 removeMusic(musicsList.get(i));
      }
             
         }
