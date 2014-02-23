@@ -9,6 +9,7 @@ package projectogetplay;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -50,6 +51,20 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
             modelo.addRow(new Object[]{playlist.getName(), playlist.getdateCreationString(),playlist.getSize(), playlist.getShared()});
         }
 
+    }
+    
+    public void removeLinha() {
+        modelo.removeRow(tblPlaylist.getSelectedRow());
+        
+
+    }
+
+    public JTable getTblPlaylist() {
+        return tblPlaylist;
+    }
+
+    public void setTblPlaylist(JTable tblPlaylist) {
+        this.tblPlaylist = tblPlaylist;
     }
     
     

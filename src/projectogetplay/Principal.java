@@ -464,6 +464,27 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }
+    
+    /**
+     * Show the refreshed playlist table and header each time the list is modifyed.
+     */
+    public void actualizaTabelaMyPlaylist(){
+    
+        //Limpa o cabeçalho e a tabela
+        pnBaseTabela.removeAll();
+        pnBaseInfo.removeAll();
+        
+        //Adiciona a nova tabela de Playlist´s
+        this.pnTabelaPlayList = new PnTabelaPlayList(this, pnColuna.getPlaylistProp());
+        pnBaseTabela.add(pnTabelaPlayList);
+        
+        PnMyPlayList panel = new PnMyPlayList(this);
+        panel.getjLabPListDir1().setText("Number of Playlists: " + pnColuna.getPlaylistProp().size());
+        pnBaseInfo.add(new PnMyPlayList(this));
+        
+        revalidate();
+        repaint();
+    }
 
 
     private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
@@ -521,6 +542,11 @@ public class Principal extends javax.swing.JFrame {
         player.skipBackward();
     }//GEN-LAST:event_jBBackwardActionPerformed
 
+    public void setPnTabelaPlayList(PnTabelaPlayList pnTabelaPlayList) {
+        this.pnTabelaPlayList = pnTabelaPlayList;
+    }
+
+    
     /**
      * @param args the command line arguments
      */

@@ -19,10 +19,14 @@ public class PnColuna extends javax.swing.JPanel {
     protected Principal pagPrincipal;
     protected ArrayList <Playlist> playlistProp;
     protected ArrayList <Playlist> playlistPub;
-
+    protected boolean myPlaylistClicked;
+    protected boolean othersPlaylistClicked;
+    
     public PnColuna(Principal pagPrincipal){
         
         this.pagPrincipal=pagPrincipal;
+        this.myPlaylistClicked=false;
+        this.othersPlaylistClicked=false;
         initComponents();
         buildAllLists ();
         
@@ -65,7 +69,7 @@ public class PnColuna extends javax.swing.JPanel {
     /**
      * Build all the lists to show in the main page. 
      */
-    private void buildAllLists (){
+    public void buildAllLists (){
     
         myPlaylistsList.setListData(buildPlaylistListProp(pagPrincipal.getLogged().getPlaylists()));
         publicPlaylists.setListData(buildPlaylistListPub(pagPrincipal.getApp().publicPlaylists()));
@@ -212,6 +216,11 @@ public class PnColuna extends javax.swing.JPanel {
         jLabel2.setText("Public Playlists");
         jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
         jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/go.png"))); // NOI18N
         jButton2.setContentAreaFilled(false);
@@ -271,6 +280,8 @@ public class PnColuna extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAllMusicsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAllMusicsActionPerformed
+        myPlaylistClicked=false;
+        othersPlaylistClicked=false;
         pagPrincipal.getPnBaseTabela().removeAll();
         pagPrincipal.getPnBaseInfo().removeAll();
         
@@ -298,6 +309,7 @@ public class PnColuna extends javax.swing.JPanel {
         
             pagPrincipal.getLogged().removePlaylist(this.playlistProp.get(this.myPlaylistsList.getSelectedIndex()));
             buildAllLists();
+            pagPrincipal.actualizaTabelaMyPlaylist();
         }
     }//GEN-LAST:event_jLMinusMouseClicked
 
@@ -317,6 +329,7 @@ public class PnColuna extends javax.swing.JPanel {
                 pagPrincipal.getLogged().getPlaylistByName(this.playlistProp.
                         get(myPlaylistsList.getSelectedIndex()).getName()).
                         setShared(true);
+                
             }
             else{
             
@@ -325,6 +338,7 @@ public class PnColuna extends javax.swing.JPanel {
                      setShared(false);  
             }
             buildAllLists();
+            pagPrincipal.actualizaTabelaMyPlaylist();
         }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
@@ -412,20 +426,15 @@ public class PnColuna extends javax.swing.JPanel {
 
     private void lbMyPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMyPlayMouseClicked
         
-        //Limpa o cabeçalho e a tabela
-        pagPrincipal.getPnBaseTabela().removeAll();
-        pagPrincipal.getPnBaseInfo().removeAll();
-        
-        //Adiciona a nova tabela de Playlist´s
-        pagPrincipal.getPnBaseTabela().add(new PnTabelaPlayList(pagPrincipal, this.playlistProp));
-        
-        PnMyPlayList panel = new PnMyPlayList(pagPrincipal);
-        panel.getjLabPListDir1().setText("Number of Playlists: " + playlistProp.size());
-        pagPrincipal.getPnBaseInfo().add(new PnMyPlayList(pagPrincipal));
-        
-        pagPrincipal.revalidate();
-        pagPrincipal.repaint();
+        pagPrincipal.actualizaTabelaMyPlaylist();
+        myPlaylistClicked=true;
+        othersPlaylistClicked=false;
     }//GEN-LAST:event_lbMyPlayMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        myPlaylistClicked=false;
+        othersPlaylistClicked=true;
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     public JList getMyPlaylistsList() {
         return myPlaylistsList;
@@ -466,6 +475,23 @@ public class PnColuna extends javax.swing.JPanel {
     public void setPlaylistPub(ArrayList<Playlist> playlistPub) {
         this.playlistPub = playlistPub;
     }
+
+    public boolean isMyPlaylistClicked() {
+        return myPlaylistClicked;
+    }
+
+    public void setMyPlaylistClicked(boolean myPlaylistClicked) {
+        this.myPlaylistClicked = myPlaylistClicked;
+    }
+
+    public boolean isOthersPlaylistClicked() {
+        return othersPlaylistClicked;
+    }
+
+    public void setOthersPlaylistClicked(boolean othersPlaylistClicked) {
+        this.othersPlaylistClicked = othersPlaylistClicked;
+    }
+    
     
     
 

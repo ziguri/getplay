@@ -6,7 +6,6 @@
 
 package projectogetplay;
 
-import java.io.File;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -239,7 +238,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
     private void jBRemoveMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveMusicActionPerformed
         final JTable tabela = p.getPnTabelaMusica().getTblMusic();
         int rowIndex = tabela.getSelectedRow();
-        System.out.println("rowIndex: "+rowIndex);
+        //System.out.println("rowIndex: "+rowIndex);
         int cod = p.getPnTabelaMusica().getCliqueMusica();
         this.m = p.getApp().searchMusic(cod);
         //linhas seleccionada na tabela
