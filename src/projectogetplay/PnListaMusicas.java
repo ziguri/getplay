@@ -232,6 +232,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Please select one music from the table",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
         }
+        p.getPnTabelaMusica().getModelo().fireTableDataChanged();
         update();
     }//GEN-LAST:event_jBEditMusicMouseClicked
 
