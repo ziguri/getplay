@@ -78,6 +78,7 @@ public class TableModelPlaylist extends AbstractTableModel {
                if (playlist.getShared()){
                 return Boolean.TRUE;
                 } else return Boolean.FALSE;
+            
             default:
                 return "Error";
         }

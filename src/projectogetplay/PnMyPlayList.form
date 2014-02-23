@@ -30,10 +30,10 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabPListDir1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="490" max="32767" attributes="0"/>
-                      <Component id="jBNewPlay" min="-2" pref="132" max="-2" attributes="0"/>
+                      <EmptySpace pref="535" max="32767" attributes="0"/>
+                      <Component id="jBNewPlay" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                      <Component id="jBEditPlay" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBEditPlay" min="-2" pref="67" max="-2" attributes="0"/>
                       <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                       <Component id="jBRemovePlay" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -96,13 +96,13 @@
           <Insets value="[2, 10, 2, 10]"/>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[71, 20]"/>
+          <Dimension value="[81, 20]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[71, 20]"/>
+          <Dimension value="[81, 20]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[71, 20]"/>
+          <Dimension value="[81, 20]"/>
         </Property>
       </Properties>
       <Events>
@@ -125,13 +125,13 @@
           <Insets value="[2, 10, 2, 10]"/>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[71, 20]"/>
+          <Dimension value="[81, 20]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[71, 20]"/>
+          <Dimension value="[81, 20]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[71, 20]"/>
+          <Dimension value="[81, 20]"/>
         </Property>
       </Properties>
     </Component>
@@ -151,13 +151,13 @@
           <Insets value="[2, 10, 2, 10]"/>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[71, 20]"/>
+          <Dimension value="[81, 20]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[71, 20]"/>
+          <Dimension value="[81, 20]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[71, 20]"/>
+          <Dimension value="[81, 20]"/>
         </Property>
       </Properties>
       <Events>
