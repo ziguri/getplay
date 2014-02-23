@@ -84,7 +84,7 @@ public class PnColuna extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         myPlaylistsList = new javax.swing.JList();
-        jLabel1 = new javax.swing.JLabel();
+        lbMyPlay = new javax.swing.JLabel();
         lblFixoAddPL = new javax.swing.JLabel();
         jLMinus = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -103,9 +103,14 @@ public class PnColuna extends javax.swing.JPanel {
         myPlaylistsList.setBackground(new java.awt.Color(240, 240, 240));
         jScrollPane1.setViewportView(myPlaylistsList);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Folder-32.png"))); // NOI18N
-        jLabel1.setText("My Playlists");
-        jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lbMyPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Folder-32.png"))); // NOI18N
+        lbMyPlay.setText("My Playlists");
+        lbMyPlay.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lbMyPlay.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbMyPlayMouseClicked(evt);
+            }
+        });
 
         lblFixoAddPL.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N
         lblFixoAddPL.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -170,7 +175,7 @@ public class PnColuna extends javax.swing.JPanel {
                         .addContainerGap())
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lbMyPlay)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                         .addComponent(lblFixoAddPL)
                         .addGap(0, 0, 0)
@@ -193,9 +198,7 @@ public class PnColuna extends javax.swing.JPanel {
                         .addComponent(jLMinus)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(lblFixoAddPL))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, 0)))
+                    .addComponent(lbMyPlay))
                 .addGap(0, 0, 0)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
@@ -407,6 +410,10 @@ public class PnColuna extends javax.swing.JPanel {
             }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void lbMyPlayMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbMyPlayMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbMyPlayMouseClicked
+
     public JList getMyPlaylistsList() {
         return myPlaylistsList;
     }
@@ -456,12 +463,12 @@ public class PnColuna extends javax.swing.JPanel {
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLMinus;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbMyPlay;
     private javax.swing.JLabel lblFixoAddPL;
     private javax.swing.JList myPlaylistsList;
     private javax.swing.JList publicPlaylists;
