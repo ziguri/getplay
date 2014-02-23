@@ -428,12 +428,7 @@ public class GetPlay implements Serializable {
         return pubPlaylists;
     }
     
-    /**
-     * Search in the users list, for each user search the playlist list to find
-     * public playlists and return one list with all the public playlists.
-     *
-     * @return
-     */
+    
     public String userPlaylist(String name, GregorianCalendar date) {
         String emailUserPlaylist="";
 
