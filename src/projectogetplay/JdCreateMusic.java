@@ -374,8 +374,7 @@ public class JdCreateMusic extends javax.swing.JDialog {
                         path, userEmail);
                 
            
-               p.getPnTabelaMusica().adicionaLinha(name, artist, album, Integer.parseInt(year), userEmail);
-               
+               p.getPnTabelaMusica().adicionaLinha(name, artist, album, Integer.parseInt(year), userEmail, path);
 
                 p.getApp().copy(source, target);//copia ficheiro
                 JOptionPane.showMessageDialog(this, "Add Music");

@@ -25,7 +25,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     private ArrayList<Music> dados;
     private int cliqueMusica;
     private Music musicSelecionada;
-    private String[][] dadosArray;
+    private ArrayList<Music> dadosArray;
 
     public ArrayList<Music> getDados() {
         return dados;
@@ -39,26 +39,41 @@ public class PnTabelaMusica extends javax.swing.JPanel {
      */
     public PnTabelaMusica(Principal p, ArrayList<Music> play) {
         dados = new ArrayList();
+        dadosArray= new ArrayList<>();
         this.pagPrincipal = p;
         atribuiDados(play);
-        criaArray(play);
+        //criaArray(play);
         cliqueMusica = -1;
         initComponents();
     }
 
     //criar um array com duas colunas. 1 coluna com o musicCount e outra coluna com o Path da musica
-    public void criaArray(ArrayList<Music> musica){
-    int tamanho= musica.size();
-    dadosArray= new String[tamanho][3];
+    public void criaArray(){
+        
+    int tamanho= tblMusic.getRowCount();
+    
     
         for (int i = 0; i < tamanho; i++) {
-                dadosArray[i][0]=musica.get(i).getMusicPath();
-                dadosArray[i][1]=musica.get(i).getAuthor();
-                dadosArray[i][1]=musica.get(i).getName();
+            dadosArray.add(new Music(
+            (Integer)tblMusic.getValueAt(i, 6),
+              (String)tblMusic.getValueAt(i, 0),
+               (String)tblMusic.getValueAt(i, 1),
+                    (String)tblMusic.getValueAt(i, 2),
+                    (Integer)tblMusic.getValueAt(i, 4),
+                    (String)tblMusic.getValueAt(i, 7),
+                    (String)tblMusic.getValueAt(i, 5)
+            ));
+   //{music.getName(), music.getAuthor(), music.getAlbum(), fav, music.getYear(), music.getCreatorEmail(), music.getMusicCode(), music.getMusicPath()});
+//                dadosArray[i][0]=musica.get(i).getMusicPath();
+//                dadosArray[i][1]=musica.get(i).getAuthor();
+//                dadosArray[i][1]=musica.get(i).getName();
+             // {"Title"0, "Artist"1, "Album"2, "Favorite", "Year"4, "User5", "",""};    
+               //public Music(int musicCode6, String aName0, String aAuthor1, String aAlbum2, int aYear4, String aMusicPath7, String aCreatorEmail5)
         }
     }
 
-    public String[][] getArray(){
+    public ArrayList<Music> getArray(){
+       criaArray() ;
     return dadosArray;
     
     }
@@ -86,7 +101,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     }
 
     public void criaModeloTabela() {
-        String[] colunas = new String[]{"Title", "Artist", "Album", "Favorite", "Year", "User", ""};
+        String[] colunas = new String[]{"Title", "Artist", "Album", "Favorite", "Year", "User", "","", ""};
         Object[][] dados = new Object[][]{};
         modelo = new DefaultTableModel(dados, colunas);
     }
@@ -100,7 +115,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
                 fav = "";
             }
 
-            modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), fav, music.getYear(), music.getCreatorEmail(), music.getMusicCode()});
+            modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), fav, music.getYear(), music.getCreatorEmail(), music.getMusicCode(), music.getMusicPath()});
         }
         
     }
@@ -133,11 +148,11 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         return num;
     }
 
-    public void adicionaLinha(String name, String artist, String album, int year, String user) {
+    public void adicionaLinha(String name, String artist, String album, int year, String user, String path) {
         int index = pagPrincipal.getApp().musicsList.size();
         int controlo = pagPrincipal.getApp().musicsList.get(index - 1).getMusicCode();
 
-        Object novo[] = {name, artist, album, "", year, user, controlo};
+        Object novo[] = {name, artist, album, "", year, user, controlo, path};
         modelo.addRow(novo);
         refresh();
 
@@ -171,6 +186,10 @@ public class PnTabelaMusica extends javax.swing.JPanel {
         tblMusic.setModel(modelo);
         tblMusic.getColumnModel().getColumn(6).setMinWidth(0);
         tblMusic.getColumnModel().getColumn(6).setMaxWidth(0);
+        tblMusic.getColumnModel().getColumn(7).setMinWidth(0);
+        tblMusic.getColumnModel().getColumn(7).setMaxWidth(0);
+        tblMusic.getColumnModel().getColumn(8).setMinWidth(0);
+        tblMusic.getColumnModel().getColumn(8).setMaxWidth(0);
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment( JLabel.CENTER );
         tblMusic.getColumnModel().getColumn(3).setCellRenderer( centerRenderer );
