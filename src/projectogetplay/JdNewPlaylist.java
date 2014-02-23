@@ -94,10 +94,13 @@ public class JdNewPlaylist extends javax.swing.JDialog {
             Playlist novo = new Playlist(nome);
 
             p.getLogged().addNewPlaylist(novo);
-            p.getPnColuna().buildPlaylistListProp(p.getLogged().getPlaylists());
-
             p.getPnBaseColuna().removeAll();
-            p.getPnBaseColuna().add(new PnColuna(p));
+            
+            p.setPnColuna(new PnColuna(p));
+            p.getPnColuna().buildPlaylistListProp(p.getLogged().getPlaylists());
+            
+            
+            p.getPnBaseColuna().add(p.getPnColuna());
             
             p.revalidate();
             p.repaint();
