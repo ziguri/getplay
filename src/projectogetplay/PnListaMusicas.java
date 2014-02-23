@@ -278,6 +278,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
 //            Playlist playlist = p.getPnColuna().getPlaylistProp().
 //                get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
 //        //codigo rebenta neste playlist
+        System.out.println("index "+playlistIndex);
         int cod = p.getPnTabelaMusica().getCliqueMusica();
         this.m = p.getApp().searchMusic(cod);
 
@@ -302,6 +303,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
                 Playlist playlist = p.getPnColuna().getPlaylistProp().get(playlistIndex);
                 playlist.addMusicPlaylist(cod);
                 JOptionPane.showMessageDialog(this, "Music added to playlist " + playlist.getName(), "Success", JOptionPane.INFORMATION_MESSAGE);
+                System.out.println("playlist name: "+playlist.getName());
                 p.revalidate();
                 p.repaint();
             }

@@ -54,8 +54,6 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
     
     public void removeLinha() {
         modelo.removeRow(tblPlaylist.getSelectedRow());
-        
-
     }
 
     public JTable getTblPlaylist() {
