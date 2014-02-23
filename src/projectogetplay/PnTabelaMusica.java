@@ -169,15 +169,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     private void tblMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMusicMouseClicked
         int num = (Integer) tblMusic.getValueAt(tblMusic.getSelectedRow(), 6);
        // JOptionPane.showMessageDialog(null, "Codigo " + num);
-        cliqueMusica = num;
-        
-//        pagPrincipal.paraMusica();
-//        pagPrincipal.iniciaMusica();
-//        pagPrincipal.revalidate();
-//        pagPrincipal.repaint();
-        
-        
-        
+        cliqueMusica = num;       
     }//GEN-LAST:event_tblMusicMouseClicked
 
     public Music getMusicSelecionada() {
