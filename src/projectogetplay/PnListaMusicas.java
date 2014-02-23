@@ -6,8 +6,10 @@
 
 package projectogetplay;
 
+import java.io.File;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -27,7 +29,6 @@ public class PnListaMusicas extends javax.swing.JPanel {
      * @param p
      */
     public PnListaMusicas(Principal p) {
-        
         this.p=p;
         initComponents();
         
@@ -55,6 +56,8 @@ public class PnListaMusicas extends javax.swing.JPanel {
         jBEditMusic = new javax.swing.JButton();
         jBRemoveMusic = new javax.swing.JButton();
         jBAddMusicPLaylist = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jBFavorBlack = new javax.swing.JButton();
 
         setMinimumSize(new java.awt.Dimension(830, 100));
 
@@ -67,14 +70,13 @@ public class PnListaMusicas extends javax.swing.JPanel {
         }catch(Exception e){}
         jLabPListName1.setToolTipText("");
 
-        jBAddMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N
-        jBAddMusic.setText("add music");
-        jBAddMusic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jBAddMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/music-plus-icon-icon.png"))); // NOI18N
+        jBAddMusic.setBorder(null);
         jBAddMusic.setContentAreaFilled(false);
         jBAddMusic.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        jBAddMusic.setMaximumSize(new java.awt.Dimension(71, 20));
-        jBAddMusic.setMinimumSize(new java.awt.Dimension(71, 20));
-        jBAddMusic.setPreferredSize(new java.awt.Dimension(71, 20));
+        jBAddMusic.setMaximumSize(new java.awt.Dimension(30, 25));
+        jBAddMusic.setMinimumSize(new java.awt.Dimension(30, 25));
+        jBAddMusic.setPreferredSize(new java.awt.Dimension(30, 25));
         jBAddMusic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAddMusicActionPerformed(evt);
@@ -83,31 +85,25 @@ public class PnListaMusicas extends javax.swing.JPanel {
 
         jBEditMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit-icon.png"))); // NOI18N
         jBEditMusic.setText(" edit");
-        jBEditMusic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jBEditMusic.setBorder(null);
         jBEditMusic.setContentAreaFilled(false);
         jBEditMusic.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        jBEditMusic.setMaximumSize(new java.awt.Dimension(71, 20));
-        jBEditMusic.setMinimumSize(new java.awt.Dimension(71, 20));
-        jBEditMusic.setPreferredSize(new java.awt.Dimension(71, 20));
+        jBEditMusic.setMaximumSize(new java.awt.Dimension(71, 25));
+        jBEditMusic.setMinimumSize(new java.awt.Dimension(71, 25));
+        jBEditMusic.setPreferredSize(new java.awt.Dimension(71, 25));
         jBEditMusic.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBEditMusicMouseClicked(evt);
             }
         });
-        jBEditMusic.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBEditMusicActionPerformed(evt);
-            }
-        });
 
-        jBRemoveMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Minus-icon.png"))); // NOI18N
-        jBRemoveMusic.setText("remove");
-        jBRemoveMusic.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jBRemoveMusic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/music-minus-icon-icon.png"))); // NOI18N
+        jBRemoveMusic.setBorder(null);
         jBRemoveMusic.setContentAreaFilled(false);
         jBRemoveMusic.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        jBRemoveMusic.setMaximumSize(new java.awt.Dimension(71, 20));
-        jBRemoveMusic.setMinimumSize(new java.awt.Dimension(71, 20));
-        jBRemoveMusic.setPreferredSize(new java.awt.Dimension(71, 20));
+        jBRemoveMusic.setMaximumSize(new java.awt.Dimension(30, 25));
+        jBRemoveMusic.setMinimumSize(new java.awt.Dimension(30, 25));
+        jBRemoveMusic.setPreferredSize(new java.awt.Dimension(30, 25));
         jBRemoveMusic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBRemoveMusicActionPerformed(evt);
@@ -116,15 +112,39 @@ public class PnListaMusicas extends javax.swing.JPanel {
 
         jBAddMusicPLaylist.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Basic-Plus-icon.png"))); // NOI18N
         jBAddMusicPLaylist.setText("add music in my PlayList");
-        jBAddMusicPLaylist.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jBAddMusicPLaylist.setBorder(null);
         jBAddMusicPLaylist.setContentAreaFilled(false);
         jBAddMusicPLaylist.setMargin(new java.awt.Insets(2, 10, 2, 10));
-        jBAddMusicPLaylist.setMaximumSize(new java.awt.Dimension(71, 20));
-        jBAddMusicPLaylist.setMinimumSize(new java.awt.Dimension(71, 20));
-        jBAddMusicPLaylist.setPreferredSize(new java.awt.Dimension(71, 20));
+        jBAddMusicPLaylist.setMaximumSize(new java.awt.Dimension(71, 25));
+        jBAddMusicPLaylist.setMinimumSize(new java.awt.Dimension(71, 25));
+        jBAddMusicPLaylist.setPreferredSize(new java.awt.Dimension(71, 25));
         jBAddMusicPLaylist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBAddMusicPLaylistActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Favorite_32.png"))); // NOI18N
+        jButton1.setBorder(null);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setMaximumSize(new java.awt.Dimension(33, 25));
+        jButton1.setMinimumSize(new java.awt.Dimension(33, 25));
+        jButton1.setPreferredSize(new java.awt.Dimension(33, 25));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jBFavorBlack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Favorite_32_black.png"))); // NOI18N
+        jBFavorBlack.setBorder(null);
+        jBFavorBlack.setContentAreaFilled(false);
+        jBFavorBlack.setMaximumSize(new java.awt.Dimension(33, 25));
+        jBFavorBlack.setMinimumSize(new java.awt.Dimension(33, 25));
+        jBFavorBlack.setPreferredSize(new java.awt.Dimension(33, 25));
+        jBFavorBlack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFavorBlackActionPerformed(evt);
             }
         });
 
@@ -137,14 +157,18 @@ public class PnListaMusicas extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListName1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 358, Short.MAX_VALUE)
-                        .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jBAddMusicPLaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 444, Short.MAX_VALUE)
+                        .addComponent(jBFavorBlack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jBAddMusicPLaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListName)
                         .addContainerGap())))
@@ -152,14 +176,16 @@ public class PnListaMusicas extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(55, Short.MAX_VALUE)
                 .addComponent(jLabPListName)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabPListName1)
                     .addComponent(jBAddMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBAddMusicPLaylist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jBAddMusicPLaylist, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBFavorBlack, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -170,19 +196,18 @@ public class PnListaMusicas extends javax.swing.JPanel {
     }//GEN-LAST:event_jBAddMusicActionPerformed
 
     private void jBEditMusicMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBEditMusicMouseClicked
+        if (p.getLogged() == null) {
+            JOptionPane.showMessageDialog(this, "Please sign in to edit a music",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+           return;
+        }  
         this.m = p.getApp().searchMusic(p.getPnTabelaMusica().getCliqueMusica());
-        //System.out.println(m);
-        
+              
         if(m.getCreatorEmail().equals(p.getLogged().getEmail())){
             JdEditMusic jdEditMusic=new JdEditMusic(p, true);
             jdEditMusic.fillFields(m);
             jdEditMusic.setVisible(true);
-//            ;
-//                p.jdEditMusic.setVisible(true);
-//                
-           // p.jdEditMusic.fillFields(m);
-           //p.jdEditMusic.revalidate();
-           // p.jdEditMusic.repaint();
+
         }else{
             JOptionPane.showMessageDialog(this, "You don´t have permission to change this music",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -190,6 +215,22 @@ public class PnListaMusicas extends javax.swing.JPanel {
       
     }//GEN-LAST:event_jBEditMusicMouseClicked
 
+    private void update(){
+        p.getPnBaseTabela().removeAll();
+        p.getPnBaseInfo().removeAll();
+        
+        p.getPnBaseTabela().add(p.getPnTabelaMusica());
+        p.getPnBaseInfo().add(p.getPnListaMusicas());
+        p.getPnTabelaMusica().repaint();
+        p.getPnTabelaMusica().revalidate();
+            
+        p.repaint();
+        p.revalidate();
+        
+        
+    }
+    
+    
     private void jBRemoveMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveMusicActionPerformed
         int cod = p.getPnTabelaMusica().getCliqueMusica();
         Music mu = p.getApp().searchMusic(cod);
@@ -228,9 +269,6 @@ public class PnListaMusicas extends javax.swing.JPanel {
     }//GEN-LAST:event_jBRemoveMusicActionPerformed
 
     private void jBAddMusicPLaylistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAddMusicPLaylistActionPerformed
-
-        
-            
             Playlist playlist = p.getPnColuna().getPlaylistProp().
                             get(p.getPnColuna().getMyPlaylistsList().getSelectedIndex());
             
@@ -278,9 +316,44 @@ public class PnListaMusicas extends javax.swing.JPanel {
          
     }//GEN-LAST:event_jBAddMusicPLaylistActionPerformed
 
-    private void jBEditMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEditMusicActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBEditMusicActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        final JTable tabela = p.getPnTabelaMusica().getTblMusic();
+        int rowIndex = tabela.getSelectedRow();
+        int musicCode = p.getPnTabelaMusica().getCliqueMusica(); 
+        this.m = p.getApp().searchMusic(musicCode);
+        //linhas seleccionada na tabela
+        if (rowIndex != -1 || p.getPnColuna().getMyPlaylistsList().getSelectedIndex() !=-1) {
+            m.setFavorite(true);
+             JOptionPane.showMessageDialog(this, "FAVORITE",
+                    "OK", JOptionPane.OK_OPTION);
+            update();
+        }else{
+            JOptionPane.showMessageDialog(this, "Please select a music",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+         update();
+         p.getPnTabelaMusica().refresh();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jBFavorBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFavorBlackActionPerformed
+        final JTable tabela = p.getPnTabelaMusica().getTblMusic();
+        int rowIndex = tabela.getSelectedRow();
+        int musicCode = p.getPnTabelaMusica().getCliqueMusica(); 
+        this.m = p.getApp().searchMusic(musicCode);
+        //linhas seleccionada na tabela
+        if (rowIndex != -1 || rowIndex != -1 || p.getPnColuna().getMyPlaylistsList().getSelectedIndex() !=-1) {
+            JOptionPane.showMessageDialog(this, "NO FAVORITE",
+                    "OK", JOptionPane.OK_OPTION);
+            m.setFavorite(false);
+            p.getPnTabelaMusica().refresh();
+            update();
+        }else{
+             JOptionPane.showMessageDialog(this, "Please select a music",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        update();
+        p.getPnTabelaMusica().refresh();
+    }//GEN-LAST:event_jBFavorBlackActionPerformed
 
     public JLabel getjLabPListName() {
         return jLabPListName;
@@ -304,7 +377,9 @@ public class PnListaMusicas extends javax.swing.JPanel {
     private javax.swing.JButton jBAddMusic;
     private javax.swing.JButton jBAddMusicPLaylist;
     private javax.swing.JButton jBEditMusic;
+    private javax.swing.JButton jBFavorBlack;
     private javax.swing.JButton jBRemoveMusic;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabPListName;
     private javax.swing.JLabel jLabPListName1;
     // End of variables declaration//GEN-END:variables
