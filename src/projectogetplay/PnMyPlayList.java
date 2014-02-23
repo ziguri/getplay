@@ -154,10 +154,16 @@ public class PnMyPlayList extends javax.swing.JPanel {
     }//GEN-LAST:event_jBNewPlayActionPerformed
 
     private void jBRemovePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemovePlayActionPerformed
+         /*
+        //Actualiza toda a coluna 
+        pagPrincipal.getPnBaseColuna().removeAll();
+        pagPrincipal.setPnColuna(new PnColuna(pagPrincipal));
+        pagPrincipal.getPnColuna().buildPlaylistListProp(pagPrincipal.getLogged().getPlaylists());
+        pagPrincipal.getPnBaseColuna().add(pagPrincipal.getPnColuna());
+        */
          int indiceLista = pagPrincipal.getPnColuna().getMyPlaylistsList().getSelectedIndex();
          int indiceTabela = pagPrincipal.getPnTabelaPlayList().getTblPlaylist().getSelectedRow();
-         String nomePlay = (String) pagPrincipal.getPnTabelaPlayList().getTblPlaylist().getValueAt(indiceTabela, 0);
-            Playlist playl = pagPrincipal.getLogged().findPlaylist(nomePlay);
+         
          
          if(indiceLista==-1 && indiceTabela==-1){
         
@@ -181,9 +187,18 @@ public class PnMyPlayList extends javax.swing.JPanel {
                 pagPrincipal.getPnColuna().buildAllLists();
                 pagPrincipal.actualizaTabelaMyPlaylist();
             }else{
+                
+                String nomePlay = (String) pagPrincipal.getPnTabelaPlayList().getTblPlaylist().getValueAt(indiceTabela, 0);
+                Playlist playl = pagPrincipal.getLogged().findPlaylist(nomePlay);
             
                 pagPrincipal.getLogged().removePlaylist(playl);
-                pagPrincipal.getPnColuna().buildAllLists();
+                
+                //Actualiza toda a coluna 
+                pagPrincipal.getPnBaseColuna().removeAll();
+                pagPrincipal.setPnColuna(new PnColuna(pagPrincipal));
+                pagPrincipal.getPnColuna().buildPlaylistListProp(pagPrincipal.getLogged().getPlaylists());
+                pagPrincipal.getPnBaseColuna().add(pagPrincipal.getPnColuna());
+
                 pagPrincipal.actualizaTabelaMyPlaylist();
                 
             }
