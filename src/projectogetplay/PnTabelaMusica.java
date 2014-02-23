@@ -49,10 +49,18 @@ public class PnTabelaMusica extends javax.swing.JPanel {
 
     //criar um array com duas colunas. 1 coluna com o musicCount e outra coluna com o Path da musica
     public void criaArray(){
+        if (!dadosArray.isEmpty()) {
+            int tamanho = dadosArray.size();
+            for (int i = tamanho - 1; i >= 0; i--) {
+                dadosArray.remove(i);
+            }
+        }
+        
+        
+        
         
     int tamanho= tblMusic.getRowCount();
-    
-    
+       
         for (int i = 0; i < tamanho; i++) {
             dadosArray.add(new Music(
             (Integer)tblMusic.getValueAt(i, 6),
@@ -117,7 +125,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
 
             modelo.addRow(new Object[]{music.getName(), music.getAuthor(), music.getAlbum(), fav, music.getYear(), music.getCreatorEmail(), music.getMusicCode(), music.getMusicPath()});
         }
-        
+        modelo.fireTableDataChanged();
     }
 
     public void removeLinha() {
