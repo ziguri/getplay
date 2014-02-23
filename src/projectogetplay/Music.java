@@ -25,7 +25,7 @@ public class Music implements Serializable {
         this.musicPath = aMusicPath;
     }
 
-    public Music() {
+    public Music() {    
 
     }
 

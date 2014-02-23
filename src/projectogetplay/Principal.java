@@ -36,9 +36,9 @@ public class Principal extends javax.swing.JFrame {
     protected JdEditMusic jdEditMusic;
     private final MP3Player player;
     private int rowIndex;
-    private ArrayList<Music> mlistTbl;
+    private ArrayList<Music> dadosTabela;
 
-    private String[][] dadosTabela;
+    
 
     public Principal() {
         initComponents();
@@ -59,7 +59,7 @@ public class Principal extends javax.swing.JFrame {
         app.listMusics();
         app.listUsers();
         player = new MP3Player();
-        mlistTbl = new ArrayList<>();
+       
         jBBackward.setEnabled(false);
         jBForward.setEnabled(false);
         jBStop.setEnabled(false);
@@ -470,30 +470,30 @@ public class Principal extends javax.swing.JFrame {
     }
 
     public void iniciaMusica() {
-        //final JTable tabela = pnTabelaMusica.getTblMusic();
-        //mlistTbl.clear();
-        dadosTabela = pnTabelaMusica.getArray();
-        rowIndex = pnTabelaMusica.linhaSelecionada();
-        System.out.println(rowIndex);
-        //File[] f = getApp().stringToMp3(mlistTbl,rowIndex );
-
-        File[] f = getApp().stringToMp3(dadosTabela);
-        //rowIndex = tabela.getSelectedRow();
-
-        for (int i = 0; i < dadosTabela.length; i++) {
-            player.addToPlayList(f[i]);
-        }//adiciona as musicas da playlist da tabela ao MP3player
-        if (togglePlay.isSelected()) {
-            togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png")));
-            togglePlay.setBorder(null);
-            togglePlay.setContentAreaFilled(true);
-            player.play();
-        } else {
-            togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
-            togglePlay.setBorder(null);
-            togglePlay.setContentAreaFilled(false);
-            player.pause();
-        }
+//        //final JTable tabela = pnTabelaMusica.getTblMusic();
+//        //mlistTbl.clear();
+//        dadosTabela = pnTabelaMusica.getArray();
+//        rowIndex = pnTabelaMusica.linhaSelecionada();
+//        System.out.println(rowIndex);
+//        //File[] f = getApp().stringToMp3(mlistTbl,rowIndex );
+//
+//        File[] f = getApp().stringToMp3(dadosTabela);
+//        //rowIndex = tabela.getSelectedRow();
+//
+//        for (int i = 0; i < dadosTabela.length; i++) {
+//            player.addToPlayList(f[i]);
+//        }//adiciona as musicas da playlist da tabela ao MP3player
+//        if (togglePlay.isSelected()) {
+//            togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png")));
+//            togglePlay.setBorder(null);
+//            togglePlay.setContentAreaFilled(true);
+//            player.play();
+//        } else {
+//            togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
+//            togglePlay.setBorder(null);
+//            togglePlay.setContentAreaFilled(false);
+//            player.pause();
+//        }
 
     }
 
@@ -525,17 +525,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jBForwardActionPerformed
 
     private void togglePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglePlayActionPerformed
-        //final JTable tabela = pnTabelaMusica.getTblMusic();
-        //mlistTbl.clear();
-        dadosTabela = pnTabelaMusica.getArray();
+    
+      dadosTabela = pnTabelaMusica.getArray();
         rowIndex = pnTabelaMusica.linhaSelecionada();
-        System.out.println(rowIndex);
-        //File[] f = getApp().stringToMp3(mlistTbl,rowIndex );
+       
 
         File[] f = getApp().stringToMp3(dadosTabela);
         //rowIndex = tabela.getSelectedRow();
 
-        for (int i = 0; i < dadosTabela.length; i++) {
+        for (int i = 0; i < dadosTabela.size(); i++) {
             player.addToPlayList(f[i]);
         }//adiciona as musicas da playlist da tabela ao MP3player
         if (togglePlay.isSelected()) {
@@ -552,6 +550,16 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_togglePlayActionPerformed
 
+//class PlayerThread extends Thread{
+//        public void run(){
+//            try{
+//				mp3_player = new MP3Player(new File(current_song));
+//        	    mp3_player.play();
+//            }catch(Exception e){ System.err.println(e);}
+//        }	   
+//	}    
+    
+    
     public int getRowIndex() {
         return rowIndex;
     }
@@ -675,6 +683,7 @@ public class Principal extends javax.swing.JFrame {
         this.pnTabelaMusica = pnTabelaMusica;
     }
 
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogin;
@@ -751,4 +760,9 @@ public class Principal extends javax.swing.JFrame {
     public PnTabelaPlayList getPnTabelaPlayList() {
         return pnTabelaPlayList;
     }
+    
+    public void setPnColuna(PnColuna pnColuna) {
+       this.pnColuna = pnColuna;
+   }
+    
 }
