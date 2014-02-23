@@ -101,6 +101,11 @@ public class JdNewPlaylist extends javax.swing.JDialog {
             
             p.revalidate();
             p.repaint();
+            
+            
+            //Actualiza a tabela com as playlist´s pessoais
+            p.actualizaTabelaMyPlaylist();
+            
         }
         this.dispose();
 

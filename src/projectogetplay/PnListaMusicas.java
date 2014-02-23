@@ -6,7 +6,6 @@
 
 package projectogetplay;
 
-import java.io.File;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -166,12 +165,12 @@ public class PnListaMusicas extends javax.swing.JPanel {
                         .addComponent(jBRemoveMusic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jBEditMusic, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(jBAddMusicPLaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jBAddMusicPLaylist, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(17, 17, 17))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListName)
-                        .addGap(0, 740, Short.MAX_VALUE)))
-                .addGap(20, 20, 20))
+                        .addGap(0, 760, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -240,7 +239,7 @@ public class PnListaMusicas extends javax.swing.JPanel {
     private void jBRemoveMusicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemoveMusicActionPerformed
         final JTable tabela = p.getPnTabelaMusica().getTblMusic();
         int rowIndex = tabela.getSelectedRow();
-        System.out.println("rowIndex: "+rowIndex);
+        //System.out.println("rowIndex: "+rowIndex);
         int cod = p.getPnTabelaMusica().getCliqueMusica();
         this.m = p.getApp().searchMusic(cod);
         //linhas seleccionada na tabela
@@ -311,22 +310,33 @@ public class PnListaMusicas extends javax.swing.JPanel {
     }//GEN-LAST:event_jBAddMusicPLaylistActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        final JTable tabela = p.getPnTabelaMusica().getTblMusic();
+        JTable tabela = p.getPnTabelaMusica().getTblMusic();
         int rowIndex = tabela.getSelectedRow();
         int musicCode = p.getPnTabelaMusica().getCliqueMusica(); 
         this.m = p.getApp().searchMusic(musicCode);
+        
         //linhas seleccionada na tabela
         if (rowIndex != -1 || p.getPnColuna().getMyPlaylistsList().getSelectedIndex() !=-1) {
             m.setFavorite(true);
              JOptionPane.showMessageDialog(this, "Favorite Music",
                     "Favorite", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/Favorite_32.png")));
-            update();
+            
+             
+             //Actualiza os dados da tabela, gera uma nova tabela e mostra-a
+             p.getPnBaseTabela().removeAll();
+             p.setPnTabelaMusica(new PnTabelaMusica (p, p.getApp().getMusicsList()));
+             p.getPnTabelaMusica().refresh();
+
+             p.getPnBaseTabela().add(p.getPnTabelaMusica());
+             p.revalidate();
+             p.repaint();
+
+
         }else{
             JOptionPane.showMessageDialog(this, "Please select a music",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-         update();
-         p.getPnTabelaMusica().refresh();
+         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jBFavorBlackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFavorBlackActionPerformed
@@ -339,14 +349,22 @@ public class PnListaMusicas extends javax.swing.JPanel {
             m.setFavorite(false);
             JOptionPane.showMessageDialog(this, "This is not your favorite Music",
                     "Favorite", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/icons/Favorite_32_black.png")));
-            p.getPnTabelaMusica().refresh();
-            update();
+            
+
+            //Actualiza os dados da tabela, gera uma nova tabela e mostra-a
+             p.getPnBaseTabela().removeAll();
+             p.setPnTabelaMusica(new PnTabelaMusica (p, p.getApp().getMusicsList()));
+             p.getPnTabelaMusica().refresh();
+
+             p.getPnBaseTabela().add(p.getPnTabelaMusica());
+             p.revalidate();
+             p.repaint();
+             
         }else{
              JOptionPane.showMessageDialog(this, "Please select a music",
                     "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        update();
-        p.getPnTabelaMusica().refresh();
+
     }//GEN-LAST:event_jBFavorBlackActionPerformed
 
     public JLabel getjLabPListName() {

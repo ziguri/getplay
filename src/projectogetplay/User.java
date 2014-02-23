@@ -164,6 +164,27 @@ public class User implements Serializable {
     public void removeALLPlaylist() {
         playlists.removeAll(playlists);
     }
+    
+    /**
+     * Search in playlist list by name in order to find and return the playlist
+     * whit the same name.
+     * @param nome
+     * @return 
+     */
+    public Playlist findPlaylist(String nome){
+    
+        Playlist pl = null;
+        
+        for(int i=0; i<playlists.size(); i++){
+        
+            if(playlists.get(i).getName().equals(nome)){
+            
+                pl=playlists.get(i);
+            }
+        }
+        
+        return pl;
+    }
 
     @Override
     public String toString() {

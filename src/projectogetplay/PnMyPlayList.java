@@ -6,6 +6,9 @@
 
 package projectogetplay;
 
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Aires
@@ -26,6 +29,24 @@ public class PnMyPlayList extends javax.swing.JPanel {
         initComponents();
         
     }
+
+    public JLabel getjLabPListDir() {
+        return jLabPListDir;
+    }
+
+    public void setjLabPListDir(JLabel jLabPListDir) {
+        this.jLabPListDir = jLabPListDir;
+    }
+
+    public JLabel getjLabPListDir1() {
+        return jLabPListDir1;
+    }
+
+    public void setjLabPListDir1(JLabel jLabPListDir1) {
+        this.jLabPListDir1 = jLabPListDir1;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,7 +70,7 @@ public class PnMyPlayList extends javax.swing.JPanel {
         jLabPListDir.setToolTipText("");
 
         try{
-            String numPlay="";
+            String numPlay="Number of Playlists: ";
             numPlay+=pagPrincipal.getLogged().getPlaylists().size();
             jLabPListDir1.setText(numPlay);
         }catch(Exception e){}
@@ -63,6 +84,11 @@ public class PnMyPlayList extends javax.swing.JPanel {
         jBNewPlay.setMaximumSize(new java.awt.Dimension(71, 20));
         jBNewPlay.setMinimumSize(new java.awt.Dimension(71, 20));
         jBNewPlay.setPreferredSize(new java.awt.Dimension(71, 20));
+        jBNewPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNewPlayActionPerformed(evt);
+            }
+        });
 
         jBEditPlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Edit-icon.png"))); // NOI18N
         jBEditPlay.setText(" edit");
@@ -81,6 +107,11 @@ public class PnMyPlayList extends javax.swing.JPanel {
         jBRemovePlay.setMaximumSize(new java.awt.Dimension(71, 20));
         jBRemovePlay.setMinimumSize(new java.awt.Dimension(71, 20));
         jBRemovePlay.setPreferredSize(new java.awt.Dimension(71, 20));
+        jBRemovePlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBRemovePlayActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -94,8 +125,8 @@ public class PnMyPlayList extends javax.swing.JPanel {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabPListDir1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 537, Short.MAX_VALUE)
-                        .addComponent(jBNewPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 490, Short.MAX_VALUE)
+                        .addComponent(jBNewPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jBEditPlay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
@@ -116,6 +147,48 @@ public class PnMyPlayList extends javax.swing.JPanel {
                 .addGap(0, 0, 0))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBNewPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNewPlayActionPerformed
+        JdNewPlaylist jdNewPlaylist = new JdNewPlaylist(pagPrincipal, true);
+        jdNewPlaylist.setVisible(true);
+    }//GEN-LAST:event_jBNewPlayActionPerformed
+
+    private void jBRemovePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRemovePlayActionPerformed
+         int indiceLista = pagPrincipal.getPnColuna().getMyPlaylistsList().getSelectedIndex();
+         int indiceTabela = pagPrincipal.getPnTabelaPlayList().getTblPlaylist().getSelectedRow();
+         String nomePlay = (String) pagPrincipal.getPnTabelaPlayList().getTblPlaylist().getValueAt(indiceTabela, 0);
+            Playlist playl = pagPrincipal.getLogged().findPlaylist(nomePlay);
+         
+         if(indiceLista==-1 && indiceTabela==-1){
+        
+            JOptionPane.showMessageDialog(this, "Please select one playlist from table or from the \"My Playlists\" list on the left.",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+         else if(indiceLista!=-1 && indiceTabela!=-1){
+         
+              JOptionPane.showMessageDialog(this, "Please select just from table, or from playlist",
+                    "ERROR", JOptionPane.ERROR_MESSAGE);
+              pagPrincipal.getPnTabelaPlayList().getTblPlaylist().clearSelection();
+              pagPrincipal.getPnColuna().getMyPlaylistsList().clearSelection();
+              
+              
+         }
+        else{
+        
+            if(indiceTabela==-1){
+            
+                pagPrincipal.getLogged().removePlaylist( pagPrincipal.getPnColuna().getPlaylistProp().get(pagPrincipal.getPnColuna().getMyPlaylistsList().getSelectedIndex()));
+                pagPrincipal.getPnColuna().buildAllLists();
+                pagPrincipal.actualizaTabelaMyPlaylist();
+            }else{
+            
+                pagPrincipal.getLogged().removePlaylist(playl);
+                pagPrincipal.getPnColuna().buildAllLists();
+                pagPrincipal.actualizaTabelaMyPlaylist();
+                
+            }
+        }
+    }//GEN-LAST:event_jBRemovePlayActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

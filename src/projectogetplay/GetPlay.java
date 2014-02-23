@@ -216,6 +216,7 @@ public class GetPlay implements Serializable {
         for(int i=0; i<musicsList.size(); i++){
             if(musicsList.get(i).getCreatorEmail().equals(u.getEmail())){
                  removeMusicsFromAnotherPlaylists(musicsList.get(i).getMusicCode());
+                 removeMusic(musicsList.get(i));
      }
             
         }
@@ -568,16 +569,30 @@ public class GetPlay implements Serializable {
         return mus;
     }
     
-    public File[] stringToMp3(ArrayList<Music> mlist, int linha){
-        File[] f = new File[mlist.size()-linha];
-        for(int i =0;i<mlist.size()-linha;i++){
+//    public File[] stringToMp3(ArrayList<Music> mlist, int linha){
+//        File[] f = new File[mlist.size()-linha];
+//        for(int i =0;i<mlist.size()-linha;i++){
+//            String s = "c:\\APPGetPlay\\MyPlaylist\\";
+//            f[i]=(new File(s+mlist.get(i+linha).getMusicPath()));
+//            System.out.println(f[i].getAbsolutePath());
+//        }
+//        return f;
+//    }
+
+    
+      public File[] stringToMp3(String[][] dadosTabela){
+          
+        File[] f = new File[dadosTabela.length];
+        for(int i =0;i<dadosTabela.length;i++){
             String s = "c:\\APPGetPlay\\MyPlaylist\\";
-            f[i]=(new File(s+mlist.get(i+linha).getMusicPath()));
+            f[i]=(new File(s+dadosTabela[1][i]));
             System.out.println(f[i].getAbsolutePath());
         }
         return f;
     }
 
+    
+    
    
     /**
      * Start playing a file in the collection. Use stopPlaying() to stop it

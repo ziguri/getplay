@@ -9,6 +9,7 @@ package projectogetplay;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -19,8 +20,6 @@ import javax.swing.table.TableColumn;
 public class PnTabelaPlayList extends javax.swing.JPanel {
 
     protected Principal pagPrincipal;
-
-    
     private DefaultTableModel modelo;
     private ArrayList<Playlist> dados;
     
@@ -28,19 +27,18 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
     /**
      * Creates new form PnTabelaMusica
      */
-    public PnTabelaPlayList(Principal p) {
-        initComponents();
-        this.pagPrincipal=p;
-        dados=new ArrayList<>();
+    public PnTabelaPlayList(Principal p, ArrayList<Playlist> play) {
         
+        this.pagPrincipal=p;
+        dados=new ArrayList();
+        atribuiDadosPL(play);
+        initComponents();
     }
 
      public void atribuiDadosPL(ArrayList<Playlist> playList) {
         dados.clear();
-        dados =playList;
-;
+        dados.addAll(playList);
     }
-
     public void criaModeloTabelaPL() {
         String[] colunas = new String[]{"Name", "Creation Date", "Size", "Shared","User"};
         Object[][] dados = new Object[][]{};
@@ -52,6 +50,20 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
             modelo.addRow(new Object[]{playlist.getName(), playlist.getdateCreationString(),playlist.getSize(), playlist.getShared()});
         }
 
+    }
+    
+    public void removeLinha() {
+        modelo.removeRow(tblPlaylist.getSelectedRow());
+        
+
+    }
+
+    public JTable getTblPlaylist() {
+        return tblPlaylist;
+    }
+
+    public void setTblPlaylist(JTable tblPlaylist) {
+        this.tblPlaylist = tblPlaylist;
     }
     
     
