@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -440,7 +442,6 @@ public class GetPlay implements Serializable {
                 }
             }
         }
-
         return emailUserPlaylist;
     }
     
@@ -476,7 +477,22 @@ public class GetPlay implements Serializable {
     
         u.getPlaylists().add(p);
     }
-
+    public String playListSize(Playlist pl) {
+        ArrayList<Music> musicPl = getMusiclistFromPlaylist(pl.getMusics());
+        long sizeInBytes,sizeInKb, total=0;
+        for (Music m : musicPl) {
+            String s = "c:\\APPGetPlay\\MyPlaylist\\";
+            File f = new File(s+m.getMusicPath());
+            try {
+                sizeInBytes = Files.size(f.toPath());
+                sizeInKb = sizeInBytes/(1024);
+                total += sizeInKb;
+            } catch (IOException ex) {
+                Logger.getLogger(GetPlay.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return ""+total+" KB";
+    }
     /**
      *
      * @param str string to validate a date year.
@@ -584,6 +600,8 @@ public class GetPlay implements Serializable {
         }
         return mus;
     }
+    
+    
     
 //    public File[] stringToMp3(ArrayList<Music> mlist, int linha){
 //        File[] f = new File[mlist.size()-linha];

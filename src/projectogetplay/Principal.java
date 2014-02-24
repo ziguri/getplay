@@ -585,7 +585,14 @@ public void actualizaTabelaOtherPlaylist() {
             togglePlay.setBorder(null);
             togglePlay.setContentAreaFilled(false);
             player.pause();
-            player.removeAll();
+            
+            pnBaseTabela.removeAll();
+            ArrayList <Music> aux = pnTabelaMusica.getDadosArray();
+            setPnTabelaMusica(new PnTabelaMusica(this, aux));
+            pnBaseTabela.add(pnTabelaMusica);
+            revalidate();
+            repaint();
+            
 
         //dadosTabela = pnTabelaMusica.getDadosArray();
             //rowIndex = pnTabelaMusica.getTblMusic().getSelectedRow();
