@@ -37,7 +37,7 @@ public class Principal extends javax.swing.JFrame {
     private PnTabelaMusica pnTabelaMusica;
     private PnTabelaPlayList pnTabelaPlayList;
     protected JdEditMusic jdEditMusic;
-    private final MP3Player player;
+    private MP3Player player;
     private int rowIndex;
     private ArrayList<Music> dadosTabela;
     private File[] f;
@@ -554,15 +554,16 @@ public void actualizaTabelaOtherPlaylist() {
 //                dadosTabela.remove(i);
 //            }
 //        }
+        /*
         pnBaseTabela.removeAll();
         pnBaseTabela.add(pnTabelaMusica);
         revalidate();
-        repaint();
+        repaint();*/
 
         dadosTabela = pnTabelaMusica.getDadosArray();
         rowIndex = pnTabelaMusica.getTblMusic().getSelectedRow();
 
-        System.out.println("Indice da tabela " + rowIndex);
+        //System.out.println("Indice da tabela " + rowIndex);
 
         f = getApp().stringToMp3(dadosTabela);
 
@@ -576,9 +577,10 @@ public void actualizaTabelaOtherPlaylist() {
             togglePlay.setBorder(null);
             togglePlay.setContentAreaFilled(true);
             
-            String current_song = (String) f[rowIndex].getAbsolutePath();
+            String currentSong = (String) f[rowIndex].getAbsolutePath();
             
-            new MP3Player(new File(current_song)).play();
+            player = new MP3Player(new File(currentSong));
+            player.play();
 
         } else {
             togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
@@ -613,6 +615,7 @@ public void actualizaTabelaOtherPlaylist() {
     }
 //    
 
+    
     public int getRowIndex() {
         return rowIndex;
     }

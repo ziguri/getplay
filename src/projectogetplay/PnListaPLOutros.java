@@ -6,6 +6,8 @@
 
 package projectogetplay;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Aires
@@ -20,6 +22,22 @@ public class PnListaPLOutros extends javax.swing.JPanel {
     public PnListaPLOutros(Principal p) {
         initComponents();
         this.pagPrincipal=p;
+    }
+
+    public JLabel getjLabPListName() {
+        return jLabPListName;
+    }
+
+    public void setjLabPListName(JLabel jLabPListName) {
+        this.jLabPListName = jLabPListName;
+    }
+
+    public JLabel getjLabPListName1() {
+        return jLabPListName1;
+    }
+
+    public void setjLabPListName1(JLabel jLabPListName1) {
+        this.jLabPListName1 = jLabPListName1;
     }
 
     
