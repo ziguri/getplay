@@ -534,11 +534,7 @@ public class Principal extends javax.swing.JFrame {
 //                dadosTabela.remove(i);
 //            }
 //        }
-        pnBaseTabela.removeAll();
-        pnBaseTabela.add(pnTabelaMusica);
-        revalidate();
-        repaint();
-         
+
         dadosTabela = pnTabelaMusica.getDadosArray();
         rowIndex = pnTabelaMusica.getTblMusic().getSelectedRow();
         
@@ -563,7 +559,13 @@ public class Principal extends javax.swing.JFrame {
             togglePlay.setBorder(null);
             togglePlay.setContentAreaFilled(false);
             player.pause();
-            player.removeAll();
+            
+            pnBaseTabela.removeAll();
+            ArrayList <Music> aux = pnTabelaMusica.getDadosArray();
+            setPnTabelaMusica(new PnTabelaMusica(this, aux));
+            pnBaseTabela.add(pnTabelaMusica);
+            revalidate();
+            repaint();
             
 
          
