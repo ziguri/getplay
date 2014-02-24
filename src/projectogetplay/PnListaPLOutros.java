@@ -40,6 +40,9 @@ public class PnListaPLOutros extends javax.swing.JPanel {
         this.jLabPListName1 = jLabPListName1;
     }
 
+   public void setjLabPListName1txt(String txt) {
+       jLabPListName1.setText(txt);
+   }
     
     /**
      * This method is called from within the constructor to initialize the form.

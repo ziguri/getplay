@@ -534,7 +534,7 @@ public void actualizaTabelaOtherPlaylist() {
       pnBaseTabela.add(pnTabelaPlayList);
 
       PnListaPLOutros panel = new PnListaPLOutros(this);
-     // panel.jLabPListName1().setText("Number of Playlists: " + pnColuna.getPlaylistPub().size());
+      panel.setjLabPListName1txt("Number of Playlists: " + pnColuna.getPlaylistPub().size());
       pnBaseInfo.add(new PnListaPLOutros(this));
 
       revalidate();
