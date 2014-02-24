@@ -21,6 +21,7 @@ public class PnColuna extends javax.swing.JPanel {
     protected ArrayList <Playlist> playlistPub;
     protected boolean myPlaylistClicked;
     protected boolean othersPlaylistClicked;
+    protected ArrayList<Music> msc;
     
     public PnColuna(Principal pagPrincipal){
         
@@ -350,18 +351,14 @@ public class PnColuna extends javax.swing.JPanel {
             if (index != -1) {
                 
                 Playlist p = playlistProp.get(myPlaylistsList.getSelectedIndex());
-                ArrayList<Music> msc = pagPrincipal.getApp().getMusiclistFromPlaylist(p.getMusics());
+                msc = pagPrincipal.getApp().getMusiclistFromPlaylist(p.getMusics());
                 
                 pagPrincipal.getPnBaseInfo().removeAll();
                 pagPrincipal.getPnBaseTabela().removeAll();
                 
                 //Preenche a tabela com musicas da playlist seleccionada
-                
-                PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal, msc);
-
-                //pntm.atribuiDados(msc);
-                pntm.refresh();
-                pagPrincipal.getPnBaseTabela().add(pntm);
+                pagPrincipal.setPnTabelaMusica(new PnTabelaMusica(pagPrincipal, msc));
+                pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
                 
                 
                 
@@ -398,11 +395,11 @@ public class PnColuna extends javax.swing.JPanel {
                 
                 //Preenche a tabela com musicas da playlist seleccionada
                 
-                PnTabelaMusica pntm= new PnTabelaMusica(pagPrincipal, msc);
+                pagPrincipal.setPnTabelaMusica(new PnTabelaMusica(pagPrincipal, msc));
+                pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
 
                 //pntm.atribuiDados(msc);
-                pntm.refresh();
-                pagPrincipal.getPnBaseTabela().add(pntm);
+                pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
                 
                 
                 
