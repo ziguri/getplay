@@ -40,6 +40,7 @@ public class Principal extends javax.swing.JFrame {
     private final MP3Player player;
     private int rowIndex;
     private ArrayList<Music> dadosTabela;
+    private File[] f;
 
     public Principal() {
         initComponents();
@@ -522,6 +523,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void jBForwardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBForwardActionPerformed
         player.skipForward();
+        
     }//GEN-LAST:event_jBForwardActionPerformed
 
     private void togglePlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_togglePlayActionPerformed
@@ -533,25 +535,42 @@ public class Principal extends javax.swing.JFrame {
 //            }
 //        }
 
-        dadosTabela = pnTabelaMusica.getArray();
-        rowIndex = pnTabelaMusica.linhaSelecionada();
+        dadosTabela = pnTabelaMusica.getDadosArray();
+        rowIndex = pnTabelaMusica.getTblMusic().getSelectedRow();
+        
+        System.out.println("Indice da tabela " + rowIndex );
 
-        File[] f = getApp().stringToMp3(dadosTabela);
-        //rowIndex = tabela.getSelectedRow();
+        f = getApp().stringToMp3(dadosTabela);
 
-        for (int i = 0; i < dadosTabela.size(); i++) {
+        for (int i = rowIndex; i < dadosTabela.size(); i++) {
             player.addToPlayList(f[i]);
+            
         }//adiciona as musicas da playlist da tabela ao MP3player
+        
+        
         if (togglePlay.isSelected()) {
             togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Pause-32.png")));
             togglePlay.setBorder(null);
             togglePlay.setContentAreaFilled(true);
             player.play();
+            
         } else {
             togglePlay.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Play-32__green.png")));
             togglePlay.setBorder(null);
             togglePlay.setContentAreaFilled(false);
             player.pause();
+            
+            pnBaseTabela.removeAll();
+            ArrayList <Music> aux = pnTabelaMusica.getDadosArray();
+            setPnTabelaMusica(new PnTabelaMusica(this, aux));
+            pnBaseTabela.add(pnTabelaMusica);
+            revalidate();
+            repaint();
+            
+
+         
+        //dadosTabela = pnTabelaMusica.getDadosArray();
+        //rowIndex = pnTabelaMusica.getTblMusic().getSelectedRow();
         }
 
     }//GEN-LAST:event_togglePlayActionPerformed

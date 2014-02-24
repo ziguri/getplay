@@ -40,13 +40,14 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     public PnTabelaMusica(Principal p, ArrayList<Music> play) {
         dados = new ArrayList();
         dadosArray= new ArrayList<>();
+        dadosArray.addAll(play); // Adicionei o ArrayList de entrada ao array q vais enviar
         this.pagPrincipal = p;
         atribuiDados(play);
         //criaArray(play);
         cliqueMusica = -1;
         initComponents();
     }
-
+/*
     //criar um array com duas colunas. 1 coluna com o musicCount e outra coluna com o Path da musica
     public void criaArray(){
         if (!dadosArray.isEmpty()) {
@@ -86,7 +87,7 @@ public class PnTabelaMusica extends javax.swing.JPanel {
     
     }
     
-    
+    */
     
     /**
      * Create a new Arralist dados with Object Music, to be used in the Table
@@ -255,6 +256,10 @@ public class PnTabelaMusica extends javax.swing.JPanel {
 
     public JTable getTblMusic() {
         return tblMusic;
+    }
+
+    public ArrayList<Music> getDadosArray() {
+        return dadosArray;
     }
     
     
