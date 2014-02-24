@@ -221,23 +221,23 @@ public class PnPesquisa extends javax.swing.JPanel {
             }
 
             pagPrincipal.getPnBaseTabela().removeAll();
+            pagPrincipal.getPnBaseInfo().removeAll();
 
             //Preenche a tabela com musicas da playlist seleccionada
-            PnTabelaMusica pntm = new PnTabelaMusica(pagPrincipal, listPesquisa);
+            
+            pagPrincipal.setPnTabelaMusica(new PnTabelaMusica(pagPrincipal, listPesquisa));
+            PnListaMusicas pn = pagPrincipal.getPnListaMusicas();
+            pn.getjLabPListName().setText("Search Results");
+            pn.getjLabPListName1().setText("Musics found: " + listPesquisa.size());
 
             //pntm.atribuiDados(msc);
-            pntm.refresh();
-            pagPrincipal.getPnBaseTabela().add(pntm);
+            //pntm.refresh();
+            pagPrincipal.getPnBaseInfo().add(pn);
+            pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
+            searchBox.setText("");
             pagPrincipal.revalidate();
             pagPrincipal.repaint();
 
-//            pagPrincipal.getPnBaseTabela().removeAll();
-//
-//            pagPrincipal.getPnBaseTabela().add(pagPrincipal.getPnTabelaMusica());
-//            pagPrincipal.getPnTabelaMusica().novosDados(listPesquisa);
-//            pagPrincipal.getPnBaseTabela().revalidate();
-//            pagPrincipal.getPnBaseTabela().repaint();
-            //pagPrincipal.getPnTabelaMusica().refresh();
         }
 
 
