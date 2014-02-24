@@ -9,6 +9,7 @@ package projectogetplay;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -47,7 +48,10 @@ public class PnTabelaPlayList extends javax.swing.JPanel {
 
     public void carregaTabelaPL() {
         for (Playlist playlist : dados) {
-            modelo.addRow(new Object[]{playlist.getName(), playlist.getdateCreationString(),playlist.getSize(), playlist.getShared()});
+            String name = playlist.getName();
+            GregorianCalendar date = playlist.getDateCreation();
+            String emailUserPlaylist = pagPrincipal.getApp().userPlaylist(name,date);
+            modelo.addRow(new Object[]{playlist.getName(), playlist.getdateCreationString(),pagPrincipal.getApp().playListSize(playlist),playlist.getShared(),emailUserPlaylist});
         }
 
     }
